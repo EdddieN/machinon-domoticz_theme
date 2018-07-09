@@ -1,4 +1,5 @@
 # machinon-domoticz_theme
-this is work in progres and invite anyone to join and upate
+This is work in progres for a Domoticz theme used on machinon:
+https://github.com/EdddieN/machinon
 
 ![Idea of theme machinon](/machinon/idea_domoticz_machinon.jpg)
