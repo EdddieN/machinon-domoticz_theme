@@ -1,0 +1,24 @@
+{
+    "type": "theme",    
+    "name": "machinon",
+    "description": "Machinon custom theme, simple and light",
+    "license": "GPL-2.0+",
+    "version":"1",
+    "author": "Logic Energy",
+    "homepage": "https://www.logicenergy.com",
+    "wiki": "",
+    "textcolor": "#1a1a1a",     
+    "backgroundcolor": "#f1f1f1",    
+    "backgroundimage": "",
+    "previewimage": "screenshot.png",
+    "variants": [
+        {"default": "custom.css"}
+    ],
+    "features": {
+        "test": {
+            "id":2,
+            "enabled":true,
+            "files": ["custom.js"]
+        }
+    }
+}
