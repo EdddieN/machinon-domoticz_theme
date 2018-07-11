@@ -8,7 +8,7 @@
 .switch {
   position: absolute;
   display: block;
-  width: 60px;
+  width: 40px;
   height: 20px;
   top: 15px;
   right: 40px;
@@ -40,8 +40,8 @@
   content: "";
   height: 26px;
   width: 26px;
-  left: 0;
-  bottom: -1px;
+  left: -10px;
+  bottom: -2px;
   -webkit-transition: 0.4s;
   transition: 0.4s;
   background-color: #fafafa;
@@ -263,12 +263,32 @@ body table#itemtable tr > .options {
   bottom: 40px;
 }
 
+#type .selectorlevels {
+  position: absolute;
+  right: 20px;
+  bottom: 40px;
+
+}
+#type .ui-selectmenu-text {
+color:#0b96cd
+}
+
+
+
 /* dashboard items */
+#dashcontent .selectorlevels {
+  position: absolute;
+  right: 20px;
+  bottom: 40px;
+
+}
+#dashcontent .ui-selectmenu-text {
+color:#0b96cd
+}
+
 #dashcontent .item #lastupdate {
-  left: 20px;
-  top: 40px;
-  right: auto;
-  bottom: auto;
+  right:20px;
+  bottom: 15px;
 }
 
 /* temperature, weather items */
