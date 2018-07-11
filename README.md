@@ -28,3 +28,7 @@ git pull
 ### Finally preview:
 
 ![Idea of theme machinon](/idea_domoticz_machinon.jpg)
+
+Suggested new setjup layout - not implemented yet
+![Suggested new Setup layout - not implemented yet](/images/unorganised/screen_references/setup.png)
+
