@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		let containerLogo = `
 			<header class="logo">
 				<div class="container-logo">
-					<img class="header__icon" src="/images/logo.png">
+					<img class="header__icon" src="images/logo.png">
 				</div>
 			</header>')
 		`;
