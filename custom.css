@@ -2,7 +2,10 @@
 .ui-popup.ui-corner-all {
   background-color: #fff;
 }
-
+/* author at footer */
+#copyright p:after {
+  content: "  | 'machinon' theme by EdddieN";
+}
 /* bootstrap switcher */
 /* The switch - the box around the slider */
 .switch {

@@ -23,11 +23,11 @@ document.addEventListener('DOMContentLoaded', function () {
 		$(containerLogo).insertBefore('.navbar-inner');
 
 		// insert forms menu item into main navigation
-		let mainMenu = $('#appnavbar');
-		let configForms = mainMenu.find('#config-forms');
-		if (mainMenu.length && configForms.length == 0) {
-			mainMenu.append('<li class="divider-vertical"></li><li id="config-forms"><a href="#" class="active">Machinon</a></li>');
-		}
+		// let mainMenu = $('#appnavbar');
+		// let configForms = mainMenu.find('#config-forms');
+		// if (mainMenu.length && configForms.length == 0) {
+		//	mainMenu.append('<li class="divider-vertical"></li><li id="config-forms"><a href="#" class="active">Machinon</a></li>');
+		// }
 
 		$(document).ajaxSuccess(function (event, xhr, settings) {
 			// console.log(settings.url);
