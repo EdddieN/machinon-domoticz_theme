@@ -107,7 +107,7 @@ body table#itemtable tbody tr {
 /* bigtext */
 .item #bigtext {
   color: #0b96cd;
-  font-size: 20px;
+  font-size: 17px;
   position: absolute;
   top: 15px;
   right: 40px;
@@ -319,13 +319,6 @@ dztemperaturewidget .item #name,
 dzweatherwidget .item #name {
   font-size: 20px;
 }
-dztemperaturewidget .item #bigtext,
-dzweatherwidget .item #bigtext {
-  color: inherit;
-  left: 20px;
-  top: 45px;
-  font-size: 17px;
-}
 dztemperaturewidget #status,
 dzweatherwidget #status {
   position: absolute;
@@ -348,12 +341,6 @@ dzweatherwidget #status > span:empty::before {
 /* utility items */
 #utilitycontent .item #name {
   font-size: 20px;
-}
-#utilitycontent .item #bigtext {
-  color: inherit;
-  left: 20px;
-  top: 45px;
-  font-size: 17px;
 }
 #utilitycontent #type {
   position: absolute;
