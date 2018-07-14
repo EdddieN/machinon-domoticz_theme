@@ -23,7 +23,7 @@
 @media (min-width: 1200px) {
   .switch {
     top: 25px;
-    right: 60px;
+    right: 45px;
   }
 }
 /* The slider */
@@ -122,7 +122,8 @@ body table#itemtable tbody tr {
 @media (min-width: 1200px) {
   .item #bigtext {
     top: 18px;
-    right: 60px;
+    right: 40px;
+	text-transform: capitalize;
   }
 }
 /* last update */
@@ -270,6 +271,8 @@ body table#itemtable tr > .options {
   position: absolute;
   right: 20px;
   bottom: 40px;
+  max-width:  250px;
+  overflow-x: auto;
 
 }
 #type .ui-selectmenu-text {
@@ -279,6 +282,19 @@ color:#0b96cd
 
 
 /* dashboard items */
+/*Modifie dans le dashboard, l'espace entre bigtext et le bord droit*/
+#dashcontent .bigtext{
+right:20px;
+}
+/*idem pour le switch*/
+#dashcontent .switch{
+right:20px;
+}
+/*efface le lastupdate du dashboard*/
+#dashcontent .lastupdate{
+display:none;
+}
+
 #dashcontent .selectorlevels {
   position: absolute;
   right: 20px;
