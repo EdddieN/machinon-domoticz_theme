@@ -107,7 +107,7 @@ body table#itemtable tbody tr {
 /* bigtext */
 .item #bigtext {
   color: #0b96cd;
-  font-size: 20px;
+  font-size: 17px;
   position: absolute;
   top: 15px;
   right: 40px;
@@ -146,7 +146,7 @@ body table#itemtable tbody tr {
 /* type */
 .item #type {
   color: gray;
-  margin-top: 3px;
+  margin-top: 5px;
 }
 
 /* item subnav applying by click*/
@@ -154,17 +154,17 @@ body table#itemtable tbody tr {
   display: block;
   position: absolute;
   top: 16px;
-  height: 20px;
+  height: 30px;
   right: 20px;
   z-index: 2;
   overflow: hidden;
-  width: 6px;
+  width: 10px;
 }
 .options__bars::before {
   display: block;
   color: gray;
   content: "⠇";
-  font-size: 20px;
+  font-size: 23px;
   cursor: pointer;
 }
 
@@ -183,6 +183,9 @@ body table#itemtable tr > .options {
   z-index: 1;
   display: none;
   padding: 8px;
+  width:97px;
+  height:125px;
+
 }
 .options .btnsmall-sel {
   width: auto;
@@ -192,16 +195,17 @@ body table#itemtable tr > .options {
   padding: 0;
 }
 .options .btnsmall {
-  padding: 1px 0;
+  padding-top:4px;
+  text-align: left;
 }
 
 @media (min-width: 1200px) {
   .options__bars {
-    top: 25px;
+    top: 16px;
   }
 
   .options {
-    top: 16px;
+    top: 5px;
   }
 }
 /* images */
@@ -315,13 +319,6 @@ dztemperaturewidget .item #name,
 dzweatherwidget .item #name {
   font-size: 20px;
 }
-dztemperaturewidget .item #bigtext,
-dzweatherwidget .item #bigtext {
-  color: inherit;
-  left: 20px;
-  top: 45px;
-  font-size: 17px;
-}
 dztemperaturewidget #status,
 dzweatherwidget #status {
   position: absolute;
@@ -344,12 +341,6 @@ dzweatherwidget #status > span:empty::before {
 /* utility items */
 #utilitycontent .item #name {
   font-size: 20px;
-}
-#utilitycontent .item #bigtext {
-  color: inherit;
-  left: 20px;
-  top: 45px;
-  font-size: 17px;
 }
 #utilitycontent #type {
   position: absolute;
