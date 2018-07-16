@@ -269,8 +269,12 @@ body table#itemtable tr > .options {
   position: absolute;
   right: 20px;
   bottom: 40px;
+  width: 250px;
+  overflow-x:  auto;
 }
-
+.ui-selectmenu-button.ui-button{
+  width:auto !important;
+}
 #type .selectorlevels {
   position: absolute;
   right: 20px;
@@ -298,12 +302,14 @@ right:20px;
 #dashcontent .lastupdate{
 display:none;
 }
-
+#dashcontent .status{
+margin-top:50px;
+margin-left:150px;
+}
 #dashcontent .selectorlevels {
   position: absolute;
   right: 20px;
   bottom: 40px;
-
 }
 #dashcontent .ui-selectmenu-text {
 color:#0b96cd
