@@ -272,7 +272,9 @@ body table#itemtable tr > .options {
   width: 250px;
   overflow-x:  auto;
 }
-
+.ui-selectmenu-button.ui-button{
+  width:auto !important;
+}
 #type .selectorlevels {
   position: absolute;
   right: 20px;
