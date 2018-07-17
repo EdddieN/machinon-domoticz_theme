@@ -6,7 +6,7 @@ background-color: #C0C0C0;
 border: none;
 }
 .mHeader {
-	margin-left: 140px;
+	margin-left: 5%;
 }
 .machinoHeader {
   font-size: 14px;
@@ -22,8 +22,7 @@ border: none;
   text-decoration: none;
 }
 .mHeaderBtn {
-	position: relative;
-    right: -625px;
+	margin-left: 55%;
 	margin-top: -1.8%;
 }
 .mHeaderBtn img {
@@ -82,7 +81,7 @@ border: none;
 	cursor: pointer;
 }
 .machinon_ul {
-	margin-left: 140px;
+	margin-left: 1%;
 }
 .machinon_ul img {
     float: left;
