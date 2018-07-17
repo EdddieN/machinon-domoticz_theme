@@ -33,6 +33,7 @@ border: none;
 .mHeaderBtn li {
 	display: inline-block;
 	padding: 5px 20px;
+	margin: 0 0 3px 0;
  }
 .Rectangle {
   width: 150px;
@@ -91,6 +92,7 @@ border: none;
 ul.machinon_ul li {
 	display: inline-block;
 	padding: 5px 40px;
+	margin: 0 0 3px 0;
  }
  .machinon_ul li:hover { 
     background-color:rgba(192,192,192,0.1);
