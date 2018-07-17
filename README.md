@@ -17,6 +17,11 @@ git clone https://github.com/EdddieN/machinon-domoticz_theme.git machinon
 sudo /etc/init.d/domoticz.sh restart
 ```
 
+To get the settings page to open within domoticz.Copy settings.html in templates folder to
+
+```~/domoticz/www/templates/```
+
+
 ## Updating
 ```
 cd domoticz/www/styles/machinon
