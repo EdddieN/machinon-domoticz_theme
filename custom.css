@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url("settings.css"); /* CSS file for settings page */
+@import url("css/settings.css"); /* CSS file for settings page */
 .ui-popup.ui-corner-all {
   background-color: #fff;
 }
