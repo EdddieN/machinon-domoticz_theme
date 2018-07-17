@@ -93,7 +93,7 @@ ul.machinon_ul li {
 	padding: 5px 40px;
  }
  .machinon_ul li:hover { 
-    background-color:rgba(0,0,0,0.1);
+    background-color:rgba(192,192,192,0.1);
 }
 .mHeaderBtn li:hover {
 	background-color:rgba(255,255,255,0.1);
