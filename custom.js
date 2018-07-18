@@ -21,14 +21,23 @@ document.addEventListener('DOMContentLoaded', function () {
 			</header>')
 		`;
 		$(containerLogo).insertBefore('.navbar-inner');
-
+		
+		/* replace settings dropdown button to normal button.
+		This also disables the custom menu. Need find a workaround */		
+		$('#appnavbar li').remove('.dropdown');
+		let mainMenu = $('#appnavbar');
+		let configForms = mainMenu.find('#mSettings');
+		if (mainMenu.length && configForms.length == 0) {
+			mainMenu.append('<li id="mSettings" style="display: none;" has-permission="Admin"><a href="#Custom/Settings" class="active" data-i18n="Settings">Settings</a></li>');
+		}
+		/*
 		// insert forms menu item into main navigation
-		// let mainMenu = $('#appnavbar');
-		// let configForms = mainMenu.find('#config-forms');
-		// if (mainMenu.length && configForms.length == 0) {
-		//	mainMenu.append('<li class="divider-vertical"></li><li id="config-forms"><a href="#" class="active">Machinon</a></li>');
-		// }
-
+		let mainMenu = $('#appnavbar');
+		let configForms = mainMenu.find('#config-forms');
+		if (mainMenu.length && configForms.length == 0) {
+			mainMenu.append('<li class="divider-vertical"></li><li id="config-forms"><a href="#" class="active">Machinon</a></li>');
+		}
+		*/
 		$(document).ajaxSuccess(function (event, xhr, settings) {
 			// console.log(settings.url);
 			if (settings.url.startsWith('json.htm?type=devices') ||
