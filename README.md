@@ -19,7 +19,8 @@ sudo /etc/init.d/domoticz.sh restart
 
 To get the settings page to open within domoticz.Copy settings.html in templates folder to
 
-```~/domoticz/www/templates/```
+```~/domoticz/www/templates/```  
+You may need to disable Custom menu if a visible wider space between Utility and Setup [SETUP -> Settings -> Active Menu]
 
 
 ## Updating
