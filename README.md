@@ -17,9 +17,11 @@ git clone https://github.com/EdddieN/machinon-domoticz_theme.git machinon
 sudo /etc/init.d/domoticz.sh restart
 ```
 
-To get the settings page to open within domoticz.Copy settings.html in templates folder to
+###Copy settings.html in templates folder to
 
-```~/domoticz/www/templates/```  
+```
+sudo cp ~/domoticz/www/styles/machinon/templates/Settings.html ~/domoticz/www/templates/
+```  
 You may need to disable Custom menu if a visible wider space between Utility and Setup [SETUP -> Settings -> Active Menu]
 
 
@@ -35,6 +37,6 @@ git pull
 
 ![Idea of theme machinon](/idea_domoticz_machinon.jpg)
 
-Suggested new setjup layout - partly implemented
+Suggested new setup layout - partly implemented
 ![Suggested new Setup layout - not implemented yet](/images/unorganised/screen_references/setup.png)
 
