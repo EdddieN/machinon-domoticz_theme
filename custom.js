@@ -26,13 +26,12 @@ document.addEventListener('DOMContentLoaded', function () {
 		This also disables the custom menu. Need find a workaround */		
 		$('#appnavbar li').remove('.dropdown');
 		let mainMenu = $('#appnavbar');
-		let configForms = mainMenu.find('#mSettings');
-		if (mainMenu.length && configForms.length == 0) {
+		let mSettings = mainMenu.find('#mSettings');
+		if (mainMenu.length && mSettings.length == 0) {
 			mainMenu.append('<li id="mSettings" style="display: none;" has-permission="Admin"><a href="#Custom/Settings" class="active" data-i18n="Settings">Settings</a></li>');
 		}
 		/*
-		// insert forms menu item into main navigation
-		let mainMenu = $('#appnavbar');
+		// insert forms menu item into main navigation	
 		let configForms = mainMenu.find('#config-forms');
 		if (mainMenu.length && configForms.length == 0) {
 			mainMenu.append('<li class="divider-vertical"></li><li id="config-forms"><a href="#" class="active">Machinon</a></li>');
