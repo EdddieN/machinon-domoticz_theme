@@ -42,14 +42,25 @@ border: none;
   background-color: #d8d8d8;
   cursor: pointer;
 }
-.rectangle-8 {
-  width: 275px;
-  height: 75px;
-  border-radius: 6px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
-  list-style-type: none;
-  cursor: pointer;
+.rectangle-8, .rectangle-8-dropdown {
+	/*proprieté graphique*/
+	border-radius: 6px;
+	background-color: #ffffff;
+	cursor: pointer;
+	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+	list-style-type: none;
+	/*proprieté de taille*/
+	height: 75px;
+	padding:10px;
+	/*proprieté flex interieur*/
+  display: -webkit-flex;
+  display:         flex;
+  align-items: center;
+  /*proprieté flex exterieur*/
+ margin-left:20px;
+ margin-bottom:20px;
+flex: 1 0 20%;
+min-width:240px;
 }
 .machinoText {
   font-size: 16px;
@@ -75,19 +86,23 @@ border: none;
   vertical-align: middle;
   color: #818183;
   text-decoration: none;
- 
+  margin-left:20px; 
 }
 .mDropdown-Text:hover {
 	color: rgba(0,0,0,0.5);
 	cursor: pointer;
 }
 .machinon_ul {
-	text-align: center;
+	/*proprieté flex*/
+  display: -webkit-flex;
+  display:         flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:space-between;
 }
 .machinon_ul img {
-    float: left;
-    margin-left: 40px;
-    padding: 17px;
+	margin-left:20px
+	/*proprieté flex*/
 }
 ul.machinon_ul li {
 	display: inline-block;
@@ -100,19 +115,16 @@ ul.machinon_ul li {
 .mHeaderBtn li:hover {
     background-color:rgba(169,169,169,0.5);
 }
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
 .dropdown-content {
     display: none;
-    position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 12px 16px;
     z-index: 1;
+    position:absolute;
 }
-.dropdown:hover .dropdown-content {
+
+.rectangle-8-dropdown:hover .dropdown-content {
     display: block;
 }
