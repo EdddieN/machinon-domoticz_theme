@@ -11,6 +11,15 @@
 .navbar .nav {
 	  float: left;
 }
+/*var in way of change color*/
+:root {
+	/*use with var(--main-blue-color)*/
+	--main-bg-color: #f1f1f1; 
+	--main-blue-color: #0b96cd;
+	--main-font: OpenSans;	
+}
+
+
 /* bootstrap switcher */
 /* The switch - the box around the slider */
 .switch {
@@ -69,7 +78,7 @@ input:checked + .slider:before {
   -webkit-transform: translateX(34px);
   -ms-transform: translateX(34px);
   transform: translateX(34px);
-  background-color: #0b97cd;
+  background-color: var(--main-blue-color);
 }
 
 input:focus + .slider {
@@ -111,7 +120,7 @@ body table#itemtable tbody tr {
 }
 /* bigtext */
 .item #bigtext {
-  color: #0b96cd;
+  color: var(--main-blue-color);
   font-size: 17px;
   position: absolute;
   top: 15px;
@@ -289,7 +298,7 @@ body table#itemtable tr > .options {
 
 }
 #type .ui-selectmenu-text {
-color:#0b96cd
+color:var(--main-blue-color)
 }
 
 
@@ -317,7 +326,7 @@ margin-left:150px;
   bottom: 40px;
 }
 #dashcontent .ui-selectmenu-text {
-color:#0b96cd
+color:var(--main-blue-color)
 }
 
 #dashcontent .item #lastupdate {
@@ -436,7 +445,7 @@ dzweatherwidget #status > span:empty::before {
 .statusProtected .dimslider .ui-slider-handle {
   width: 15px;
   height: 15px;
-  background: #0b96cd;
+  background: var(--main-blue-color);
   border-radius: 50%;
   top: -6px;
 }
@@ -464,13 +473,13 @@ a:link {
 /* Header */
 header.logo {
   background: #0bcdc7;
-  background: -moz-linear-gradient(left, #0bcdc7 0%, #0b96cd 100%);
-  background: -webkit-gradient(left top, right top, color-stop(0%, #0bcdc7), color-stop(100%, #0b96cd));
-  background: -webkit-linear-gradient(left, #0bcdc7 0%, #0b96cd 100%);
-  background: -o-linear-gradient(left, #0bcdc7 0%, #0b96cd 100%);
-  background: -ms-linear-gradient(left, #0bcdc7 0%, #0b96cd 100%);
-  background: linear-gradient(to right, #0bcdc7 0%, #0b96cd 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#0bcdc7", endColorstr="#0b96cd", GradientType=1 );
+  background: -moz-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, #0bcdc7), color-stop(100%, var(--main-blue-color)));
+  background: -webkit-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%);
+  background: -o-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%);
+  background: -ms-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%);
+  background: linear-gradient(to right, #0bcdc7 0%, var(--main-blue-color) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#0bcdc7", endColorstr="var(--main-blue-color)", GradientType=1 );
 }
 
 .container-logo {
@@ -545,7 +554,7 @@ button.menu-toggle {
   content: "";
   height: 2px;
   width: 100%;
-  background-color: #0b96cd;
+  background-color: var(--main-blue-color);
   position: absolute;
   left: 0;
   bottom: 0;
@@ -573,7 +582,7 @@ button.menu-toggle {
 .navbar-inverse .nav > li > a:focus {
   color: #fff;
   background-image: none;
-  background-color: #0b96cd;
+  background-color: var(--main-blue-color);
   border: none;
   border-radius: 0;
 }
@@ -591,7 +600,7 @@ button.menu-toggle {
 
 .sub-tabs > .active > a,
 .nav-tabs > .active > a:hover {
-  border-bottom: 2px solid #0b96cd;
+  border-bottom: 2px solid var(--main-blue-color);
 }
 
 /* =Header */
@@ -601,7 +610,7 @@ button.menu-toggle {
 
 .sub-tabs .sub-tabs-apply,
 .sub-tabs .sub-tabs-apply:hover {
-  background-color: #0b96cd;
+  background-color: var(--main-blue-color);
   border: none !important;
   border-radius: 2px;
   color: #fff;
@@ -682,12 +691,12 @@ body table#itemtable {
   background: transparent;
   color: black;
   border: none;
-  border-bottom: 1px solid #0b96cd;
+  border-bottom: 1px solid var(--main-blue-color);
 }
 
 .ui-widget-header {
-  background: #0b96cd;
-  border-color: #0b96cd;
+  background: var(--main-blue-color);
+  border-color: var(--main-blue-color);
 }
 
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
@@ -696,7 +705,7 @@ body table#itemtable {
 }
 
 .btnstyle3-dis, .btnstyle3 {
-  background: #0b96cd;
+  background: var(--main-blue-color);
   margin-top: 15px;
 }
 
@@ -713,8 +722,34 @@ body table#itemtabledoubleicon tbody tr:hover body table#itemtabledoubleicon tr 
   background: none;
 }
 
+table.dataTable thead th, table.dataTable thead td{
+	color: #1a1a1a;
+	height:35px;
+	border:1px solid #ddd;
+	padding-right:10px;
+	text-align: -webkit-left;
+}
+
 body table#itemtabledoubleicon .wrapper {
   color: orange;
+}
+
+div#hardwarecontent,div#cameracontent,div#devicecontent,div#logcontent {
+    width: auto;
+}
+
+.label, .badge{
+	border-radius: 2px;
+	background-color: var(--main-blue-color);
+	background-color: var(--main-blue-color);
+	text-align: center;
+	color: #ffffff;
+	padding-right:10px;
+	padding-left:10px;
+}	
+
+tr.odd, tr.even{
+	height:45px;
 }
 
 .dataTables_wrapper tr.odd {
@@ -743,14 +778,14 @@ body table#itemtabledoubleicon .wrapper {
 }
 
 .ui-dialog-buttonset button {
-  background: #0b96cd !important;
+  background: var(--main-blue-color) !important;
   color: white !important;
   border: none !important;
   border-radius: 0 !important;
 }
 
 #getlatlong {
-  background: #0b96cd !important;
+  background: var(--main-blue-color) !important;
   color: white !important;
   border: none !important;
   border-radius: 0 !important;
@@ -774,7 +809,7 @@ body table#itemtabledoubleicon .wrapper {
 .allow5min,
 .allow5min:hover {
   background: none;
-  background-color: #0b96cd;
+  background-color: var(--main-blue-color);
   color: #fff;
   border-radius: 2px;
   border: none;
@@ -784,7 +819,7 @@ body table#itemtabledoubleicon .wrapper {
   background: none;
   border-radius: 0;
   border: none;
-  border-bottom: 1px solid #0b96cd;
+  border-bottom: 1px solid var(--main-blue-color);
 }
 
 /* =Setup */
@@ -798,7 +833,7 @@ body table#itemtabledoubleicon .wrapper {
 
 #login #submit {
   background-image: none;
-  background-color: #0b96cd;
+  background-color: var(--main-blue-color);
   color: #fff;
   border: none;
 }
@@ -811,13 +846,13 @@ body table#itemtabledoubleicon .wrapper {
 
 #offline {
   background: #0bcdc7;
-  background: -moz-linear-gradient(left, #0bcdc7 0%, #0b96cd 100%) !important;
-  background: -webkit-gradient(left top, right top, color-stop(0%, #0bcdc7), color-stop(100%, #0b96cd)) !important;
-  background: -webkit-linear-gradient(left, #0bcdc7 0%, #0b96cd 100%) !important;
-  background: -o-linear-gradient(left, #0bcdc7 0%, #0b96cd 100%) !important;
-  background: -ms-linear-gradient(left, #0bcdc7 0%, #0b96cd 100%) !important;
-  background: linear-gradient(to right, #0bcdc7 0%, #0b96cd 100%) !important;
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#0bcdc7", endColorstr="#0b96cd", GradientType=1 ) !important;
+  background: -moz-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%) !important;
+  background: -webkit-gradient(left top, right top, color-stop(0%, #0bcdc7), color-stop(100%, var(--main-blue-color))) !important;
+  background: -webkit-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%) !important;
+  background: -o-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%) !important;
+  background: -ms-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%) !important;
+  background: linear-gradient(to right, #0bcdc7 0%, var(--main-blue-color) 100%) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#0bcdc7", endColorstr="var(--main-blue-color)", GradientType=1 ) !important;
 }
 
 #offline h3 {
