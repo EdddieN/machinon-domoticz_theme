@@ -82,7 +82,7 @@ border: none;
 	cursor: pointer;
 }
 .machinon_ul {
-	margin-left: 0%;
+	text-align: center;
 }
 .machinon_ul img {
     float: left;
