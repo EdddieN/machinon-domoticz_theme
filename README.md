@@ -14,7 +14,12 @@ ToDo
 - [ ] 5.- When a device is offline the tile should fade off, is this possible? -> Zeplin
 - [ ] 6.- Timers screen -> Eddie
 - [ ] 7.- Charts screens -> Eddie
-- [ ] 8.- Remove go back button from design on settings -> Eddie
+- [ ] 8.- Remove go back button from design on settings -> Eddie  
+  
+Ideas (wish list)
+- [ ]   In Progress
+- [ ] 1.- Custom merge multiple metrics into one tile (ie: energy + trigger switch)
+- [ ] 2.- Dark theme
 
 
 ## Installing
