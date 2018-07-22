@@ -15,32 +15,33 @@ border: none;
   font-stretch: normal;
   line-height: normal;
   letter-spacing: -0.5px;
-  text-align: left;
-  vertical-align: middle;
   line-height: 30px;
   color: #00000;
   text-decoration: none;
+  margin-left:10px;;
 }
 .mHeaderBtn {
-	margin-left: 55%;
+	margin-left:60%;
 	margin-top: -1.8%;
+  display: -webkit-flex;
+  display:flex;
+justify-content:space-around
 }
 .mHeaderBtn img {
-	float: left;
-    margin-left: 0px;
-    padding: 7px;
 }
 .mHeaderBtn li {
-	display: inline-block;
 	padding: 5px 20px;
 	margin: 0 0 3px 0;
  }
 .Rectangle {
-  width: 150px;
   height: 30px;
   border-radius: 2px;
   background-color: #d8d8d8;
   cursor: pointer;
+  display: -webkit-flex;
+	display: flex;
+	justify-content: flex-start;
+	align-items:center;
 }
 .rectangle-8, .rectangle-8-dropdown {
 	/*proprieté graphique*/
@@ -51,16 +52,18 @@ border: none;
 	list-style-type: none;
 	/*proprieté de taille*/
 	height: 75px;
-	padding:10px;
+  /*proprieté flex exterieur*/
+	margin-left:20px;
+	margin-bottom:20px;
+	flex: 1 0 15%;
+	min-width:240px;
 	/*proprieté flex interieur*/
   display: -webkit-flex;
-  display:         flex;
-  align-items: center;
-  /*proprieté flex exterieur*/
- margin-left:20px;
- margin-bottom:20px;
-flex: 1 0 20%;
-min-width:240px;
+	display: flex;
+	padding:20px;
+	justify-content: flex-start;
+	align-items:center;
+
 }
 .machinoText {
   font-size: 16px;
@@ -69,11 +72,12 @@ min-width:240px;
   font-stretch: normal;
   line-height: normal;
   letter-spacing: -0.5px;
-  text-align: left;
-  vertical-align: middle;
-  line-height: 75px;
+  /* text-align: left; */
+  /* vertical-align: middle; */
+  /* line-height: 75px; */
   color: #818183;
   text-decoration: none;
+  margin-left:20px;
 }
 .mDropdown-Text {
   font-size: 14px;
@@ -86,7 +90,6 @@ min-width:240px;
   vertical-align: middle;
   color: #818183;
   text-decoration: none;
-  margin-left:20px; 
 }
 .mDropdown-Text:hover {
 	color: rgba(0,0,0,0.5);
@@ -101,11 +104,9 @@ min-width:240px;
   justify-content:space-between;
 }
 .machinon_ul img {
-	margin-left:20px
 	/*proprieté flex*/
 }
 ul.machinon_ul li {
-	display: inline-block;
 	padding: 5px 40px;
 	margin: 0 20px 23px 0;
  }
