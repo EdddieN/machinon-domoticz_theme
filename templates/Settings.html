@@ -1,6 +1,61 @@
 <!-- Custom setting page for domoticz theme machinon -->
 
 <script>
+function CheckForUpdate(showdialog) {
+	$.ajax({
+		 url: "json.htm?type=command&param=checkforupdate&forced=" + showdialog,
+		 async: false,
+		 dataType: 'json',
+		 success: function(data) {
+			var urights=data.statuscode;
+			var bDisplayLogout=false;
+			if (urights!=3) {
+				bDisplayLogout=true;
+			}
+			else {
+				bDisplayLogout=false;
+				urights=2;
+			}
+			window.my_config =
+			{
+				userrights : urights,
+				hasupdatesupport : false
+			};
+			if (data.HaveUpdate == true) {
+				if (showdialog) {
+					bootbox.confirm($.t("Update Available !... Update Now?")+"<br>"+$.t('Version')+" #"+data.Revision, function(result) {
+						if (result==true) {
+							if (data.SystemName=="windows") {
+								window.location.href = data.DomoticzUpdateURL;
+							}
+							else {
+								SwitchLayout('Update');
+							}
+						}
+					});
+				}
+				else {
+					ShowUpdateNotification(data.Revision,data.SystemName,data.DomoticzUpdateURL);
+				}
+				return true;
+			}
+			else
+			{
+				if (showdialog) {
+					bootbox.alert($.t("No Update Available !..."));
+				}
+				return false;
+			}
+		 },
+		 error: function(){
+				if (showdialog) {
+					bootbox.alert($.t("Error communicating to server!"));
+				}
+				return false;
+		 }
+	});
+	return false;
+}
 $(".machinoSettings").i18n(); //Make the translation
 </script>
 
@@ -17,7 +72,7 @@ $(".machinoSettings").i18n(); //Make the translation
 		<li class="rectangle-8" onclick="location.href='#Hardware'"><img src="acttheme/images/settings/hardware.png"><div class="machinoText" data-i18n="Hardware">Hardware</div></li>
 		<li class="rectangle-8" onclick="location.href='#Devices'"><img src="acttheme/images/settings/devices.png"><div class="machinoText" data-i18n="Devices">Devices</div></li>
 		<li class="rectangle-8" onclick="location.href='#Setup'"><img src="acttheme/images/settings/setup.png"><div class="machinoText" data-i18n="Settings">Settings</div></li>
-		<li class="rectangle-8" onclick="location.href='#Update'"><img src="acttheme/images/settings/update.png"><div class="machinoText" data-i18n="Update Domoticz">Update Domoticz</div></li>
+		<li class="rectangle-8" onclick="javascript:CheckForUpdate(true)"><img src="acttheme/images/settings/update.png"><div class="machinoText" data-i18n="Update Domoticz">Update Domoticz</div></li>
 
 		<li class="rectangle-8" onclick="location.href='#Cam'"><img src="acttheme/images/settings/cam.png"><div class="machinoText" data-i18n="Cameras">Cameras</div></li>
 		<li class="rectangle-8" onclick="location.href='#Users'"><img src="acttheme/images/settings/users.png"><div class="machinoText" data-i18n="Edit Users">Edit Users</div></li>
