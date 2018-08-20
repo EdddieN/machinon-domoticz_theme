@@ -1,61 +1,6 @@
 <!-- Custom setting page for domoticz theme machinon -->
 
 <script>
-function CheckForUpdate(showdialog) {
-	$.ajax({
-		 url: "json.htm?type=command&param=checkforupdate&forced=" + showdialog,
-		 async: false,
-		 dataType: 'json',
-		 success: function(data) {
-			var urights=data.statuscode;
-			var bDisplayLogout=false;
-			if (urights!=3) {
-				bDisplayLogout=true;
-			}
-			else {
-				bDisplayLogout=false;
-				urights=2;
-			}
-			window.my_config =
-			{
-				userrights : urights,
-				hasupdatesupport : false
-			};
-			if (data.HaveUpdate == true) {
-				if (showdialog) {
-					bootbox.confirm($.t("Update Available !... Update Now?")+"<br>"+$.t('Version')+" #"+data.Revision, function(result) {
-						if (result==true) {
-							if (data.SystemName=="windows") {
-								window.location.href = data.DomoticzUpdateURL;
-							}
-							else {
-								SwitchLayout('Update');
-							}
-						}
-					});
-				}
-				else {
-					ShowUpdateNotification(data.Revision,data.SystemName,data.DomoticzUpdateURL);
-				}
-				return true;
-			}
-			else
-			{
-				if (showdialog) {
-					bootbox.alert($.t("No Update Available !..."));
-				}
-				return false;
-			}
-		 },
-		 error: function(){
-				if (showdialog) {
-					bootbox.alert($.t("Error communicating to server!"));
-				}
-				return false;
-		 }
-	});
-	return false;
-}
 $(".machinoSettings").i18n(); //Make the translation
 </script>
 
