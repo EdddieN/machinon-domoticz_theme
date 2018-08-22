@@ -1,10 +1,26 @@
+/* Custom.js for machinon theme */
+
+var theme = {};
+var themeName = "";
+
+// load files
+$.ajax({url: 'acttheme/js/themesettings.js', async: false, dataType: 'script'});
+/* $.ajax({url: 'acttheme/js/functions.js', async: false, dataType: 'script'}); */
+
 document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+// function adds the theme tab
+showThemeSettings();
+// load theme settings
+loadSettings();
+
 (function() {
 
 	$( document ).ready(function() {
+		
+			
 		// Navbar menu and logo header
 		let navBar =  $('.navbar').append('<button class="menu-toggle"></button>');
 		let navBarInner = $(".navbar-inner");
@@ -21,24 +37,39 @@ document.addEventListener('DOMContentLoaded', function () {
 			</header>')
 		`;
 		$(containerLogo).insertBefore('.navbar-inner');
-		
-		/* replace settings dropdown button to normal button.
-		This also disables the custom menu. Need find a workaround */		
-		$('#appnavbar li').remove('.dropdown');
-		let mainMenu = $('#appnavbar');
-		let mSettings = mainMenu.find('#mSettings');
-		if (mainMenu.length && mSettings.length == 0) {
-			mainMenu.append('<li id="mSettings" style="display: none;" has-permission="Admin"><a href="#Custom/Settings" class="active" data-i18n="Settings">Settings</a></li>');
+					
+		// Features
+		if (theme.features.footer_text_disabled.enabled === true) {
+			$('#copyright p').remove();
 		}
-		/*
-		// insert forms menu item into main navigation	
+		if (theme.features.dark_theme.enabled === true) {
+			document.body.style.filter = 'invert(100%)';
+			document.body.style.background = '#080808';
+		}
+				
+		// Replace settings dropdown button to normal button.
+		/** This also disables the custom menu. Need find a workaround **/
+		if (theme.features.custom_settings_menu.enabled === true) {
+			$('#appnavbar li').remove('.dropdown');
+			let mainMenu = $('#appnavbar');
+			let mSettings = mainMenu.find('#mSettings');
+			if (mainMenu.length && mSettings.length == 0) {
+				mainMenu.append('<li id="mSettings" style="display: none;" has-permission="Admin"><a href="#Custom/Settings" class="active" data-i18n="Settings">Settings</a></li>');
+			}
+		} else {
+			$('#cSetup').click(function() {
+				showThemeSettings();
+				loadSettings();
+			});
+		}
+
+/* 		// insert config-forms menu item into main navigation
 		let configForms = mainMenu.find('#config-forms');
 		if (mainMenu.length && configForms.length == 0) {
 			mainMenu.append('<li class="divider-vertical"></li><li id="config-forms"><a href="#" class="active">Machinon</a></li>');
-		}
-		*/
+		} */
+			
 		$(document).ajaxSuccess(function (event, xhr, settings) {
-			// console.log(settings.url);
 			if (settings.url.startsWith('json.htm?type=devices') ||
 				settings.url.startsWith('json.htm?type=scenes')) {
 				let counter = 0;
@@ -70,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 
 	});
-
+	
 	// main switchers and submenus logic function
 	function applySwitchersAndSubmenus() {
 		//switcher for lights and windows
