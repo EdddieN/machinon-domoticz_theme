@@ -1,6 +1,6 @@
 {
     "type": "theme",    
-    "name": "machinon",
+    "name": "Machinon",
     "description": "Machinon custom theme, simple and light",
     "license": "GPL-2.0+",
     "version":"1",
@@ -15,10 +15,20 @@
         {"default": "custom.css"}
     ],
     "features": {
-        "test": {
-            "id":2,
+        "dark_theme": {
+            "id":10,
+            "enabled":false,
+            "files": []
+        },
+		"footer_text_disabled": {
+            "id":11,
             "enabled":true,
-            "files": ["custom.js"]
+			"files": []
+        },
+		"custom_settings_menu": {
+            "id":12,
+            "enabled":true,
+			"files": []
         }
     }
 }
