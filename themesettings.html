@@ -1,0 +1,70 @@
+<style>
+#themesettings h1 { display: inline }
+</style>
+
+<div id="themesettings">
+<br/>
+<h1 data-i18n="Theme">Theme</h1><h1> </h1><h1 data-i18n="Settings">Settings</h1>
+<div class="row-fluid">
+    <div class="span6">
+		<br/>
+        <h2><span data-i18n="General options">General options</span>:</h2>
+        <p>
+        <input id="themevar10" name="themevar10" value="dark_theme" type="checkbox"><label for="themevar10" data-i18n="Dark Theme">Dark Theme (Inverted Colors)</label>
+		<br/>
+        <input id="themevar11" name="themevar11" value="footer_text_disabled" type="checkbox"><label for="themevar11" data-i18n="Footer text">Footer Text Disabled</label>
+		<br/>
+        <input id="themevar12" name="themevar12" value="custom_settings_menu" type="checkbox"><label for="themevar12" data-i18n="Custom Settings Menu">Machinon Settings Menu</label>
+		<br/>
+        <!-- <input id="themevar13" name="themevar13" value="cool_function_3" type="checkbox"><label for="themevar13" data-i18n="Cool Function 3">Cool Function 3</label>
+        </p>
+        
+        <br/>
+        
+        <h2><span data-i18n="Dashboard options">Dashboard options</span>:</h2>
+        <p>
+        <input id="themevar20" name="themevar20" value="dashboard_show_last_update" type="checkbox"><label for="themevar21" data-i18n="Show the last update time">Show items' last update time</label>
+        <br/>
+        <input id="themevar21" name="themevar21" value="time_ago" type="checkbox"><label for="themevar28" data-i18n="Show how long ago items updated">Show how long ago items updated</label>
+        </p> -->
+        
+    </div>     
+    <div class="span6">
+        <div id="aboutTheme">
+			<h3>Machinon theme</h3>
+			<p>
+			This is a theme for Domoticz. Theme is in progress with project machinon.<br/>
+			Follow us on <a href="https://github.com/EdddieN/machinon">github</a>. If you have any issues report them <a href="https://github.com/EdddieN/machinon-domoticz_theme/issues">here</a>.
+			</p>
+
+			<h3>General features</h3>
+			<p>            
+			Machinon saves the settings in localStorge in your browser. You can have diffrent settings in seperate devices. 
+			</p>
+			<b>Design:</b>
+			<p>            
+			Minimalistic design for better view for the user.
+			</p>   
+			<b>Machinon settings menu:</b>
+			<p>            
+			A custom settings menu instead of the dropdown list. Better overview for the user.<br/>
+			<i><b>(This also disables the custom menu. Navbar looks better with disabled custom menu. We are working on a solution)</b></i>
+			</p>
+			<b>Footer Text Disabled:</b>
+			<p>            
+			Matter of taste. Looks great on Tablets.
+			</p>
+				
+			<p></p>
+			<p>Designed in 2018 by EdddieN.</p>
+        </div>
+        <p>
+            <button class="btn btn-info" id="themeResetButton" data-i18n="Reset theme">Reset theme</button>
+        </p>
+    </div>   
+</div>
+</div>
+<script>
+$("#themesettings").i18n();
+</script>
+
