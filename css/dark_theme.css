@@ -1,0 +1,7 @@
+/* Dark theme */
+
+body { 
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+	background-color: #080808;
+}
