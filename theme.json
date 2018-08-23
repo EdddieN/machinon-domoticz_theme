@@ -18,7 +18,7 @@
         "dark_theme": {
             "id":10,
             "enabled":false,
-            "files": []
+            "files": ["dark_theme.css"]
         },
 		"footer_text_disabled": {
             "id":11,
@@ -27,6 +27,11 @@
         },
 		"custom_settings_menu": {
             "id":12,
+            "enabled":true,
+			"files": []
+        },
+		"switch_instead_of_bigtext": {
+            "id":20,
             "enabled":true,
 			"files": []
         }
