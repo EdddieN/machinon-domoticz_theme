@@ -2,6 +2,17 @@
 
 var theme = {};
 var themeName = "";
+var baseURL= "";
+var switchState = {};
+
+/* Prepare for future translating status
+change to your language to make the switch instead of text to work correct e.g " on: 'Auf' ", " off: 'Aus' " etc */
+switchState = {
+	on: 'On', // on: 'På',
+	off: 'Off', // off: 'Av',
+	open: 'Open', // open: 'Öppen',
+	closed:'Closed' // closed: 'Stängd'
+};
 
 // load files
 $.ajax({url: 'acttheme/js/themesettings.js', async: false, dataType: 'script'});
@@ -15,11 +26,11 @@ document.addEventListener('DOMContentLoaded', function () {
 showThemeSettings();
 // load theme settings
 loadSettings();
+enableThemeFeatures();
 
 (function() {
 
-	$( document ).ready(function() {
-		
+	$( document ).ready(function() {	
 			
 		// Navbar menu and logo header
 		let navBar =  $('.navbar').append('<button class="menu-toggle"></button>');
@@ -42,10 +53,6 @@ loadSettings();
 		if (theme.features.footer_text_disabled.enabled === true) {
 			$('#copyright p').remove();
 		}
-		if (theme.features.dark_theme.enabled === true) {
-			document.body.style.filter = 'invert(100%)';
-			document.body.style.background = '#080808';
-		}
 				
 		// Replace settings dropdown button to normal button.
 		/** This also disables the custom menu. Need find a workaround **/
@@ -60,6 +67,7 @@ loadSettings();
 			$('#cSetup').click(function() {
 				showThemeSettings();
 				loadSettings();
+				enableThemeFeatures();
 			});
 		}
 
@@ -104,6 +112,7 @@ loadSettings();
 	
 	// main switchers and submenus logic function
 	function applySwitchersAndSubmenus() {
+		
 		//switcher for lights and windows
 		$('#main-view .item').each(function () {
 			let bigText = $(this).find('#bigtext');
@@ -127,7 +136,7 @@ loadSettings();
 						if ($.trim(subStatus).length) {
 							status = subStatus;
 						}
-						if ((status == 'On') && offImage.length) {
+						if ((status == switchState.on) && offImage.length) {
 							offImage.click();
 						} else {
 							if (onImage.hasClass('lcursor')) {
@@ -142,7 +151,7 @@ loadSettings();
 						if (offImage.length == 0) {
 							offImage = $(this).siblings('#img2').find('img');
 						}
-						if ((status == 'Open' || status == 'On') && offImage.length) {
+						if ((status == switchState.open || status == switchState.on) && offImage.length) {
 							offImage.click();
 						} else {
 							if(onImage.hasClass('lcursor')) {
@@ -163,11 +172,12 @@ loadSettings();
 					});
 				}
 			}
-			if (onImage.hasClass('lcursor')) {
+			if (theme.features.switch_instead_of_bigtext.enabled === true) {
+				if (onImage.hasClass('lcursor')) {
 				let switcher = $(this).find('.switch');
-				if (status == 'Off' || status == 'On') {
-					let title = (status == 'Off') ? 'On' : 'Off';
-					let checked = (status == 'On') ? 'checked' : '';
+				if (status == switchState.off || status == switchState.on) {
+					let title = (status == switchState.off) ? switchState.on : switchState.off;
+					let checked = (status == switchState.on) ? 'checked' : '';
 					if (switcher.length == 0) {
 						let string = '<label class="switch" title="Turn ' + title + '"><input type="checkbox"' + checked + '><span class="slider round"></span></label>';
 						bigText.after(string);
@@ -175,9 +185,9 @@ loadSettings();
 					switcher.attr('title', 'Turn ' + title);
 					switcher.find('input').attr('checked', checked.length > 0);
 					bigText.css('display', 'none');
-				} else if (status == 'Open' || status == 'Closed') {
-					let title = (status == 'Closed') ? 'Open' : 'Closed';
-					let checked = (status == 'Open') ? 'checked' : '';
+				} else if (status == switchState.open || status == switchState.closed) {
+					let title = (status == switchState.closed) ? switchState.open : switchState.closed;
+					let checked = (status == switchState.open) ? 'checked' : '';
 					if (switcher.length == 0) {
 						let string = '<label class="switch" title="' + title + '"><input type="checkbox"' + checked + '><span class="slider round"></span></label>';
 						bigText.after(string);
@@ -190,12 +200,13 @@ loadSettings();
 					switcher.remove();
 				}
 				bigText.attr('data-status', status);
-			} else {
+				} else {
 				bigText.css('display', 'block');
+				}
 			}
 		});
 		// console.log('Switchers loaded');
-	}	
+	}		
 
 	window.onresize = function () {
 		//show-hide navbar on window resize
