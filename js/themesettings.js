@@ -56,9 +56,10 @@ function loadSettingsHTML(){
 			if (this.value === "custom_settings_menu" && theme.features.custom_settings_menu.enabled === true) {
 				bootbox.alert('<h3>Information!</h3><br/><p>This also disables the custom menu. Navbar looks better with disabled custom menu.</p>');
 			}
+			loadThemeFeatureFiles(this.value);
 		} else { 
 			theme.features[this.value].enabled = false;
-
+			unloadThemeFeatureFiles(this.value);
 		}
 		// Saves the new settings.
 		localStorage.setObject("themeSettings", theme);
