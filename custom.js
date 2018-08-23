@@ -16,7 +16,7 @@ switchState = {
 
 // load files
 $.ajax({url: 'acttheme/js/themesettings.js', async: false, dataType: 'script'});
-/* $.ajax({url: 'acttheme/js/functions.js', async: false, dataType: 'script'}); */
+$.ajax({url: 'acttheme/js/functions.js', async: false, dataType: 'script'});
 
 document.addEventListener('DOMContentLoaded', function () {
 
