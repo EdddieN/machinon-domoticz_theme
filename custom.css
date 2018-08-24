@@ -18,7 +18,10 @@
 	--main-blue-color: #0b96cd;
 	--main-font: OpenSans;	
 }
-
+/* White text in aboutpage */
+#aboutcontent{
+	color: #fff
+}
 
 /* bootstrap switcher */
 /* The switch - the box around the slider */
