@@ -1,0 +1,5 @@
+/* Shows last Seen on dashboard */
+
+#dashcontent .lastupdate{
+display: block;
+}
