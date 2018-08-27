@@ -34,6 +34,11 @@
             "id":20,
             "enabled":true,
 			"files": []
+        },
+		"dashboard_show_last_update": {
+            "id":21,
+            "enabled":false,
+            "files": ["dashboard_show_last_update.css"]
         }
     }
 }
