@@ -44,3 +44,13 @@ function unloadThemeFeatureFiles(featureName)
     $('head link[href*=' + featureName + ']').remove();
     $('head script[src*=' + featureName + ']').remove();
 }
+
+function checkSettingsHTML(){
+	$.ajax({type: "GET", url: "../templates/Settings.html", data: { },success: function(){
+		console.log(theme.name + " - Found 'Settings.html' in '../www/templates' directory");
+		},error: function(){
+		console.log("Can't find Settings.html in templates directory. Please copy Setting.html to ../www/templates folder");
+		bootbox.alert("<h3>Error!</h3><br/><p>Can't find Settings.html in templates directory.</p><br/><p>If you recently installed this theme. Just copy and paste 'Settings.html' from '../styles/machinon/templates' to '../www/templates' ");
+		}
+	});
+}
