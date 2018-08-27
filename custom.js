@@ -22,15 +22,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-// function adds the theme tab
-showThemeSettings();
-// load theme settings
-loadSettings();
-enableThemeFeatures();
-
 (function() {
 
-	$( document ).ready(function() {	
+	$( document ).ready(function() {
+		
+		requirejs.config({ waitSeconds: 30 });
+		// function adds the theme tab
+		showThemeSettings();
+		checkSettingsHTML();
+		// load theme settings
+		loadSettings();
+		enableThemeFeatures();
+		
 			
 		// Navbar menu and logo header
 		let navBar =  $('.navbar').append('<button class="menu-toggle"></button>');
