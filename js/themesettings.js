@@ -16,7 +16,7 @@ function showThemeSettings() {
 	if (!$('#tabtheme').length){
 		
 		// Modifying settings menu
-		$('#tabs .pull-right').before('<li id="themeTabButton"><a data-target="#tabtheme" data-toggle="tab" data-i18n="Theme">Theme</a></li>');
+		$('<li id="themeTabButton"><a data-target="#tabtheme" data-toggle="tab" data-i18n="Theme">Theme</a></li>').appendTo('#tabs')
 		
 		// Translate
 		$("#tabs").i18n();
@@ -63,7 +63,7 @@ function loadSettingsHTML(){
 		}
 		// Saves the new settings.
 		localStorage.setObject("themeSettings", theme);
-		console.log('Saved new settings');
+		console.log(theme.name + ' - theme settings saved');
 	});
 	
 	// Resetbutton theme tab

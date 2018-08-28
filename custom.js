@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			let mainMenu = $('#appnavbar');
 			let mSettings = mainMenu.find('#mSettings');
 			if (mainMenu.length && mSettings.length == 0) {
-				mainMenu.append('<li id="mSettings" style="display: none;" has-permission="Admin"><a href="#Custom/Settings" class="active" data-i18n="Settings">Settings</a></li>');
+				mainMenu.append('<li id="mSettings" style="display: none;" has-permission="Admin"><a href="#Custom/Settings"><img src="images/setup.png"><span data-i18n="Settings">Settings</span></a></li>');
 			}
 		} else {
 			$('#cSetup').click(function() {
