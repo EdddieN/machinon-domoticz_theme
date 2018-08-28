@@ -680,7 +680,7 @@ body table#itemtable {
 /* Reset theme button */ 
 .resetbtn,
 .resetbtn:hover {
-  background-color: var(--main-blue-color);;
+  background-color: var(--main-blue-color);
   border: none !important;
   border-radius: 2px;
   color: #fff;
