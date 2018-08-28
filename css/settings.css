@@ -45,6 +45,8 @@ justify-content:space-around
 }
 .rectangle-8, .rectangle-8-dropdown {
 	/*proprieté graphique*/
+	border: 1.5px solid;
+	border-color: transparent;
 	border-radius: 6px;
 	background-color: #ffffff;
 	cursor: pointer;
@@ -111,7 +113,7 @@ ul.machinon_ul li {
 	margin: 0 20px 23px 0;
  }
  .machinon_ul li:hover { 
-    background-color:rgba(192,192,192,0.1);
+    border-color: #0b96cd;
 }
 .mHeaderBtn li:hover {
     background-color:rgba(169,169,169,0.5);
