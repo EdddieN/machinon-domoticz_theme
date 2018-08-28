@@ -329,7 +329,7 @@ margin-left:150px;
   bottom: 40px;
 }
 #dashcontent .ui-selectmenu-text {
-color:var(--main-blue-color)
+color:var(--main-blue-color);
 }
 
 #dashcontent .item #lastupdate {
@@ -677,7 +677,31 @@ body table#itemtable {
   width: auto !important;
 }
 
+/* Reset theme button */ 
+.resetbtn,
+.resetbtn:hover {
+  background-color: var(--main-blue-color);;
+  border: none !important;
+  border-radius: 2px;
+  color: #fff;
+  padding: 10px 20px;
+}
+
 /* Panels */
+.btn-info{
+	border: none !important;
+	border-radius: 2px;
+	color: #fff;
+	padding: 5px 10px;
+}
+
+.btn-danger{
+	background-color: #c74343;
+	border: none !important;
+	border-radius: 2px;
+	color: #fff;
+	padding: 5px 10px;
+}
 .btnsmall,
 .btnsmall:hover {
   color: #818183;
@@ -707,7 +731,7 @@ body table#itemtable {
   color: #696969 !important;
 }
 
-.btnstyle3-dis, .btnstyle3 {
+.btnstyle3-dis, .btnstyle3, .btnstyle3-sel {
   background: var(--main-blue-color);
   margin-top: 15px;
 }
