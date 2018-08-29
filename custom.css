@@ -921,6 +921,7 @@ div.item.statusTimeout table#itemtable,
 div.item.statusTimeout table#itemtablesmall,
 div.item.statusTimeout table#itemtablenotype,
 div.item.statusTimeout table#itemtablenostatus{
+	box-shadow: 0px 0px 0px 2px rgb(199,67,67,0.3);
 	background-color: transparent !important;
 }
 div.item.statusTimeout td#name,
