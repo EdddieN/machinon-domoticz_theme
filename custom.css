@@ -916,6 +916,25 @@ tr.odd, tr.even{
   color: black !important;
   background: none;
 }
+/*  Device is timeout  */
+div.item.statusTimeout table#itemtable,
+div.item.statusTimeout table#itemtablesmall,
+div.item.statusTimeout table#itemtablenotype,
+div.item.statusTimeout table#itemtablenostatus{
+	background-color: transparent !important;
+}
+div.item.statusTimeout td#name,
+div.item.statusTimeout td.name,
+div.item.statusTimeout td#bigtext,
+div.item.statusTimeout td.bigtext,
+div.item.statusTimeout td#lastupdate,
+div.item.statusTimeout td.lastupdate{
+	/* color: #c74343 !important; */
+	opacity:0.5;
+}
+div.item.statusTimeout td#img{
+	opacity:0.2;
+}
 
 /* Watermarks */
 /* Media Queries */
