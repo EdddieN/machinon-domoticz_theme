@@ -9,17 +9,17 @@ ToDo
 - [X]   In Progress
 - [ ] 1.- Selector boxes, need update design -> Eddie
 - [ ] 2.- Hardware page and devices need updating -> guidelines in Zeplin
-- [ ] 3.- Tiles with new text and bigger size values -> Eddie
-- [ ] 4.- Settings page re-design -> Eddie
+- [X] 3.- Tiles with new text and bigger size values -> Eddie -> Zeplin
+- [X] 4.- Settings page re-design -> Eddie 
 - [ ] 5.- When a device is offline the tile should fade off, is this possible? -> Zeplin
-- [ ] 6.- Timers screen -> Eddie
-- [ ] 7.- Charts screens -> Eddie
-- [ ] 8.- Remove go back button from design on settings -> Eddie  
+- [X] 6.- Timers screen -> Eddie -> Zeplin
+- [X] 7.- Charts screens -> Eddie -> Zeplin
+- [X] 8.- Remove go back button from design on settings -> Eddie  
   
 Ideas (wish list)
 - [ ]   In Progress
 - [ ] 1.- Custom merge multiple metrics into one tile (ie: energy + trigger switch)
-- [ ] 2.- Dark theme
+- [ ] 2.- Dark theme -> Work in progress
 
 
 ## Installing
