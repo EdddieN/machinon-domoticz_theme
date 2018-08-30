@@ -960,6 +960,8 @@ div.item.statusTimeout table#itemtablenostatus{
 }
 div.item.statusTimeout td#name,
 div.item.statusTimeout td.name,
+div.item.statusTimeout td#status,
+div.item.statusTimeout td.status,
 div.item.statusTimeout td#bigtext,
 div.item.statusTimeout td.bigtext,
 div.item.statusTimeout td#lastupdate,
@@ -969,6 +971,19 @@ div.item.statusTimeout td.lastupdate{
 }
 div.item.statusTimeout td#img{
 	opacity:0.2;
+}
+/* Switch is protected */
+div.item.statusProtected table#itemtablesmall,
+div.item.statusProtected table#itemtabledoubleicon,
+div.item.statusProtected table#itemtablenostatus{
+	box-shadow: 0px 0px 0px 2px rgb(11, 150, 205, 0.3);
+}
+/* Device has low battery */
+div.item.statusLowBattery table#itemtable,
+div.item.statusLowBattery table#itemtablesmall,
+div.item.statusLowBattery table#itemtablenotype,
+div.item.statusLowBattery table#itemtablenostatus{
+	box-shadow: 0px 0px 0px 2px rgb(199,67,67,0.3);
 }
 
 /* Watermarks */
