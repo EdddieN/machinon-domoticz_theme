@@ -15,7 +15,41 @@
 	/*use with var(--main-blue-color)*/
 	--main-bg-color: #f1f1f1; 
 	--main-blue-color: #0b96cd;
-	--main-font: OpenSans;	
+	--main-font: Open Sans;
+	--main-font-bold: Open Sans Semibold;
+}
+/* Add fonts */
+.btnstylerev,
+.btnstyle,
+.btnstyle3-dis,
+.btnstyle3,
+.btnstyle3-sel
+.mHeaderBtn,
+.navbar-inverse .navbar-inner,
+.item #bigtext,
+.item #type,
+.item #lastupdate {
+  font-family: var(--main-font);
+}
+h2,
+#tophtm,
+#temptophtm,
+#weathertophtm,
+#lightcontent td,
+#utilitycontent td,
+.beforebannav,
+.machinoText,
+.mHeader,
+.item #status,
+.item #name {
+  font-family: var(--main-font-bold);
+}
+#tabs,
+.span6,
+.span6,
+.span12,
+.page-header-small h1 {
+	font-family: var(--main-font-bold);
 }
 /* White text in aboutpage */
 #aboutcontent{
