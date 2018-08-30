@@ -371,10 +371,6 @@ color:var(--main-blue-color);
 }
 
 /* temperature, weather items */
-dztemperaturewidget .item #name,
-dzweatherwidget .item #name {
-  font-size: 20px;
-}
 dztemperaturewidget #status,
 dzweatherwidget #status {
   position: absolute;
@@ -395,9 +391,6 @@ dzweatherwidget #status > span:empty::before {
 }
 
 /* utility items */
-#utilitycontent .item #name {
-  font-size: 20px;
-}
 #utilitycontent #type {
   position: absolute;
   right: 20px;
