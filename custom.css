@@ -953,7 +953,7 @@ div.item.statusTimeout table#itemtablesmall,
 div.item.statusTimeout table#itemtablenotype,
 div.item.statusTimeout table#itemtablenostatus{
 	box-shadow: 0px 0px 0px 2px rgb(199,67,67,0.5);
-	background-color: transparent !important;
+	/* background-color: transparent !important; */
 }
 div.item.statusTimeout table#itemtable:hover,
 div.item.statusTimeout table#itemtablesmall:hover,
