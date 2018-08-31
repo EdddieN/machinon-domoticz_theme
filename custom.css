@@ -1,6 +1,7 @@
 @charset "UTF-8";
 /* import css files */
-@import url("/acttheme/css/icon_on_tabs.css");
+@import url("css/settings.css");
+@import url("css/icons_on_tabs.css");
 .ui-popup.ui-corner-all {
   background-color: #fff;
 }

@@ -2,190 +2,190 @@
 
 /* Add icons on headers */
 .span6 H2 [data-i18n="User Interface"]::before {
- content: url(/images/tabs/user.png);
+ content: url(../images/tabs/user.png);
  margin-right: 20px
 }
 .span6 H2 [data-i18n="Location"]::before {
- content: url(/images/tabs/location.png);
+ content: url(../images/tabs/location.png);
  margin-right: 20px
 }
 .span6 H2 [data-i18n="Dashboard"]::before {
- content: url(/images/tabs/dashboard.png);
+ content: url(../images/tabs/dashboard.png);
  margin-right: 20px
 }
 .span6 H2 [data-i18n="Mobile"]::before {
- content: url(/images/tabs/mobile.png);
+ content: url(../images/tabs/mobile.png);
  margin-right: 20px
 }
 .span6 H2 [data-i18n="WebsiteProtection"]::before {
- content: url(/images/tabs/lock.png);
+ content: url(../images/tabs/lock.png);
  margin-right: 20px
 }
 .span6 H2 [data-i18n="SecurityPanel"]::before {
- content: url(/images/tabs/protection.png);
+ content: url(../images/tabs/protection.png);
  margin-right: 20px
 }
 .span12 H2 [data-i18n="Light/Switch Protection"]::before {
- content: url(/images/tabs/lights.png);
+ content: url(../images/tabs/lights.png);
  margin-right: 20px
 }
 .span6 H2 [data-i18n="LocalNetworks(no_username/password)"]::before {
- content: url(/images/tabs/network.png);
+ content: url(../images/tabs/network.png);
  margin-right: 20px
 }
 .span6 H2 [data-i18n="RemoteSharedPortForDomoticzClients"]::before {
- content: url(/images/tabs/remote.png);
+ content: url(../images/tabs/remote.png);
  margin-right: 20px
 }
 .span6 H2 [data-i18n="SoftwareUpdates"]::before {
- content: url(/images/tabs/software_update.png);
+ content: url(../images/tabs/software_update.png);
  margin-right: 20px
 }
 .span6 H2 [data-i18n="AutoBackup"]::before {
- content: url(/images/tabs/backup.png);
+ content: url(../images/tabs/backup.png);
  margin-right: 20px
 }
 .span12 H2 [data-i18n="RemoteProxyIPs"]::before {
- content: url(/images/tabs/remote.png);
+ content: url(../images/tabs/remote.png);
  margin-right: 20px
 }
 .span6 H2 [data-i18n="AcceptNewHardware"]::before {
- content: url(/images/tabs/hardwares.png);
+ content: url(../images/tabs/hardwares.png);
  margin-right: 20px
 }
 .span6 H2 [data-i18n="MyDomoticzSettings"]::before {
- content: url(/images/tabs/other.png);
+ content: url(../images/tabs/other.png);
  margin-right: 20px
 }
 .span12 H2 [data-i18n="ActiveMenus"]::before {
- content: url(/images/tabs/icons8-menu-16.png);
+ content: url(../images/tabs/icons8-menu-16.png);
  margin-right: 20px
 }
 .span6 H2 [data-i18n="General options"]::before {
- content: url(/images/tabs/other.png);
+ content: url(../images/tabs/other.png);
  margin-right: 20px
 }
 .span6 H2 [data-i18n="Dashboard options"]::before {
- content: url(/images/tabs/dashboard.png);
+ content: url(../images/tabs/dashboard.png);
  margin-right: 20px
 }
 .span12 H2 [data-i18n="Light/Switches"]::before {
- content: url(/images/tabs/lights.png);
+ content: url(../images/tabs/lights.png);
  margin-right: 20px
 }
 .span12 H2 [data-i18n="Short Log Sensors"]::before {
- content: url(/images/tabs/icons8-edit-property-16.png);
+ content: url(../images/tabs/icons8-edit-property-16.png);
  margin-right: 20px
 }
 .span6 H2 [data-i18n="Prowl (iPhone/iPad)"]::before {
- content: url(/images/tabs/icons8-push-notifications-16.png);
+ content: url(../images/tabs/icons8-push-notifications-16.png);
  margin-right: 20px
 }
 .span6 H2 [data-i18n="Pushover (Android/iOs)"]::before {
- content: url(/images/tabs/icons8-push-notifications-16.png);
+ content: url(../images/tabs/icons8-push-notifications-16.png);
  margin-right: 20px
 }
 .span6 H2 [data-i18n="Pushalot (Windows/Windows Phone)"]::before {
- content: url(/images/tabs/icons8-push-notifications-16.png);
+ content: url(../images/tabs/icons8-push-notifications-16.png);
  margin-right: 20px
 }
 .span6 H2 [data-i18n="Clickatell SMS"]::before {
- content: url(/images/tabs/icons8-sms-16.png);
+ content: url(../images/tabs/icons8-sms-16.png);
  margin-right: 20px
 }
 .span6 H2 [data-i18n="Custom HTTP"]::before {
- content: url(/images/tabs/icons8-website-16.png);
+ content: url(../images/tabs/icons8-website-16.png);
  margin-right: 20px
 }
 .span6 H2 [data-i18n="Kodi Media Player"]::before {
- content: url(/images/tabs/icons8-kodi-16.png);
+ content: url(../images/tabs/icons8-kodi-16.png);
  margin-right: 20px
 }
 .span6 H2 [data-i18n="Logitech Media Server"]::before {
- content: url(/images/tabs/icons8-cloud-storage-16.png);
+ content: url(../images/tabs/icons8-cloud-storage-16.png);
  margin-right: 20px
 }
 .span6 H2 [data-i18n="Google Cloud Messaging"]::before {
- content: url(/images/tabs/icons8-cloud-storage-16.png);
+ content: url(../images/tabs/icons8-cloud-storage-16.png);
  margin-right: 20px
 }
 .span12 H2 [data-i18n="Notification Intervals"]::before {
- content: url(/images/tabs/other.png);
+ content: url(../images/tabs/other.png);
  margin-right: 20px
 }
 .span6 H2 [data-i18n="Notification Intervals"]::before {
- content: url(/images/tabs/other.png);
+ content: url(../images/tabs/other.png);
  margin-right: 20px
 }
 .span12 H2 [data-i18n="Email Setup"]::before {
- content: url(/images/tabs/icons8-new-post-16.png);
+ content: url(../images/tabs/icons8-new-post-16.png);
  margin-right: 20px
 }
 .span4 H2 [data-i18n="Temperature"]::before {
- content: url(/images/tabs/icons8-temperature-16.png);
+ content: url(../images/tabs/icons8-temperature-16.png);
  margin-right: 20px
 }
 .span4 H2 [data-i18n="Wind Meter"]::before {
- content: url(/images/tabs/icons8-wind-gauge-16.png);
+ content: url(../images/tabs/icons8-wind-gauge-16.png);
  margin-right: 20px
 }
 .span4 H2 [data-i18n="Weight"]::before {
- content: url(/images/tabs/icons8-weight-16.png);
+ content: url(../images/tabs/icons8-weight-16.png);
  margin-right: 20px
 }
 .span12 H2 [data-i18n="RFXMeter/Counter Dividers"]::before {
- content: url(/images/tabs/icons8-counter-16.png);
+ content: url(../images/tabs/icons8-counter-16.png);
  margin-right: 20px
 }
 .span12 H2 [data-i18n="P1 Smart Meter Type"]::before {
- content: url(/images/tabs/icons8-meter-16.png);
+ content: url(../images/tabs/icons8-meter-16.png);
  margin-right: 20px
 }
 .span12 H2 [data-i18n="General"]::before {
- content: url(/images/tabs/other.png);
+ content: url(../images/tabs/other.png);
  margin-right: 20px
 }
 .span12 H2 [data-i18n="Display Values"]::before {
- content: url(/images/tabs/icons8-display-16.png);
+ content: url(../images/tabs/icons8-display-16.png);
  margin-right: 20px
 }
 .span12 H2 [data-i18n="Colour Options"]::before {
- content: url(/images/tabs/icons8-color-palette-16.png);
+ content: url(../images/tabs/icons8-color-palette-16.png);
  margin-right: 20px
 }
 .span12 H2 [data-i18n="Random Timer"]::before {
- content: url(/images/tabs/icons8-time-16.png);
+ content: url(../images/tabs/icons8-time-16.png);
  margin-right: 20px
 }
 .span12 H2 [data-i18n="Sensor Timeout"]::before {
- content: url(/images/tabs/icons8-time-16.png);
+ content: url(../images/tabs/icons8-time-16.png);
  margin-right: 20px
 }
 .span12 H2 [data-i18n="Timer Plan"]::before {
- content: url(/images/tabs/icons8-schedule-16.png);
+ content: url(../images/tabs/icons8-schedule-16.png);
  margin-right: 20px
 }
 .span12 H2 [data-i18n="Battery Low Level"]::before {
- content: url(/images/tabs/icons8-low-battery-16.png);
+ content: url(../images/tabs/icons8-low-battery-16.png);
  margin-right: 20px
 }
 .span12 H2 [data-i18n="Doorbell Command"]::before {
- content: url(/images/tabs/icons8-doorbell-16.png);
+ content: url(../images/tabs/icons8-doorbell-16.png);
  margin-right: 20px
 }
 .span12 H2 [data-i18n="Raspberry Pi Camera Parameters"]::before {
- content: url(/images/tabs/icons8-camera-16.png);
+ content: url(../images/tabs/icons8-camera-16.png);
  margin-right: 20px
 }
 .span12 H2 [data-i18n="UVC Parameters"]::before {
- content: url(/images/tabs/other.png);
+ content: url(../images/tabs/other.png);
  margin-right: 20px
 }
 .span12 H2 [data-i18n="EventSystem (Lua/Blockly/Scripts)"]::before {
- content: url(/images/tabs/icons8-events-16.png);
+ content: url(../images/tabs/icons8-events-16.png);
  margin-right: 20px
 }
 .span12 H2 [data-i18n="dzVents"]::before {
- content: url(/images/tabs/icons8-code-file-16.png);
+ content: url(../images/tabs/icons8-code-file-16.png);
  margin-right: 20px
 }

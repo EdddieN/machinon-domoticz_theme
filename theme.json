@@ -28,7 +28,7 @@
 		"custom_settings_menu": {
             "id":12,
             "enabled":true,
-			"files": ["settings.css"]
+			"files": []
         },
 		"switch_instead_of_bigtext": {
             "id":20,
