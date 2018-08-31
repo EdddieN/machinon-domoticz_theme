@@ -56,6 +56,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		if (theme.features.footer_text_disabled.enabled === true) {
 			$('#copyright p').remove();
 		}
+		if (theme.features.dashboard_show_last_update.enabled === true) {
+			$('<style>#dashcontent #lastupdate{display: block;}</style>').appendTo('head');
+		}
 				
 		// Replace settings dropdown button to normal button.
 		/** This also disables the custom menu. Need find a workaround **/
