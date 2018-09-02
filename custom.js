@@ -1,4 +1,58 @@
 /* Custom.js for machinon theme */
+//need more simplycity
+function DelRow() {
+	$('#main-view div.row').each(function(){
+		x=$(this).nextAll().children().detach();
+		$(this).append(x).nextAll().remove();
+		console.log('suppression de multiple row');
+	});
+};
+
+
+
+var targetedNode = document;
+MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+var observer = new MutationObserver(function(mutations, observer) {
+	mutations.forEach(function(mutation) {	
+		if ($('#main-view').contents().hasClass('container') ) {
+			$('#main-view').contents().removeClass('container').toggleClass('container-fluid');
+			console.log('change container class to container-fluid');
+			var changeclass = true
+		};
+		
+		if ($('#main-view div.row').next().length != 0 ){
+			DelRow();
+		} else {
+			//console.log{'1 row found'};
+			var delrowok = true
+		};
+		
+		if (delrowok && changeclass){
+			console.log('deconnexion observer');
+			//observer.disconnect();
+			
+		};
+	});
+});
+		
+function locationHashChanged() {
+    if ( location.hash === "#/LightSwitches" || "#/DashBoard" ) {
+		var changeclass = false;
+		observer.disconnect();
+		observer.observe(targetedNode, {
+			childList: true,
+			subtree: true
+		});
+		
+    } else {
+			console.log('Page change for: ' + location.hash);
+		
+    }
+}
+
+window.onhashchange = locationHashChanged;
+
+
 
 var theme = {};
 var themeName = "";
