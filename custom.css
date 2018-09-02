@@ -125,6 +125,28 @@ input:focus + .slider {
 }
 
 /* common features */
+/*need fix media screen*/
+div.row{
+    padding:0;  
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;  
+    flex-wrap:wrap;
+    justify-content:space-between;
+}
+
+.span4 {
+    margin-right:auto!important;
+    margin-bottom:20px !important;
+    padding:0 !important;
+    flex-grow:1;
+    min-width:250px;
+    flex-basis:auto;
+}
+
+
 .item table {
   position: relative;
   background: #fff;
