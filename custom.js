@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			</header>')
 		`;
 		$(containerLogo).insertBefore('.navbar-inner');
+		$('<input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Type to Search" title="Type to Search">').appendTo('.container-logo');
 					
 		// Features
 		if (theme.features.footer_text_disabled.enabled === true) {
