@@ -1,15 +1,24 @@
 /* Custom.js for machinon theme */
-//need more simplycity
-function DelRow() {
-	$('#main-view div.row').each(function(){
-		x=$(this).nextAll().children().detach();
-		$(this).append(x).nextAll().remove();
-		console.log('suppression de multiple row');
-	});
+
+var theme = {};
+var themeName = "";
+var baseURL= "";
+var switchState = {};
+
+/* Prepare for future translating status
+change to your language to make the switch instead of text to work correct e.g " on: 'Auf' ", " off: 'Aus' " etc */
+switchState = {
+	on: 'On', // on: 'På',
+	off: 'Off', // off: 'Av',
+	open: 'Open', // open: 'Öppen',
+	closed:'Closed' // closed: 'Stängd'
 };
 
+// load files
+$.ajax({url: 'acttheme/js/themesettings.js', async: false, dataType: 'script'});
+$.ajax({url: 'acttheme/js/functions.js', async: false, dataType: 'script'});
 
-
+//need more simplycity
 var targetedNode = document;
 MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
 var observer = new MutationObserver(function(mutations, observer) {
@@ -34,43 +43,8 @@ var observer = new MutationObserver(function(mutations, observer) {
 		};
 	});
 });
-		
-function locationHashChanged() {
-    if ( location.hash === "#/LightSwitches" || "#/DashBoard" ) {
-		var changeclass = false;
-		observer.disconnect();
-		observer.observe(targetedNode, {
-			childList: true,
-			subtree: true
-		});
-		
-    } else {
-			console.log('Page change for: ' + location.hash);
-		
-    }
-}
 
 window.onhashchange = locationHashChanged;
-
-
-
-var theme = {};
-var themeName = "";
-var baseURL= "";
-var switchState = {};
-
-/* Prepare for future translating status
-change to your language to make the switch instead of text to work correct e.g " on: 'Auf' ", " off: 'Aus' " etc */
-switchState = {
-	on: 'On', // on: 'På',
-	off: 'Off', // off: 'Av',
-	open: 'Open', // open: 'Öppen',
-	closed:'Closed' // closed: 'Stängd'
-};
-
-// load files
-$.ajax({url: 'acttheme/js/themesettings.js', async: false, dataType: 'script'});
-$.ajax({url: 'acttheme/js/functions.js', async: false, dataType: 'script'});
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -170,104 +144,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 
 	});
-	
-	// main switchers and submenus logic function
-	function applySwitchersAndSubmenus() {
-		
-		//switcher for lights and windows
-		$('#main-view .item').each(function () {
-			let bigText = $(this).find('#bigtext');
-			let status = bigText.text();
-			// get clickable image element
-			let onImage = bigText.siblings('#img').find('img');
-			if (onImage.length == 0) {
-				onImage = bigText.siblings('#img1').find('img')
-			}
-			if (status.length == 0) {
-				status = bigText.attr('data-status');
-			} else {
-				$(this).off('click', '.switch');
-				// special part for scenes tab
-				let isScenesTab = $(this).parents('#scenecontent').length > 0;
-				if (isScenesTab) {
-					$(this).on('click', '.switch', function (e) {
-						e.preventDefault();
-						let offImage = $(this).siblings('#img2').find('img');
-						let subStatus = bigText.siblings('#status').find('span').text();
-						if ($.trim(subStatus).length) {
-							status = subStatus;
-						}
-						if ((status == switchState.on) && offImage.length) {
-							offImage.click();
-						} else {
-							if (onImage.hasClass('lcursor')) {
-								onImage.click();
-							}
-						}
-					});
-				} else {
-					$(this).one('click', '.switch', function (e) {
-						e.preventDefault();
-						let offImage = $(this).siblings('#img3').find('img');
-						if (offImage.length == 0) {
-							offImage = $(this).siblings('#img2').find('img');
-						}
-						if ((status == switchState.open || status == switchState.on) && offImage.length) {
-							offImage.click();
-						} else {
-							if(onImage.hasClass('lcursor')) {
-								onImage.click();
-							}
-						}
-						
-					});
-				}
-				// insert submenu buttons to each item table (not on dashboard)
-				let subnav = $(this).find('.options');
-				let subnavButton = $(this).find('.options__bars');
-				if (subnav.length && subnavButton.length == 0) {
-					$(this).find('table').append('<div class="options__bars"></div>');
-					$(this).on('click', '.options__bars', function (e) {
-						e.preventDefault();
-						$(this).siblings('tbody').find('td.options').slideToggle(400);
-					});
-				}
-			}
-			if (theme.features.switch_instead_of_bigtext.enabled === true) {
-				if (onImage.hasClass('lcursor')) {
-				let switcher = $(this).find('.switch');
-				if (status == switchState.off || status == switchState.on) {
-					let title = (status == switchState.off) ? switchState.on : switchState.off;
-					let checked = (status == switchState.on) ? 'checked' : '';
-					if (switcher.length == 0) {
-						let string = '<label class="switch" title="Turn ' + title + '"><input type="checkbox"' + checked + '><span class="slider round"></span></label>';
-						bigText.after(string);
-					}
-					switcher.attr('title', 'Turn ' + title);
-					switcher.find('input').attr('checked', checked.length > 0);
-					bigText.css('display', 'none');
-				} else if (status == switchState.open || status == switchState.closed) {
-					let title = (status == switchState.closed) ? switchState.open : switchState.closed;
-					let checked = (status == switchState.open) ? 'checked' : '';
-					if (switcher.length == 0) {
-						let string = '<label class="switch" title="' + title + '"><input type="checkbox"' + checked + '><span class="slider round"></span></label>';
-						bigText.after(string);
-					}
-					switcher.attr('title', title);
-					switcher.find('input').attr('checked', checked.length > 0);
-					bigText.css('display', 'none');
-				} else {
-					bigText.css('display', 'block');
-					switcher.remove();
-				}
-				bigText.attr('data-status', status);
-				} else {
-				bigText.css('display', 'block');
-				}
-			}
-		});
-		// console.log('Switchers loaded');
-	}		
 
 	window.onresize = function () {
 		//show-hide navbar on window resize
