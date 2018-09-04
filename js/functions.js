@@ -74,3 +74,26 @@ function searchFunction() {
 	  }
    	}	   
 }
+
+function DelRow() {
+	$('#main-view div.row').each(function(){
+		x=$(this).nextAll().children().detach();
+		$(this).append(x).nextAll().remove();
+		console.log('suppression de multiple row');
+	});
+}
+
+function locationHashChanged() {
+    if ( location.hash === "#/LightSwitches" || "#/DashBoard" ) {
+		var changeclass = false;
+		observer.disconnect();
+		observer.observe(targetedNode, {
+			childList: true,
+			subtree: true
+		});
+		
+    } else {
+			console.log('Page change for: ' + location.hash);
+		
+    }
+}
