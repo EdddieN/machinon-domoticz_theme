@@ -1,15 +1,24 @@
 /* Custom.js for machinon theme */
-//need more simplycity
-function DelRow() {
-	$('#main-view div.row').each(function(){
-		x=$(this).nextAll().children().detach();
-		$(this).append(x).nextAll().remove();
-		console.log('suppression de multiple row');
-	});
+
+var theme = {};
+var themeName = "";
+var baseURL= "";
+var switchState = {};
+
+/* Prepare for future translating status
+change to your language to make the switch instead of text to work correct e.g " on: 'Auf' ", " off: 'Aus' " etc */
+switchState = {
+	on: 'On', // on: 'På',
+	off: 'Off', // off: 'Av',
+	open: 'Open', // open: 'Öppen',
+	closed:'Closed' // closed: 'Stängd'
 };
 
+// load files
+$.ajax({url: 'acttheme/js/themesettings.js', async: false, dataType: 'script'});
+$.ajax({url: 'acttheme/js/functions.js', async: false, dataType: 'script'});
 
-
+//need more simplycity
 var targetedNode = document;
 MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
 var observer = new MutationObserver(function(mutations, observer) {
@@ -34,43 +43,8 @@ var observer = new MutationObserver(function(mutations, observer) {
 		};
 	});
 });
-		
-function locationHashChanged() {
-    if ( location.hash === "#/LightSwitches" || "#/DashBoard" ) {
-		var changeclass = false;
-		observer.disconnect();
-		observer.observe(targetedNode, {
-			childList: true,
-			subtree: true
-		});
-		
-    } else {
-			console.log('Page change for: ' + location.hash);
-		
-    }
-}
 
 window.onhashchange = locationHashChanged;
-
-
-
-var theme = {};
-var themeName = "";
-var baseURL= "";
-var switchState = {};
-
-/* Prepare for future translating status
-change to your language to make the switch instead of text to work correct e.g " on: 'Auf' ", " off: 'Aus' " etc */
-switchState = {
-	on: 'On', // on: 'På',
-	off: 'Off', // off: 'Av',
-	open: 'Open', // open: 'Öppen',
-	closed:'Closed' // closed: 'Stängd'
-};
-
-// load files
-$.ajax({url: 'acttheme/js/themesettings.js', async: false, dataType: 'script'});
-$.ajax({url: 'acttheme/js/functions.js', async: false, dataType: 'script'});
 
 document.addEventListener('DOMContentLoaded', function () {
 
