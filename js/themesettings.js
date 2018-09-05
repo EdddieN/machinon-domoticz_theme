@@ -49,6 +49,12 @@ function loadSettingsHTML(){
 			}
 		}
 	});
+	
+	$('#tabtheme input[type="number"]').each(function(){    
+        	var value = theme[this.name];
+        	$(this).val(value);
+	});
+	
 	// The theme immediately saves the changes.
 	$("#tabtheme input:checkbox").click(function() {
 		if ($(this).is(':checked')) {
@@ -64,6 +70,14 @@ function loadSettingsHTML(){
 		// Saves the new settings.
 		localStorage.setObject("themeSettings", theme);
 		console.log(theme.name + ' - theme settings saved');
+	});
+	$('#saveSettingsButton').click(function() {
+		$('#tabtheme input[type="number"]').each(function(){    
+			var value = $(this).val();
+			theme[this.name] = value; 
+		});
+		localStorage.setObject("themeSettings", theme);
+		console.log(themeName + ' - theme settings saved');
 	});
 	
 	// Resetbutton theme tab
