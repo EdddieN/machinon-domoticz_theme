@@ -41,7 +41,7 @@
 .item #bigtext,
 .item #type,
 .item #lastupdate {
-  font-family: main-font);
+  font-family: main-font;
 }
 h2,
 #tophtm,
@@ -54,14 +54,14 @@ h2,
 .mHeader,
 .item #status,
 .item #name {
-  font-family: main-font-bold);
+  font-family: main-font-bold;
 }
 #tabs,
 .span6,
 .span6,
 .span12,
 .page-header-small h1 {
-	font-family: main-font-bold);
+	font-family: main-font-bold;
 }
 /* White text in aboutpage */
 #aboutcontent{
@@ -85,6 +85,50 @@ h2,
 }
 #searchInput::placeholder {
 	color: #fff;
+}
+/* standby screen */
+.standby {
+	background-image:none !important;
+	background-color:#313131;
+}
+.standby .row {
+	opacity: 0.4;
+}
+
+.standbyClock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: #fff;
+    font-size: 80px;
+    font-family: main-font-bold;
+    letter-spacing: 7px;
+}
+.standbyDate {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: #fff;
+    font-size: 60px;
+    font-family: main-font-bold;
+    letter-spacing: 7px;
+}
+input[type="number"]{
+	width: 30px;
+	background-color: transparent;
+	outline: 0;
+	border-width: 0 0 1px;
+	border-color: var(--main-blue-color);
+}
+@media screen and (max-width: 992px){
+	.standbyClock {
+		font-size: 60px;
+	}
+	.standbyDate {
+		font-size: 40px;
+	}
 }
 
 /* bootstrap switcher */
