@@ -4,6 +4,7 @@ var theme = {};
 var themeName = "";
 var baseURL= "";
 var switchState = {};
+var isMobile;
 
 /* Prepare for future translating status
 change to your language to make the switch instead of text to work correct e.g " on: 'Auf' ", " off: 'Aus' " etc */
@@ -15,6 +16,8 @@ switchState = {
 };
 
 // load files
+isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
 $.ajax({url: 'acttheme/js/themesettings.js', async: false, dataType: 'script'});
 $.ajax({url: 'acttheme/js/functions.js', async: false, dataType: 'script'});
 

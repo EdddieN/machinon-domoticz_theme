@@ -11,6 +11,7 @@
     "backgroundcolor": "#f1f1f1",    
     "backgroundimage": "",
     "previewimage": "screenshot.png",
+    "standby_after": 10,
     "variants": [
         {"default": "custom.css"}
     ],
@@ -20,22 +21,27 @@
             "enabled":false,
             "files": ["dark_theme.css"]
         },
-		"footer_text_disabled": {
+	"footer_text_disabled": {
             "id":11,
             "enabled":true,
 			"files": []
         },
-		"custom_settings_menu": {
+	"custom_settings_menu": {
             "id":12,
             "enabled":true,
 			"files": []
         },
-		"switch_instead_of_bigtext": {
+	"standby": {
+            "id":13,
+            "enabled":false,
+			"files": ["standby.js"]
+        },
+	"switch_instead_of_bigtext": {
             "id":20,
             "enabled":true,
 			"files": []
         },
-		"dashboard_show_last_update": {
+	"dashboard_show_last_update": {
             "id":21,
             "enabled":false,
             "files": ["dashboard_show_last_update.css"]
