@@ -11,7 +11,7 @@ ToDo
 - [ ] 2.- Hardware page and devices need updating -> guidelines in Zeplin
 - [X] 3.- Tiles with new text and bigger size values -> Eddie -> Zeplin
 - [X] 4.- Settings page re-design -> Eddie 
-- [ ] 5.- When a device is offline the tile should fade off, is this possible? -> Zeplin
+- [X] 5.- When a device is offline the tile should fade off, is this possible? -> Zeplin
 - [X] 6.- Timers screen -> Eddie -> Zeplin
 - [X] 7.- Charts screens -> Eddie -> Zeplin
 - [X] 8.- Remove go back button from design on settings -> Eddie  
