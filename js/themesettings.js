@@ -78,6 +78,7 @@ function loadSettingsHTML(){
 		});
 		localStorage.setObject("themeSettings", theme);
 		console.log(themeName + ' - theme settings saved');
+		location.reload();
 	});
 	
 	// Resetbutton theme tab
