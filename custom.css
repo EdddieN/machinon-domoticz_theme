@@ -146,12 +146,6 @@ input[type="number"]{
   display: none;
 }
 
-@media (min-width: 1200px) {
-  .switch {
-    top: 25px;
-    right: 45px;
-  }
-}
 /* The slider */
 .slider {
   position: absolute;
@@ -259,23 +253,16 @@ body table#itemtable tbody tr {
   color: var(--main-blue-color);
   font-size: 17px;
   position: absolute;
-  top: 15px;
-  right: 40px;
+  top: 18px;
+  right: 50px;
 }
 
 @media (min-width: 980px) {
   .item #bigtext {
-    font-size: 27px;
-    top: 10px;
+    font-size: 23px;
   }
 }
-@media (min-width: 1200px) {
-  .item #bigtext {
-    top: 18px;
-    right: 40px;
-	text-transform: capitalize;
-  }
-}
+
 /* last update */
 .item #lastupdate {
   color: gray;
