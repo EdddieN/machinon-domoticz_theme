@@ -303,18 +303,18 @@ body table#itemtable tbody tr {
 .options__bars {
   display: block;
   position: absolute;
-  top: 16px;
+  top: -5px;
   height: 30px;
-  right: 20px;
+  right: 10px;
   z-index: 2;
   overflow: hidden;
-  width: 10px;
+  width: 20px;
 }
 .options__bars::before {
   display: block;
   color: gray;
-  content: "⠇";
-  font-size: 23px;
+  content: "…";
+  font-size: 20px;
   cursor: pointer;
 }
 
