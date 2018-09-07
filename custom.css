@@ -350,10 +350,6 @@ body table#itemtable tr > .options {
 }
 
 @media (min-width: 1200px) {
-  .options__bars {
-    top: 16px;
-  }
-
   .options {
     top: 5px;
   }
