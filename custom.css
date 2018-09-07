@@ -146,12 +146,6 @@ input[type="number"]{
   display: none;
 }
 
-@media (min-width: 1200px) {
-  .switch {
-    top: 25px;
-    right: 45px;
-  }
-}
 /* The slider */
 .slider {
   position: absolute;
@@ -259,23 +253,16 @@ body table#itemtable tbody tr {
   color: var(--main-blue-color);
   font-size: 17px;
   position: absolute;
-  top: 15px;
-  right: 40px;
+  top: 18px;
+  right: 50px;
 }
 
 @media (min-width: 980px) {
   .item #bigtext {
-    font-size: 27px;
-    top: 10px;
+    font-size: 23px;
   }
 }
-@media (min-width: 1200px) {
-  .item #bigtext {
-    top: 18px;
-    right: 40px;
-	text-transform: capitalize;
-  }
-}
+
 /* last update */
 .item #lastupdate {
   color: gray;
@@ -303,18 +290,18 @@ body table#itemtable tbody tr {
 .options__bars {
   display: block;
   position: absolute;
-  top: 16px;
+  top: -5px;
   height: 30px;
-  right: 20px;
+  right: 10px;
   z-index: 2;
   overflow: hidden;
-  width: 10px;
+  width: 20px;
 }
 .options__bars::before {
   display: block;
   color: gray;
-  content: "⠇";
-  font-size: 23px;
+  content: "…";
+  font-size: 20px;
   cursor: pointer;
 }
 
@@ -350,10 +337,6 @@ body table#itemtable tr > .options {
 }
 
 @media (min-width: 1200px) {
-  .options__bars {
-    top: 16px;
-  }
-
   .options {
     top: 5px;
   }
