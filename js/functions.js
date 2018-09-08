@@ -154,24 +154,13 @@ function checkSettingsHTML(){
 }
 
 function searchFunction() {
-	if (document.getElementById("dashcontent") || document.getElementById("lightcontent") || document.getElementById("scenecontent")|| document.getElementById("utilitycontent") || document.getElementById("weatherwidgets") || document.getElementById("tempwidgets")){
-	  var input, filter, table, tr, td, i;
-	  input = document.getElementById("searchInput");
-	  filter = input.value.toUpperCase();
-	  table = document.getElementById("main-view");
-	  tr = table.getElementsByTagName("table");
-	  for (i = 0; i < tr.length; i++) {
-	    td = tr[i].getElementsByTagName("td")[0];
-	    if (td) {
-	      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-		tr[i].style.display = "";
-	      } else {
-		tr[i].style.display = "none";
-	      }
-	    }       
-	  }
-   	}	   
-}
+	if ($('#dashcontent') || $('lightcontent') || $('scenecontent')|| $('utilitycontent') || $('weatherwidgets') || $('tempwidgets')){
+		var value = $('#searchInput').val().toLowerCase();
+		$("div .item").filter(function() {
+		  $(this).toggle($(this).find('#name').html().toLowerCase().indexOf(value) > -1)
+		});
+    };
+};
 
 function DelRow() {
 	$('#main-view div.row').each(function(){
