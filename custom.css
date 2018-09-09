@@ -267,7 +267,7 @@ body table#itemtable tbody tr {
 .item #lastupdate {
   color: gray;
   position: absolute;
-  right: 10px;
+  right: 60px;
   bottom: 5px;
 }
 .item #lastupdate::before {
@@ -276,7 +276,6 @@ body table#itemtable tbody tr {
 
 @media (min-width: 1200px) {
   .item #lastupdate {
-    right: 20px;
     bottom: 15px;
   }
 }
@@ -321,19 +320,45 @@ body table#itemtable tr > .options {
   display: none;
   padding: 8px;
   width:97px;
-  height:125px;
+  height:flex;
 
 }
 .options .btnsmall-sel {
   width: auto;
-  background-color: transparent;
-  color: inherit;
-  margin: 0;
-  padding: 0;
+  background: transparent;
+  color: green;
 }
 .options .btnsmall {
   padding-top:4px;
   text-align: left;
+}
+.timers_log{
+	display: inline;
+	padding: 0px 5px;
+
+}
+.timers_log .btnsmall[data-i18n="Log"] {
+    content: url(../images/options/log.png);
+	font-size: 8px;
+	position: absolute;
+	right: 10px;
+	bottom: 8px;
+}
+.timers_log .btnsmall[data-i18n="Timers"] {
+    content: url(../images/options/timer_off.png);
+	font-size: 11px;
+	position: absolute;
+	right: 30px;
+	bottom: 5px;
+
+}
+.timers_log .btnsmall-sel[data-i18n="Timers"] {
+	background: transparent;
+    content: url(../images/options/timer_on.png);
+	font-size: 11px;
+	position: absolute;
+	right: 30px;
+	bottom: 6px;
 }
 
 @media (min-width: 1200px) {
@@ -903,14 +928,6 @@ tr.odd, tr.even{
   background: transparent !important;
   border: none !important;
   color: black !important;
-}
-
-.btnsmall-sel {
-  border-radius: 0;
-  height: auto;
-  padding: 3px 20px;
-  background: #0bcdc7;
-  margin-right: 10px;
 }
 
 .ui-dialog-buttonset button {
