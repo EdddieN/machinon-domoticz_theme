@@ -60,6 +60,11 @@ function applySwitchersAndSubmenus() {
 					e.preventDefault();
 					$(this).siblings('tbody').find('td.options').slideToggle(400);
 				});
+				// Move Timers and log to item
+				$(this).find('table').append('<div class="timers_log"></div>');
+				$(this).find('.timers_log').append($(this).find('.options .btnsmall[data-i18n="Log"]'));
+				$(this).find('.timers_log').append($(this).find('.options .btnsmall[data-i18n="Timers"]'));
+				$(this).find('.timers_log').append($(this).find('.options .btnsmall-sel[data-i18n="Timers"]'));
 			}
 		}
 		if (theme.features.switch_instead_of_bigtext.enabled === true) {
