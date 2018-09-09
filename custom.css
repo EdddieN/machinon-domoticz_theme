@@ -365,6 +365,13 @@ body table#itemtable tr > .options {
   .options {
     top: 5px;
   }
+  .timers_log .btnsmall[data-i18n="Timers"],
+  .timers_log .btnsmall-sel[data-i18n="Timers"]{
+	bottom: 16px;  
+  }
+  .timers_log .btnsmall[data-i18n="Log"]{
+	bottom:18px;
+  }
 }
 /* images */
 .item .img,
