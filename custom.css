@@ -270,6 +270,15 @@ body table#itemtable tbody tr {
   right: 60px;
   bottom: 5px;
 }
+dztemperaturewidget .item #lastupdate {
+  right: 10px;
+}
+dzweatherwidget .item #lastupdate {
+  right: 40px;
+}
+#utilitycontent .item #lastupdate {
+  right: 40px;
+}
 .item #lastupdate::before {
   content: "Last Seen: ";
 }
