@@ -310,6 +310,7 @@ body table#itemtable tr > .options {
 }
 
 .options {
+  font-family: main-font-bold;
   position: absolute;
   background: white;
   border-radius: 5px;
