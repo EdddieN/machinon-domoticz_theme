@@ -347,15 +347,22 @@ body table#itemtable tr > .options {
 	padding: 0px 5px;
 
 }
+.timers_log .btnsmall,
+.timers_log .btnsmall-sel,
+.timers_log .btnsmall:hover,
+.timers_log .btnsmall-sel:hover {
+	color: transparent;
+}
 .timers_log .btnsmall[data-i18n="Log"] {
-    content: url(../images/options/log.png);
+/*     content: url(../images/options/log.png); */
 	font-size: 8px;
 	position: absolute;
 	right: 10px;
 	bottom: 8px;
 }
+
 .timers_log .btnsmall[data-i18n="Timers"] {
-    content: url(../images/options/timer_off.png);
+/*     content: url(../images/options/timer_off.png); */
 	font-size: 11px;
 	position: absolute;
 	right: 30px;
@@ -364,7 +371,7 @@ body table#itemtable tr > .options {
 }
 .timers_log .btnsmall-sel[data-i18n="Timers"] {
 	background: transparent;
-    content: url(../images/options/timer_on.png);
+/*     content: url(../images/options/timer_on.png); */
 	font-size: 11px;
 	position: absolute;
 	right: 30px;
@@ -1057,7 +1064,6 @@ tr.odd, tr.even{
 
 .btnsmall {
   display: block;
-  color: black !important;
   background: none;
 }
 /*  Device is timeout  */
