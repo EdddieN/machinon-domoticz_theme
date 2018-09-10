@@ -64,8 +64,13 @@ function applySwitchersAndSubmenus() {
 			// Move Timers and log to item
 			$(this).find('table').append('<div class="timers_log"></div>');
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall[data-i18n="Log"]'));
+			$(this).find('.timers_log .btnsmall[data-i18n="Log"]').append("<img id='logImg' src='images/options/log.png'/>");
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall[data-i18n="Timers"]'));
+			$(this).find('.timers_log .btnsmall[data-i18n="Timers"]').append("<img id='timerOffImg' src='images/options/timer_off.png' height='18' width='18'/>");
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall-sel[data-i18n="Timers"]'));
+			$(this).find('.timers_log .btnsmall-sel[data-i18n="Timers"]').append("<img id='timerOnImg' src='images/options/timer_on.png' height='18' width='18'/>");
+			$(this).find('.timers_log').append($(this).find('.options .btnsmall[href*="/TemperatureLog"]'));
+			$(this).find('.timers_log .btnsmall[href*="/TemperatureLog"]').append("<img id='logImg' src='images/options/log.png'/>");
 		}
 		
 		if (theme.features.switch_instead_of_bigtext.enabled === true) {
