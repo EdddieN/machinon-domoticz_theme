@@ -1003,7 +1003,9 @@ tr.odd, tr.even{
   border: none;
   border-bottom: 1px solid var(--main-blue-color);
 }
-
+.ui-corner-all:hover{
+ background: none;
+}
 /* =Setup */
 /* Footer */
 /* =Footer */
