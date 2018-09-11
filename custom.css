@@ -63,9 +63,12 @@ h2,
 .page-header-small h1 {
 	font-family: main-font-bold;
 }
-/* White text in aboutpage */
-#aboutcontent{
-	color: #fff
+/* aboutpage */
+#aboutcontent {
+	font-family: main-font;
+}
+#aboutcontent #canvas2 {
+	display:none;
 }
 /* Search */
 #searchInput {
@@ -628,7 +631,7 @@ dzweatherwidget #status > span:empty::before {
 }
 body {
   background-image: none;
-  background-color: #f1f1f1;
+  background-color: #f1f1f1 !important;
   color: #1a1a1a;
 }
 
