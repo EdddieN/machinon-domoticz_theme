@@ -271,8 +271,7 @@ body table#itemtable tbody tr {
   bottom: 5px;
 }
 dztemperaturewidget .item #lastupdate,
-dzweatherwidget .item #lastupdate,
-#utilitycontent .item #lastupdate {
+dzweatherwidget .item #lastupdate {
   right: 40px;
 }
 .item #lastupdate::before {
