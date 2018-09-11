@@ -271,8 +271,7 @@ body table#itemtable tbody tr {
   bottom: 5px;
 }
 dztemperaturewidget .item #lastupdate,
-dzweatherwidget .item #lastupdate,
-#utilitycontent .item #lastupdate {
+dzweatherwidget .item #lastupdate {
   right: 40px;
 }
 .item #lastupdate::before {
@@ -548,6 +547,8 @@ dzweatherwidget #status > span:empty::before {
   width: 60%;
   text-align: right;
   margin-top: 0;
+  bottom: 40px;
+  overflow-x:  auto;
 }
 #utilitycontent #status::before {
   content: "Status: ";
@@ -1002,7 +1003,9 @@ tr.odd, tr.even{
   border: none;
   border-bottom: 1px solid var(--main-blue-color);
 }
-
+.ui-corner-all:hover{
+ background: none;
+}
 /* =Setup */
 /* Footer */
 /* =Footer */
