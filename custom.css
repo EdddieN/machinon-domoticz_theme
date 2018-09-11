@@ -547,6 +547,8 @@ dzweatherwidget #status > span:empty::before {
   width: 60%;
   text-align: right;
   margin-top: 0;
+  bottom: 40px;
+  overflow-x:  auto;
 }
 #utilitycontent #status::before {
   content: "Status: ";
