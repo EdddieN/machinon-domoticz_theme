@@ -64,6 +64,9 @@ h2,
 	font-family: main-font-bold;
 }
 /* aboutpage */
+#aboutcontent {
+	font-family: main-font;
+}
 #aboutcontent #canvas2 {
 	display:none;
 }
