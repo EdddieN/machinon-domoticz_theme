@@ -3,6 +3,14 @@
 // main switchers and submenus logic function
 function applySwitchersAndSubmenus() {
 	
+	//translate switchstates
+	switchState = {
+	on: $.t('On'),
+	off: $.t('Off'),
+	open: $.t('Open'),
+	closed: $.t('Closed')
+	};
+	
 	//switcher for lights and windows
 	$('#main-view .item').each(function () {
 		let bigText = $(this).find('#bigtext');
