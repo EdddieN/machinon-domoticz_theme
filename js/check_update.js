@@ -10,6 +10,7 @@ $.ajax({url: 'https://raw.githubusercontent.com/EdddieN/machinon-domoticz_theme/
 	
 	if (theme.version !== gitVersion) {
 		newVersionText = '<i>Machinon Version '+ data.version + ' is available! <a href="https://github.com/EdddieN/machinon-domoticz_theme/tree/' + branch + '" target="_blank">Click here to download</a></i>';
+		console.log(themeName + ' - New version is availible at github');
 	}
 }
 });
