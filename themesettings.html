@@ -20,6 +20,8 @@
 		<br/>
 		<input id="themevar14" name="standby_after" value="0" type="number" min="1"><label for="themevar14" data-i18n="Standby After Minutes"> Standby After Minutes</label>
 		<br/>
+		<input id="themevar15" name="themevar15" value="check_update" type="checkbox"><label for="themevar15" data-i18n="Check For Update"> Check For Update</label>
+		<br/>
                
         <h2><span data-i18n="Dashboard options">Dashboard options</span>:</h2>
         <p>
@@ -49,7 +51,6 @@
 			<p>            
 			Switch instead of Big text the upper right.
 			</p>			
-			<p></p>
 			<p>Designed in 2018 by EdddieN.</p>
         </div>
         <p>
@@ -61,4 +62,9 @@
 </div>
 <script>
 $("#themesettings").i18n();
+	
+$('#aboutTheme #title').append(' V.' + theme.version + '');
+if (theme.version !== gitVersion){
+	$('#aboutTheme').prepend('<p>' + newVersionText + '</p>');
+}
 </script>
