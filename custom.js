@@ -5,6 +5,8 @@ var themeName = "";
 var baseURL= "";
 var switchState = {};
 var isMobile;
+var newVersionText = '';
+var gitVersion;
 
 /* Prepare for future translating status
 change to your language to make the switch instead of text to work correct e.g " on: 'Auf' ", " off: 'Aus' " etc */
