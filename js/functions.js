@@ -88,10 +88,10 @@ function applySwitchersAndSubmenus() {
 				let title = (status == switchState.off) ? switchState.on : switchState.off;
 				let checked = (status == switchState.on) ? 'checked' : '';
 				if (switcher.length == 0) {
-					let string = '<label class="switch" title="Turn ' + title + '"><input type="checkbox"' + checked + '><span class="slider round"></span></label>';
+					let string = '<label class="switch" title="' + title + '"><input type="checkbox"' + checked + '><span class="slider round"></span></label>';
 					bigText.after(string);
 				}
-				switcher.attr('title', 'Turn ' + title);
+				switcher.attr('title', title);
 				switcher.find('input').attr('checked', checked.length > 0);
 				bigText.css('display', 'none');
 			} else if (status == switchState.open || status == switchState.closed) {
