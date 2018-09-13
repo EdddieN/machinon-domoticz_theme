@@ -1,7 +1,83 @@
 /* Dark theme */
 
-body { 
-    -webkit-filter: invert(100%);
-    filter: invert(100%);
-	background-color: #080808;
+:root {
+	/*use with var(--main-blue-color)*/
+	--main-bg-color: #333639;
+	--main-blue-color: #0b96cd;
+	--main-item-bg-color: #515558;
+	--main-text-color: #fff;
+}
+#dashcontent h2,
+body,
+h1,
+h2,
+h2 span { 
+	color: var(--main-text-color);
+}
+.item #status,
+.sub-tabs > li > a,
+.sub-tabs > .active > a,
+.nav-tabs > .active > a:hover {
+  color:var(--main-text-color);
+}
+.sub-tabs > li > a:hover{
+	background-color: #333630;
+	color:var(--main-blue-color);
+}
+
+.navbar-inverse .navbar-inner {
+  background-color: #000;
+}
+.navbar .nav li a,
+.navbar .nav li a:hover {
+  background-color: #000;
+  color: var(--main-text-color);
+}
+.dropdown-content, .rectangle-8, .rectangle-8-dropdown {
+	background-color: #515558;
+}
+.slider {
+  background-color: #ccc;
+}
+.slider:before {
+  background-color: #5A5A5A;
+}
+.slider.round {
+  background-color: #393B3E;
+}
+.ui-corner-all,
+.display .ui-widget-content,
+.ui-widget-content{
+	background: var(--main-bg-color);
+	color: var(--main-text-color)
+}
+.ui-dialog .ui-dialog-buttonpane{
+	background: var(--main-bg-color);
+}
+.options {
+  background: #515558;
+}
+.btnstylerev,
+.btnstyle,
+.btnsmall,
+.bannav a.btnstylerev,
+.bannav a.btnstyle,
+.btnsmall:hover {
+  color: var(--main-text-color);
+}
+.bannav a.btnstylerev::before,
+.bannav a.btnstyle::after {
+	  border-top: 0.1vmin solid #fff;
+  border-right: 0.1vmin solid #fff;
+}
+.mDropdown-Text,
+.machinoSettings h2,
+.machinoText{
+	color: var(--main-text-color)
+}
+.machinoHeader{
+	color: #000;
+}
+.mDropdown-Text:hover {
+	color: rgba(255,255,255,0.5);
 }
