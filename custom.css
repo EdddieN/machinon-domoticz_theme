@@ -281,9 +281,6 @@ dztemperaturewidget .item #lastupdate,
 dzweatherwidget .item #lastupdate {
   right: 40px;
 }
-.item #lastupdate::before {
-  content: "Last Seen: ";
-}
 
 @media (min-width: 1200px) {
   .item #lastupdate {
