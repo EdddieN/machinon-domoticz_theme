@@ -1,4 +1,5 @@
 /* Dark theme */
+
 :root {
 	/*use with var(--main-blue-color)*/
 	--main-bg-color: #333639;
@@ -6,12 +7,14 @@
 	--main-item-bg-color: #515558;
 	--main-text-color: #fff;
 }
+#dashcontent h2,
 body,
 h1,
 h2,
 h2 span { 
 	color: var(--main-text-color);
 }
+.item #status,
 .sub-tabs > li > a,
 .sub-tabs > .active > a,
 .nav-tabs > .active > a:hover {
@@ -21,6 +24,7 @@ h2 span {
 	background-color: #333630;
 	color:var(--main-blue-color);
 }
+
 .navbar-inverse .navbar-inner {
   background-color: #000;
 }
@@ -53,8 +57,16 @@ h2 span {
 .options {
   background: #515558;
 }
+.btnstylerev,
+.btnstyle,
 .btnsmall,
-.btnsmall:hover,
-.options .btnsmall,{
+.bannav a.btnstylerev,
+.bannav a.btnstyle,
+.btnsmall:hover {
   color: var(--main-text-color);
+}
+.bannav a.btnstylerev::before,
+.bannav a.btnstyle::after {
+	  border-top: 0.1vmin solid #fff;
+  border-right: 0.1vmin solid #fff;
 }
