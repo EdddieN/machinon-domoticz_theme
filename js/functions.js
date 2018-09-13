@@ -79,6 +79,7 @@ function applySwitchersAndSubmenus() {
 			$(this).find('.timers_log .btnsmall-sel[data-i18n="Timers"]').append("<img id='timerOnImg' src='images/options/timer_on.png' height='18' width='18'/>");
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall[href*="/TemperatureLog"]'));
 			$(this).find('.timers_log .btnsmall[href*="/TemperatureLog"]:not(.btnsmall[data-i18n="Log"])').append("<img id='logImg' src='../images/options/log.png'/>");
+			$(this).find('.lastupdate').prepend($.t('Last Seen') + ': ');
 		}
 		
 		if (theme.features.switch_instead_of_bigtext.enabled === true) {
