@@ -93,7 +93,7 @@ h2,
 /* standby screen */
 .standby {
 	background-image:none !important;
-	background-color:#313131;
+	background-color:#313131 !important;
 }
 .standby .row {
 	opacity: 0.4;
