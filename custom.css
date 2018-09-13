@@ -343,11 +343,11 @@ body table#itemtable tr > .options {
 .options .btnsmall {
   padding-top:4px;
   text-align: left;
+  color: #818183;
 }
 .timers_log{
 	display: inline;
 	padding: 0px 5px;
-
 }
 .timers_log .btnsmall,
 .timers_log .btnsmall-sel,
