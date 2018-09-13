@@ -21,6 +21,9 @@
 	/*use with var(--main-blue-color)*/
 	--main-bg-color: #f1f1f1; 
 	--main-blue-color: #0b96cd;
+	--main-item-bg-color: #fff;
+	--main-text-color: #000;
+	--secondary-text-color: gray;
 }
 @font-face {
     font-family: main-font;
@@ -219,7 +222,7 @@ div.row{
 
 .item table {
   position: relative;
-  background: #fff;
+  background: var(--main-item-bg-color);
   padding: 20px;
   border-radius: 6px;
   box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
@@ -244,6 +247,7 @@ body table#itemtable tbody tr {
 /* name */
 .item #name {
   background-color: transparent !important;
+  color: var(--main-text-color);
 }
 
 @media (min-width: 1200px) {
@@ -268,7 +272,7 @@ body table#itemtable tbody tr {
 
 /* last update */
 .item #lastupdate {
-  color: gray;
+  color: var(--secondary-text-color);
   position: absolute;
   right: 60px;
   bottom: 5px;
@@ -288,7 +292,7 @@ dzweatherwidget .item #lastupdate {
 }
 /* type */
 .item #type {
-  color: gray;
+  color: var(--secondary-text-color);
   margin-top: 5px;
 }
 
@@ -305,7 +309,7 @@ dzweatherwidget .item #lastupdate {
 }
 .options__bars::before {
   display: block;
-  color: gray;
+  color: var(--secondary-text-color);
   content: "…";
   font-size: 20px;
   cursor: pointer;
@@ -352,7 +356,6 @@ body table#itemtable tr > .options {
 	color: transparent;
 }
 .timers_log .btnsmall[data-i18n="Log"] {
-/*     content: url(../images/options/log.png); */
 	font-size: 8px;
 	position: absolute;
 	right: 10px;
@@ -360,7 +363,6 @@ body table#itemtable tr > .options {
 }
 
 .timers_log .btnsmall[data-i18n="Timers"] {
-/*     content: url(../images/options/timer_off.png); */
 	font-size: 11px;
 	position: absolute;
 	right: 30px;
@@ -369,14 +371,12 @@ body table#itemtable tr > .options {
 }
 .timers_log .btnsmall-sel[data-i18n="Timers"] {
 	background: transparent;
-/*     content: url(../images/options/timer_on.png); */
 	font-size: 11px;
 	position: absolute;
 	right: 30px;
 	bottom: 6px;
 }
 .timers_log .btnsmall[href*="/TemperatureLog"] {
-/*     content: url(../images/options/log.png); */
 	font-size: 8px;
 	position: absolute;
 	right: 10px;
@@ -631,7 +631,7 @@ dzweatherwidget #status > span:empty::before {
 }
 body {
   background-image: none;
-  background-color: #f1f1f1 !important;
+  background-color: var(--main-bg-color) !important;
   color: #1a1a1a;
 }
 
