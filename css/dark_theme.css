@@ -1,7 +1,60 @@
 /* Dark theme */
-
-body { 
-    -webkit-filter: invert(100%);
-    filter: invert(100%);
-	background-color: #080808;
+:root {
+	/*use with var(--main-blue-color)*/
+	--main-bg-color: #333639;
+	--main-blue-color: #0b96cd;
+	--main-item-bg-color: #515558;
+	--main-text-color: #fff;
+}
+body,
+h1,
+h2,
+h2 span { 
+	color: var(--main-text-color);
+}
+.sub-tabs > li > a,
+.sub-tabs > .active > a,
+.nav-tabs > .active > a:hover {
+  color:var(--main-text-color);
+}
+.sub-tabs > li > a:hover{
+	background-color: #333630;
+	color:var(--main-blue-color);
+}
+.navbar-inverse .navbar-inner {
+  background-color: #000;
+}
+.navbar .nav li a,
+.navbar .nav li a:hover {
+  background-color: #000;
+  color: var(--main-text-color);
+}
+.rectangle-8, .rectangle-8-dropdown {
+	background-color: #515558;
+}
+.slider {
+  background-color: #ccc;
+}
+.slider:before {
+  background-color: #5A5A5A;
+}
+.slider.round {
+  background-color: #393B3E;
+}
+.ui-corner-all,
+.display .ui-widget-content,
+.ui-widget-content{
+	background: var(--main-bg-color);
+	color: var(--main-text-color)
+}
+.ui-dialog .ui-dialog-buttonpane{
+	background: var(--main-bg-color);
+}
+.options {
+  background: #515558;
+  color: var(--main-text-color);
+}
+.btnsmall,
+.btnsmall:hover {
+  color: var(--main-text-color);
 }
