@@ -75,7 +75,9 @@ h2 span {
 .machinoText{
 	color: var(--main-text-color)
 }
-
+.machinoHeader{
+	color: #000;
+}
 .mDropdown-Text:hover {
 	color: rgba(255,255,255,0.5);
 }
