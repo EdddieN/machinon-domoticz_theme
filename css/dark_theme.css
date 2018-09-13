@@ -33,7 +33,7 @@ h2 span {
   background-color: #000;
   color: var(--main-text-color);
 }
-.rectangle-8, .rectangle-8-dropdown {
+.dropdown-content, .rectangle-8, .rectangle-8-dropdown {
 	background-color: #515558;
 }
 .slider {
@@ -69,4 +69,13 @@ h2 span {
 .bannav a.btnstyle::after {
 	  border-top: 0.1vmin solid #fff;
   border-right: 0.1vmin solid #fff;
+}
+.mDropdown-Text,
+.machinoSettings h2,
+.machinoText{
+	color: var(--main-text-color)
+}
+
+.mDropdown-Text:hover {
+	color: rgba(255,255,255,0.5);
 }
