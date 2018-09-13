@@ -52,9 +52,9 @@ h2 span {
 }
 .options {
   background: #515558;
-  color: var(--main-text-color);
 }
 .btnsmall,
-.btnsmall:hover {
+.btnsmall:hover,
+.options .btnsmall,{
   color: var(--main-text-color);
 }
