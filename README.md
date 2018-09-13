@@ -19,7 +19,7 @@ ToDo
 Ideas (wish list)
 - [ ]   In Progress
 - [ ] 1.- Custom merge multiple metrics into one tile (ie: energy + trigger switch)
-- [ ] 2.- Dark theme -> Work in progress
+- [X] 2.- Dark theme -> Work in progress
 
 
 ## Installing
