@@ -17,7 +17,12 @@ function showThemeSettings() {
 		
 		// Modifying settings menu
 		$('<li id="themeTabButton"><a data-target="#tabtheme" data-toggle="tab" data-i18n="Theme">Theme</a></li>').appendTo('#tabs')
-		
+		// If were on a mobile phone, make the theme tab link work.   
+	    	$('#tabs li:not(.pull-right)').click(function() {
+			if ($(window).width() < 480) {
+			    $(this).siblings().show(); //safety, if user scaled/rotated the screen.
+			}
+	    	});
 		// Translate
 		$("#tabs").i18n();
 

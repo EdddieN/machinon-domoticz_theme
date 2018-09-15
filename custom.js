@@ -15,6 +15,7 @@ $.ajax({url: 'acttheme/js/themesettings.js', async: false, dataType: 'script'});
 $.ajax({url: 'acttheme/js/functions.js', async: false, dataType: 'script'});
 
 //need more simplycity
+if (!isMobile){ 
 var targetedNode = document;
 MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
 var observer = new MutationObserver(function(mutations, observer) {
@@ -41,7 +42,7 @@ var observer = new MutationObserver(function(mutations, observer) {
 });
 
 window.onhashchange = locationHashChanged;
-
+}
 document.addEventListener('DOMContentLoaded', function () {
 
 });
