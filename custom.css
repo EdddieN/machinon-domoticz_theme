@@ -854,7 +854,7 @@ body table#itemtable {
 }
 
 /* Panels */
-.btn-primary{
+.btn-mini, .btn-primary{
   background: none;
   border-color: var(--main-blue-color);
   color: var(--main-blue-color);
