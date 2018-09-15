@@ -131,3 +131,13 @@ ul.machinon_ul li {
 .rectangle-8-dropdown:hover .dropdown-content {
     display: block;
 }
+@media all and (max-width: 600px){
+	.mHeaderBtn {
+		margin-left:5%;
+		margin-top: 10px;
+		color: transperant;
+	}
+	.machinoHeader {
+		display: none;
+	}
+}
