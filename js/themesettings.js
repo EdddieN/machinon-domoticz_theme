@@ -8,7 +8,7 @@ function showThemeSettings() {
     }
     
     // Merge email tab into notification
-	$('#emailsetup').prepend('<br/>');
+    $('#emailsetup').prepend('<br/>');
     $('#emailsetup').appendTo('#notifications');
     $("#tabs li a[data-target='#tabemail']").parent().remove();
 	
@@ -53,6 +53,21 @@ function loadSettingsHTML(){
                 }			
 			}
 		}
+		if( $(this).not(':checked') && $(this).is('.parentrequired')){
+			$(this).siblings().each(function() {
+				if( $(this).is('.parentrequiredchild') ){
+				$(this).prop('disabled', true);
+				}
+			});			
+		}
+		if( $(this).is(':checked') && $(this).is('.parentrequired')) {
+				$(this).siblings().each(function() {
+					if( $(this).is('.parentrequiredchild') ){
+					$(this).prop('disabled', false);
+				}
+			});	
+			
+		}
 	});
 	
 	$('#tabtheme input[type="number"]').each(function(){    
@@ -68,9 +83,36 @@ function loadSettingsHTML(){
 				bootbox.alert('<h3>Information!</h3><br/><p>This also disables the custom menu. Navbar looks better with disabled custom menu.</p>');
 			}
 			loadThemeFeatureFiles(this.value);
-		} else { 
+		} else {
+			// if a parent checkbox is unchecked, let's also take care of the child checkbox. Otherwise features can still be turned on, but this might not be visible or obvious to the user.
+			if( $(this).is('.parentrequired') ){
+				$(this).siblings().each(function() {
+					if( $(this).is('.parentrequiredchild') ){
+						$(this).attr('checked', false);
+						var childName = $(this).val();
+						if (isNaN(childName)){
+							unloadThemeFeatureFiles( childName );
+							theme.features[childName].enabled = false;
+						}
+					}
+				});
+			}			
 			theme.features[this.value].enabled = false;
 			unloadThemeFeatureFiles(this.value);
+		}
+		if( $(this).not(':checked') && $(this).is('.parentrequired')){
+			$(this).siblings().each(function() {
+				if( $(this).is('.parentrequiredchild') ){
+				$(this).prop('disabled', true);
+				}
+			});			
+		}
+		if( $(this).is(':checked') && $(this).is('.parentrequired')) {
+				$(this).siblings().each(function() {
+					if( $(this).is('.parentrequiredchild') ){
+					$(this).prop('disabled', false);
+				}
+			});			
 		}
 		// Saves the new settings.
 		localStorage.setObject("themeSettings", theme);
