@@ -50,6 +50,11 @@
             "id":21,
             "enabled":false,
             "files": ["dashboard_show_last_update.css"]
+        },
+	"switch_instead_of_bigtext_scenes": {
+            "id":22,
+            "enabled":true,
+			"files": []
         }
     }
 }
