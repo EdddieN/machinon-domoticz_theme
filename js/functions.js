@@ -80,37 +80,47 @@ function applySwitchersAndSubmenus() {
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall[href*="/TemperatureLog"]'));
 			$(this).find('.timers_log .btnsmall[href*="/TemperatureLog"]:not(.btnsmall[data-i18n="Log"])').append("<img id='logImg' src='../images/options/log.png'/>");
 		}
-		
-		if (theme.features.switch_instead_of_bigtext.enabled === true) {
-			if (onImage.hasClass('lcursor')) {
-			let switcher = $(this).find('.switch');
-			if (status == switchState.off || status == switchState.on) {
-				let title = (status == switchState.off) ? switchState.on : switchState.off;
-				let checked = (status == switchState.on) ? 'checked' : '';
-				if (switcher.length == 0) {
-					let string = '<label class="switch" title="' + title + '"><input type="checkbox"' + checked + '><span class="slider round"></span></label>';
-					bigText.after(string);
+		// options to not have switch instaed of bigText on scene devices
+		let switchOnScenes = false;
+		let switchOnScenesDash = false;
+		if (theme.features.switch_instead_of_bigtext_scenes.enabled === false){
+			switchOnScenes = $(this).find('#itemtabledoubleicon').length > 0
+			switchOnScenesDash = $(this).find('#itemtablesmalldoubleicon').length > 0
+		}
+		if (theme.features.switch_instead_of_bigtext.enabled === true ) {
+			if (!switchOnScenes){
+				if(!switchOnScenesDash){
+					if (onImage.hasClass('lcursor')) {
+					let switcher = $(this).find('.switch');
+					if (status == switchState.off || status == switchState.on) {
+						let title = (status == switchState.off) ? switchState.on : switchState.off;
+						let checked = (status == switchState.on) ? 'checked' : '';
+						if (switcher.length == 0) {
+							let string = '<label class="switch" title="' + title + '"><input type="checkbox"' + checked + '><span class="slider round"></span></label>';
+							bigText.after(string);
+						}
+						switcher.attr('title', title);
+						switcher.find('input').attr('checked', checked.length > 0);
+						bigText.css('display', 'none');
+					} else if (status == switchState.open || status == switchState.closed) {
+						let title = (status == switchState.closed) ? switchState.open : switchState.closed;
+						let checked = (status == switchState.open) ? 'checked' : '';
+						if (switcher.length == 0) {
+							let string = '<label class="switch" title="' + title + '"><input type="checkbox"' + checked + '><span class="slider round"></span></label>';
+							bigText.after(string);
+						}
+						switcher.attr('title', title);
+						switcher.find('input').attr('checked', checked.length > 0);
+						bigText.css('display', 'none');
+					} else {
+						bigText.css('display', 'block');
+						switcher.remove();
+					}
+					bigText.attr('data-status', status);
+					} else {
+					bigText.css('display', 'block');
+					}
 				}
-				switcher.attr('title', title);
-				switcher.find('input').attr('checked', checked.length > 0);
-				bigText.css('display', 'none');
-			} else if (status == switchState.open || status == switchState.closed) {
-				let title = (status == switchState.closed) ? switchState.open : switchState.closed;
-				let checked = (status == switchState.open) ? 'checked' : '';
-				if (switcher.length == 0) {
-					let string = '<label class="switch" title="' + title + '"><input type="checkbox"' + checked + '><span class="slider round"></span></label>';
-					bigText.after(string);
-				}
-				switcher.attr('title', title);
-				switcher.find('input').attr('checked', checked.length > 0);
-				bigText.css('display', 'none');
-			} else {
-				bigText.css('display', 'block');
-				switcher.remove();
-			}
-			bigText.attr('data-status', status);
-			} else {
-			bigText.css('display', 'block');
 			}
 		}
 	});
