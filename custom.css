@@ -1329,6 +1329,35 @@ div.item.statusLowBattery table#itemtablenostatus:hover{
     margin: 0 20px;
   }
 }
+
+/* Theme tab in Settings */
+input.parentrequiredchild{
+    margin-left:16px;
+}
+input.parentunrequiredchild{
+    margin-left:16px;
+}
+/* if a sub-setting needs the parent settings to be checked. */
+#settingscontent input.parentrequired:not(:checked) ~ input.parentrequiredchild,
+#settingscontent input.parentrequired:not(:checked) ~ input.parentrequiredchild + label{
+	color: #D3D3D3;
+}
+#settingscontent input.parentrequired:checked ~ input.parentrequiredchild,
+#settingscontent input.parentrequired:checked ~ input.parentrequiredchild + label{
+    display:inline-block;
+}
+#settingscontent input.parentrequired:not(:checked) ~ .parentrequiredchild{display:inline-block;}
+
+/* if a sub-setting needs the parent settings to be UNchecked. */
+#settingscontent input.parentunrequired:checked ~ input.parentunrequiredchild,
+#settingscontent input.parentunrequired:checked ~ input.parentunrequiredchild + label{
+    display:inline-block;
+}
+#settingscontent input.parentunrequired:not(:checked) ~ input.parentunrequiredchild,
+#settingscontent input.parentunrequired:not(:checked) ~ input.parentunrequiredchild + label{
+    display:inline-block;
+}
+
 /* MOBILE */
 
 table.mobileitem{
