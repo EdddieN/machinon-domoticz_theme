@@ -81,3 +81,6 @@ h2 span {
 .mDropdown-Text:hover {
 	color: rgba(255,255,255,0.5);
 }
+#settingscontent input.parentrequired:not(:checked) ~ input.parentrequiredchild + label{
+	color: #696969;
+}

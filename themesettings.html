@@ -16,18 +16,20 @@
 		<br/>
         <input id="themevar12" name="themevar12" value="custom_settings_menu" type="checkbox"><label for="themevar12" data-i18n="Custom Settings Menu"> Machinon Settings Menu</label>
 		<br/>
-		<input id="themevar13" name="themevar13" value="standby" type="checkbox"><label for="themevar13" data-i18n="Enable Standby"> Standby Enabled</label>
+	<input id="themevar13" class="parentrequired" name="themevar13" value="standby" type="checkbox"><label for="themevar13" data-i18n="Enable Standby"> Standby Enabled</label>
 		<br/>
-		<input id="themevar14" name="standby_after" value="0" type="number" min="1"><label for="themevar14" data-i18n="Standby After Minutes"> Standby After Minutes</label>
+	<input id="themevar14" class="parentrequiredchild" name="standby_after" value="0" type="number" min="1"><label for="themevar14" data-i18n="Standby After Minutes"> Standby After Minutes</label>
 		<br/>
-		<input id="themevar15" name="themevar15" value="check_update" type="checkbox"><label for="themevar15" data-i18n="Check For Update"> Check For Update</label>
+	<input id="themevar15" name="themevar15" value="check_update" type="checkbox"><label for="themevar15" data-i18n="Check For Update"> Check For Update</label>
 		<br/>
                
         <h2><span data-i18n="Dashboard options">Dashboard options</span>:</h2>
         <p>
-        <input id="themevar20" name="themevar20" value="switch_instead_of_bigtext" type="checkbox"><label for="themevar21" data-i18n="Switch Instead of Text">Switch Instead of Text</label>
+        <input id="themevar20" class="parentrequired" name="themevar20" value="switch_instead_of_bigtext" type="checkbox"><label for="themevar21" data-i18n="Switch Instead of Text"> Switch Instead of Text</label>
         <br/>
-        <input id="themevar21" name="themevar21" value="dashboard_show_last_update" type="checkbox"><label for="themevar21" data-i18n="Show last seen">Show Last Seen On Dashboard</label>
+	<input id="themevar22" class="parentrequiredchild" name="themevar22" value="switch_instead_of_bigtext_scenes" type="checkbox"><label for="themevar22" data-i18n="Scene Devices">Scene Devices</label>
+        <br/>
+        <input id="themevar21" name="themevar21" value="dashboard_show_last_update" type="checkbox"><label for="themevar21" data-i18n="Show last seen"> Show Last Seen On Dashboard</label>
 	</p>
         
     </div>     
