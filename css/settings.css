@@ -140,4 +140,7 @@ ul.machinon_ul li {
 	.machinoHeader {
 		display: none;
 	}
+	    ul.machinon_ul {
+	    margin: 0 0 10px 5px;
+	}
 }
