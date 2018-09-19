@@ -84,7 +84,7 @@ function applySwitchersAndSubmenus() {
 		let switchOnScenes = false;
 		let switchOnScenesDash = false;
 		if (theme.features.switch_instead_of_bigtext_scenes.enabled === false){
-			switchOnScenes = $(this).find('#itemtabledoubleicon').length > 0
+			switchOnScenes = $(this).parents('#scenecontent').length > 0
 			switchOnScenesDash = $(this).find('#itemtablesmalldoubleicon').length > 0
 		}
 		if (theme.features.switch_instead_of_bigtext.enabled === true ) {
