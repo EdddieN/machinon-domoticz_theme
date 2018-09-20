@@ -1451,7 +1451,6 @@ body.dashMobile table.mobileitem td.name img{
   border: none;
   box-shadow: none;
   height: 5px;
-  right: 40px;
 }
 #dashcontent .mobileitem .dimslider .ui-slider-range{
   background: rgba(11, 151, 205, 0.5);
