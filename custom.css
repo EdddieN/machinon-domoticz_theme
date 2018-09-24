@@ -1048,17 +1048,6 @@ tr.odd, tr.even{
 /* Footer */
 /* =Footer */
 /* Popups */
-#login {
-  background-image: none !important;
-  background-color: #fff;
-}
-
-#login #submit {
-  background-image: none;
-  background-color: var(--main-blue-color);
-  color: #fff;
-  border: none;
-}
 
 .ui-widget-content {
   background: transparent;
@@ -1476,4 +1465,66 @@ body.dashMobile table.mobileitem td.name img{
   position: relative;
   right: 0px;
   bottom: 0px;
+}
+#login:before {
+    content: url(../images/logo.png) !important;
+    background: linear-gradient(to right, #0bcdc7 0%, var(--main-blue-color) 100%);
+    text-align: center;
+    vertical-align: middle;
+    background-size: 100% 60px;
+    background-repeat: no-repeat;
+    border: none !important;
+    top: 0% !important;
+    bottom: 0% !important;
+    left: 0% !important;
+    right: 0% !important;
+    padding-top: 15px;
+}
+
+#login {
+    width: 450px;
+    height: auto !important;
+    margin: auto;
+    position: relative;
+    padding: 90px 30px 30px 30px !important;
+}
+#login h1 {
+    display:none
+}
+#login a {
+    display:none
+}
+#login #inputs input[type=text], #login #inputs input[type=password]  {
+    border: none;    
+    -moz-border-radius: none !important;
+    -webkit-border-radius: none !important;
+    border-radius: none !important;
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border-radius: 0;
+    background: #fff ;
+    border-bottom: 1px solid #ccc;
+}
+#login #inputs input[type=text]:focus, #login #inputs input[type=password]:focus  {
+    border-bottom: 1px solid var(--main-blue-color);
+}
+#login fieldset {
+  font-family: main-font;
+    margin: auto !important;
+    width: 25%;
+}
+#login {
+  background-image: none !important;
+  background-color: #fff;
+}
+
+#login #submit {
+    background-image: none;
+    background-color: var(--main-blue-color);
+    color: #fff;
+    border: none;
+    text-shadow: none;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
