@@ -630,8 +630,7 @@ dzweatherwidget #status > span:empty::before {
   }
 }
 body {
-  background-image: none;
-  background-color: var(--main-bg-color) !important;
+  background: var(--main-bg-color) !important;
   color: #1a1a1a;
 }
 
@@ -1071,6 +1070,10 @@ input#AcceptNewHardware:checked ~ button {
 
 #offline h3 {
   color: #fff;
+}
+
+#offline:before,#offline h3:after, #offline h3:before {
+	  content: none !important;
 }
 
 /* =Popus */
