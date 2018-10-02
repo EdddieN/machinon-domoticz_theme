@@ -1029,6 +1029,9 @@ tr.odd, tr.even{
 }
 
 /* Setup */
+input#AcceptNewHardware:checked ~ button {
+    display:none
+}
 .allow5min,
 .allow5min:hover {
   background: none;
