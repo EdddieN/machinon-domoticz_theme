@@ -1612,3 +1612,17 @@ body.dashMobile table.mobileitem td.name img{
 .btn-group .btn:hover{
   border-color: var(--main-blue-color) !important;
 }
+.btn-group::-webkit-scrollbar {
+margin-bottom:10px;
+height: 6px;
+border-radius:5px;
+background-color:#eee;
+
+}
+.btn-group::-webkit-scrollbar-thumb {
+background: var(--main-blue-color); 
+border-radius: 5px;
+}
+.btn-group{
+padding-bottom:1px;
+}
