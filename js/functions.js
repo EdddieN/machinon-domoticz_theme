@@ -173,7 +173,7 @@ function unloadThemeFeatureFiles(featureName)
 }
 
 function checkSettingsHTML(){
-	$.ajax({type: "GET", url: "../templates/Settings.html", data: { },success: function(){
+	$.ajax({type: "GET", url: "templates/Settings.html", data: { },success: function(){
 		console.log(theme.name + " - Found 'Settings.html' in '../www/templates' directory");
 		},error: function(){
 		console.log("Can't find Settings.html in templates directory. Please copy Setting.html to ../www/templates folder");
