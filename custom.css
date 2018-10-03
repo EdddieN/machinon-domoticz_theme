@@ -475,7 +475,30 @@ body table#itemtable tr > .options {
 color:var(--main-blue-color)
 }
 
-
+/* Time Ago */
+#dashcontent #timeago{
+display:none;
+}
+dztemperaturewidget .item #timeago,
+dzweatherwidget .item #timeago {
+  right: 40px;
+}
+.item #timeago {
+  color: var(--secondary-text-color);
+  font-family: main-font;
+  position: absolute;
+  right: 60px;
+  bottom: 5px;
+}
+@media (min-width: 1200px) {
+  .item #timeago{
+    bottom: 15px;
+  }
+}
+#dashcontent .item #timeago {
+  right:20px;
+  bottom: 15px;
+}
 
 /* dashboard items */
 /*Modifie dans le dashboard, l'espace entre bigtext et le bord droit*/
@@ -854,7 +877,13 @@ body table#itemtable {
 }
 
 /* Panels */
-.btn-mini, .btn-primary{
+.btn-mini {
+  background: none;
+  border-color: var(--main-blue-color);
+  color: var(--main-blue-color);
+  border-radius: 1px;
+}
+.btn-primary{
   background: none;
   border-color: var(--main-blue-color);
   color: var(--main-blue-color);
@@ -1140,12 +1169,21 @@ div.item.statusTimeout td#img{
 div.item.statusProtected table#itemtablesmall,
 div.item.statusProtected table#itemtabledoubleicon,
 div.item.statusProtected table#itemtablenostatus{
-	box-shadow: 0px 0px 10px 2px rgb(0,128,0, 0.4);
+	box-shadow: 0px 0px 10px 2px rgb(0, 0, 139, 0.4);
 }
 div.item.statusProtected table#itemtablesmall:hover,
 div.item.statusProtected table#itemtabledoubleicon:hover,
 div.item.statusProtected table#itemtablenostatus:hover{
-	box-shadow: 0px 0px 0px 2px rgb(0,128,0);
+	box-shadow: 0px 0px 0px 2px rgb(0, 0, 139);
+}
+div.item.statusProtected #name:before{
+	content:'';
+	display: inline-block;
+	width: 20px;
+	height: 16px;
+	background-image: url('../images/deviceProtected.png');
+	background-repeat: no-repeat;
+	background-position: center;
 }
 /* Device has low battery */
 div.item.statusLowBattery table#itemtable,
@@ -1159,6 +1197,21 @@ div.item.statusLowBattery table#itemtablesmall:hover,
 div.item.statusLowBattery table#itemtablenotype:hover,
 div.item.statusLowBattery table#itemtablenostatus:hover{
 	box-shadow: 0px 0px 0px 2px rgb(255,255,0);
+}
+div.item.statusLowBattery #name:before{
+	content:'';
+	display: inline-block;
+	width: 25px;
+	height: 20px;
+	background-image: url('../images/lowbattery.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	animation: blinker 2s linear infinite;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
 }
 
 /* Watermarks */
@@ -1442,7 +1495,6 @@ body.dashMobile table.mobileitem td.name img{
   border: none;
   box-shadow: none;
   height: 5px;
-  right: 40px;
 }
 #dashcontent .mobileitem .dimslider .ui-slider-range{
   background: rgba(11, 151, 205, 0.5);
