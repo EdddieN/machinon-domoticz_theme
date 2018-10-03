@@ -1536,3 +1536,27 @@ body.dashMobile table.mobileitem td.name img{
     border-radius: 2px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
+
+.btn-group .btn {
+  margin: 0 0 0 -1px !important;
+  background: #fff !important;
+  text-shadow: none !important;
+  color: #ccccccff;
+  box-shadow: none;
+  border-width: 0.1em !important;
+  border-color: #ccc !important;
+  border-style: solid !important;
+}
+.btn-group > .btn:first-child {
+  margin-left: 0;
+}
+
+.btn-group .btn-info{
+  background: var(--main-blue-color) !important;
+  border-color: var(--main-blue-color) !important;
+  color: #fff;
+}
+
+.btn-group .btn:hover{
+  border-color: var(--main-blue-color) !important;
+}
