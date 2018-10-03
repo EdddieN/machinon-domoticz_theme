@@ -1482,3 +1482,7 @@ body.dashMobile table.mobileitem td.name img{
   right: 0px;
   bottom: 0px;
 }
+
+.container-fluid {
+    padding: 0 5em !important;
+}
