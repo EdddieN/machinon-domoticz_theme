@@ -630,7 +630,7 @@ dzweatherwidget #status > span:empty::before {
   }
 }
 body {
-  background: var(--main-bg-color) !important;
+  background:#f1f1f1 !important;
   color: #1a1a1a;
 }
 
@@ -1060,7 +1060,7 @@ input#AcceptNewHardware:checked ~ button {
 }
 
 #offline {
-  background: #0bcdc7;
+  background:linear-gradient(to right, #0bcdc7 0%, #0b97cd 100%) !important;
   background: -moz-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%) !important;
   background: -webkit-gradient(left top, right top, color-stop(0%, #0bcdc7), color-stop(100%, var(--main-blue-color))) !important;
   background: -webkit-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%) !important;
@@ -1071,11 +1071,11 @@ input#AcceptNewHardware:checked ~ button {
 }
 
 #offline h3 {
-  color: #fff;
+  color: #fff !important;
 }
 
-#offline:before,#offline h3:after, #offline h3:before {
-	  content: none !important;
+#offline h3:after, #offline h3:before,#offline:after, #offline:before  {
+    display:none;
 }
 
 /* =Popus */
