@@ -212,11 +212,11 @@ div.row{
 }
 
 .span4 {
-    margin: 0 2em 2em 0!important;
+    margin: 0 2em 3em 0!important;
     padding:0 !important;
     flex-grow:1;
     width: auto!important;
-    min-width: 300px;
+    min-width: 370px;
 }
 
 
