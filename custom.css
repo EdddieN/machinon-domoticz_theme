@@ -208,15 +208,15 @@ div.row{
     display: flex;  
     flex-wrap:wrap;
     justify-content:space-between;
+    margin: 0 !important;
 }
 
 .span4 {
-    margin-right:auto!important;
-    margin-bottom:20px !important;
+    margin: 0 2em 2em 0!important;
     padding:0 !important;
     flex-grow:1;
-    min-width:250px;
-    flex-basis:auto;
+    width: auto!important;
+    min-width: 300px;
 }
 
 
@@ -616,7 +616,7 @@ dzweatherwidget #status > span:empty::before {
   height: 15px;
   background: var(--main-blue-color);
   border-radius: 50%;
-  top: -6px;
+  top: -5px;
 }
 
 @media (min-width: 1200px) {
@@ -711,6 +711,7 @@ button.menu-toggle {
 .navbar .nav li a,
 .navbar .nav li a:hover {
   background: none;
+  text-shadow: none;
   background-color: #fff;
   color: #1a1a1a;
   border: none;
@@ -748,6 +749,7 @@ button.menu-toggle {
 .navbar .nav .current_page_item > a,
 .navbar .nav .current_page_item > a:hover,
 .navbar-inverse .nav > li > a:focus {
+  text-shadow: none;
   color: #fff;
   background-image: none;
   background-color: var(--main-blue-color);
@@ -798,8 +800,7 @@ button.menu-toggle {
 .bannav a.btnstyle {
   position: relative;
   overflow: visible;
-  margin-left: 16px;
-  color: #1a1a1a;
+  padding: 0em 1em;
 }
 
 .bannav a.btnstylerev::before,
@@ -815,12 +816,12 @@ button.menu-toggle {
 }
 
 .bannav a.btnstylerev::before {
-  left: 15px;
+  left: 0;
   transform: translate3d(0, -50%, 0) rotate(-135deg);
 }
 
 .bannav a.btnstyle::after {
-  right: 15px;
+  right: 0;
   transform: translate3d(0, -50%, 0) rotate(45deg);
 }
 
@@ -880,6 +881,7 @@ body table#itemtable {
   border-radius: 1px;
 }
 .btn-info{
+  text-shadow: none;
   background: none;
   border-color: var(--main-blue-color);
   color: var(--main-blue-color);
