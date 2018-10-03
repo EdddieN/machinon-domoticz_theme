@@ -41,6 +41,11 @@
             "enabled":false,
 			"files": ["check_update.js"]
         },
+	"time_ago": {
+            "id":16,
+            "enabled":false,
+			"files": []
+        },
 	"switch_instead_of_bigtext": {
             "id":20,
             "enabled":true,
