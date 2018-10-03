@@ -7,12 +7,18 @@ var switchState = {};
 var isMobile;
 var newVersionText = '';
 var gitVersion;
+var lang;
 
 // load files
 isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
+$.ajax({url: '/json.htm?type=settings' , cache: false, async: false, dataType: 'json', success: function(data) {
+		lang = data.Language;
+	}
+});
 $.ajax({url: 'acttheme/js/themesettings.js', async: false, dataType: 'script'});
 $.ajax({url: 'acttheme/js/functions.js', async: false, dataType: 'script'});
+$.ajax({url: 'acttheme/js/time_ago.js', async: false, dataType: 'script'});
+$.ajax({url: 'acttheme/lang/machino.' + lang + '.js', async: false, dataType: 'script'});
 
 //need more simplycity
 if (!isMobile){ 
@@ -84,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 		if (theme.features.dashboard_show_last_update.enabled === true) {
 			$('<style>#dashcontent #lastupdate{display: block;}</style>').appendTo('head');
+			$('<style>#dashcontent #timeago{display: block;}</style>').appendTo('head');
 		}
 				
 		// Replace settings dropdown button to normal button.
