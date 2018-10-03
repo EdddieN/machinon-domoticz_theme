@@ -60,6 +60,15 @@ function applySwitchersAndSubmenus() {
 				});
 			}
 		}
+		if (theme.features.time_ago.enabled === true ) {
+			let lastupdated = $(this).find('#timeago');
+			let xyz = $(this).find('#lastupdate');
+			if (lastupdated.length == 0) {
+				$(this).find('table tbody tr').append('<td id="timeago" class="timeago"></td>');
+				$(this).find('#lastupdate').hide();
+				}
+			$(this).find("#timeago").timeago("update", xyz.text());
+		}
 		// insert submenu buttons to each item table (not on dashboard)
 		let subnav = $(this).find('.options');
 		let subnavButton = $(this).find('.options__bars');
