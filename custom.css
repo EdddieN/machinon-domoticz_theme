@@ -1600,7 +1600,7 @@ body.dashMobile table.mobileitem td.name img{
   border-style: solid !important;
 }
 .btn-group > .btn:first-child {
-  margin-left: 0;
+  margin-left: 0 !important;
 }
 
 .btn-group .btn-info{
