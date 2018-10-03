@@ -215,7 +215,7 @@ div.row{
     margin-bottom:20px !important;
     padding:0 !important;
     flex-grow:1;
-    min-width:250px;
+    min-width:340px;
     flex-basis:auto;
 }
 
@@ -1484,5 +1484,5 @@ body.dashMobile table.mobileitem td.name img{
 }
 
 .container-fluid {
-    padding: 0 5em !important;
+    padding: 0 3em !important;
 }
