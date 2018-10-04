@@ -798,7 +798,7 @@ button.menu-toggle {
 
 /* =Header */
 .bannercontent {
-  padding-top: 90px;
+  padding: 90px 5em 0 5em !important;
 }
 
 .sub-tabs .sub-tabs-apply,
