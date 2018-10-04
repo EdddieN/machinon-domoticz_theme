@@ -70,32 +70,12 @@ document.addEventListener('DOMContentLoaded', function () {
 		enableThemeFeatures();
 		
 			
-		// Replace settings dropdown button to normal button.
-		/** This also disables the custom menu. Need find a workaround **/
-		if (theme.features.custom_settings_menu.enabled === true) {
-			$('#appnavbar li').remove('.dropdown');
-			let mainMenu = $('#appnavbar');
-			let mSettings = mainMenu.find('#mSettings');
-			if (mainMenu.length && mSettings.length == 0 ) {
-				mainMenu.append('<li id="mCamera" ><a href="#Custom/Kameror"><img src="images/setup.png"><span data-i18n="Cameras">Cameras</span></a></li><li class="divider-vertical" style="" has-permission="Admin"></li>');
-				mainMenu.append('<li id="mSettings" style="display: none;" has-permission="Admin"><a href="#Custom/Settings"><img src="images/setup.png"><span data-i18n="Settings">Settings</span></a></li>');			
-			}
-		} else {
-			$('#cSetup').click(function() {
-				showThemeSettings();
-				loadSettings();
-				enableThemeFeatures();
-			});
-		}
 		// Navbar menu and logo header
 		let navBar =  $('.navbar').append('<button class="menu-toggle"></button>');
 		let navBarInner = $(".navbar-inner");
 		let navBarToggle = $('.menu-toggle');
 		navBarToggle.click(function(){
 			navBarInner.slideToggle(400);
-		});
-		$('.navbar-inner a').click(function(){
-			$(".navbar-inner").slideToggle(400);
 		});
 
 		let containerLogo = `
@@ -110,11 +90,28 @@ document.addEventListener('DOMContentLoaded', function () {
 					
 		// Features
 		if (theme.features.footer_text_disabled.enabled === true) {
-			$('#copyright').remove();
+			$('#copyright p').remove();
 		}
 		if (theme.features.dashboard_show_last_update.enabled === true) {
 			$('<style>#dashcontent #lastupdate{display: block;}</style>').appendTo('head');
 			$('<style>#dashcontent #timeago{display: block;}</style>').appendTo('head');
+		}
+				
+		// Replace settings dropdown button to normal button.
+		/** This also disables the custom menu. Need find a workaround **/
+		if (theme.features.custom_settings_menu.enabled === true) {
+			$('#appnavbar li').remove('.dropdown');
+			let mainMenu = $('#appnavbar');
+			let mSettings = mainMenu.find('#mSettings');
+			if (mainMenu.length && mSettings.length == 0) {
+				mainMenu.append('<li id="mSettings" style="display: none;" has-permission="Admin"><a href="#Custom/Settings"><img src="images/setup.png"><span data-i18n="Settings">Settings</span></a></li>');
+			}
+		} else {
+			$('#cSetup').click(function() {
+				showThemeSettings();
+				loadSettings();
+				enableThemeFeatures();
+			});
 		}
 
 /* 		// insert config-forms menu item into main navigation
