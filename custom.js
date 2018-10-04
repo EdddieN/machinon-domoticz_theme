@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
 					
 		// Features
 		if (theme.features.footer_text_disabled.enabled === true) {
-			$('#copyright p').remove();
+			$('#copyright').remove();
 		}
 		if (theme.features.dashboard_show_last_update.enabled === true) {
 			$('<style>#dashcontent #lastupdate{display: block;}</style>').appendTo('head');
