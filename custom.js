@@ -93,11 +93,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		navBarToggle.click(function(){
 			navBarInner.slideToggle(400);
 		});
-		if (isMobile && window.innerWidth <= 992){
-			$('.navbar-inner a').click(function(){
-				$(".navbar-inner").slideToggle(400);
-			});
-		}
 
 		let containerLogo = `
 			<header class="logo">
