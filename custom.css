@@ -1216,7 +1216,20 @@ div.item.statusLowBattery #name:before{
 
 /* Watermarks */
 /* Media Queries */
-@media screen and (max-width: 1199px) {
+@media screen and (max-width: 992px) {
+  /*fix flex bug. need to be improve*/
+  .bannercontent {
+    padding:0 !important;
+    margin:1em;
+}
+  div.row{
+    align-content: center;
+    
+  }
+.span4 {
+  min-width: 20em;
+  margin-right:0 !important;
+  }
   .container-logo {
     width: 940px;
   }
