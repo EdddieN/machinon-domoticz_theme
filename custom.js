@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		navBarToggle.click(function(){
 			navBarInner.slideToggle(400);
 		});
-		if (isMobile || window.innerWidth <= 992){
+		if (isMobile){
 			$('.navbar-inner a').click(function(){
 				$(".navbar-inner").slideToggle(400);
 			});
