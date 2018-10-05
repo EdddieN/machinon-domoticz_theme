@@ -86,8 +86,8 @@ function applySwitchersAndSubmenus() {
 			$(this).find('.timers_log .btnsmall[data-i18n="Timers"]').append("<img id='timerOffImg' src='images/options/timer_off.png' height='18' width='18'/>");
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall-sel[data-i18n="Timers"]'));
 			$(this).find('.timers_log .btnsmall-sel[data-i18n="Timers"]').append("<img id='timerOnImg' src='images/options/timer_on.png' height='18' width='18'/>");
-			$(this).find('.timers_log').append($(this).find('.options .btnsmall[href*="/TemperatureLog"]'));
-			$(this).find('.timers_log .btnsmall[href*="/TemperatureLog"]:not(.btnsmall[data-i18n="Log"])').append("<img id='logImg' src='images/options/log.png'/>");
+			$(this).find('.timers_log').append($(this).find('.options .btnsmall[href*="Log"]'));
+			$(this).find('.timers_log .btnsmall[href*="Log"]:not(.btnsmall[data-i18n="Log"])').append("<img id='logImg' src='images/options/log.png'/>");
 		}
 		// options to not have switch instaed of bigText on scene devices
 		let switchOnScenes = false;
