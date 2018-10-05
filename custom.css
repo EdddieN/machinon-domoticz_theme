@@ -376,7 +376,7 @@ body table#itemtable tr > .options {
 	right: 30px;
 	bottom: 6px;
 }
-.timers_log .btnsmall[href*="/TemperatureLog"] {
+.timers_log .btnsmall[href*="Log"] {
 	font-size: 8px;
 	position: absolute;
 	right: 10px;
@@ -391,7 +391,7 @@ body table#itemtable tr > .options {
   .timers_log .btnsmall-sel[data-i18n="Timers"]{
 	bottom: 16px;  
   }
-  .timers_log .btnsmall[href*="/TemperatureLog"],
+  .timers_log .btnsmall[href*="Log"],
   .timers_log .btnsmall[data-i18n="Log"]{
 	bottom:18px;
   }
