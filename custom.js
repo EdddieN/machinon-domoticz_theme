@@ -56,11 +56,12 @@ document.addEventListener('DOMContentLoaded', function () {
 (function() {
 
 	$( document ).ready(function() {
+		if (!isMobile){ 
 		observer.observe(targetedNode, {
 			childList: true,
 			subtree: true
 		});
-		
+		}
 		requirejs.config({ waitSeconds: 30 });
 		// function adds the theme tab
 		showThemeSettings();
@@ -93,6 +94,11 @@ document.addEventListener('DOMContentLoaded', function () {
 		navBarToggle.click(function(){
 			navBarInner.slideToggle(400);
 		});
+		if ((isMobile && window.innerWidth <= 992) || (!isMobile && window.innerWidth <= 992)){
+			$('.navbar-inner a').click(function(){
+				$(".navbar-inner").slideToggle(400);
+			});
+		}
 
 		let containerLogo = `
 			<header class="logo">
