@@ -653,7 +653,7 @@ dzweatherwidget #status > span:empty::before {
   }
 }
 body {
-  background:#f1f1f1 !important;
+  background: var(--main-bg-color) !important;
   color: #1a1a1a;
 }
 
