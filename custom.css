@@ -1220,7 +1220,7 @@ div.item.statusLowBattery #name:before{
   /*fix flex bug. need to be improve*/
   .bannercontent {
     padding:0 !important;
-    margin:0;
+    margin:1em;
 }
   div.row{
     align-content: center;
