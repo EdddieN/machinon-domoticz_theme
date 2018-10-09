@@ -12,6 +12,7 @@
     "backgroundimage": "",
     "previewimage": "screenshot.png",
     "standby_after": 10,
+    "logo": "",
     "variants": [
         {"default": "custom.css"}
     ],
