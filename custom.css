@@ -1640,3 +1640,27 @@ border-radius: 5px;
 .btn-group{
 padding-bottom:1px;
 }
+
+@media (min-width: 1200px) {
+/*System page*/
+#settings .row-fluid {
+  background: white;
+  height: auto;
+  border-radius: 6px;
+  
+  display:flex;
+  justify-content: center;
+}
+
+#settings .row-fluid > .span6, #settings .row-fluid > .span12 {
+  min-height: 210px;
+  height:auto;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  margin:20px;
+  padding:20px;
+  flex-basis: 500px;;
+  width: auto;
+  flex-grow:1;
+}
+}
