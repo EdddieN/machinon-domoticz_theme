@@ -1641,7 +1641,6 @@ border-radius: 5px;
 padding-bottom:1px;
 }
 
-@media (min-width: 1200px) {
 /*System page*/
 #settings .row-fluid {
   background: white;
@@ -1663,4 +1662,10 @@ padding-bottom:1px;
   width: auto;
   flex-grow:1;
 }
+
+@media (max-width: 992px) {
+	#settings .row-fluid {
+		flex-wrap: wrap;
+		font-size: 0.9em;
+	}
 }
