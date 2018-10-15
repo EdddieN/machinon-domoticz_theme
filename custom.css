@@ -220,7 +220,7 @@ div.row{
   position: relative;
   width: 20em;
   height: 10em;
-  margin:10px 10px;
+  margin:20px 20px;
   flex-grow: 1;
   
   background: var(--main-item-bg-color);
