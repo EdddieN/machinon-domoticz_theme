@@ -100,13 +100,14 @@ document.addEventListener('DOMContentLoaded', function () {
 			});
 		}
 
-		let containerLogo = `
-			<header class="logo">
-				<div class="container-logo">
-					<img class="header__icon" src="images/logo.png">
-				</div>
-			</header>')
-		`;
+		let containerLogo = '<header class="logo"><div class="container-logo">';
+		if (theme.logo.length == 0) {
+			containerLogo += '<img class="header__icon" src="images/logo.png">';
+		}else {
+			containerLogo += '<img class="header__icon" src="images/' + theme.logo + '"';
+		}
+		containerLogo += '</div></header>';
+		
 		$(containerLogo).insertBefore('.navbar-inner');
 		$('<input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Type to Search" title="Type to Search">').appendTo('.container-logo');
 					

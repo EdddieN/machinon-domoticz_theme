@@ -129,6 +129,12 @@ input[type="number"]{
 	border-width: 0 0 1px;
 	border-color: var(--main-blue-color);
 }
+input[type="text"]{
+	background-color: transparent;
+	outline: 0;
+	border-width: 0 0 1px;
+	border-color: var(--main-blue-color);
+}
 @media screen and (max-width: 992px){
 	.standbyClock {
 		font-size: 60px;

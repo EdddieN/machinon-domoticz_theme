@@ -74,6 +74,10 @@ function loadSettingsHTML(){
         	var value = theme[this.name];
         	$(this).val(value);
 	});
+	$('#tabtheme input[type="text"]').each(function(){    
+        	var value = theme[this.name];
+        	$(this).val(value);
+	});
 	
 	// The theme immediately saves the changes.
 	$("#tabtheme input:checkbox").click(function() {
@@ -120,6 +124,10 @@ function loadSettingsHTML(){
 	});
 	$('#saveSettingsButton').click(function() {
 		$('#tabtheme input[type="number"]').each(function(){    
+			var value = $(this).val();
+			theme[this.name] = value; 
+		});
+		$('#tabtheme input[type="text"]').each(function(){    
 			var value = $(this).val();
 			theme[this.name] = value; 
 		});
