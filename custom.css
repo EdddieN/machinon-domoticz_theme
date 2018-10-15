@@ -236,7 +236,7 @@ div.row{
 }
 
 
-.item table:hover {
+.span4:hover {
 	box-shadow: 0px 0px 0px 2px rgb(11, 150, 205);
 }
 .item tr {
