@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		}else {
 			containerLogo += '<img class="header__icon" src="images/' + theme.logo + '"';
 		}
-		containerLogo += '</div></header>');
+		containerLogo += '</div></header>';
 		
 		$(containerLogo).insertBefore('.navbar-inner');
 		$('<input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Type to Search" title="Type to Search">').appendTo('.container-logo');
