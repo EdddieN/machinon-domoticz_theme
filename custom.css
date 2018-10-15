@@ -1546,7 +1546,6 @@ body.dashMobile table.mobileitem td.name img{
   bottom: 0px;
 }
 #login:before {
-    content: url(../images/logo.png) !important;
     background: linear-gradient(to right, #0bcdc7 0%, var(--main-blue-color) 100%);
     text-align: center;
     vertical-align: middle;
