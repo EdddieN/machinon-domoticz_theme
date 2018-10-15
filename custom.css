@@ -211,31 +211,31 @@ div.row{
     display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
     display: -ms-flexbox;      /* TWEENER - IE 10 */
     display: -webkit-flex;     /* NEW - Chrome */
-    display: flex;  
-    flex-wrap:wrap;
-    justify-content:space-between;
+    display: flex;
+  flex-wrap: wrap;
     margin: 0 !important;
 }
 
 .span4 {
-    margin: 0 2em 3em 0!important;
-    padding:0 !important;
-    flex-grow:1;
-    width: auto!important;
-    min-width: 370px;
-    flex-basis: 370px;
-}
-
-
-.item table {
   position: relative;
+  width: 20em;
+  height: 10em;
+  margin:10px 10px;
+  flex-grow: 1;
+  
   background: var(--main-item-bg-color);
   padding: 20px;
   border-radius: 6px;
   box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
-  display: block;
-  height: 200px;
+
 }
+
+.item #type .selectorlevels, .item #type .btn-group{
+  display: flex;
+  width: 65%;
+}
+
+
 .item table:hover {
 	box-shadow: 0px 0px 0px 2px rgb(11, 150, 205);
 }
@@ -630,7 +630,7 @@ dzweatherwidget #status > span:empty::before {
   height: 5px;
   bottom: 50px;
   right: 20px;
-  width: 55% !important;
+  width: 70% !important;
 }
 #type .dimslider .ui-slider-range,
 .input .dimslider .ui-slider-range,
@@ -651,12 +651,12 @@ dzweatherwidget #status > span:empty::before {
 
 @media (min-width: 1200px) {
   #type .dimslider, .input .dimslider {
-    width: 260px !important;
+    width: 55% !important;
   }
 
   #itemtabledoubleicon .dimslider,
 #itemtablesmalldoubleicon .dimslider {
-    width: 230px !important;
+    width: 55% !important;
   }
 }
 body {
