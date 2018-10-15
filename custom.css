@@ -630,7 +630,7 @@ dzweatherwidget #status > span:empty::before {
   height: 5px;
   bottom: 50px;
   right: 20px;
-  width: 55% !important;
+  width: 70% !important;
 }
 #type .dimslider .ui-slider-range,
 .input .dimslider .ui-slider-range,
