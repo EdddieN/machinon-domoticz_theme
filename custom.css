@@ -1582,11 +1582,13 @@ body.dashMobile table.mobileitem td.name img{
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
     border-radius: 0;
-    background: #fff ;
+    background: var(--main-bg-color);
     border-bottom: 1px solid #ccc;
+    color: var(--main-text-color);
 }
 #login #inputs input[type=text]:focus, #login #inputs input[type=password]:focus  {
     border-bottom: 1px solid var(--main-blue-color);
+    color: var(--main-text-color);
 }
 #login fieldset {
   font-family: main-font;
@@ -1595,7 +1597,7 @@ body.dashMobile table.mobileitem td.name img{
 }
 #login {
   background-image: none !important;
-  background-color: #fff;
+  background-color: var(--main-item-bg-color) !important;
 }
 
 #login #submit {
