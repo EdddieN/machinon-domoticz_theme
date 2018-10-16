@@ -118,6 +118,15 @@ h2,
 .msg span{
 	color: var(--secondary-text-color);
 }
+@media (max-width: 767px) {
+  #notify {
+	  float: left;
+	  margin-left: 20px;
+  }
+  .msg{
+	  left: 20px;
+  }
+}
 /* standby screen */
 .standby {
 	background-image:none !important;
