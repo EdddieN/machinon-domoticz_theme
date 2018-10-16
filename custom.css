@@ -93,6 +93,40 @@ h2,
 	color: #fff;
 	opacity: 0.5;
 }
+#notify {
+  float: right;
+  padding: 12px 50px 8px 30px;
+  font-size: 12px;
+  color: #fff;
+}
+.msg{
+  background-color: var(--main-item-bg-color);
+  font-family: main-font-bold;
+  color: var(--main-text-color);
+  border-radius: 5px;
+  box-shadow: -2px 2px 20px 0px rgba(0, 0, 0, 0.2);
+  z-index: 99;
+  display: block;
+  position: absolute;
+  top: 30px;
+  height:flex;
+  padding: 8px;
+  right: 200px;
+  overflow: hidden;
+  width: flex;
+}
+.msg span{
+	color: var(--secondary-text-color);
+}
+@media (max-width: 767px) {
+  #notify {
+	  float: left;
+	  margin-left: 20px;
+  }
+  .msg{
+	  left: 20px;
+  }
+}
 /* standby screen */
 .standby {
 	background-image:none !important;
