@@ -212,11 +212,18 @@ div.row{
     display: -ms-flexbox;      /* TWEENER - IE 10 */
     display: -webkit-flex;     /* NEW - Chrome */
     display: flex;
-  flex-wrap: wrap;
+    flex-wrap: wrap;
     margin: 0 !important;
 }
 
 .span4 {
+  margin:0;
+  width: auto;
+  height: auto;
+  padding: 0;
+}
+
+div.item {
   position: relative;
   width: 20em;
   height: 10em;
@@ -230,14 +237,13 @@ div.row{
 
 }
 
+div.item:hover {
+	box-shadow: 0px 0px 0px 2px rgb(11, 150, 205);
+}
+
 .item #type .selectorlevels, .item #type .btn-group{
   display: flex;
   width: 65%;
-}
-
-
-.span4:hover {
-	box-shadow: 0px 0px 0px 2px rgb(11, 150, 205);
 }
 .item tr {
   display: flex;
@@ -1145,27 +1151,14 @@ input#AcceptNewHardware:checked ~ button {
   background: none;
 }
 /*  Device is timeout  */
-div.item.statusTimeout table#itemtable,
-div.item.statusTimeout table#itemtablesmall,
-div.item.statusTimeout table#itemtablenotype,
-div.item.statusTimeout table#itemtablenostatus{
+div.item.statusTimeout{
 	box-shadow: 0px 0px 10px 2px rgb(199,67,67,0.5);
 	/* background-color: transparent !important; */
 }
-div.item.statusTimeout table#itemtable:hover,
-div.item.statusTimeout table#itemtablesmall:hover,
-div.item.statusTimeout table#itemtablenotype:hover,
-div.item.statusTimeout table#itemtablenostatus:hover{
+div.item.statusTimeout:hover{
 	box-shadow: 0px 0px 0px 2px rgb(199,67,67);
 }
-div.item.statusTimeout td#name,
-div.item.statusTimeout td.name,
-div.item.statusTimeout td#status,
-div.item.statusTimeout td.status,
-div.item.statusTimeout td#bigtext,
-div.item.statusTimeout td.bigtext,
-div.item.statusTimeout td#lastupdate,
-div.item.statusTimeout td.lastupdate{
+div.item.statusTimeout{
 	/* color: #c74343 !important; */
 	opacity:0.5;
 }
@@ -1173,14 +1166,10 @@ div.item.statusTimeout td#img{
 	opacity:0.2;
 }
 /* Switch is protected */
-div.item.statusProtected table#itemtablesmall,
-div.item.statusProtected table#itemtabledoubleicon,
-div.item.statusProtected table#itemtablenostatus{
+div.item.statusProtected{
 	box-shadow: 0px 0px 10px 2px rgb(0, 0, 139, 0.4);
 }
-div.item.statusProtected table#itemtablesmall:hover,
-div.item.statusProtected table#itemtabledoubleicon:hover,
-div.item.statusProtected table#itemtablenostatus:hover{
+div.item.statusProtected:hover{
 	box-shadow: 0px 0px 0px 2px rgb(0, 0, 139);
 }
 div.item.statusProtected #name:before{
@@ -1193,16 +1182,10 @@ div.item.statusProtected #name:before{
 	background-position: center;
 }
 /* Device has low battery */
-div.item.statusLowBattery table#itemtable,
-div.item.statusLowBattery table#itemtablesmall,
-div.item.statusLowBattery table#itemtablenotype,
-div.item.statusLowBattery table#itemtablenostatus{
+div.item.statusLowBattery{
 	box-shadow: 0px 0px 10px 2px rgb(255,255,0,0.4);
 }
-div.item.statusLowBattery table#itemtable:hover,
-div.item.statusLowBattery table#itemtablesmall:hover,
-div.item.statusLowBattery table#itemtablenotype:hover,
-div.item.statusLowBattery table#itemtablenostatus:hover{
+div.item.statusLowBattery:hover{
 	box-shadow: 0px 0px 0px 2px rgb(255,255,0);
 }
 div.item.statusLowBattery #name:before{
@@ -1233,7 +1216,7 @@ div.item.statusLowBattery #name:before{
     align-content: center;
     
   }
-.span4 {
+div.item {
   min-width: 20em;
   margin-right:0 !important;
   }
