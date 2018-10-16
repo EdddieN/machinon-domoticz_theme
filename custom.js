@@ -111,6 +111,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		containerLogo += '</div></header>';
 		
 		$(containerLogo).insertBefore('.navbar-inner');
+		
+		$('<div id="notify"></div>').appendTo('.container-logo');
 		$('<input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Type to Search" title="Type to Search">').appendTo('.container-logo');
 					
 		// Features
