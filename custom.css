@@ -1648,7 +1648,7 @@ padding-bottom:1px;
 
 /*System page*/
 #settings .row-fluid {
-  background: white;
+  background: var(--main-item-bg-color);
   height: auto;
   border-radius: 6px;
   
