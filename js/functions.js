@@ -261,3 +261,17 @@ function showTime(){
     setTimeout(showTime, 1000);
     
 }
+// Notifications
+function notify(message, time){
+	var state = false;
+	$('<img id="notyIcon" src="images/notify.png"/>').appendTo('#notify');
+	$('#notify').click(function(){
+		if(!state){
+        $('#notify').append('<div id="msg" class="msg"><li>' + message + '<span> -- ' + jQuery.timeago(time) + '</span></li></div>');
+		} else {
+        $('#msg').remove();
+		}
+		state = !state;
+			
+	});
+}
