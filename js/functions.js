@@ -89,6 +89,17 @@ function applySwitchersAndSubmenus() {
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall[href*="Log"]'));
 			$(this).find('.timers_log .btnsmall[href*="Log"]:not(.btnsmall[data-i18n="Log"])').append("<img id='logImg' src='images/options/log.png'/>");
 		}
+		if ($('#dashcontent').length == 0) {
+				let item = $(this).closest('.item');
+				var itemID = item.attr('id');
+				if (typeof(itemID) === 'undefined'){
+					itemID = item[0].offsetParent.id;
+				}
+				let type = $(this).find('#idno');
+				if (type.length == 0){
+					$(this).find('.options').append('<a class="btnsmall" id="idno" href="#Devices">Idx: ' + itemID + '</a>');
+				}
+			}
 		// options to not have switch instaed of bigText on scene devices
 		let switchOnScenes = false;
 		let switchOnScenesDash = false;
