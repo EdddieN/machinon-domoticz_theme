@@ -71,9 +71,5 @@
 </div>
 <script>
 $("#themesettings").i18n();
-	
 $('#aboutTheme #title').append(' V.' + theme.version + '');
-if (theme.version !== gitVersion){
-	$('#aboutTheme').prepend('<p>' + newVersionText + '</p>');
-}
 </script>
