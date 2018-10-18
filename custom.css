@@ -121,7 +121,7 @@ h2,
 @media (max-width: 767px) {
   #notify {
 	  float: left;
-	  margin-left: 20px;
+	  margin-left: 30px;
   }
   .msg{
 	  left: 20px;
