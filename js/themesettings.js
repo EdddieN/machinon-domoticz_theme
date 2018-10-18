@@ -133,11 +133,13 @@ function loadSettingsHTML(){
 		});
 		localStorage.setObject("themeSettings", theme);
 		console.log(themeName + ' - theme settings saved');
+		notify('Theme settings saved');
 		location.reload();
 	});
 	
 	// Resetbutton theme tab
 	$('#themeResetButton').click(function() {
+		notify('Theme restored');
 		resetTheme();
 	});
 }
