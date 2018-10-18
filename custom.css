@@ -248,6 +248,7 @@ div.row{
     display: flex;
     flex-wrap: wrap;
     margin: 0 !important;
+    justify-content: center;
 }
 
 div.item {
