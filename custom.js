@@ -39,7 +39,7 @@ var observer = new MutationObserver(function(mutations, observer) {
 			//console.log{'1 row found'};
 			var delrowok = true
 		};
-		
+		$('#main-view div.row.divider .span4').toggleClass('span4 tile');
 		if (delrowok && changeclass){
 			console.log('deconnexion observer');
 			//observer.disconnect();
