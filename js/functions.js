@@ -10,7 +10,11 @@ function applySwitchersAndSubmenus() {
 	open: $.t('Open'),
 	closed: $.t('Closed')
 	};
-	
+	ShowUpdateNotification = new function() {
+		var msgtxt=$.t('A new version of Domoticz is Available!...');
+		msgtxt += ' <a onclick="CheckForUpdate(true);">' + $.t('Update Now') + '</a>';
+		notify(msgtxt);
+	}
 	//switcher for lights and windows
 	$('#main-view .item').each(function () {
 		let bigText = $(this).find('#bigtext');
