@@ -111,9 +111,33 @@ document.addEventListener('DOMContentLoaded', function () {
 		containerLogo += '</div></header>';
 		
 		$(containerLogo).insertBefore('.navbar-inner');
-		
+		// Searchbar		
 		$('<input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Type to Search" title="Type to Search">').appendTo('.container-logo');
+		
+		// Notifications
 		$('<div id="notify"></div>').appendTo('.container-logo');
+		$('<img id="notyIcon" src="images/notify.png"/>').appendTo('#notify').hide();
+		var existingNotes = localStorage.getItem('notify');
+		if (existingNotes) {
+			$('#notyIcon').show();
+		}
+		var state = false;
+		$('#notify').click(function(){
+			if(!state){
+				if ($('#msg').length == 0) {
+					var msg = localStorage.getItem('notify');
+					msg = JSON.parse(msg);
+					var myObj = msg;
+					$('#notify').append('<div id="msg" class="msg"><ul></ul><center><a class="btn btn-info" onclick="clearNotify();">' + $.t('Clear') + '</a></center></div>');
+					for (x in myObj) {
+						$('#msg ul').append('<li>' + x + '<span> -- ' + jQuery.timeago(myObj[x]) + '</span></li>');
+					}
+				}
+			} else {
+			$('#msg').remove();
+			}
+			state = !state;		
+		});
 		
 		// Features
 		if (theme.features.footer_text_disabled.enabled === true) {
