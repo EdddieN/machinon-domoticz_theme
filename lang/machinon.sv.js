@@ -17,3 +17,7 @@ jQuery.timeago.settings.strings = {
     year: "ungefär ett år",
     years: "%d år"
   };
+language = {
+  is_available: "är tillgänglig",
+  click_here: "Klicka här för att ladda ner" 
+};
