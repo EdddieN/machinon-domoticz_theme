@@ -262,16 +262,19 @@ function showTime(){
     
 }
 // Notifications
-function notify(message, time){
-	var state = false;
-	$('<img id="notyIcon" src="images/notify.png"/>').appendTo('#notify');
-	$('#notify').click(function(){
-		if(!state){
-        $('#notify').append('<div id="msg" class="msg"><li>' + message + '<span> -- ' + jQuery.timeago(time) + '</span></li></div>');
-		} else {
-        $('#msg').remove();
-		}
-		state = !state;
-			
-	});
+function notify(key) {
+	var existing = localStorage.getItem('notify');
+	existing = existing ? JSON.parse(existing) : {};
+	let d = new Date();
+	dd = d.getTime();
+	existing[key] = dd;
+	localStorage.setItem('notify', JSON.stringify(existing));
+	
+	$('#notyIcon').show();
+}
+function clearNotify(){
+    if (typeof(Storage) !== "undefined") {
+		localStorage.removeItem('notify');
+		$('#notyIcon').hide();
+    }
 }
