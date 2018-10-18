@@ -19,3 +19,7 @@ jQuery.timeago.settings.strings = {
     wordSeparator: " ",
     numbers: []
 };
+language = {
+  is_available: "is available",
+  click_here: "Click here to download" 
+};
