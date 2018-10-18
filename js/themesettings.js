@@ -23,6 +23,12 @@ function showThemeSettings() {
 			    $(this).siblings().show(); //safety, if user scaled/rotated the screen.
 			}
 	    	});
+		$('#acceptnewhardwaretable > tbody > tr:nth-child(1) > td > button').click(function() {
+			notify('Allow new hardware for 5 min');
+		});
+		$('#tabs > li.pull-right > a').click(function() {			
+			notify('Domoticz settings saved');
+		});
 		// Translate
 		$("#tabs").i18n();
 
