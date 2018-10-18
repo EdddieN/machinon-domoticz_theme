@@ -251,7 +251,7 @@ div.row{
     justify-content: center;
 }
 
-div.item {
+.tile {
   position: relative;
   width: 20em;
   height: 10em;
