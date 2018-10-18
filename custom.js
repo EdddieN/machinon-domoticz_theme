@@ -8,6 +8,7 @@ var isMobile;
 var newVersionText = '';
 var gitVersion;
 var lang;
+generate_noty = undefined
 
 // load files
 isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
