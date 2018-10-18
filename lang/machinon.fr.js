@@ -15,3 +15,7 @@ jQuery.timeago.settings.strings = {
 	year: "un an",
 	years: "%d ans"
 };
+language = {
+  is_available: "is available",
+  click_here: "Click here to download" 
+};
