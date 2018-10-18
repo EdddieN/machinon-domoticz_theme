@@ -174,7 +174,7 @@ function loadSettings() {
 // reset theme to defaults. Useful after an upgrade.
 function resetTheme(){
     if (typeof(Storage) !== "undefined") {
-		localStorage.clear();
+		localStorage.removeItem('themeSettings');
 		location.reload();    
     }
 }
