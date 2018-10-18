@@ -251,6 +251,10 @@ div.row{
     justify-content: center;
 }
 
+div#floorplancontent {
+    height: 100%;
+}
+
 .tile {
   position: relative;
   width: 20em;
