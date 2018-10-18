@@ -12,7 +12,6 @@ function update(){
 			
 		if (theme.version !== gitVersion) {
 			newVersionText = 'Machinon version '+ data.version +' '+ language.is_available +'! <a href="https://github.com/EdddieN/machinon-domoticz_theme/tree/' + branch + '" target="_blank">' + language.click_here + '</a>';
-			generate_noty('success', '<center>' + newVersionText + '</center>', false);
 			notify(newVersionText);
 		}
 	}
