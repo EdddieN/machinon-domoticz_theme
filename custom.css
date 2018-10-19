@@ -254,8 +254,12 @@ div.row{
 div#floorplancontent {
     height: 100%;
 }
-
-.tile {
+.tile:not(item){
+  
+  flex-grow: 1;
+  display:flex;
+}
+.item {
   position: relative;
   width: 20em;
   height: 10em;
@@ -269,7 +273,7 @@ div#floorplancontent {
 
 }
 
-.tile:hover {
+.item:hover {
 	box-shadow: 0px 0px 0px 2px rgb(11, 150, 205);
 }
 
@@ -1182,29 +1186,41 @@ input#AcceptNewHardware:checked ~ button {
   display: block;
   background: none;
 }
+
+
+
+
+
+
+
+
+
+
+
+
 /*  Device is timeout  */
-.tile.statusTimeout{
+.item.statusTimeout{
 	box-shadow: 0px 0px 10px 2px rgb(199,67,67,0.5);
 	/* background-color: transparent !important; */
 }
-.tile.statusTimeout:hover{
+.item.statusTimeout:hover{
 	box-shadow: 0px 0px 0px 2px rgb(199,67,67);
 }
-.tile.statusTimeout{
+.item.statusTimeout{
 	/* color: #c74343 !important; */
 	opacity:0.5;
 }
-.tile.statusTimeout td#img{
+.item.statusTimeout td#img{
 	opacity:0.2;
 }
 /* Switch is protected */
-.tile.statusProtected{
+.item.statusProtected{
 	box-shadow: 0px 0px 10px 2px rgb(0, 0, 139, 0.4);
 }
-.tile.statusProtected:hover{
+.item.statusProtected:hover{
 	box-shadow: 0px 0px 0px 2px rgb(0, 0, 139);
 }
-.tile.statusProtected #name:before{
+.item.statusProtected #name:before{
 	content:'';
 	display: inline-block;
 	width: 20px;
@@ -1214,13 +1230,13 @@ input#AcceptNewHardware:checked ~ button {
 	background-position: center;
 }
 /* Device has low battery */
-.tile.statusLowBattery{
+.item.statusLowBattery{
 	box-shadow: 0px 0px 10px 2px rgb(255,255,0,0.4);
 }
-.tile.statusLowBattery:hover{
+.item.statusLowBattery:hover{
 	box-shadow: 0px 0px 0px 2px rgb(255,255,0);
 }
-.tile.statusLowBattery #name:before{
+.item.statusLowBattery #name:before{
 	content:'';
 	display: inline-block;
 	width: 25px;
@@ -1230,11 +1246,39 @@ input#AcceptNewHardware:checked ~ button {
 	background-position: center;
 	animation: blinker 2s linear infinite;
 }
+
+
+
+
+
+
+
+
+
+
 @keyframes blinker {
   50% {
     opacity: 0;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Watermarks */
 /* Media Queries */
@@ -1248,7 +1292,7 @@ input#AcceptNewHardware:checked ~ button {
     align-content: center;
     
   }
-.tile {
+.item {
   min-width: 20em;
   margin-right:0 !important;
   }
