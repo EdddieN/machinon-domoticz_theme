@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		// load theme settings
 		loadSettings();
 		enableThemeFeatures();
-		
+		CheckDomoticzUpdate();
 			
 		// Replace settings dropdown button to normal button.
 		/** This also disables the custom menu. Need find a workaround **/
