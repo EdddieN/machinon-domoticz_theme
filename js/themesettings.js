@@ -23,6 +23,12 @@ function showThemeSettings() {
 			    $(this).siblings().show(); //safety, if user scaled/rotated the screen.
 			}
 	    	});
+		$('#acceptnewhardwaretable > tbody > tr:nth-child(1) > td > button').click(function() {
+			notify('Allow new hardware for 5 min');
+		});
+		$('#tabs > li.pull-right > a').click(function() {			
+			notify('Domoticz settings saved');
+		});
 		// Translate
 		$("#tabs").i18n();
 
@@ -71,6 +77,10 @@ function loadSettingsHTML(){
 	});
 	
 	$('#tabtheme input[type="number"]').each(function(){    
+        	var value = theme[this.name];
+        	$(this).val(value);
+	});
+	$('#tabtheme input[type="text"]').each(function(){    
         	var value = theme[this.name];
         	$(this).val(value);
 	});
@@ -123,13 +133,19 @@ function loadSettingsHTML(){
 			var value = $(this).val();
 			theme[this.name] = value; 
 		});
+		$('#tabtheme input[type="text"]').each(function(){    
+			var value = $(this).val();
+			theme[this.name] = value; 
+		});
 		localStorage.setObject("themeSettings", theme);
 		console.log(themeName + ' - theme settings saved');
+		notify('Theme settings saved');
 		location.reload();
 	});
 	
 	// Resetbutton theme tab
 	$('#themeResetButton').click(function() {
+		notify('Theme restored');
 		resetTheme();
 	});
 }
@@ -158,7 +174,7 @@ function loadSettings() {
 // reset theme to defaults. Useful after an upgrade.
 function resetTheme(){
     if (typeof(Storage) !== "undefined") {
-		localStorage.clear();
+		localStorage.removeItem('themeSettings');
 		location.reload();    
     }
 }

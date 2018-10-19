@@ -60,6 +60,15 @@ function applySwitchersAndSubmenus() {
 				});
 			}
 		}
+		if (theme.features.time_ago.enabled === true ) {
+			let lastupdated = $(this).find('#timeago');
+			let xyz = $(this).find('#lastupdate');
+			if (lastupdated.length == 0) {
+				$(this).find('table tbody tr').append('<td id="timeago" class="timeago"></td>');
+				$(this).find('#lastupdate').hide();
+				}
+			$(this).find("#timeago").timeago("update", xyz.text());
+		}
 		// insert submenu buttons to each item table (not on dashboard)
 		let subnav = $(this).find('.options');
 		let subnavButton = $(this).find('.options__bars');
@@ -77,8 +86,8 @@ function applySwitchersAndSubmenus() {
 			$(this).find('.timers_log .btnsmall[data-i18n="Timers"]').append("<img id='timerOffImg' src='images/options/timer_off.png' height='18' width='18'/>");
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall-sel[data-i18n="Timers"]'));
 			$(this).find('.timers_log .btnsmall-sel[data-i18n="Timers"]').append("<img id='timerOnImg' src='images/options/timer_on.png' height='18' width='18'/>");
-			$(this).find('.timers_log').append($(this).find('.options .btnsmall[href*="/TemperatureLog"]'));
-			$(this).find('.timers_log .btnsmall[href*="/TemperatureLog"]:not(.btnsmall[data-i18n="Log"])').append("<img id='logImg' src='images/options/log.png'/>");
+			$(this).find('.timers_log').append($(this).find('.options .btnsmall[href*="Log"]'));
+			$(this).find('.timers_log .btnsmall[href*="Log"]:not(.btnsmall[data-i18n="Log"])').append("<img id='logImg' src='images/options/log.png'/>");
 		}
 		if ($('#dashcontent').length == 0) {
 				let item = $(this).closest('.item');
@@ -184,7 +193,7 @@ function unloadThemeFeatureFiles(featureName)
 }
 
 function checkSettingsHTML(){
-	$.ajax({type: "GET", url: "../templates/Settings.html", data: { },success: function(){
+	$.ajax({type: "GET", url: "templates/Settings.html", data: { },success: function(){
 		console.log(theme.name + " - Found 'Settings.html' in '../www/templates' directory");
 		},error: function(){
 		console.log("Can't find Settings.html in templates directory. Please copy Setting.html to ../www/templates folder");
@@ -251,4 +260,36 @@ function showTime(){
     
     setTimeout(showTime, 1000);
     
+}
+// Notifications
+function notify(key) {
+	var existing = localStorage.getItem('notify');
+	existing = existing ? JSON.parse(existing) : {};
+	let d = new Date();
+	dd = d.getTime();
+	existing[key] = dd;
+	localStorage.setItem('notify', JSON.stringify(existing));
+	
+	$('#notyIcon').show();
+}
+function clearNotify(){
+    if (typeof(Storage) !== "undefined") {
+		localStorage.removeItem('notify');
+		$('#notyIcon').hide();
+    }
+}
+function CheckDomoticzUpdate(showdialog) {
+	$.ajax({
+		 url: "json.htm?type=command&param=checkforupdate&forced=" + showdialog,
+		 async: false,
+		 dataType: 'json',
+		 success: function(data) {
+			if (data.HaveUpdate == true) {
+				msgtxt = 'Domoticz version #' + data.Revision + ' '+ language.is_available +'!';
+				msgtxt+=' <a onclick="CheckForUpdate(true);">' + language.update_now + '</a>';
+				notify(msgtxt);
+			}
+		 }
+	});
+	return false;
 }

@@ -7,12 +7,19 @@ var switchState = {};
 var isMobile;
 var newVersionText = '';
 var gitVersion;
+var lang;
+generate_noty = undefined
 
 // load files
 isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
+$.ajax({url: '/json.htm?type=settings' , cache: false, async: false, dataType: 'json', success: function(data) {
+		lang = data.Language;
+	}
+});
 $.ajax({url: 'acttheme/js/themesettings.js', async: false, dataType: 'script'});
 $.ajax({url: 'acttheme/js/functions.js', async: false, dataType: 'script'});
+$.ajax({url: 'acttheme/js/time_ago.js', async: false, dataType: 'script'});
+$.ajax({url: 'acttheme/lang/machinon.' + lang + '.js', async: false, dataType: 'script'});
 
 //need more simplycity
 if (!isMobile){ 
@@ -32,7 +39,7 @@ var observer = new MutationObserver(function(mutations, observer) {
 			//console.log{'1 row found'};
 			var delrowok = true
 		};
-		
+		$('#main-view div.row.divider .span4').toggleClass('span4 tile');
 		if (delrowok && changeclass){
 			console.log('deconnexion observer');
 			//observer.disconnect();
@@ -50,7 +57,12 @@ document.addEventListener('DOMContentLoaded', function () {
 (function() {
 
 	$( document ).ready(function() {
-		
+		if (!isMobile){ 
+		observer.observe(targetedNode, {
+			childList: true,
+			subtree: true
+		});
+		}
 		requirejs.config({ waitSeconds: 30 });
 		// function adds the theme tab
 		showThemeSettings();
@@ -58,42 +70,16 @@ document.addEventListener('DOMContentLoaded', function () {
 		// load theme settings
 		loadSettings();
 		enableThemeFeatures();
-		
+		CheckDomoticzUpdate(true);
 			
-		// Navbar menu and logo header
-		let navBar =  $('.navbar').append('<button class="menu-toggle"></button>');
-		let navBarInner = $(".navbar-inner");
-		let navBarToggle = $('.menu-toggle');
-		navBarToggle.click(function(){
-			navBarInner.slideToggle(400);
-		});
-
-		let containerLogo = `
-			<header class="logo">
-				<div class="container-logo">
-					<img class="header__icon" src="images/logo.png">
-				</div>
-			</header>')
-		`;
-		$(containerLogo).insertBefore('.navbar-inner');
-		$('<input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Type to Search" title="Type to Search">').appendTo('.container-logo');
-					
-		// Features
-		if (theme.features.footer_text_disabled.enabled === true) {
-			$('#copyright p').remove();
-		}
-		if (theme.features.dashboard_show_last_update.enabled === true) {
-			$('<style>#dashcontent #lastupdate{display: block;}</style>').appendTo('head');
-		}
-				
 		// Replace settings dropdown button to normal button.
 		/** This also disables the custom menu. Need find a workaround **/
 		if (theme.features.custom_settings_menu.enabled === true) {
 			$('#appnavbar li').remove('.dropdown');
 			let mainMenu = $('#appnavbar');
 			let mSettings = mainMenu.find('#mSettings');
-			if (mainMenu.length && mSettings.length == 0) {
-				mainMenu.append('<li id="mSettings" style="display: none;" has-permission="Admin"><a href="#Custom/Settings"><img src="images/setup.png"><span data-i18n="Settings">Settings</span></a></li>');
+			if (mainMenu.length && mSettings.length == 0 ) {
+				mainMenu.append('<li id="mSettings" style="display: none;" has-permission="Admin"><a href="#Custom/Settings"><img src="images/setup.png"><span data-i18n="Settings">Settings</span></a></li>');			
 			}
 		} else {
 			$('#cSetup').click(function() {
@@ -101,6 +87,66 @@ document.addEventListener('DOMContentLoaded', function () {
 				loadSettings();
 				enableThemeFeatures();
 			});
+		}
+		// Navbar menu and logo header
+		let navBar =  $('.navbar').append('<button class="menu-toggle"></button>');
+		let navBarInner = $(".navbar-inner");
+		let navBarToggle = $('.menu-toggle');
+		navBarToggle.click(function(){
+			navBarInner.slideToggle(400);
+		});
+		if ((isMobile && window.innerWidth <= 992) || (!isMobile && window.innerWidth <= 992)){
+			$('.navbar-inner a').click(function(){
+				$(".navbar-inner").slideToggle(400);
+			});
+		}
+
+		let containerLogo = '<header class="logo"><div class="container-logo">';
+		if (theme.logo.length == 0) {
+			containerLogo += '<img class="header__icon" src="images/logo.png">';
+			$('<style>#login:before {content: url(../images/logo.png) !important;}</style>').appendTo('head');
+		}else {
+			containerLogo += '<img class="header__icon" src="images/' + theme.logo + '"';
+			$('<style>#login:before {content: url(../images/'+ theme.logo + ') !important;}</style>').appendTo('head');
+		}
+		containerLogo += '</div></header>';
+		
+		$(containerLogo).insertBefore('.navbar-inner');
+		// Searchbar		
+		$('<input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Type to Search" title="Type to Search">').appendTo('.container-logo');
+		
+		// Notifications
+		$('<div id="notify"></div>').appendTo('.container-logo');
+		$('<img id="notyIcon" src="images/notify.png"/>').appendTo('#notify').hide();
+		var existingNotes = localStorage.getItem('notify');
+		if (existingNotes) {
+			$('#notyIcon').show();
+		}
+		var state = false;
+		$('#notify').click(function(){
+			if(!state){
+				if ($('#msg').length == 0) {
+					var msg = localStorage.getItem('notify');
+					msg = JSON.parse(msg);
+					var myObj = msg;
+					$('#notify').append('<div id="msg" class="msg"><ul></ul><center><a class="btn btn-info" onclick="clearNotify();">' + $.t('Clear') + '</a></center></div>');
+					for (x in myObj) {
+						$('#msg ul').append('<li>' + x + '<span> -- ' + jQuery.timeago(myObj[x]) + '</span></li>');
+					}
+				}
+			} else {
+			$('#msg').remove();
+			}
+			state = !state;		
+		});
+		
+		// Features
+		if (theme.features.footer_text_disabled.enabled === true) {
+			$('#copyright').remove();
+		}
+		if (theme.features.dashboard_show_last_update.enabled === true) {
+			$('<style>#dashcontent #lastupdate{display: block;}</style>').appendTo('head');
+			$('<style>#dashcontent #timeago{display: block;}</style>').appendTo('head');
 		}
 
 /* 		// insert config-forms menu item into main navigation

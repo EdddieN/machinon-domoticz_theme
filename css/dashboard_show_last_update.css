@@ -1,5 +1,6 @@
 /* Shows last Seen on dashboard */
 
-#dashcontent .lastupdate{
+#dashcontent .lastupdate,
+#dashcontent #timeago{
 display: block;
 }
