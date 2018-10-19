@@ -278,7 +278,7 @@ function clearNotify(){
 		$('#notyIcon').hide();
     }
 }
-function CheckDomoticzUpdate() {
+function CheckDomoticzUpdate(showdialog) {
 	$.ajax({
 		 url: "json.htm?type=command&param=checkforupdate&forced=" + showdialog,
 		 async: false,
