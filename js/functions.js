@@ -10,11 +10,7 @@ function applySwitchersAndSubmenus() {
 	open: $.t('Open'),
 	closed: $.t('Closed')
 	};
-	ShowUpdateNotification = new function() {
-		var msgtxt=$.t('A new version of Domoticz is Available!...');
-		msgtxt += ' <a onclick="CheckForUpdate(true);">' + $.t('Update Now') + '</a>';
-		notify(msgtxt);
-	}
+	
 	//switcher for lights and windows
 	$('#main-view .item').each(function () {
 		let bigText = $(this).find('#bigtext');
@@ -281,4 +277,19 @@ function clearNotify(){
 		localStorage.removeItem('notify');
 		$('#notyIcon').hide();
     }
+}
+function CheckDomoticzUpdate(showdialog) {
+	$.ajax({
+		 url: "json.htm?type=command&param=checkforupdate&forced=" + showdialog,
+		 async: false,
+		 dataType: 'json',
+		 success: function(data) {
+			if (data.HaveUpdate == true) {
+				msgtxt = 'Domoticz version #' + data.Revision + ' '+ language.is_available +'!';
+				msgtxt+=' <a onclick="CheckForUpdate(true);">' + language.update_now + '</a>';
+				notify(msgtxt);
+			}
+		 }
+	});
+	return false;
 }
