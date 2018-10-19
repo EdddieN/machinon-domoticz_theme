@@ -19,5 +19,6 @@ jQuery.timeago.settings.strings = {
 };
 language = {
   is_available: "is available",
-  click_here: "Click here to download" 
+  click_here: "Click here to download",
+  update_now: "Update Now"
 };
