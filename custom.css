@@ -1734,4 +1734,6 @@ padding-bottom:1px;
 		flex-wrap: wrap;
 		font-size: 0.9em;
 	}
+ .container-fluid {
+    padding: 0 3em !important;
 }

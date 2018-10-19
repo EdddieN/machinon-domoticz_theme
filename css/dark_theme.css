@@ -15,7 +15,7 @@ body,
 h1,
 h2,
 h2 span { 
-	color: var(--main-text-color);
+	color: var(--main-text-color) !important;
 }
 .item #status,
 .sub-tabs > li > a,
