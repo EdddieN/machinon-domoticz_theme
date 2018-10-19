@@ -502,7 +502,7 @@ body table#itemtable tr > .options {
   position: absolute;
   right: 20px;
   bottom: 40px;
-  width: 250px;
+  width: 65%;
   overflow-x:  auto;
 }
 .ui-selectmenu-button.ui-button{
