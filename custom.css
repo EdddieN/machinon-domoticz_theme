@@ -26,11 +26,11 @@
 	--secondary-text-color: gray;
 }
 @font-face {
-    font-family: var(main-font);
+    font-family: main-font;
     src: url(font/OpenSans-Regular.ttf);
 }
 @font-face {
-    font-family: var(main-font-bold);
+    font-family: main-font-bold;
     src: url(font/OpenSans-SemiBold.ttf);
 }
 /* Add fonts */
@@ -44,7 +44,7 @@
 .item #bigtext,
 .item #type,
 .item #lastupdate {
-  font-family: var(main-font);
+  font-family: main-font;
 }
 h2,
 #tophtm,
@@ -57,18 +57,18 @@ h2,
 .mHeader,
 .item #status,
 .item #name {
-  font-family: var(main-font-bold);
+  font-family: main-font-bold;
 }
 #tabs,
 .span6,
 .span6,
 .span12,
 .page-header-small h1 {
-	font-family: var(main-font-bold);
+	font-family: main-font-bold;
 }
 /* aboutpage */
 #aboutcontent {
-	font-family: var(main-font);
+	font-family: main-font;
 }
 #aboutcontent #canvas2 {
 	display:none;
