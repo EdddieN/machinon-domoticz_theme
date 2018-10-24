@@ -1713,7 +1713,7 @@ padding-bottom:1px;
   justify-content: center;
 }
 
-#settings .row-fluid > .span6, #settings .row-fluid > .span12 {
+#settings .row-fluid > .span4, #settings .row-fluid > .span6, #settings .row-fluid > .span12 {
   min-height: 210px;
   height:auto;
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
