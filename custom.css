@@ -1283,11 +1283,7 @@ input#AcceptNewHardware:checked ~ button {
 /* Watermarks */
 /* Media Queries */
 @media screen and (max-width: 992px) {
-  /*fix flex bug. need to be improve*/
-  .bannercontent {
-    padding:0 !important;
-    margin:1em;
-}
+
   div.row{
     align-content: center;
     
@@ -1717,7 +1713,7 @@ padding-bottom:1px;
   justify-content: center;
 }
 
-#settings .row-fluid > .span6, #settings .row-fluid > .span12 {
+#settings .row-fluid > .span4, #settings .row-fluid > .span6, #settings .row-fluid > .span12 {
   min-height: 210px;
   height:auto;
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
@@ -1734,6 +1730,13 @@ padding-bottom:1px;
 		flex-wrap: wrap;
 		font-size: 0.9em;
 	}
- .container-fluid {
-    padding: 0 3em !important;
+
+  /*fix flex bug. need to be improve*/
+  .bannercontent {
+    padding:0 !important;
+    margin:0 !important;
+  }
+  .container-fluid{padding: 0 !important;margin: 0 !important;}
+}
+
 }
