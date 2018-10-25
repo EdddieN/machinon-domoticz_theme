@@ -728,6 +728,9 @@ header.logo {
   margin: 0 auto;
   position: relative;
 }
+.events-editor{
+	margin-top: 40px;
+}
 
 .brand img,
 .brand h1,
