@@ -22,5 +22,6 @@
 language = {
   is_available: "is available",
   click_here: "Click here to download",
-  update_now: "Update Now"
+  update_now: "Update Now",
+  type_to_search: "Type to search"
 };
