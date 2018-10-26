@@ -729,7 +729,7 @@ header.logo {
   position: relative;
 }
 .events-editor{
-   margin-top: 40px;
+  margin-top: 40px;
 }
 
 .brand img,
@@ -1189,18 +1189,6 @@ input#AcceptNewHardware:checked ~ button {
   display: block;
   background: none;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 /*  Device is timeout  */
 .item.statusTimeout{
 	box-shadow: 0px 0px 10px 2px rgb(199,67,67,0.5);
@@ -1249,48 +1237,15 @@ input#AcceptNewHardware:checked ~ button {
 	background-position: center;
 	animation: blinker 2s linear infinite;
 }
-
-
-
-
-
-
-
-
-
-
 @keyframes blinker {
   50% {
     opacity: 0;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Watermarks */
 /* Media Queries */
 @media screen and (max-width: 992px) {
-  /*fix flex bug. need to be improve*/
-  .bannercontent {
-    padding:0 !important;
-    margin:1em;
-}
+
   div.row{
     align-content: center;
     
@@ -1685,14 +1640,48 @@ body.dashMobile table.mobileitem td.name img{
 .btn-group > .btn:first-child {
   margin-left: 0 !important;
 }
+.btn-group .btn-default{
+  background: #fff !important;
+  color: var(--main-blue-color);
+  border-color: var(--main-blue-color) !important;
+  border-radius: 1px !important;
+
+}
+.btn-group .btn-default.active{
+  color: #fff;	
+  background: var(--main-blue-color) !important;
+  border-color: var(--main-blue-color) !important;
+}
+.btn-group .btn-primary{
+  color:#fff;
+  background: var(--main-blue-color) !important;
+  border-color: var(--main-blue-color) !important;
+  border-radius: 1px !important;
+}
+.btn-group .btn-primary:hover{
+  background: #fff !important;
+  color: var(--main-blue-color);
+  border-color: var(--main-blue-color) !important;
+  border-radius: 1px !important;
+}
+.btn-group .btn-danger{
+  background: none !important;
+  border-color: #c74343 !important;
+  color: #c74343;
+  border-radius: 1px !important;
+}
+.btn-group .btn-danger:hover{
+  background: #c74343 !important;	
+  border-color: #c74343 !important;
+  color: #fff;
+}
 
 .btn-group .btn-info{
   background: var(--main-blue-color) !important;
   border-color: var(--main-blue-color) !important;
   color: #fff;
 }
-
-.btn-group .btn:hover{
+.btn-group .btn-info:hover{
   border-color: var(--main-blue-color) !important;
 }
 .btn-group::-webkit-scrollbar {
@@ -1720,7 +1709,7 @@ padding-bottom:1px;
   justify-content: center;
 }
 
-#settings .row-fluid > .span6, #settings .row-fluid > .span12 {
+#settings .row-fluid > .span4, #settings .row-fluid > .span6, #settings .row-fluid > .span12 {
   min-height: 210px;
   height:auto;
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
@@ -1737,6 +1726,13 @@ padding-bottom:1px;
 		flex-wrap: wrap;
 		font-size: 0.9em;
 	}
- .container-fluid {
-    padding: 0 3em !important;
+
+  /*fix flex bug. need to be improve*/
+  .bannercontent {
+    padding:0 !important;
+    margin:0 !important;
+  }
+  .container-fluid{padding: 0 !important;margin: 0 !important;}
+}
+
 }
