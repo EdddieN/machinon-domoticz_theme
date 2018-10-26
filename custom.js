@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		
 		$(containerLogo).insertBefore('.navbar-inner');
 		// Searchbar		
-		$('<input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Type to Search" title="Type to Search">').appendTo('.container-logo');
+		$('<input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="' + language.type_to_search + '" title="' + language.type_to_search + '">').appendTo('.container-logo');
 		
 		// Notifications
 		$('<div id="notify"></div>').appendTo('.container-logo');
