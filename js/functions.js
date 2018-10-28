@@ -98,6 +98,20 @@ function applySwitchersAndSubmenus() {
 				let type = $(this).find('#idno');
 				if (type.length == 0){
 					$(this).find('.options').append('<a class="btnsmall" id="idno" href="#Devices">Idx: ' + itemID + '</a>');
+				// Notification New
+					$(this).find('.options').prepend('<img id="bell" src="images/bell_off.png" title="Notify" onclick="notityOnOff('+ itemID +');" class="lcursor">');
+					var stateBell = $.grep(devicesToNotify, function(obj){return obj === itemID;})[0];
+					if (stateBell){
+						$(this).find('.options #bell').attr('src', 'images/bell_on.png')
+					}
+					$(this).find('.options #bell').on({'click': function() {
+						 var src = ($(this).attr('src') === 'images/bell_off.png')
+							? 'images/bell_on.png'
+							: 'images/bell_off.png';
+						 $(this).attr('src', src);
+						}
+					});
+				// End Notification New
 				}
 			}
 		// options to not have switch instaed of bigText on scene devices
@@ -315,4 +329,50 @@ function notifySecurityStatus(){
 			}
 		}
 	});
+}
+// Notification New
+var devicesToNotify = [];
+if (localStorage.getItem('notifyNew') === null){
+	localStorage.setItem('notifyNew', JSON.stringify(devicesToNotify));
+}
+var retrievedData = localStorage.getItem('notifyNew');
+devicesToNotify = JSON.parse(retrievedData);
+function notityOnOff(idx){
+	idx = ''+idx+'';
+	var obj = $.grep(devicesToNotify, function(obj){return obj === idx;})[0];
+	if (typeof(obj) === 'undefined'){
+		devicesToNotify.push(idx);
+		devicesToNotify.sort();
+	}
+	if (typeof(obj) !== 'undefined'){
+		var index = $.inArray(idx, devicesToNotify);
+		if (index != -1) {
+		devicesToNotify.splice(index, 1);
+		}
+	}
+	localStorage.setItem('notifyNew', JSON.stringify(devicesToNotify));
+	console.log(devicesToNotify);
+}
+var oldstates = [];
+function triggerChange(idx, value, device) {
+ if (typeof(oldstates[idx]) !== 'undefined' && value !== oldstates[idx]) {
+	 var obj = $.grep(devicesToNotify, function(obj){return obj === idx;})[0];
+	 if (idx == obj) {
+	 $.notify(device.Name + ' ' + $.t(device.Data));
+	 notify(device.Name + ' ' + $.t(device.Data));
+	 }
+ }
+oldstates[idx] = value;
+}
+function getStatus(dialog){
+	setInterval(function(){ 
+	$.ajax({url: '/json.htm?type=devices&filter=all&used=' + dialog + '&order=Name' , cache: false, async: false, dataType: 'json', success: function(data) {
+		for (r in data.result) {
+            var device = data.result[r];
+ 			//console.log(device.idx + ' ' + device.Name + ' ' + device.Data);
+			triggerChange(device.idx, device.LastUpdate, device);
+		}
+		}
+	});
+	}, 5000);
 }
