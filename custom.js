@@ -16,6 +16,7 @@ $.ajax({url: '/json.htm?type=settings' , cache: false, async: false, dataType: '
 		lang = data.Language;
 	}
 });
+$.ajax({url: 'acttheme/js/notify.js', async: false, dataType: 'script'});
 $.ajax({url: 'acttheme/js/themesettings.js', async: false, dataType: 'script'});
 $.ajax({url: 'acttheme/js/functions.js', async: false, dataType: 'script'});
 $.ajax({url: 'acttheme/js/time_ago.js', async: false, dataType: 'script'});
