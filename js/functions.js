@@ -307,29 +307,6 @@ function CheckDomoticzUpdate(showdialog) {
 	});
 	return false;
 }
-var secStatusMsg='DISARMED';
-function notifySecurityStatus(){
-	$.ajax({url: '/json.htm?type=command&param=getsecstatus' , cache: false, async: false, dataType: 'json', success: function(data) {
-		if (data.status != "OK") {
-			ShowError('NoOkData');
-			return;
-		}else {		
-			if (data.secstatus==0 && secStatusMsg !='DISARMED') {
-				secStatusMsg='DISARMED';
-				notify('Security is ' + secStatusMsg);
-				}
-			else if (data.secstatus==1 && secStatusMsg !='ARMED HOME') {
-				secStatusMsg='ARMED HOME';
-				notify('Security is ' + secStatusMsg);
-				}
-			else if (data.secstatus==2 && secStatusMsg !='ARMED AWAY') {
-				secStatusMsg='ARMED AWAY';
-				notify('Security is ' + secStatusMsg);
-				}		
-			}
-		}
-	});
-}
 // Notification New
 var devicesToNotify = [];
 if (localStorage.getItem('notifySettings') === null){
