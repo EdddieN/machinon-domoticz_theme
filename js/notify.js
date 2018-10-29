@@ -193,7 +193,7 @@
 		arrowShow: true,
 		arrowSize: 5,
 		breakNewLines: true,
-		elementPosition: "bottom",
+		elementPosition: "left",
 		globalPosition: "bottom right",
 		style: "machinon",
 		className: "success",
@@ -612,28 +612,32 @@
 		html: "<div>\n<span data-notify-text></span>\n</div>",
 		classes: {
 			base: {
-				//"font-weight": "bold",
-				"font-family": "main-font-bold",
+				"font-family": "main-font",
 				"padding": "8px 15px 8px 14px",
 				"text-shadow": "0 1px 0 rgba(255, 255, 255, 0.5)",
-				"background-color": "var(--main-blue-color)",
+				"background-color": "none",
 				"border": "1px solid #fbeed5",
 				"border-radius": "2px",
 				"white-space": "nowrap",
-				"padding-left": "25px",
+				"padding-left": "10px",
 				"background-repeat": "no-repeat",
 				"background-position": "3px 7px",
 				"z-index": "9999999"
 			},
 			error: {
 				"color": "#fff",
-				"background-color": "#c74343",
+				"background-color": "rgba(199, 67, 67, 0.5)",
 				"border-color": "#c74343",
 			},
 			success: {
 				"color": "#fff",
+				"background-color": "none",
+				"border-color": "#fff"
+			},
+			info: {
+				"color": "#fff",
 				"background-color": "var(--main-blue-color)",
-				"border-color": "var(--main-bg-color)"
+				"border-color": "var(--main-bg-color)",
 			}
 		}
 	});
