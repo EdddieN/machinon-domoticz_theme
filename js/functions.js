@@ -358,8 +358,13 @@ function triggerChange(idx, value, device) {
  if (typeof(oldstates[idx]) !== 'undefined' && value !== oldstates[idx]) {
 	 var obj = $.grep(devicesToNotify, function(obj){return obj === idx;})[0];
 	 if (idx == obj) {
-	 $.notify(device.Name + ' ' + $.t(device.Data));
-	 notify(device.Name + ' ' + $.t(device.Data));
+	 notify(device.Name + ' is ' + $.t(device.Data));
+	 let width = window.innerWidth;
+	 if (width > 767){
+		 $('#notyIcon').notify(device.Name + ' is ' + $.t(device.Data));
+		 }else{
+			 $('#notyIcon').notify(device.Name + ' is ' + $.t(device.Data),{ position:"right" });
+			 }
 	 }
  }
 oldstates[idx] = value;
