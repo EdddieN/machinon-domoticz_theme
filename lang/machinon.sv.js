@@ -25,5 +25,6 @@ language = {
   domoticz_settings_saved: "Domoticz inställningar sparat",
   theme_settings_saved: "Tema inställningar sparat",
   theme_restored: "Tema återställd",
-  allow_new_hardware: "Tillåt ny hårdvara i 5 min"
+  allow_new_hardware: "Tillåt ny hårdvara i 5 min",
+  is: "är"
 };
