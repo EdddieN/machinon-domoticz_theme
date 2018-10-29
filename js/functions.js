@@ -68,6 +68,10 @@ function applySwitchersAndSubmenus() {
 				$(this).find('#lastupdate').hide();
 				}
 			$(this).find("#timeago").timeago("update", xyz.text());
+			}else{
+			if ($(this).find('#lastSeen').length == 0) {
+				$(this).find('#lastupdate').prepend('<t id="lastSeen">' + $.t('Last Seen')+': </t>')
+			}
 		}
 		// insert submenu buttons to each item table (not on dashboard)
 		let subnav = $(this).find('.options');
