@@ -166,7 +166,6 @@ document.addEventListener('DOMContentLoaded', function () {
 					// console.log("Check DOM");
 					if ($('#main-view').find('.item').length > 0) {
 						applySwitchersAndSubmenus();
-						notifySecurityStatus();
 						clearInterval(intervalId);
 					} else {
 						counter++;
