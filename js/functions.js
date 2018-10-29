@@ -97,7 +97,7 @@ function applySwitchersAndSubmenus() {
 				}
 				let type = $(this).find('#idno');
 				if (type.length == 0){
-					$(this).find('.options').append('<a class="btnsmall" id="idno" href="#Devices">Idx: ' + itemID + '</a>');
+					$(this).find('.options').append('<a class="btnsmall" id="idno"><i>Idx: ' + itemID + '</i></a>');
 				// Notification New
 					$(this).find('.options').prepend('<img id="bell" src="images/bell_off.png" title="Notify" onclick="notityOnOff('+ itemID +');" class="lcursor">');
 					var stateBell = $.grep(devicesToNotify, function(obj){return obj === itemID;})[0];
