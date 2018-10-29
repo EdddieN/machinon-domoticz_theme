@@ -23,5 +23,6 @@ language = {
   domoticz_settings_saved: "Domoticz settings saved",
   theme_settings_saved: "Theme settings saved",
   theme_restored: "Theme restored",
-  allow_new_hardware: "Allow new hardware for 5 min"
+  allow_new_hardware: "Allow new hardware for 5 min",
+  is: "is"
 };
