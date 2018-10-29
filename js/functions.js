@@ -332,10 +332,10 @@ function notifySecurityStatus(){
 }
 // Notification New
 var devicesToNotify = [];
-if (localStorage.getItem('notifyNew') === null){
-	localStorage.setItem('notifyNew', JSON.stringify(devicesToNotify));
+if (localStorage.getItem('notifySettings') === null){
+	localStorage.setItem('notifySettings', JSON.stringify(devicesToNotify));
 }
-var retrievedData = localStorage.getItem('notifyNew');
+var retrievedData = localStorage.getItem('notifySettings');
 devicesToNotify = JSON.parse(retrievedData);
 function notityOnOff(idx){
 	idx = ''+idx+'';
@@ -350,7 +350,7 @@ function notityOnOff(idx){
 		devicesToNotify.splice(index, 1);
 		}
 	}
-	localStorage.setItem('notifyNew', JSON.stringify(devicesToNotify));
+	localStorage.setItem('notifySettings', JSON.stringify(devicesToNotify));
 }
 var oldstates = [];
 function triggerChange(idx, value, device) {
