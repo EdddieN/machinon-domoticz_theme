@@ -351,7 +351,6 @@ function notityOnOff(idx){
 		}
 	}
 	localStorage.setItem('notifyNew', JSON.stringify(devicesToNotify));
-	console.log(devicesToNotify);
 }
 var oldstates = [];
 function triggerChange(idx, value, device) {
