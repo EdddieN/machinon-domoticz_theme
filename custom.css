@@ -99,6 +99,16 @@ h2,
   font-size: 12px;
   color: #fff;
 }
+#notify ul{
+	list-style: none;
+}
+#notify li:before{
+	content: "•";
+	color: var(--main-blue-color);
+	display: inline-block;
+	width: 1em;
+	margin-left: -1em;
+}
 .msg{
   background-color: var(--main-item-bg-color);
   font-family: main-font-bold;
