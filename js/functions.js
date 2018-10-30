@@ -73,7 +73,7 @@ function applySwitchersAndSubmenus() {
 		let subnav = $(this).find('.options');
 		let subnavButton = $(this).find('.options__bars');
 		if (subnav.length && subnavButton.length == 0) {
-			$(this).find('table').append('<div class="options__bars" title="' + $.t('More options') + '"></div>');
+			$(this).find('table').append('<div class="options__bars"></div>');
 			$(this).on('click', '.options__bars', function (e) {
 			e.preventDefault();
 			$(this).siblings('tbody').find('td.options').slideToggle(400);
@@ -81,42 +81,25 @@ function applySwitchersAndSubmenus() {
 			// Move Timers and log to item
 			$(this).find('table').append('<div class="timers_log"></div>');
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall[data-i18n="Log"]'));
-			$(this).find('.timers_log .btnsmall[data-i18n="Log"]').append("<img id='logImg' title='" + $.t('Log') + "' src='images/options/log.png'/>");
+			$(this).find('.timers_log .btnsmall[data-i18n="Log"]').append("<img id='logImg' src='images/options/log.png'/>");
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall[data-i18n="Timers"]'));
-			$(this).find('.timers_log .btnsmall[data-i18n="Timers"]').append("<img id='timerOffImg' title='" + $.t('Timers') + "' src='images/options/timer_off.png' height='18' width='18'/>");
+			$(this).find('.timers_log .btnsmall[data-i18n="Timers"]').append("<img id='timerOffImg' src='images/options/timer_off.png' height='18' width='18'/>");
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall-sel[data-i18n="Timers"]'));
-			$(this).find('.timers_log .btnsmall-sel[data-i18n="Timers"]').append("<img id='timerOnImg' title='" + $.t('Timers') + "' src='images/options/timer_on.png' height='18' width='18'/>");
+			$(this).find('.timers_log .btnsmall-sel[data-i18n="Timers"]').append("<img id='timerOnImg' src='images/options/timer_on.png' height='18' width='18'/>");
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall[href*="Log"]'));
-			$(this).find('.timers_log .btnsmall[href*="Log"]:not(.btnsmall[data-i18n="Log"])').append("<img id='logImg' title='" + $.t('Log') + "' src='images/options/log.png'/>");
+			$(this).find('.timers_log .btnsmall[href*="Log"]:not(.btnsmall[data-i18n="Log"])').append("<img id='logImg' src='images/options/log.png'/>");
 		}
 		if ($('#dashcontent').length == 0) {
-			let item = $(this).closest('.item');
-			var itemID = item.attr('id');
-			if (typeof(itemID) === 'undefined') {
-				itemID = item[0].offsetParent.id;
-			}
-			let type = $(this).find('#idno');
-			if (type.length == 0) {
-				$(this).find('.options').append('<a class="btnsmall" id="idno"><i>Idx: ' + itemID + '</i></a>');
-				// Notification New
-				$(this).find('.options').prepend('<img id="bell" src="images/bell_off.png" title="'+$.t('Notifications') + '" onclick="notityOnOff(' + itemID + ');" class="lcursor">');
-				var stateBell = $.grep(devicesToNotify, function (obj) {
-						return obj === itemID;
-					})[0];
-				if (stateBell) {
-					$(this).find('.options #bell').attr('src', 'images/bell_on.png')
+				let item = $(this).closest('.item');
+				var itemID = item.attr('id');
+				if (typeof(itemID) === 'undefined'){
+					itemID = item[0].offsetParent.id;
 				}
-				$(this).find('.options #bell').on({
-					'click': function () {
-						var src = ($(this).attr('src') === 'images/bell_off.png')
-						 ? 'images/bell_on.png'
-						 : 'images/bell_off.png';
-						$(this).attr('src', src);
-					}
-				});
-				// End Notification New
+				let type = $(this).find('#idno');
+				if (type.length == 0){
+					$(this).find('.options').append('<a class="btnsmall" id="idno" href="#Devices">Idx: ' + itemID + '</a>');
+				}
 			}
-		}
 		// options to not have switch instaed of bigText on scene devices
 		let switchOnScenes = false;
 		let switchOnScenesDash = false;
