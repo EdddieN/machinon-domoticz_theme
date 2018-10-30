@@ -330,10 +330,6 @@ dztemperaturewidget .item #lastupdate,
 dzweatherwidget .item #lastupdate {
   right: 40px;
 }
-.item #lastupdate::before {
-  content: "Last Seen: ";
-}
-
 @media (min-width: 1200px) {
   .item #lastupdate {
     bottom: 15px;
@@ -1640,6 +1636,7 @@ body.dashMobile table.mobileitem td.name img{
 .btn-group > .btn:first-child {
   margin-left: 0 !important;
 }
+.btn-default,
 .btn-group .btn-default{
   background: #fff !important;
   color: var(--main-blue-color);
@@ -1647,11 +1644,13 @@ body.dashMobile table.mobileitem td.name img{
   border-radius: 1px !important;
 
 }
+.btn-default.active,
 .btn-group .btn-default.active{
   color: #fff;	
   background: var(--main-blue-color) !important;
   border-color: var(--main-blue-color) !important;
 }
+.btn-default:hover,
 .btn-group .btn-primary{
   color:#fff;
   background: var(--main-blue-color) !important;

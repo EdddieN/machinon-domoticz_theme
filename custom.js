@@ -8,14 +8,17 @@ var isMobile;
 var newVersionText = '';
 var gitVersion;
 var lang;
+var user;
 generate_noty = undefined
 
 // load files
 isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 $.ajax({url: '/json.htm?type=settings' , cache: false, async: false, dataType: 'json', success: function(data) {
 		lang = data.Language;
+		user = data.WebUserName;
 	}
 });
+$.ajax({url: 'acttheme/js/notify.js', async: false, dataType: 'script'});
 $.ajax({url: 'acttheme/js/themesettings.js', async: false, dataType: 'script'});
 $.ajax({url: 'acttheme/js/functions.js', async: false, dataType: 'script'});
 $.ajax({url: 'acttheme/js/time_ago.js', async: false, dataType: 'script'});
@@ -163,7 +166,6 @@ document.addEventListener('DOMContentLoaded', function () {
 					// console.log("Check DOM");
 					if ($('#main-view').find('.item').length > 0) {
 						applySwitchersAndSubmenus();
-						notifySecurityStatus();
 						clearInterval(intervalId);
 					} else {
 						counter++;

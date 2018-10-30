@@ -68,12 +68,16 @@ function applySwitchersAndSubmenus() {
 				$(this).find('#lastupdate').hide();
 				}
 			$(this).find("#timeago").timeago("update", xyz.text());
+			}else{
+			if ($(this).find('#lastSeen').length == 0) {
+				$(this).find('#lastupdate').prepend('<t id="lastSeen">' + $.t('Last Seen')+': </t>')
+			}
 		}
 		// insert submenu buttons to each item table (not on dashboard)
 		let subnav = $(this).find('.options');
 		let subnavButton = $(this).find('.options__bars');
 		if (subnav.length && subnavButton.length == 0) {
-			$(this).find('table').append('<div class="options__bars"></div>');
+			$(this).find('table').append('<div class="options__bars" title="' + $.t('More options') + '"></div>');
 			$(this).on('click', '.options__bars', function (e) {
 			e.preventDefault();
 			$(this).siblings('tbody').find('td.options').slideToggle(400);
@@ -81,25 +85,42 @@ function applySwitchersAndSubmenus() {
 			// Move Timers and log to item
 			$(this).find('table').append('<div class="timers_log"></div>');
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall[data-i18n="Log"]'));
-			$(this).find('.timers_log .btnsmall[data-i18n="Log"]').append("<img id='logImg' src='images/options/log.png'/>");
+			$(this).find('.timers_log .btnsmall[data-i18n="Log"]').append("<img id='logImg' title='" + $.t('Log') + "' src='images/options/log.png'/>");
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall[data-i18n="Timers"]'));
-			$(this).find('.timers_log .btnsmall[data-i18n="Timers"]').append("<img id='timerOffImg' src='images/options/timer_off.png' height='18' width='18'/>");
+			$(this).find('.timers_log .btnsmall[data-i18n="Timers"]').append("<img id='timerOffImg' title='" + $.t('Timers') + "' src='images/options/timer_off.png' height='18' width='18'/>");
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall-sel[data-i18n="Timers"]'));
-			$(this).find('.timers_log .btnsmall-sel[data-i18n="Timers"]').append("<img id='timerOnImg' src='images/options/timer_on.png' height='18' width='18'/>");
+			$(this).find('.timers_log .btnsmall-sel[data-i18n="Timers"]').append("<img id='timerOnImg' title='" + $.t('Timers') + "' src='images/options/timer_on.png' height='18' width='18'/>");
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall[href*="Log"]'));
-			$(this).find('.timers_log .btnsmall[href*="Log"]:not(.btnsmall[data-i18n="Log"])').append("<img id='logImg' src='images/options/log.png'/>");
+			$(this).find('.timers_log .btnsmall[href*="Log"]:not(.btnsmall[data-i18n="Log"])').append("<img id='logImg' title='" + $.t('Log') + "' src='images/options/log.png'/>");
 		}
 		if ($('#dashcontent').length == 0) {
-				let item = $(this).closest('.item');
-				var itemID = item.attr('id');
-				if (typeof(itemID) === 'undefined'){
-					itemID = item[0].offsetParent.id;
-				}
-				let type = $(this).find('#idno');
-				if (type.length == 0){
-					$(this).find('.options').append('<a class="btnsmall" id="idno" href="#Devices">Idx: ' + itemID + '</a>');
-				}
+			let item = $(this).closest('.item');
+			var itemID = item.attr('id');
+			if (typeof(itemID) === 'undefined') {
+				itemID = item[0].offsetParent.id;
 			}
+			let type = $(this).find('#idno');
+			if (type.length == 0) {
+				$(this).find('.options').append('<a class="btnsmall" id="idno"><i>Idx: ' + itemID + '</i></a>');
+				// Notification New
+				$(this).find('.options').prepend('<img id="bell" src="images/bell_off.png" title="'+$.t('Notifications') + '" onclick="notityOnOff(' + itemID + ');" class="lcursor">');
+				var stateBell = $.grep(devicesToNotify, function (obj) {
+						return obj === itemID;
+					})[0];
+				if (stateBell) {
+					$(this).find('.options #bell').attr('src', 'images/bell_on.png')
+				}
+				$(this).find('.options #bell').on({
+					'click': function () {
+						var src = ($(this).attr('src') === 'images/bell_off.png')
+						 ? 'images/bell_on.png'
+						 : 'images/bell_off.png';
+						$(this).attr('src', src);
+					}
+				});
+				// End Notification New
+			}
+		}
 		// options to not have switch instaed of bigText on scene devices
 		let switchOnScenes = false;
 		let switchOnScenesDash = false;
@@ -293,26 +314,53 @@ function CheckDomoticzUpdate(showdialog) {
 	});
 	return false;
 }
-var secStatusMsg='DISARMED';
-function notifySecurityStatus(){
-	$.ajax({url: '/json.htm?type=command&param=getsecstatus' , cache: false, async: false, dataType: 'json', success: function(data) {
-		if (data.status != "OK") {
-			ShowError('NoOkData');
-			return;
-		}else {		
-			if (data.secstatus==0 && secStatusMsg !='DISARMED') {
-				secStatusMsg='DISARMED';
-				notify('Security is ' + secStatusMsg);
-				}
-			else if (data.secstatus==1 && secStatusMsg !='ARMED HOME') {
-				secStatusMsg='ARMED HOME';
-				notify('Security is ' + secStatusMsg);
-				}
-			else if (data.secstatus==2 && secStatusMsg !='ARMED AWAY') {
-				secStatusMsg='ARMED AWAY';
-				notify('Security is ' + secStatusMsg);
-				}		
-			}
+// Notification New
+var devicesToNotify = [];
+if (localStorage.getItem('notifySettings') === null){
+	localStorage.setItem('notifySettings', JSON.stringify(devicesToNotify));
+}
+var retrievedData = localStorage.getItem('notifySettings');
+devicesToNotify = JSON.parse(retrievedData);
+function notityOnOff(idx){
+	idx = ''+idx+'';
+	var obj = $.grep(devicesToNotify, function(obj){return obj === idx;})[0];
+	if (typeof(obj) === 'undefined'){
+		devicesToNotify.push(idx);
+		devicesToNotify.sort();
+	}
+	if (typeof(obj) !== 'undefined'){
+		var index = $.inArray(idx, devicesToNotify);
+		if (index != -1) {
+		devicesToNotify.splice(index, 1);
+		}
+	}
+	localStorage.setItem('notifySettings', JSON.stringify(devicesToNotify));
+}
+var oldstates = [];
+function triggerChange(idx, value, device) {
+ if (typeof(oldstates[idx]) !== 'undefined' && value !== oldstates[idx]) {
+	 var obj = $.grep(devicesToNotify, function(obj){return obj === idx;})[0];
+	 if (idx == obj) {
+	 notify(device.Name + ' ' + language.is + ' ' + $.t(device.Data));
+	 let width = window.innerWidth;
+	 if (width > 767){
+		 $('#notyIcon').notify(device.Name + ' ' + language.is + ' ' + $.t(device.Data));
+		 }else{
+			 $('#notyIcon').notify(device.Name + ' ' + language.is + ' ' + $.t(device.Data),{ position:"right" });
+			 }
+	 }
+ }
+oldstates[idx] = value;
+}
+function getStatus(dialog){
+	setInterval(function(){ 
+	$.ajax({url: '/json.htm?type=devices&filter=all&used=' + dialog + '&order=Name' , cache: false, async: false, dataType: 'json', success: function(data) {
+		for (r in data.result) {
+            var device = data.result[r];
+ 			//console.log(device.idx + ' ' + device.Name + ' ' + device.Data);
+			triggerChange(device.idx, device.LastUpdate, device);
+		}
 		}
 	});
+	}, 5000);
 }
