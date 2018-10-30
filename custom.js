@@ -74,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		loadSettings();
 		enableThemeFeatures();
 		CheckDomoticzUpdate(true);
+		getStatus(true);
 			
 		// Replace settings dropdown button to normal button.
 		/** This also disables the custom menu. Need find a workaround **/
