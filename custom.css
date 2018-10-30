@@ -1095,7 +1095,7 @@ tr.odd, tr.even{
 
 /* =Panels */
 .highcharts-background {
-  fill: #fff;
+  fill: var(--main-item-bg-color);
   stroke-width: 0;
 }
 
