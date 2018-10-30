@@ -1065,7 +1065,11 @@ div#hardwarecontent,div#cameracontent,div#devicecontent,div#logcontent {
 	color: #ffffff;
 	padding-right:10px;
 	padding-left:10px;
-}	
+}
+.label-important,
+.badge-important {
+  background-color: #b94a48;
+}
 
 tr.odd, tr.even{
 	height:45px;
