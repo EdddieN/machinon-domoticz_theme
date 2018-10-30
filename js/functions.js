@@ -103,6 +103,7 @@ function applySwitchersAndSubmenus() {
 			if (type.length == 0) {
 				$(this).find('.options').append('<a class="btnsmall" id="idno"><i>Idx: ' + itemID + '</i></a>');
 				// Notification New
+				if ($('#scenecontent').length == 1)itemID = '0.' + itemID;
 				$(this).find('.options').prepend('<img id="bell" src="images/bell_off.png" title="'+$.t('Notifications') + '" onclick="notityOnOff(' + itemID + ');" class="lcursor">');
 				var stateBell = $.grep(devicesToNotify, function (obj) {
 						return obj === itemID;
@@ -356,11 +357,13 @@ function getStatus(dialog){
 	setInterval(function(){ 
 	$.ajax({url: '/json.htm?type=devices&filter=all&used=' + dialog + '&order=Name' , cache: false, async: false, dataType: 'json', success: function(data) {
 		for (r in data.result) {
-            var device = data.result[r];
- 			//console.log(device.idx + ' ' + device.Name + ' ' + device.Data);
-			triggerChange(device.idx, device.LastUpdate, device);
+            		var device = data.result[r];
+			var idx = device.idx;
+			if (device.Type === 'Group' || device.Type === 'Scene') idx = '0.' + device.idx;
+			//console.log(idx + ' ' + device.Name + ' ' + device.Data);
+			triggerChange(idx, device.LastUpdate, device);
+			}
 		}
-		}
-	});
+		});
 	}, 5000);
 }
