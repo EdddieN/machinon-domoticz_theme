@@ -135,7 +135,7 @@ function applySwitchersAndSubmenus() {
 					if (onImage.hasClass('lcursor')) {
 					let switcher = $(this).find('.switch');
 					if (status == switchState.off || status == switchState.on) {
-						let title = (status == switchState.off) ? switchState.on : switchState.off;
+						let title = (status == switchState.off) ? $.t('Turn On') : $.t('Turn Off');
 						let checked = (status == switchState.on) ? 'checked' : '';
 						if (switcher.length == 0) {
 							let string = '<label class="switch" title="' + title + '"><input type="checkbox"' + checked + '><span class="slider round"></span></label>';
@@ -145,7 +145,7 @@ function applySwitchersAndSubmenus() {
 						switcher.find('input').attr('checked', checked.length > 0);
 						bigText.css('display', 'none');
 					} else if (status == switchState.open || status == switchState.closed) {
-						let title = (status == switchState.closed) ? switchState.open : switchState.closed;
+						let title = (status == switchState.closed) ? $.t('Open Blinds') : $.t('Close Blinds');
 						let checked = (status == switchState.open) ? 'checked' : '';
 						if (switcher.length == 0) {
 							let string = '<label class="switch" title="' + title + '"><input type="checkbox"' + checked + '><span class="slider round"></span></label>';
