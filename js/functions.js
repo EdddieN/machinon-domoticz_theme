@@ -395,6 +395,7 @@ function triggerChange(idx, value, device) {
 }
 function getStatus(dialog) {
 	setInterval(function () {
+		checkauth();
 		$.ajax({
 			url: '/json.htm?type=devices&filter=all&used=' + dialog + '&order=Name',
 			cache: false,
