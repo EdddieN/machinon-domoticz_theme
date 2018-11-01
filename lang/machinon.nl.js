@@ -28,5 +28,6 @@ language = {
   theme_settings_saved: "Theme settings saved",
   theme_restored: "Theme restored",
   allow_new_hardware: "Allow new hardware for 5 min",
-  is: "is"
+  is: "is",
+  timedout: "timed out"
 };
