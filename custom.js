@@ -79,9 +79,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		getStatus(true);
 			
 		// Replace settings dropdown button to normal button.
-		/** This also disables the custom menu. Need find a workaround **/
 		if (theme.features.custom_settings_menu.enabled === true) {
-			$('#appnavbar li').remove('.dropdown');
+			$('#appnavbar li:not(.clcustommenu)').remove('.dropdown');
 			let mainMenu = $('#appnavbar');
 			let mSettings = mainMenu.find('#mSettings');
 			if (mainMenu.length && mSettings.length == 0 ) {
