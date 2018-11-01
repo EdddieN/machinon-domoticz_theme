@@ -24,5 +24,6 @@ language = {
   theme_settings_saved: "Paramètres du thème enregistrés",
   theme_restored: "Thème réinitialiser",
   allow_new_hardware: "Autoriser le nouveau matériel pendant 5 min",
-  is: "est"
+  is: "est",
+  timedout: "timed out"
 };
