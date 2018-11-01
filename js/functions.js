@@ -422,7 +422,6 @@ function checkauth(){
 		}else{
 			adminRights = false;	
 		}
-		console.log(permission);
 	}
 	});
 }
