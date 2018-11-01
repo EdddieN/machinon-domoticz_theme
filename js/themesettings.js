@@ -89,6 +89,9 @@ function loadSettingsHTML(){
 	$("#tabtheme input:checkbox").click(function() {
 		if ($(this).is(':checked')) {
 			theme.features[this.value].enabled = true;
+			if (this.value === "custom_settings_menu" && theme.features.custom_settings_menu.enabled === true) {
+				bootbox.alert('<h3>Information!</h3><br/><p>This also disables the custom menu. Navbar looks better with disabled custom menu.</p>');
+			}
 			loadThemeFeatureFiles(this.value);
 		} else {
 			// if a parent checkbox is unchecked, let's also take care of the child checkbox. Otherwise features can still be turned on, but this might not be visible or obvious to the user.
