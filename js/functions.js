@@ -317,53 +317,99 @@ function CheckDomoticzUpdate(showdialog) {
 }
 // Notification New
 var devicesToNotify = [];
-if (localStorage.getItem('notifySettings') === null){
+if (localStorage.getItem('notifySettings') === null) {
 	localStorage.setItem('notifySettings', JSON.stringify(devicesToNotify));
 }
 var retrievedData = localStorage.getItem('notifySettings');
 devicesToNotify = JSON.parse(retrievedData);
-function notityOnOff(idx){
-	idx = ''+idx+'';
-	var obj = $.grep(devicesToNotify, function(obj){return obj === idx;})[0];
-	if (typeof(obj) === 'undefined'){
+function notityOnOff(idx) {
+	idx = '' + idx + '';
+	var obj = $.grep(devicesToNotify, function (obj) {
+			return obj === idx;
+		})[0];
+	if (typeof(obj) === 'undefined') {
 		devicesToNotify.push(idx);
 		devicesToNotify.sort();
 	}
-	if (typeof(obj) !== 'undefined'){
+	if (typeof(obj) !== 'undefined') {
 		var index = $.inArray(idx, devicesToNotify);
 		if (index != -1) {
-		devicesToNotify.splice(index, 1);
+			devicesToNotify.splice(index, 1);
 		}
 	}
 	localStorage.setItem('notifySettings', JSON.stringify(devicesToNotify));
 }
-var oldstates = [];
-function triggerChange(idx, value, device) {
- if (typeof(oldstates[idx]) !== 'undefined' && value !== oldstates[idx]) {
-	 var obj = $.grep(devicesToNotify, function(obj){return obj === idx;})[0];
-	 if (idx == obj) {
-	 notify(device.Name + ' ' + language.is + ' ' + $.t(device.Data));
-	 let width = window.innerWidth;
-	 if (width > 767){
-		 $('#notyIcon').notify(device.Name + ' ' + language.is + ' ' + $.t(device.Data));
-		 }else{
-			 $('#notyIcon').notify(device.Name + ' ' + language.is + ' ' + $.t(device.Data),{ position:"right" });
-			 }
-	 }
- }
-oldstates[idx] = value;
-}
-function getStatus(dialog){
-	setInterval(function(){ 
-	$.ajax({url: '/json.htm?type=devices&filter=all&used=' + dialog + '&order=Name' , cache: false, async: false, dataType: 'json', success: function(data) {
-		for (r in data.result) {
-            		var device = data.result[r];
-			var idx = device.idx;
-			if (device.Type === 'Group' || device.Type === 'Scene') idx = '0.' + device.idx;
-			//console.log(idx + ' ' + device.Name + ' ' + device.Data);
-			triggerChange(idx, device.LastUpdate, device);
+var timeOut = [];
+function timedOut(idx, value, device) {
+	let textmsg = 'Sensor ' + device.Name + ' ' + language.is + ' ' + language.timedout;
+	if (typeof(timeOut[idx]) !== 'undefined' && value !== timeOut[idx]) {
+		if (device.HaveTimeout) {
+			console.log(textmsg);
+			notify(textmsg);
+			let width = window.innerWidth;
+			if (width > 767) {
+				$('#notyIcon').notify(textmsg);
+			} else {
+				$('#notyIcon').notify(textmsg, {
+					position: "right"
+				});
 			}
 		}
+	}
+	timeOut[idx] = value;
+}
+var oldstates = [];
+function triggerChange(idx, value, device) {
+	let textmsg = device.Name + ' ' + language.is + ' ' + $.t(device.Data);
+	let textLowBattery = device.Name + ' ' + $.t('Battery Level') + ' ' + $.t('Low') + ' ' + device.BatteryLevel + '%'
+
+		if (typeof(oldstates[idx]) !== 'undefined' && value !== oldstates[idx]) {
+			var obj = $.grep(devicesToNotify, function (obj) {
+					return obj === idx;
+				})[0];
+			if (idx == obj) {
+				notify(textmsg);
+				let width = window.innerWidth;
+				if (width > 767) {
+					$('#notyIcon').notify(textmsg);
+				} else {
+					$('#notyIcon').notify(textmsg, {
+						position: "right"
+					});
+				}
+			}
+			if (device.BatteryLevel < 11) {
+				notify(textLowBattery);
+				let width = window.innerWidth;
+				if (width > 767) {
+					$('#notyIcon').notify(textLowBattery);
+				} else {
+					$('#notyIcon').notify(textLowBattery, {
+						position: "right"
+					});
+				}
+			}
+		}
+
+		oldstates[idx] = value;
+}
+function getStatus(dialog) {
+	setInterval(function () {
+		$.ajax({
+			url: '/json.htm?type=devices&filter=all&used=' + dialog + '&order=Name',
+			cache: false,
+			async: false,
+			dataType: 'json',
+			success: function (data) {
+				for (r in data.result) {
+					var device = data.result[r];
+					var idx = device.idx;
+					if (device.Type === 'Group' || device.Type === 'Scene')
+						idx = '0.' + device.idx;
+					triggerChange(idx, device.LastUpdate, device);
+					timedOut(idx, device.HaveTimeout, device);
+				}
+			}
 		});
 	}, 5000);
 }
