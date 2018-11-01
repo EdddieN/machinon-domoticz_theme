@@ -26,5 +26,6 @@ language = {
   theme_settings_saved: "Tema inställningar sparat",
   theme_restored: "Tema återställd",
   allow_new_hardware: "Tillåt ny hårdvara i 5 min",
-  is: "är"
+  is: "är",
+  timedout: "tidsgränsen uppnådd"
 };
