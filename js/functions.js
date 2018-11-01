@@ -413,3 +413,16 @@ function getStatus(dialog) {
 		});
 	}, 5000);
 }
+var adminRights = false;
+function checkauth(){
+	$.ajax({url: '/json.htm?type=command&param=getauth' , cache: false, async: false, dataType: 'json', success: function(data) {
+		permission = data.rights
+		if (permission == 2){
+			adminRights = true;
+		}else{
+			adminRights = false;	
+		}
+		console.log(permission);
+	}
+	});
+}
