@@ -25,7 +25,7 @@ $.ajax({url: 'acttheme/js/themesettings.js', async: false, dataType: 'script'});
 $.ajax({url: 'acttheme/js/functions.js', async: false, dataType: 'script'});
 $.ajax({url: 'acttheme/js/time_ago.js', async: false, dataType: 'script'});
 $.ajax({url: 'acttheme/lang/machinon.' + lang + '.js', async: false, dataType: 'script'});
-
+checkauth();
 //need more simplycity
 if (!isMobile){ 
 var targetedNode = document;
