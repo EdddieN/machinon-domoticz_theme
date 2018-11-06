@@ -73,6 +73,24 @@ h2,
 #aboutcontent #canvas2 {
 	display:none;
 }
+/* logpage */
+#logdata,
+#logdata_status,
+#logdata_error{
+	background: var(--main-item-bg-color);
+}
+.lognorm{
+	font-family: main-font-bold;
+	color: var(--main-text-color);
+}
+.logstatus{
+	font-family: main-font;
+	color: var(--main-blue-color);
+}
+.logerror{
+	font-family: main-font;
+	color: #c74343;
+}
 /* Search */
 #searchInput {
   float: right;
