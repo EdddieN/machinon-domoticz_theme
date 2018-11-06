@@ -612,11 +612,12 @@
 		html: "<div>\n<span data-notify-text></span>\n</div>",
 		classes: {
 			base: {
-				"font-family": "main-font",
+				"font-family": "main-font-bold",
+				"font-size": "12px",
 				"padding": "8px 15px 8px 14px",
 				"text-shadow": "0 1px 0 rgba(255, 255, 255, 0.5)",
 				"background-color": "none",
-				"border": "1px solid #fbeed5",
+				"border": "none",
 				"border-radius": "2px",
 				"white-space": "nowrap",
 				"padding-left": "10px",
