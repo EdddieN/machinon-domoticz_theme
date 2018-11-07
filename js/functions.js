@@ -307,30 +307,6 @@ function CheckDomoticzUpdate(showdialog) {
 	});
 	return false;
 }
-// Notification New
-var devicesToNotify = [];
-if (localStorage.getItem('notifySettings') === null) {
-	localStorage.setItem('notifySettings', JSON.stringify(devicesToNotify));
-}
-var retrievedData = localStorage.getItem('notifySettings');
-devicesToNotify = JSON.parse(retrievedData);
-function notityOnOff(idx) {
-	idx = '' + idx + '';
-	var obj = $.grep(devicesToNotify, function (obj) {
-			return obj === idx;
-		})[0];
-	if (typeof(obj) === 'undefined') {
-		devicesToNotify.push(idx);
-		devicesToNotify.sort();
-	}
-	if (typeof(obj) !== 'undefined') {
-		var index = $.inArray(idx, devicesToNotify);
-		if (index != -1) {
-			devicesToNotify.splice(index, 1);
-		}
-	}
-	localStorage.setItem('notifySettings', JSON.stringify(devicesToNotify));
-}
 var timeOut = [];
 function timedOut(idx, value, device) {
 	let textmsg = 'Sensor ' + device.Name + ' ' + language.is + ' ' + language.timedout;
