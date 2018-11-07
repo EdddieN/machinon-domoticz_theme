@@ -370,13 +370,13 @@ function getnotifications(idx, state) {
 				system = message[r].ActiveSystems
 				if (system.includes("browser")) {
 					if (typeof(message) !== 'undefined') {
-						if (state == 'On' || 'Open' || 'Locked') {
+						if (state == 'On' || state == 'Open' || state == 'Locked') {
 							if (message[r].Params == "S") {
 								msg = message[r].CustomMessage;
 								notify(msg, true);
 							}
 						}
-						if (state == 'Off' || 'Closed' || 'Unlocked') {
+						if (state == 'Off' || state == 'Closed' || state == 'Unlocked') {
 							if (message[r].Params == "O") {
 								msg = message[r].CustomMessage;
 								notify(msg, true);
