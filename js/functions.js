@@ -281,7 +281,8 @@ function notify(key, popup) {
 			$('#notyIcon').notify(key);
 		} else {
 			$('#notyIcon').notify(key, {
-				position: "right"
+				position: "right",
+				className: 'info'
 			});
 		}
 	}
