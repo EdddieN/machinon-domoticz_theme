@@ -613,11 +613,11 @@
 		classes: {
 			base: {
 				"font-family": "main-font-bold",
-				"font-size": "12px",
+				"font-size": "14px",
 				"padding": "8px 15px 8px 14px",
 				"text-shadow": "0 1px 0 rgba(255, 255, 255, 0.5)",
 				"background-color": "none",
-				"border": "none",
+				"border": "1px solid #fbeed5",
 				"border-radius": "2px",
 				"white-space": "nowrap",
 				"padding-left": "10px",
@@ -632,13 +632,13 @@
 			},
 			success: {
 				"color": "#fff",
+				"border": "none",
 				"background-color": "none",
 				"border-color": "#fff"
 			},
 			info: {
 				"color": "#fff",
 				"background-color": "var(--main-blue-color)",
-				"border-color": "var(--main-bg-color)",
 			}
 		}
 	});

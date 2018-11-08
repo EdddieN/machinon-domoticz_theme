@@ -102,24 +102,6 @@ function applySwitchersAndSubmenus() {
 			let type = $(this).find('#idno');
 			if (type.length == 0) {
 				$(this).find('.options').append('<a class="btnsmall" id="idno"><i>Idx: ' + itemID + '</i></a>');
-				// Notification New
-				if ($('#scenecontent').length == 1)itemID = '0.' + itemID;
-				$(this).find('.options').prepend('<img id="bell" src="images/bell_off.png" title="'+$.t('Notifications') + '" onclick="notityOnOff(' + itemID + ');" class="lcursor">');
-				var stateBell = $.grep(devicesToNotify, function (obj) {
-						return obj === itemID;
-					})[0];
-				if (stateBell) {
-					$(this).find('.options #bell').attr('src', 'images/bell_on.png')
-				}
-				$(this).find('.options #bell').on({
-					'click': function () {
-						var src = ($(this).attr('src') === 'images/bell_off.png')
-						 ? 'images/bell_on.png'
-						 : 'images/bell_off.png';
-						$(this).attr('src', src);
-					}
-				});
-				// End Notification New
 			}
 		}
 		// options to not have switch instaed of bigText on scene devices
@@ -284,7 +266,7 @@ function showTime(){
     
 }
 // Notifications
-function notify(key) {
+function notify(key, popup) {
 	var existing = localStorage.getItem('notify');
 	existing = existing ? JSON.parse(existing) : {};
 	let d = new Date();
@@ -293,6 +275,17 @@ function notify(key) {
 	localStorage.setItem('notify', JSON.stringify(existing));
 	
 	$('#notyIcon').show();
+	if (popup){
+		let width = window.innerWidth;
+		if (width > 767) {
+			$('#notyIcon').notify(key);
+		} else {
+			$('#notyIcon').notify(key, {
+				position: "right",
+				className: 'info'
+			});
+		}
+	}
 }
 function clearNotify(){
     if (typeof(Storage) !== "undefined") {
@@ -309,51 +302,19 @@ function CheckDomoticzUpdate(showdialog) {
 			if (data.HaveUpdate == true) {
 				msgtxt = 'Domoticz version #' + data.Revision + ' '+ language.is_available +'!';
 				msgtxt+=' <a onclick="CheckForUpdate(true);">' + language.update_now + '</a>';
-				notify(msgtxt);
+				notify(msgtxt, false);
 			}
 		 }
 	});
 	return false;
-}
-// Notification New
-var devicesToNotify = [];
-if (localStorage.getItem('notifySettings') === null) {
-	localStorage.setItem('notifySettings', JSON.stringify(devicesToNotify));
-}
-var retrievedData = localStorage.getItem('notifySettings');
-devicesToNotify = JSON.parse(retrievedData);
-function notityOnOff(idx) {
-	idx = '' + idx + '';
-	var obj = $.grep(devicesToNotify, function (obj) {
-			return obj === idx;
-		})[0];
-	if (typeof(obj) === 'undefined') {
-		devicesToNotify.push(idx);
-		devicesToNotify.sort();
-	}
-	if (typeof(obj) !== 'undefined') {
-		var index = $.inArray(idx, devicesToNotify);
-		if (index != -1) {
-			devicesToNotify.splice(index, 1);
-		}
-	}
-	localStorage.setItem('notifySettings', JSON.stringify(devicesToNotify));
 }
 var timeOut = [];
 function timedOut(idx, value, device) {
 	let textmsg = 'Sensor ' + device.Name + ' ' + language.is + ' ' + language.timedout;
 	if (typeof(timeOut[idx]) !== 'undefined' && value !== timeOut[idx]) {
 		if (device.HaveTimeout) {
-			console.log(textmsg);
+			console.log(textmsg, true);
 			notify(textmsg);
-			let width = window.innerWidth;
-			if (width > 767) {
-				$('#notyIcon').notify(textmsg);
-			} else {
-				$('#notyIcon').notify(textmsg, {
-					position: "right"
-				});
-			}
 		}
 	}
 	timeOut[idx] = value;
@@ -364,34 +325,45 @@ function triggerChange(idx, value, device) {
 	let textLowBattery = device.Name + ' ' + $.t('Battery Level') + ' ' + $.t('Low') + ' ' + device.BatteryLevel + '%'
 
 		if (typeof(oldstates[idx]) !== 'undefined' && value !== oldstates[idx]) {
-			var obj = $.grep(devicesToNotify, function (obj) {
-					return obj === idx;
-				})[0];
-			if (idx == obj) {
-				notify(textmsg);
-				let width = window.innerWidth;
-				if (width > 767) {
-					$('#notyIcon').notify(textmsg);
-				} else {
-					$('#notyIcon').notify(textmsg, {
-						position: "right"
-					});
-				}
-			}
+			getnotifications(idx, device.Data)
 			if (device.BatteryLevel < 11) {
-				notify(textLowBattery);
-				let width = window.innerWidth;
-				if (width > 767) {
-					$('#notyIcon').notify(textLowBattery);
-				} else {
-					$('#notyIcon').notify(textLowBattery, {
-						position: "right"
-					});
-				}
+				notify(textLowBattery, true);
 			}
 		}
 
 		oldstates[idx] = value;
+}
+function getnotifications(idx, state) {
+	
+	var msg;
+	$.ajax({
+		url: 'json.htm?type=notifications&idx=' + idx + '',
+		cache: false,
+		async: false,
+		dataType: 'json',
+		success: function (data) {
+			var message = data.result;
+			for (r in data.result) {
+				system = message[r].ActiveSystems
+				if (system.includes("browser")) {
+					if (typeof(message) !== 'undefined') {
+						if (state == 'On' || state == 'Open' || state == 'Locked') {
+							if (message[r].Params == "S") {
+								msg = message[r].CustomMessage;
+								notify(msg, true);
+							}
+						}
+						if (state == 'Off' || state == 'Closed' || state == 'Unlocked') {
+							if (message[r].Params == "O") {
+								msg = message[r].CustomMessage;
+								notify(msg, true);
+							}
+						}
+					}
+				}
+			}
+		}
+	});
 }
 function getStatus(dialog) {
 	setInterval(function () {
