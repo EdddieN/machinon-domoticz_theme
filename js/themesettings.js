@@ -24,10 +24,10 @@ function showThemeSettings() {
 			}
 	    	});
 		$('#acceptnewhardwaretable > tbody > tr:nth-child(1) > td > button').click(function() {
-			notify(language.allow_new_hardware, true);
+			notify(language.allow_new_hardware, 2);
 		});
 		$('#tabs > li.pull-right > a').click(function() {			
-			notify(language.domoticz_settings_saved, false);
+			notify(language.domoticz_settings_saved, 2);
 		});
 		// Translate
 		$("#tabs").i18n();
@@ -136,13 +136,13 @@ function loadSettingsHTML(){
 		});
 		localStorage.setObject("themeSettings", theme);
 		//console.log(themeName + ' - theme settings saved');
-		notify(language.theme_settings_saved, false);
+		notify(language.theme_settings_saved, 2);
 		location.reload();
 	});
 	
 	// Resetbutton theme tab
 	$('#themeResetButton').click(function() {
-		notify(language.theme_restored, false);
+		notify(language.theme_restored, 2);
 		resetTheme();
 	});
 }
