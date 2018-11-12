@@ -1027,7 +1027,7 @@ body table#itemtable {
   border-bottom: 1px solid var(--main-blue-color);
 }
 
-
+/* Data Tables */
 .dataTables_wrapper > div:first-child,
 .dataTables_wrapper > div:last-child{
   background-color: transparent !important;
@@ -1072,11 +1072,13 @@ table.dataTable thead td{
 .dataTables_wrapper .dataTables_filter {
 	color: #999;
 }
-
-
 .dataTables_wrapper tr.odd.row_selected,
 .dataTables_wrapper tr.even.row_selected{
   background-color: black !important;
+}
+#hardwaretable_paginate .ui-button,
+#devices_paginate .ui-button{
+	color: var(--main-text-color) !important;
 }
 
 .btnstyle3-dis, .btnstyle3, .btnstyle3-sel {
