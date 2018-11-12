@@ -1043,7 +1043,7 @@ table.dataTable thead td{
 }
 
 .dataTables_wrapper .dataTable tr{
-  border: 1px solid #dedede;
+  border: 1px solid var(--main-item-bg-color);
 }
 
 .ui-widget-header {
@@ -1079,10 +1079,6 @@ table.dataTable thead td{
   background-color: black !important;
 }
 
-
-
-
-
 .btnstyle3-dis, .btnstyle3, .btnstyle3-sel {
   background: var(--main-blue-color);
   margin-top: 15px;
@@ -1100,8 +1096,6 @@ body table#itemtabledoubleicon tr td:first-child {
 body table#itemtabledoubleicon tbody tr:hover body table#itemtabledoubleicon tr td {
   background: none;
 }
-
-
 
 body table#itemtabledoubleicon .wrapper {
   color: orange;
