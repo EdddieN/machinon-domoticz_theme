@@ -266,16 +266,20 @@ function showTime(){
     
 }
 // Notifications
-function notify(key, popup) {
-	var existing = localStorage.getItem('notify');
-	existing = existing ? JSON.parse(existing) : {};
-	let d = new Date();
-	dd = d.getTime();
-	existing[key] = dd;
-	localStorage.setItem('notify', JSON.stringify(existing));
-	
-	$('#notyIcon').show();
-	if (popup){
+function notify(key, type) { // type = 0 = only in notification log, 1 = only notification popup, 2 = in both
+
+	if (type == 0 || type == 2){ 
+		var existing = localStorage.getItem('notify');
+		existing = existing ? JSON.parse(existing) : {};
+		let d = new Date();
+		dd = d.getTime();
+		existing[key] = dd;
+		localStorage.setItem('notify', JSON.stringify(existing));
+		
+		$('#notyIcon').show();
+	}
+	if (type == 1 || type == 2){
+		if (type == 1)$('#notyIcon').show();
 		let width = window.innerWidth;
 		if (width > 767) {
 			$('#notyIcon').notify(key);
@@ -285,6 +289,7 @@ function notify(key, popup) {
 				className: 'info'
 			});
 		}
+		if (type == 1)$('#notyIcon').hide();
 	}
 }
 function clearNotify(){
@@ -302,7 +307,7 @@ function CheckDomoticzUpdate(showdialog) {
 			if (data.HaveUpdate == true) {
 				msgtxt = 'Domoticz version #' + data.Revision + ' '+ language.is_available +'!';
 				msgtxt+=' <a onclick="CheckForUpdate(true);">' + language.update_now + '</a>';
-				notify(msgtxt, false);
+				notify(msgtxt, 0);
 			}
 		 }
 	});
@@ -313,8 +318,7 @@ function timedOut(idx, value, device) {
 	let textmsg = 'Sensor ' + device.Name + ' ' + language.is + ' ' + language.timedout;
 	if (typeof(timeOut[idx]) !== 'undefined' && value !== timeOut[idx]) {
 		if (device.HaveTimeout) {
-			console.log(textmsg, true);
-			notify(textmsg);
+			notify(textmsg, 2);
 		}
 	}
 	timeOut[idx] = value;
@@ -327,7 +331,7 @@ function triggerChange(idx, value, device) {
 		if (typeof(oldstates[idx]) !== 'undefined' && value !== oldstates[idx]) {
 			getnotifications(idx, device.Data)
 			if (device.BatteryLevel < 11) {
-				notify(textLowBattery, true);
+				notify(textLowBattery, 2);
 			}
 		}
 
@@ -350,13 +354,13 @@ function getnotifications(idx, state) {
 						if (state == 'On' || state == 'Open' || state == 'Locked') {
 							if (message[r].Params == "S") {
 								msg = message[r].CustomMessage;
-								notify(msg, true);
+								notify(msg, 1);
 							}
 						}
 						if (state == 'Off' || state == 'Closed' || state == 'Unlocked') {
 							if (message[r].Params == "O") {
 								msg = message[r].CustomMessage;
-								notify(msg, true);
+								notify(msg, 1);
 							}
 						}
 					}
