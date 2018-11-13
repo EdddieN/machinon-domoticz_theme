@@ -1084,6 +1084,11 @@ table.dataTable thead td{
 .btnstyle3-dis, .btnstyle3, .btnstyle3-sel {
   background: var(--main-blue-color);
   margin-top: 15px;
+  border-radius: 2px;
+}
+.btnstyle3:disabled{
+	background: gray;
+	border-radius: 2px;
 }
 
 .ng-scope h2 {
