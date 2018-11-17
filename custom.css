@@ -21,9 +21,10 @@
 	/*use with var(--main-blue-color)*/
 	--main-bg-color: #f1f1f1; 
 	--main-blue-color: #0b96cd;
-	--main-item-bg-color: #fff;
-	--main-text-color: #000;
+	--main-item-bg-color: white;
+	--main-text-color: #1a1a1a;
 	--secondary-text-color: gray;
+  --main-border-color: #dedede;
 }
 @font-face {
     font-family: main-font;
@@ -1030,55 +1031,51 @@ body table#itemtable {
 /* Data Tables */
 .dataTables_wrapper > div:first-child,
 .dataTables_wrapper > div:last-child{
-  background-color: transparent !important;
+  background: transparent;
   border:none !important;
 }
 
-table.dataTable thead th,
-table.dataTable thead td{
-	color: #999 !important;
+.dataTables_wrapper .dataTables_length, 
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_info {
+	color: var(--secondary-text-color);
+}
+
+.dataTables_wrapper .ui-widget-header .ui-state-default {
+  background: transparent;
+  border: none !important;
+  color: var(--main-text-color) !important;
+}
+
+table.dataTable thead th{
+  background: var(--main-item-bg-color);
+	color: var(--secondary-text-color);
 	height:35px;
 	padding-right:10px;
 	text-align: -webkit-left;
+  border: none !important;
 }
 
 .dataTables_wrapper .dataTable tr{
-  border: 1px solid var(--main-item-bg-color);
+  border: 1px solid var(--main-border-color);
 }
 
-.ui-widget-header {
-  background: var(--main-item-bg-color);
-  border-color: var(--main-item-bg-color);
-  border-radius: 2px;
-}
-.ui-state-default, 
-.ui-widget-content .ui-state-default, 
-.ui-widget-header .ui-state-default {
-  background: var(--main-item-bg-color);
-  color: var(--main-secondary-text-color) !important;
-  border-color: var(--main-item-bg-color)!important;
-}
-.dataTables_wrapper tr.odd, .dataTables_wrapper tr.even {
+.dataTables_wrapper tr.odd,
+.dataTables_wrapper tr.even {
 	height:45px;
 	color: var(--main-text-color) !important;
 	background-color: transparent;
-  border-top: 1px solid #dedede;
 }
 .dataTables_wrapper tr.even {
 	background-color: var(--main-item-bg-color);
 }
-.dataTables_wrapper .dataTables_info, 
-.dataTables_wrapper .dataTables_length, 
-.dataTables_wrapper .dataTables_filter {
-	color: #999;
+tr.odd td.sorting_1, tr.even td.sorting_1{
+  background-color: transparent;
 }
-.dataTables_wrapper tr.odd.row_selected,
-.dataTables_wrapper tr.even.row_selected{
-  background-color: black !important;
-}
-#hardwaretable_paginate .ui-button,
-#devices_paginate .ui-button{
-	color: var(--main-text-color) !important;
+.dataTables_wrapper table tbody tr.odd.row_selected td,
+.dataTables_wrapper table tbody tr.even.row_selected td{
+  background: var(--main-blue-color) !important;
+  opacity: .75;
 }
 
 .btnstyle3-dis, .btnstyle3, .btnstyle3-sel {
@@ -1124,12 +1121,6 @@ div#hardwarecontent,div#cameracontent,div#devicecontent,div#logcontent {
 .label-important,
 .badge-important {
   background-color: #b94a48;
-}
-
-#hardwaretable_wrapper a {
-  background: transparent !important;
-  border: none !important;
-  color: black !important;
 }
 
 .ui-dialog-buttonset button {
@@ -1214,14 +1205,8 @@ input#AcceptNewHardware:checked ~ button {
   color: #fff;
 }
 
-#devices_paginate a {
-  background: transparent !important;
-  color: #1a1a1a !important;
-  border: none !important;
-}
-
 .ui-widget-header {
-  color: #222222;
+  color: var(--secondary-text-color);
 }
 
 /* Hamburger */
