@@ -8,19 +8,24 @@ var isMobile;
 var newVersionText = '';
 var gitVersion;
 var lang;
+var user;
+var checkUpdate;
 generate_noty = undefined
 
 // load files
 isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 $.ajax({url: '/json.htm?type=settings' , cache: false, async: false, dataType: 'json', success: function(data) {
 		lang = data.Language;
+		user = data.WebUserName;
+		checkUpdate = data.UseAutoUpdate;
 	}
 });
+$.ajax({url: 'acttheme/js/notify.js', async: false, dataType: 'script'});
 $.ajax({url: 'acttheme/js/themesettings.js', async: false, dataType: 'script'});
 $.ajax({url: 'acttheme/js/functions.js', async: false, dataType: 'script'});
 $.ajax({url: 'acttheme/js/time_ago.js', async: false, dataType: 'script'});
 $.ajax({url: 'acttheme/lang/machinon.' + lang + '.js', async: false, dataType: 'script'});
-
+checkauth();
 //need more simplycity
 if (!isMobile){ 
 var targetedNode = document;
@@ -70,12 +75,12 @@ document.addEventListener('DOMContentLoaded', function () {
 		// load theme settings
 		loadSettings();
 		enableThemeFeatures();
-		CheckDomoticzUpdate(true);
+		if (checkUpdate != 0)CheckDomoticzUpdate(true);
+		getStatus(true);
 			
 		// Replace settings dropdown button to normal button.
-		/** This also disables the custom menu. Need find a workaround **/
 		if (theme.features.custom_settings_menu.enabled === true) {
-			$('#appnavbar li').remove('.dropdown');
+			$('#appnavbar li:not(.clcustommenu)').remove('.dropdown');
 			let mainMenu = $('#appnavbar');
 			let mSettings = mainMenu.find('#mSettings');
 			if (mainMenu.length && mSettings.length == 0 ) {
@@ -113,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		
 		$(containerLogo).insertBefore('.navbar-inner');
 		// Searchbar		
-		$('<input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Type to Search" title="Type to Search">').appendTo('.container-logo');
+		$('<input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="' + language.type_to_search + '" title="' + language.type_to_search + '">').appendTo('.container-logo');
 		
 		// Notifications
 		$('<div id="notify"></div>').appendTo('.container-logo');
@@ -163,7 +168,6 @@ document.addEventListener('DOMContentLoaded', function () {
 					// console.log("Check DOM");
 					if ($('#main-view').find('.item').length > 0) {
 						applySwitchersAndSubmenus();
-						notifySecurityStatus();
 						clearInterval(intervalId);
 					} else {
 						counter++;
