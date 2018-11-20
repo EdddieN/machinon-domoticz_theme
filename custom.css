@@ -610,8 +610,14 @@ right:20px;
 display:none;
 }
 #dashcontent .status{
-margin-top:50px;
-margin-left:150px;
+  position: absolute;
+  right: 20px;
+  top: 60px;
+  width: 60%;
+  text-align: right;
+  margin-top: 0;
+  bottom: 40px;
+  overflow-x:  auto;
 }
 #dashcontent .selectorlevels {
   position: absolute;
@@ -636,6 +642,8 @@ dzweatherwidget #status {
   width: 60%;
   text-align: right;
   margin-top: 0;
+  bottom: 40px;
+  overflow-x:  auto;
 }
 dztemperaturewidget #status::before,
 dzweatherwidget #status::before {
