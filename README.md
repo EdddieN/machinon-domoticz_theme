@@ -55,3 +55,20 @@ git pull
 Suggested new setup layout - partly implemented
 ![Suggested new Setup layout - not implemented yet](/images/unorganised/screen_references/setup.png)
 
+## Cache problems:
+
+A lot of the problems users experience after a domoticz update are gone when the browsercache and appcache are cleared. There are also quite a number of posts on this forum related to these kind of problems. 
+
+To summarize and sorted from little effort to a bit more effort take these steps and check after each step if it address the issues you encounter.
+
+- clear browser cache and appcache 
+Chrome: chrome://appcache-internals/#
+Firefox: https://support.mozilla.org/en-US/kb/storage 
+
+- in www/js look for domoticz.js.gz, if its there remove it, (KEEP domoticz.js !! )
+- use incognito mode using 
+Chrome [control] [shift] n
+Firefox: [control] [shift] p
+
+- restart domoticz
+- rename the location of the original installation and install the new version to an empty target directory. Next copy database and scripts from the old location and fire it up.
