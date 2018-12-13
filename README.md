@@ -1,4 +1,5 @@
 # Machinon theme
+![alt tag](https://img.shields.io/badge/dynamic/json.svg?label=Version&url=https%3A%2F%2Fraw.githubusercontent.com%2FEdddieN%2Fmachinon-domoticz_theme%2Fmaster%2Ftheme.json&query=version&colorB=blue)
 
 # WORK IN PROGRESS
 
