@@ -20,6 +20,17 @@ function applySwitchersAndSubmenus() {
 		if (onImage.length == 0) {
 			onImage = bigText.siblings('#img1').find('img')
 		}
+		if (theme.features.fade_offItems.enabled === true) {
+        	if (status == switchState.off) {
+        		if (theme.features.dark_theme.enabled === true) {
+        			$(this).css('opacity', '0.5');
+        		} else {
+        			$(this).css('opacity', '0.6');
+        		}
+        	} else {
+        		$(this).css('opacity', '');
+        	}
+        	}
 		if (status.length == 0) {
 			status = bigText.attr('data-status');
 		} else {
