@@ -49,7 +49,7 @@
         },
 	"fade_offItems": {
             "id":18,
-            "enabled":true,
+            "enabled":false,
 			"files": []
         },
 	"switch_instead_of_bigtext": {
