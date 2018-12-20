@@ -373,7 +373,7 @@ function getStatus(dialog) {
 	setInterval(function () {
 		checkauth();
 		$.ajax({
-			url: '/json.htm?type=devices&filter=all&used=' + dialog + '&order=Name',
+			url: 'json.htm?type=devices&filter=all&used=' + dialog + '&order=Name',
 			cache: false,
 			async: false,
 			dataType: 'json',
@@ -392,7 +392,7 @@ function getStatus(dialog) {
 }
 var adminRights = false;
 function checkauth(){
-	$.ajax({url: '/json.htm?type=command&param=getauth' , cache: false, async: false, dataType: 'json', success: function(data) {
+	$.ajax({url: 'json.htm?type=command&param=getauth' , cache: false, async: false, dataType: 'json', success: function(data) {
 		permission = data.rights
 		if (permission == 2){
 			adminRights = true;
