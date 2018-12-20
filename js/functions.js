@@ -180,7 +180,7 @@ function loadThemeFeatureFiles(featureName) {
             });
         }
         if(files[i].split('.').pop() == "css"){
-            var CSSfile = "" + baseURL + "/acttheme/css/" + files[i] + "?" + themeName;
+            var CSSfile = "acttheme/css/" + files[i] + "?" + themeName;
             var fileref = document.createElement("link");
             fileref.setAttribute("rel", "stylesheet");
             fileref.setAttribute("type", "text/css");
