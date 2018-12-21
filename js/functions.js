@@ -185,13 +185,13 @@ function loadThemeFeatureFiles(featureName) {
     for (var i = 0; i < arrayLength; i++) {
         if(files[i].split('.').pop() == "js"){
             console.log(themeName + " - Loading javascript for " + featureName + " feature");
-            var getviarequire = "../acttheme/js/" + featureName;
+            var getviarequire = "acttheme/js/" + featureName;
             requirejs([getviarequire], function(util) {
                 console.log(themeName + " - Javascript loaded by RequireJS");
             });
         }
         if(files[i].split('.').pop() == "css"){
-            var CSSfile = "" + baseURL + "/acttheme/css/" + files[i] + "?" + themeName;
+            var CSSfile = "acttheme/css/" + files[i] + "?" + themeName;
             var fileref = document.createElement("link");
             fileref.setAttribute("rel", "stylesheet");
             fileref.setAttribute("type", "text/css");
@@ -384,7 +384,7 @@ function getStatus(dialog) {
 	setInterval(function () {
 		checkauth();
 		$.ajax({
-			url: '/json.htm?type=devices&filter=all&used=' + dialog + '&order=Name',
+			url: 'json.htm?type=devices&filter=all&used=' + dialog + '&order=Name',
 			cache: false,
 			async: false,
 			dataType: 'json',
@@ -403,7 +403,7 @@ function getStatus(dialog) {
 }
 var adminRights = false;
 function checkauth(){
-	$.ajax({url: '/json.htm?type=command&param=getauth' , cache: false, async: false, dataType: 'json', success: function(data) {
+	$.ajax({url: 'json.htm?type=command&param=getauth' , cache: false, async: false, dataType: 'json', success: function(data) {
 		permission = data.rights
 		if (permission == 2){
 			adminRights = true;
