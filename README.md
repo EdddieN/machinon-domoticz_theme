@@ -47,7 +47,13 @@ cd domoticz/www/styles/machinon
 git pull
 ```
 
-
+## Checking beta
+```
+cd domoticz/www/styles
+git clone https://github.com/EdddieN/machinon-domoticz_theme.git machinon-beta
+cd machinon-beta
+git checkout beta
+```
 
 ### Finally preview:
 
