@@ -320,6 +320,33 @@ div.bannercontent .row.divider{
   }
 }
 
+
+
+body:not(.onMobile) #holder .row .tile,
+body:not(.onMobile) #holder .row .tile section,
+body:not(.onMobile) #holder .row .tile table[id^="item"],
+body:not(.onMobile) #holder .row .tile table[id^="item"] > tbody,
+body:not(.onMobile) #holder .row .tile table[id^="item"] > tbody > tr{
+	margin: 0 !important;
+	padding: 0 !important;
+	width: 100% !important;
+	height: 100% !important;
+  max-height: 100% !important;
+}
+
+
+
+
+
+.container .item {
+  padding: 10px 0;
+}
+
+body table#itemtable {
+  width: auto !important;
+}
+
+
 div.item {
   position: relative;
   height: 100%;
@@ -332,6 +359,14 @@ div.item {
 div.item table{
   padding: 20px;
 }
+
+
+
+
+
+
+
+
 
 .item:hover {
 	box-shadow: 0px 0px 0px 2px rgb(11, 150, 205);
@@ -970,13 +1005,6 @@ button.menu-toggle {
   margin-left: 16px;
 }
 
-.container .item {
-  padding: 10px 0;
-}
-
-body table#itemtable {
-  width: auto !important;
-}
 
 /* Reset theme button */ 
 .resetbtn,
