@@ -353,6 +353,9 @@ body:not(#onMobile) #holder .row .tile table[id^="item"] > tbody > tr{
   background: var(--main-item-bg-color);
   border-radius: 6px;
   box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 
@@ -364,17 +367,8 @@ body:not(#onMobile) #holder .row .tile table[id^="item"] > tbody > tr{
   display: flex;
   width: 65%;
 }
-.item tr {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
 
-body table#itemtable tbody tr {
-  background: transparent;
-  margin: 0;
-  padding: 0;
-}
+
 
 /* name */
 .item #name {
@@ -426,6 +420,23 @@ dzweatherwidget .item #lastupdate {
   color: var(--secondary-text-color);
   margin-top: 5px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* item subnav applying by click*/
 .options__bars {
@@ -527,6 +538,20 @@ body table#itemtable tr > .options {
 	bottom:18px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* images */
 .item .img,
 .item #img {
@@ -606,6 +631,12 @@ body table#itemtable tr > .options {
 color:var(--main-blue-color)
 }
 
+
+
+
+
+
+
 /* Time Ago */
 #dashcontent #timeago{
 display:none;
@@ -630,6 +661,16 @@ dzweatherwidget .item #timeago {
   right:20px;
   bottom: 15px;
 }
+
+
+
+
+
+
+
+
+
+
 
 /* dashboard items */
 /*Modifie dans le dashboard, l'espace entre bigtext et le bord droit*/
