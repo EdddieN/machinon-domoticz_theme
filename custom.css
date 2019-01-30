@@ -413,9 +413,11 @@ dzweatherwidget .item #lastupdate {
 .item #type {
   color: var(--secondary-text-color);
   margin-top: 5px;
-    position: absolute;
-  right: 20px;
-  top: 60px;
+    /*! position: absolute; */
+  /*! right: 20px; */
+  /*! top: 60px; */
+  text-align: right;
+  padding: 0 20px;
 }
 
 
