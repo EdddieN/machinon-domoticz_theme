@@ -288,12 +288,12 @@ div.clearfix{
 }
 
 div.bannercontent .row.divider{
-    padding:10px 0 0 0;
+    padding:15px 0 0 0;
     margin: 0 !important;
   
     display: -webkit-grid;
     display: grid;
-    grid-template-columns:repeat(4,1fr);
+    grid-auto-columns:auto;
     grid-auto-rows: 10vmax;
   
     gap:15px;
@@ -322,17 +322,15 @@ div.bannercontent .row.divider{
 
 
 
-
-
-body:not(#onMobile) #holder .row dzweatherwidget,
-body:not(#onMobile) #holder .row dztemperaturewidget,
-body:not(#onMobile) #holder .row .span4,
-body:not(#onMobile) #holder .row .tile,
-body:not(#onMobile) #holder .row .item,
-body:not(#onMobile) #holder .row .tile section,
-body:not(#onMobile) #holder .row .tile table[id^="item"],
-body:not(#onMobile) #holder .row .tile table[id^="item"] > tbody,
-body:not(#onMobile) #holder .row .tile table[id^="item"] > tbody > tr{
+#holder .row dzweatherwidget,
+#holder .row dztemperaturewidget,
+#holder .row .span4,
+#holder .row .tile,
+#holder .row .item,
+#holder .row .item section,
+#holder .row .item table[id^="item"],
+#holder .row .item table[id^="item"] > tbody,
+#holder .row .item table[id^="item"] > tbody > tr{
   position: relative;
   display: block;
 	margin: 0;
@@ -341,9 +339,6 @@ body:not(#onMobile) #holder .row .tile table[id^="item"] > tbody > tr{
 	height: 100%;
   min-height: 100%;
 }
-
-
-
 
 
 
@@ -883,6 +878,8 @@ button.menu-toggle {
   position: absolute;
   top: -6px;
   left: 10px;
+  width: 40px;
+  height: 40px;
   background: transparent;
   border: none;
   outline: 0 !important;
@@ -1383,10 +1380,6 @@ input#AcceptNewHardware:checked ~ button {
   div.row{
     align-content: center;
     
-  }
-.item {
-  min-width: 20em;
-  margin-right:0 !important;
   }
   .container-logo {
     width: 940px;
