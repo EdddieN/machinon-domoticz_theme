@@ -324,6 +324,9 @@ div.bannercontent .row.divider{
 
 
 
+body:not(#onMobile) #holder .row dzweatherwidget,
+body:not(#onMobile) #holder .row dztemperaturewidget,
+body:not(#onMobile) #holder .row .span4,
 body:not(#onMobile) #holder .row .tile,
 body:not(#onMobile) #holder .row .item,
 body:not(#onMobile) #holder .row .tile section,
