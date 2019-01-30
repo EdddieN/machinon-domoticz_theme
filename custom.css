@@ -343,7 +343,7 @@ div.bannercontent .row.divider{
 
 
 
-.item{
+#holder .row .item table[id^="item"] > tbody > tr{
   
   background: var(--main-item-bg-color);
   border-radius: 6px;
@@ -354,7 +354,7 @@ div.bannercontent .row.divider{
 }
 
 
-.item:hover {
+#holder .row .item table[id^="item"] > tbody > tr:hover {
 	box-shadow: 0px 0px 0px 2px rgb(11, 150, 205);
 }
 
