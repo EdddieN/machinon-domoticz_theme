@@ -978,7 +978,7 @@ button.menu-toggle {
 
 /* =Header */
 .bannercontent {
-  padding: 90px 5em 0 5em !important;
+  padding: 90px 2% 0 2%;
 }
 
 .sub-tabs .sub-tabs-apply,
@@ -1509,9 +1509,6 @@ input#AcceptNewHardware:checked ~ button {
     position: static !important;
   }
 
-  .bannercontent {
-    padding-top: 0;
-  }
 }
 @media (max-width: 767px) {
   body {
