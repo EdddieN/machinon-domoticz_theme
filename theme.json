@@ -47,6 +47,11 @@
             "enabled":true,
 			"files": []
         },
+	"fade_offItems": {
+            "id":18,
+            "enabled":false,
+			"files": []
+        },
 	"switch_instead_of_bigtext": {
             "id":20,
             "enabled":true,
