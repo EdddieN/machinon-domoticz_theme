@@ -24,7 +24,11 @@ $.ajax({url: 'acttheme/js/notify.js', async: false, dataType: 'script'});
 $.ajax({url: 'acttheme/js/themesettings.js', async: false, dataType: 'script'});
 $.ajax({url: 'acttheme/js/functions.js', async: false, dataType: 'script'});
 $.ajax({url: 'acttheme/js/time_ago.js', async: false, dataType: 'script'});
-$.ajax({url: 'acttheme/lang/machinon.' + lang + '.js', async: false, dataType: 'script'});
+if (['en', 'fr', 'de','sv', 'nl'].indexOf(lang) >= 0) {
+    $.ajax({url: 'acttheme/lang/machinon.' + lang + '.js', async: false, dataType: 'script'});
+}else{
+    $.ajax({url: 'acttheme/lang/machinon.en.js', async: false, dataType: 'script'});
+}                       
 checkauth();
 //need more simplycity
 if (!isMobile){ 
