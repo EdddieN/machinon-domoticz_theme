@@ -20,6 +20,17 @@ function applySwitchersAndSubmenus() {
 		if (onImage.length == 0) {
 			onImage = bigText.siblings('#img1').find('img')
 		}
+		if (theme.features.fade_offItems.enabled === true) {
+        	if (status == switchState.off) {
+        		if (theme.features.dark_theme.enabled === true) {
+        			$(this).css('opacity', '0.5');
+        		} else {
+        			$(this).css('opacity', '0.6');
+        		}
+        	} else {
+        		$(this).css('opacity', '');
+        	}
+        	}                   
 		if (status.length == 0) {
 			status = bigText.attr('data-status');
 		} else {
@@ -174,7 +185,7 @@ function loadThemeFeatureFiles(featureName) {
     for (var i = 0; i < arrayLength; i++) {
         if(files[i].split('.').pop() == "js"){
             console.log(themeName + " - Loading javascript for " + featureName + " feature");
-            var getviarequire = "../acttheme/js/" + featureName;
+            var getviarequire = "acttheme/js/" + featureName;
             requirejs([getviarequire], function(util) {
                 console.log(themeName + " - Javascript loaded by RequireJS");
             });
@@ -194,16 +205,6 @@ function unloadThemeFeatureFiles(featureName)
 {
     $('head link[href*=' + featureName + ']').remove();
     $('head script[src*=' + featureName + ']').remove();
-}
-
-function checkSettingsHTML(){
-	$.ajax({type: "GET", url: "templates/Settings.html", data: { },success: function(){
-		console.log(theme.name + " - Found 'Settings.html' in '../www/templates' directory");
-		},error: function(){
-		console.log("Can't find Settings.html in templates directory. Please copy Setting.html to ../www/templates folder");
-		bootbox.alert("<h3>Error!</h3><br/><p>Can't find Settings.html in templates directory.</p><br/><p>If you recently installed this theme. Just copy and paste 'Settings.html' from '../styles/machinon/templates' to '../www/templates' ");
-		}
-	});
 }
 
 function searchFunction() {

@@ -3,7 +3,7 @@
     "name": "Machinon",
     "description": "Machinon custom theme, simple and light",
     "license": "GPL-2.0+",
-    "version":"1.5.0",
+    "version":"1.6.0",
     "author": "Logic Energy",
     "homepage": "https://www.logicenergy.com",
     "wiki": "",
@@ -45,6 +45,11 @@
 	"time_ago": {
             "id":16,
             "enabled":true,
+			"files": []
+        },
+	"fade_offItems": {
+            "id":18,
+            "enabled":false,
 			"files": []
         },
 	"switch_instead_of_bigtext": {

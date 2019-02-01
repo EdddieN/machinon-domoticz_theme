@@ -288,12 +288,12 @@ div.clearfix{
 }
 
 div.bannercontent .row.divider{
-    padding:0;
+    padding:15px 0 0 0;
     margin: 0 !important;
   
     display: -webkit-grid;
     display: grid;
-    grid-template-columns:repeat(4,1fr);
+    grid-auto-columns:auto;
     grid-auto-rows: 10vmax;
   
     gap:15px;
@@ -320,17 +320,37 @@ div.bannercontent .row.divider{
   }
 }
 
-div.item {
+
+
+#holder .row dzweatherwidget,
+#holder .row dztemperaturewidget,
+#holder .row .span4,
+#holder .row .tile,
+#holder .row .item,
+#holder .row .item section,
+#holder .row .item table[id^="item"],
+#holder .row .item table[id^="item"] > tbody,
+#holder .row .item table[id^="item"] > tbody > tr{
   position: relative;
-  height: 100%;
+  display: block;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+  min-height: 100%;
   background: var(--main-item-bg-color);
   border-radius: 6px;
-  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
-
 }
 
-div.item table{
-  padding: 20px;
+
+
+
+#holder .row .item table[id^="item"] > tbody > tr{
+  
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .item:hover {
@@ -341,22 +361,16 @@ div.item table{
   display: flex;
   width: 65%;
 }
-.item tr {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
 
-body table#itemtable tbody tr {
-  background: transparent;
-  margin: 0;
-  padding: 0;
-}
+
 
 /* name */
 .item #name {
   background-color: transparent !important;
   color: var(--main-text-color);
+  position: absolute;
+  top: 10%;
+  left: 5%;
 }
 
 @media (min-width: 1200px) {
@@ -367,15 +381,15 @@ body table#itemtable tbody tr {
 /* bigtext */
 .item #bigtext {
   color: var(--main-blue-color);
-  font-size: 17px;
+  font-size: 1.4em;
   position: absolute;
-  top: 18px;
-  right: 50px;
+  top: 10%;
+  right: 10%;
 }
 
 @media (min-width: 980px) {
   .item #bigtext {
-    font-size: 23px;
+    font-size: 1.7em;
   }
 }
 
@@ -399,7 +413,29 @@ dzweatherwidget .item #lastupdate {
 .item #type {
   color: var(--secondary-text-color);
   margin-top: 5px;
+    /*! position: absolute; */
+  /*! right: 20px; */
+  /*! top: 60px; */
+  text-align: right;
+  padding: 0 20px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* item subnav applying by click*/
 .options__bars {
@@ -501,6 +537,20 @@ body table#itemtable tr > .options {
 	bottom:18px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* images */
 .item .img,
 .item #img {
@@ -580,6 +630,12 @@ body table#itemtable tr > .options {
 color:var(--main-blue-color)
 }
 
+
+
+
+
+
+
 /* Time Ago */
 #dashcontent #timeago{
 display:none;
@@ -604,6 +660,16 @@ dzweatherwidget .item #timeago {
   right:20px;
   bottom: 15px;
 }
+
+
+
+
+
+
+
+
+
+
 
 /* dashboard items */
 /*Modifie dans le dashboard, l'espace entre bigtext et le bord droit*/
@@ -816,6 +882,8 @@ button.menu-toggle {
   position: absolute;
   top: -6px;
   left: 10px;
+  width: 40px;
+  height: 40px;
   background: transparent;
   border: none;
   outline: 0 !important;
@@ -914,7 +982,7 @@ button.menu-toggle {
 
 /* =Header */
 .bannercontent {
-  padding: 90px 5em 0 5em !important;
+  padding: 90px 2% 0 2%;
 }
 
 .sub-tabs .sub-tabs-apply,
@@ -970,13 +1038,6 @@ button.menu-toggle {
   margin-left: 16px;
 }
 
-.container .item {
-  padding: 10px 0;
-}
-
-body table#itemtable {
-  width: auto !important;
-}
 
 /* Reset theme button */ 
 .resetbtn,
@@ -1266,13 +1327,13 @@ input#AcceptNewHardware:checked ~ button {
 /*  Device is timeout  */
 .item.statusTimeout{
 	box-shadow: 0px 0px 10px 2px rgb(199,67,67,0.5);
-	/* background-color: transparent !important; */
+	/*! background-color: transparent !important; */
 }
 .item.statusTimeout:hover{
 	box-shadow: 0px 0px 0px 2px rgb(199,67,67);
 }
 .item.statusTimeout{
-	/* color: #c74343 !important; */
+	/*! color: #c74343 !important; */
 	opacity:0.5;
 }
 .item.statusTimeout td#img{
@@ -1323,10 +1384,6 @@ input#AcceptNewHardware:checked ~ button {
   div.row{
     align-content: center;
     
-  }
-.item {
-  min-width: 20em;
-  margin-right:0 !important;
   }
   .container-logo {
     width: 940px;
@@ -1456,9 +1513,6 @@ input#AcceptNewHardware:checked ~ button {
     position: static !important;
   }
 
-  .bannercontent {
-    padding-top: 0;
-  }
 }
 @media (max-width: 767px) {
   body {

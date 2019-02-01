@@ -24,7 +24,11 @@ $.ajax({url: 'acttheme/js/notify.js', async: false, dataType: 'script'});
 $.ajax({url: 'acttheme/js/themesettings.js', async: false, dataType: 'script'});
 $.ajax({url: 'acttheme/js/functions.js', async: false, dataType: 'script'});
 $.ajax({url: 'acttheme/js/time_ago.js', async: false, dataType: 'script'});
-$.ajax({url: 'acttheme/lang/machinon.' + lang + '.js', async: false, dataType: 'script'});
+if (['en', 'fr', 'de','sv', 'nl', 'pl'].indexOf(lang) >= 0) {
+    $.ajax({url: 'acttheme/lang/machinon.' + lang + '.js', async: false, dataType: 'script'});
+}else{
+    $.ajax({url: 'acttheme/lang/machinon.en.js', async: false, dataType: 'script'});
+}                       
 checkauth();
 //need more simplycity
 if (!isMobile){ 
@@ -71,7 +75,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		requirejs.config({ waitSeconds: 30 });
 		// function adds the theme tab
 		showThemeSettings();
-		checkSettingsHTML();
 		// load theme settings
 		loadSettings();
 		enableThemeFeatures();
@@ -80,12 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			
 		// Replace settings dropdown button to normal button.
 		if (theme.features.custom_settings_menu.enabled === true) {
-			$('#appnavbar li:not(.clcustommenu)').remove('.dropdown');
-			let mainMenu = $('#appnavbar');
-			let mSettings = mainMenu.find('#mSettings');
-			if (mainMenu.length && mSettings.length == 0 ) {
-				mainMenu.append('<li id="mSettings" style="display: none;" has-permission="Admin"><a href="#Custom/Settings"><img src="images/setup.png"><span data-i18n="Settings">Settings</span></a></li>');			
-			}
+			$.ajax({url: 'acttheme/js/settings_page.js', async: false, dataType: 'script'});
 		} else {
 			$('#cSetup').click(function() {
 				showThemeSettings();
