@@ -1,6 +1,6 @@
 # Fix for misplaced tabs in switches, scenes and utility.
 
-Replace with same files in `../www/views`
+For domoticz version previous 4.10393, replace these files in `../www/views`
 
 Files:  
 * lights.html
