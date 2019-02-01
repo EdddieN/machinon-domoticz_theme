@@ -34,13 +34,6 @@ git clone https://github.com/EdddieN/machinon-domoticz_theme.git machinon
 sudo /etc/init.d/domoticz.sh restart
 ```
 
-### Copy settings.html in templates folder to
-
-```
-sudo cp ~/domoticz/www/styles/machinon/templates/Settings.html ~/domoticz/www/templates/
-```  
-You may need to disable Custom menu if a visible wider space between Utility and Setup [SETUP -> Settings -> Active Menu]
-
 ### Domoticz version previous 4.10393
 
 In Domoticz version before 4.10393 the tabs for switches, scenes and utility is width is not correct.
