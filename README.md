@@ -37,7 +37,7 @@ sudo /etc/init.d/domoticz.sh restart
 ### Domoticz version previous 4.10393
 
 In Domoticz version before 4.10393 the tabs for switches, scenes and utility is width is not correct.
-There is modified html file in `../machinon/views` to replace files in `../www/views`
+There is modified html files in `../machinon/views` to replace files in `../www/views`
 
 
 ## Updating
