@@ -30,7 +30,7 @@ function applySwitchersAndSubmenus() {
         	} else {
         		$(this).css('opacity', '');
         	}
-        	}
+        	}                   
 		if (status.length == 0) {
 			status = bigText.attr('data-status');
 		} else {

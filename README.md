@@ -1,5 +1,7 @@
 # Machinon theme
 
+[![Join the chat at https://gitter.im/machinon-domoticz_theme/community](https://badges.gitter.im/machinon-domoticz_theme/community.svg)](https://gitter.im/machinon-domoticz_theme/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) ![alt tag](https://img.shields.io/badge/dynamic/json.svg?label=Version&url=https%3A%2F%2Fraw.githubusercontent.com%2FEdddieN%2Fmachinon-domoticz_theme%2Fmaster%2Ftheme.json&query=version&colorB=blue)
+
 # WORK IN PROGRESS
 
 This is a theme for Domoticz in machinon project. Theme in progress with project machinon:
@@ -38,6 +40,11 @@ sudo /etc/init.d/domoticz.sh restart
 sudo cp ~/domoticz/www/styles/machinon/templates/Settings.html ~/domoticz/www/templates/
 ```  
 You may need to disable Custom menu if a visible wider space between Utility and Setup [SETUP -> Settings -> Active Menu]
+
+### Domoticz version previous 4.10393
+
+In Domoticz version before 4.10393 the tabs for switches, scenes and utility is width is not correct.
+There is modified html file in `../machinon/views` to replace files in `../www/views`
 
 
 ## Updating
