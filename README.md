@@ -43,7 +43,8 @@ You may need to disable Custom menu if a visible wider space between Utility and
 
 ### Domoticz version previous 4.10393
 
-In Domoticz version before 4.10393 the tabs for switches, scenes and utility width is not correct. 
+In Domoticz version before 4.10393 the tabs for switches, scenes and utility is width is not correct.
+There is modified html file in `../machinon/views` to replace with files in `../www/views`
 
 
 ## Updating
