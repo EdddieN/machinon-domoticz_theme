@@ -28,8 +28,8 @@
 			"files": []
         },
 	"custom_settings_menu": {
-            "id":12,
-            "enabled":true,
+            "id":19,
+            "enabled":false,
 			"files": []
         },
 	"standby": {
