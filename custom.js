@@ -1,34 +1,20 @@
 /* Custom.js for machinon theme */
 
-var theme = {};
-var themeName = "";
-var baseURL= "";
-var switchState = {};
-var isMobile;
-var newVersionText = '';
-var gitVersion;
-var lang;
-var user;
-var checkUpdate;
-generate_noty = undefined
+var theme = {}, themeName = "", baseURL = "", switchState = {}, isMobile, newVersionText = "", gitVersion, lang, user, checkUpdate;
+generate_noty = void 0;
+isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 // load files
-isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-$.ajax({url: 'json.htm?type=settings' , cache: false, async: false, dataType: 'json', success: function(data) {
-		lang = data.Language;
-		user = data.WebUserName;
-		checkUpdate = data.UseAutoUpdate;
-	}
-});
-$.ajax({url: 'acttheme/js/notify.js', async: false, dataType: 'script'});
-$.ajax({url: 'acttheme/js/themesettings.js', async: false, dataType: 'script'});
-$.ajax({url: 'acttheme/js/functions.js', async: false, dataType: 'script'});
-$.ajax({url: 'acttheme/js/time_ago.js', async: false, dataType: 'script'});
-if (['en', 'fr', 'de','sv', 'nl', 'pl'].indexOf(lang) >= 0) {
-    $.ajax({url: 'acttheme/lang/machinon.' + lang + '.js', async: false, dataType: 'script'});
-}else{
-    $.ajax({url: 'acttheme/lang/machinon.en.js', async: false, dataType: 'script'});
-}                       
+$.ajax({url:"json.htm?type=settings", cache: false, async: false, dataType:"json", success:function(b) {
+  lang = b.Language;
+  user = b.WebUserName;
+  checkUpdate = b.UseAutoUpdate;
+}});
+$.ajax({url:"acttheme/js/notify.js", async: false, dataType:"script"});
+$.ajax({url:"acttheme/js/themesettings.js", async: false, dataType:"script"});
+$.ajax({url:"acttheme/js/functions.js", async: false, dataType:"script"});
+$.ajax({url:"acttheme/js/time_ago.js", async: false, dataType:"script"});
+0 <= "en fr de sv nl pl".split(" ").indexOf(lang) ? $.ajax({url:"acttheme/lang/machinon." + lang + ".js", async: false, dataType:"script"}) : $.ajax({url:"acttheme/lang/machinon.en.js", async: false, dataType:"script"});
 checkauth();
 //need more simplycity
 if (!isMobile){ 
@@ -82,15 +68,15 @@ document.addEventListener('DOMContentLoaded', function () {
 		getStatus(true);
 			
 		// Replace settings dropdown button to normal button.
-		if (theme.features.custom_settings_menu.enabled === true) {
-			$.ajax({url: 'acttheme/js/settings_page.js', async: false, dataType: 'script'});
-		} else {
-			$('#cSetup').click(function() {
-				showThemeSettings();
-				loadSettings();
-				enableThemeFeatures();
-			});
-		}
+		true === theme.features.custom_settings_menu.enabled ? $.ajax({url:"acttheme/js/settings_page.js", async: false, dataType:"script"}) : $("#cSetup").click(function() {
+		  showThemeSettings();
+		  loadSettings();
+		  enableThemeFeatures();
+		});
+        
+		// insert config-forms menu item into main navigation
+		true === theme.features.custom_page_menu.enabled && $.ajax({url:"acttheme/js/custom_page.js", async: false, dataType:"script"});
+		
 		// Navbar menu and logo header
 		let navBar =  $('.navbar').append('<button class="menu-toggle"></button>');
 		let navBarInner = $(".navbar-inner");
@@ -151,12 +137,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			$('<style>#dashcontent #lastupdate{display: block;}</style>').appendTo('head');
 			$('<style>#dashcontent #timeago{display: block;}</style>').appendTo('head');
 		}
-
-/* 		// insert config-forms menu item into main navigation
-		let configForms = mainMenu.find('#config-forms');
-		if (mainMenu.length && configForms.length == 0) {
-			mainMenu.append('<li class="divider-vertical"></li><li id="config-forms"><a href="#" class="active">Machinon</a></li>');
-		} */
 			
 		$(document).ajaxSuccess(function (event, xhr, settings) {
 			if (settings.url.startsWith('json.htm?type=devices') ||
