@@ -185,7 +185,7 @@ function loadThemeFeatureFiles(featureName) {
     for (var i = 0; i < arrayLength; i++) {
         if(files[i].split('.').pop() == "js"){
             console.log(themeName + " - Loading javascript for " + featureName + " feature");
-            var getviarequire = "acttheme/js/" + featureName;
+            var getviarequire = "../acttheme/js/" + featureName;
             requirejs([getviarequire], function(util) {
                 console.log(themeName + " - Javascript loaded by RequireJS");
             });
