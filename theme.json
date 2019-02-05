@@ -13,9 +13,8 @@
     "previewimage": "screenshot.png",
     "standby_after": 10,
     "logo": "",
-    "variants": [
-        {"default": "custom.css"}
-    ],
+    "custom_url": "https://machinon.com",
+    "button_name": "Machinon",
     "features": {
         "dark_theme": {
             "id":10,
