@@ -46,7 +46,7 @@
             "enabled":true,
 			"files": []
         },
-    "custom_page_menu": {
+    	"custom_page_menu": {
             "id":17,
             "enabled":true,
 			"files": []
