@@ -4,7 +4,7 @@ $('#appnavbar li:not(.clcustommenu)').remove('.dropdown');
 var mainMenu = $('#appnavbar');
 var customPage = mainMenu.find('#customPage');
 if (mainMenu.length && customPage.length == 0 ) {
-    mainMenu.append('<li id="customPage" style="display: none;" has-permission="Admin"><a class="lcursor"><img src="images/setup.png"><span data-i18n="' + theme.button_name + '">' + theme.button_name + '</span></a></li>');
+    mainMenu.append('<li id="customPage"><a class="lcursor"><img src="images/setup.png"><span data-i18n="' + theme.button_name + '">' + theme.button_name + '</span></a></li>');
 }
 $('#customPage').click(function() {
 var htmlcontent = '';
