@@ -334,8 +334,6 @@ div.bannercontent .row.divider{
   }
 }
 
-
-
 #holder .row dzweatherwidget,
 #holder .row dztemperaturewidget,
 #holder .row .span4,
@@ -356,9 +354,6 @@ div.bannercontent .row.divider{
   border-radius: 6px;
 }
 
-
-
-
 #holder .row .item table[id^="item"] > tbody > tr{
   
   box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
@@ -375,8 +370,6 @@ div.bannercontent .row.divider{
   display: flex;
   width: 65%;
 }
-
-
 
 /* name */
 .item #name {
@@ -433,23 +426,6 @@ dzweatherwidget .item #lastupdate {
   text-align: right;
   padding: 0 20px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* item subnav applying by click*/
 .options__bars {
@@ -552,19 +528,6 @@ body table#itemtable tr > .options {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* images */
 .item .img,
 .item #img {
@@ -644,12 +607,6 @@ body table#itemtable tr > .options {
 color:var(--main-blue-color)
 }
 
-
-
-
-
-
-
 /* Time Ago */
 #dashcontent #timeago{
 display:none;
@@ -674,16 +631,6 @@ dzweatherwidget .item #timeago {
   right:20px;
   bottom: 15px;
 }
-
-
-
-
-
-
-
-
-
-
 
 /* dashboard items */
 /*Modifie dans le dashboard, l'espace entre bigtext et le bord droit*/
@@ -1414,14 +1361,17 @@ input#AcceptNewHardware:checked ~ button {
   }
 
   .navbar-inverse .navbar-inner {
-    margin-left: 20px;
+    background-color: var(--main-blue-color);
+    width: 180px;
+    height: 100%;
+    margin-left: 1px;
     display: none;
     padding: 10px;
-    border: 1px solid #fff;
-    border-radius: 6px;
+    border: none;
+    border-radius: 1px;
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
     position:absolute;
-    z-index: 1;
+    z-index: 2;
   }
 
   button.menu-toggle {
@@ -1433,6 +1383,7 @@ input#AcceptNewHardware:checked ~ button {
     float: none;
   }
   .navbar .nav > li {
+    border-bottom: 1px solid #fff;
     float: none;
   }
   .navbar .nav > li > .dropdown-menu.pull-right li {
@@ -1440,9 +1391,13 @@ input#AcceptNewHardware:checked ~ button {
   }
   .navbar .nav .dropdown-menu {
     padding: 0;
-    box-shadow: none;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
   }
   .navbar .nav li a {
+    font-family: main-font;
+    color: #fff;
+    font-size: 20px;
+    background-color: var(--main-blue-color);
     text-align: left;
   }
   .navbar .nav .current_page_item > a {
@@ -1509,6 +1464,7 @@ input#AcceptNewHardware:checked ~ button {
   }
 
   .dropdown-submenu > a:after {
+    background: var(--main-bg-color)!important;
     position: absolute;
     left: 50%;
     bottom: 10px;
