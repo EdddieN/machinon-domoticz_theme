@@ -82,11 +82,11 @@ document.addEventListener('DOMContentLoaded', function () {
 		let navBarInner = $(".navbar-inner");
 		let navBarToggle = $('.menu-toggle');
 		navBarToggle.click(function(){
-			navBarInner.slideToggle(400);
+			navBarInner.toggle('slide', 400);
 		});
-		if ((isMobile && window.innerWidth <= 992) || (!isMobile && window.innerWidth <= 992)){
+	        if ((isMobile && window.innerWidth <= 992) || (!isMobile && window.innerWidth <= 992)){
 			$('.navbar-inner a').click(function(){
-				$(".navbar-inner").slideToggle(400);
+				$(".navbar-inner").toggle('slide', 400);
 			});
 		}
 
