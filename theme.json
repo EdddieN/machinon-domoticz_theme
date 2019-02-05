@@ -28,7 +28,7 @@
         },
 	"custom_settings_menu": {
             "id":19,
-            "enabled":false,
+            "enabled":true,
 			"files": []
         },
 	"standby": {
@@ -38,7 +38,7 @@
         },
 	"check_update": {
             "id":15,
-            "enabled":false,
+            "enabled":true,
 			"files": ["check_update.js"]
         },
 	"time_ago": {
