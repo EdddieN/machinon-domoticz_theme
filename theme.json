@@ -9,7 +9,7 @@
     "wiki": "https://www.domoticz.com/wiki/Machinon_Theme",
     "standby_after": 10,
     "logo": "",
-    "custom_url": "http://domoticz.com",
+    "custom_url": "https://www.domoticz.com",
     "button_name": "Custom Page",
     "features": {
         "dark_theme": {
