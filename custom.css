@@ -291,6 +291,9 @@ input:focus + .slider {
 
 /* common features */
 /*need fix media screen*/
+#timesun{
+    margin-top: -30px;
+}
 div#floorplancontent {
     height: 87%;
 }
