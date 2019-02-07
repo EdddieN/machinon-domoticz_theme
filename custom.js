@@ -79,17 +79,16 @@ document.addEventListener('DOMContentLoaded', function () {
 		isMobile && adminRights && 992 >= window.innerWidth && $("#appnavbar").append('<li id="mLogout"><a id="cLogout" href="#Logout"><img src="images/logout.png"><span class="hidden-phone hidden-tablet" data-i18n="Logout">Logout</span></a></li>');
 		
 		// Navbar menu and logo header
-		let navBar =  $('.navbar').append('<button class="menu-toggle"></button>');
-		let navBarInner = $(".navbar-inner");
-		let navBarToggle = $('.menu-toggle');
-		navBarToggle.click(function(){
-			navBarInner.toggle('slide', 400);
+		var navBar = $(".navbar").append('<button class="menu-toggle"></button>'), navBarInner = $(".navbar-inner"), navBarToggle = $(".menu-toggle");
+		navBarToggle.click(function() {
+		  navBarInner.toggle("slide", 500);
 		});
-	        if ((isMobile && window.innerWidth <= 992) || (!isMobile && window.innerWidth <= 992)){
-			$('.navbar-inner a').click(function(){
-				$(".navbar-inner").toggle('slide', 400);
-			});
-		}
+		(isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth) && $(".navbar-inner a").click(function() {
+		  $(".navbar-inner").toggle("slide", 500);
+		});
+		$(window).scroll(function() {
+		  50 < $(this).scrollTop() ? $("button.menu-toggle").css("background-color", "var(--main-blue-color)") : $("button.menu-toggle").css("background-color", "");
+		});
 
 		let containerLogo = '<header class="logo"><div class="container-logo">';
 		if (theme.logo.length == 0) {
@@ -100,8 +99,8 @@ document.addEventListener('DOMContentLoaded', function () {
 			$('<style>#login:before {content: url(../images/'+ theme.logo + ') !important;}</style>').appendTo('head');
 		}
 		containerLogo += '</div></header>';
-		
 		$(containerLogo).insertBefore('.navbar-inner');
+		
 		// Searchbar		
 		$('<input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="' + language.type_to_search + '" title="' + language.type_to_search + '">').appendTo('.container-logo');
 		
