@@ -76,6 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
         
 		// insert config-forms menu item into main navigation
 		true === theme.features.custom_page_menu.enabled && $.ajax({url:"acttheme/js/custom_page.js", async: false, dataType:"script"});
+		isMobile && adminRights && 992 >= window.innerWidth && $("#appnavbar").append('<li id="mLogout"><a id="cLogout" href="#Logout"><img src="images/logout.png"><span class="hidden-phone hidden-tablet" data-i18n="Logout">Logout</span></a></li>');
 		
 		// Navbar menu and logo header
 		let navBar =  $('.navbar').append('<button class="menu-toggle"></button>');
@@ -108,9 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		$('<div id="notify"></div>').appendTo('.container-logo');
 		$('<img id="notyIcon" src="images/notify.png"/>').appendTo('#notify').hide();
 		var existingNotes = localStorage.getItem('notify');
-		if (existingNotes) {
-			$('#notyIcon').show();
-		}
+		existingNotes && $("#notyIcon").show()
 		var state = false;
 		$('#notify').click(function(){
 			if(!state){
@@ -170,19 +169,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 
 	});
-
-	window.onresize = function () {
-		//show-hide navbar on window resize
+	window.onresize = function() {
 		var nav = $(".navbar-inner");
-		if (nav === null) {
-			return;
-		}
-		let width = window.innerWidth;
-		if (width > 992) {
-			nav.css("display", "block");
-		} else {
-			nav.css("display", "none");
-		}
+		null !== nav && (992 < window.innerWidth ? nav.css("display", "block") : nav.css("display", "none"));
 	};
-
 })();
