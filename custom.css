@@ -1386,6 +1386,7 @@ input#AcceptNewHardware:checked ~ button {
 
   .navbar .nav {
     margin: 0 !important;
+    margin-top: 35px !important;
     float: none;
   }
   .navbar .nav > li {
