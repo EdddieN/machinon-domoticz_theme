@@ -1,12 +1,13 @@
 /* Custom.js for machinon theme */
 
-var theme = {}, themeName = "", baseURL = "", switchState = {}, isMobile, newVersionText = "", gitVersion, lang, user, checkUpdate;
+var theme = {}, themeName = "", baseURL = "", switchState = {}, isMobile, newVersionText = "", gitVersion, lang, user, themeFolder, checkUpdate;
 generate_noty = void 0;
 isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 // load files
 $.ajax({url:"json.htm?type=settings", cache: false, async: false, dataType:"json", success:function(b) {
   lang = b.Language;
+  themeFolder = b.WebTheme;
   user = b.WebUserName;
   checkUpdate = b.UseAutoUpdate;
 }});
