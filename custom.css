@@ -57,12 +57,15 @@ h2,
 .item #name {
   font-family: main-font-bold;
 }
+h1,
+.page-header-small h1 {
+	font-family: main-font-bold;
+}
 #tabs,
 .span6,
 .span6,
-.span12,
-.page-header-small h1 {
-	font-family: main-font-bold;
+.span12 {
+	font-family: main-font;
 }
 /* aboutpage */
 #aboutcontent {
