@@ -687,15 +687,6 @@ dzweatherwidget #status {
   bottom: 40px;
   overflow-x:  auto;
 }
-dztemperaturewidget #status::before,
-dzweatherwidget #status::before {
-  content: "Status: ";
-}
-dztemperaturewidget #status:empty::before, dztemperaturewidget #status > span:empty::before,
-dzweatherwidget #status:empty::before,
-dzweatherwidget #status > span:empty::before {
-  content: "";
-}
 
 /* utility items */
 #utilitycontent #type {
@@ -705,12 +696,6 @@ dzweatherwidget #status > span:empty::before {
   width: 60%;
   text-align: right;
   margin-top: 0;
-}
-#utilitycontent #type::before {
-  content: "Type: ";
-}
-#utilitycontent #type:empty::before, #utilitycontent #type > span:empty::before {
-  content: "";
 }
 #utilitycontent #status {
   position: absolute;
@@ -722,12 +707,6 @@ dzweatherwidget #status > span:empty::before {
   bottom: 40px;
   overflow-x:  auto;
 }
-#utilitycontent #status::before {
-  content: "Status: ";
-}
-#utilitycontent #status:empty::before, #utilitycontent #status > span:empty::before {
-  content: "";
-}
 
 /* scene items */
 #scenecontent #type {
@@ -738,12 +717,6 @@ dzweatherwidget #status > span:empty::before {
   text-align: right;
   margin-top: 0;
 }
-#scenecontent #type::before {
-  content: "Type: ";
-}
-#scenecontent #type:empty::before, #scenecontent #type > span:empty::before {
-  content: "";
-}
 #scenecontent #status {
   position: absolute;
   right: 20px;
@@ -751,12 +724,6 @@ dzweatherwidget #status > span:empty::before {
   width: 60%;
   text-align: right;
   margin-top: 0;
-}
-#scenecontent #status::before {
-  content: "";
-}
-#scenecontent #status:empty::before, #scenecontent #status > span:empty::before {
-  content: "";
 }
 
 #type .dimslider,
