@@ -40,6 +40,13 @@ h2 span {
 .dropdown-content, .rectangle-8, .rectangle-8-dropdown {
 	background-color: #515558;
 }
+@media screen and (max-width: 992px) {
+.navbar-inverse .navbar-inner,
+.navbar .nav li a,
+.navbar .nav li a:hover{
+  background-color: var(--main-blue-color);
+}
+}
 .slider {
   background-color: #ccc;
 }

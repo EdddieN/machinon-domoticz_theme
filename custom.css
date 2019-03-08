@@ -5,21 +5,9 @@
 @import url("css/icons_on_tabs.css");
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
-#popup_setpoint {
-color: var(--main-item-color)!important;
-background-color: lightgrey!important;
-border-color: var(--main-item-bg-color)!important;
-}
-
-.ui-popup.ui-corner-all {
-  	background: var(--main-item-bg-color);
-	border-radius: 6px;
-	box-shadow: 0px 0px 10px 2px rgba(128, 128, 128, 0.5);
-	color: var(--main-item-color);
-}
 /* author at footer */
 #copyright p:after {
-  content: "  | 'machinon' theme by EdddieN";
+  content: "  | 'Machinon' theme";
 }
 /* Navbar move abit to left */
 .navbar .nav {
@@ -69,12 +57,15 @@ h2,
 .item #name {
   font-family: main-font-bold;
 }
+h1,
+.page-header-small h1 {
+	font-family: main-font-bold;
+}
 #tabs,
 .span6,
 .span6,
-.span12,
-.page-header-small h1 {
-	font-family: main-font-bold;
+.span12 {
+	font-family: main-font;
 }
 /* aboutpage */
 #aboutcontent {
@@ -100,6 +91,32 @@ h2,
 .logerror{
 	font-family: main-font;
 	color: #c74343;
+}
+/* Setpoint popup */
+#setpoint_popup{
+    color: var(--secondary-text-color)!important;
+    text-shadow: none;
+    background-color: var(--main-item-bg-color)!important;
+    border-color: none;
+}
+#popup_setpoint{
+    font-family: main-font;
+    color: var(--main-blue-color)!important;
+    border-color: var(--main-item-bg-color)!important;
+    background: var(--main-item-bg-color)!important;
+}
+.ui-close{
+    background: url(../images/Close.png);
+}
+.ui-close:hover {
+    background-position: 0 0px
+}
+.ui-popup.ui-corner-all {
+background: var(--main-item-bg-color);
+border-radius: 6px;
+box-shadow: -2px 2px 20px 0px rgba(0, 0, 0, 0.2);
+color: var(--main-item-color);
+border-bottom: none;
 }
 /* Search */
 #searchInput {
@@ -277,6 +294,9 @@ input:focus + .slider {
 
 /* common features */
 /*need fix media screen*/
+#timesun{
+    margin-top: -30px;
+}
 div#floorplancontent {
     height: 87%;
 }
@@ -320,8 +340,6 @@ div.bannercontent .row.divider{
   }
 }
 
-
-
 #holder .row dzweatherwidget,
 #holder .row dztemperaturewidget,
 #holder .row .span4,
@@ -342,9 +360,6 @@ div.bannercontent .row.divider{
   border-radius: 6px;
 }
 
-
-
-
 #holder .row .item table[id^="item"] > tbody > tr{
   
   box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
@@ -361,8 +376,6 @@ div.bannercontent .row.divider{
   display: flex;
   width: 65%;
 }
-
-
 
 /* name */
 .item #name {
@@ -419,23 +432,6 @@ dzweatherwidget .item #lastupdate {
   text-align: right;
   padding: 0 20px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* item subnav applying by click*/
 .options__bars {
@@ -538,19 +534,6 @@ body table#itemtable tr > .options {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* images */
 .item .img,
 .item #img {
@@ -630,12 +613,6 @@ body table#itemtable tr > .options {
 color:var(--main-blue-color)
 }
 
-
-
-
-
-
-
 /* Time Ago */
 #dashcontent #timeago{
 display:none;
@@ -660,16 +637,6 @@ dzweatherwidget .item #timeago {
   right:20px;
   bottom: 15px;
 }
-
-
-
-
-
-
-
-
-
-
 
 /* dashboard items */
 /*Modifie dans le dashboard, l'espace entre bigtext et le bord droit*/
@@ -720,15 +687,6 @@ dzweatherwidget #status {
   bottom: 40px;
   overflow-x:  auto;
 }
-dztemperaturewidget #status::before,
-dzweatherwidget #status::before {
-  content: "Status: ";
-}
-dztemperaturewidget #status:empty::before, dztemperaturewidget #status > span:empty::before,
-dzweatherwidget #status:empty::before,
-dzweatherwidget #status > span:empty::before {
-  content: "";
-}
 
 /* utility items */
 #utilitycontent #type {
@@ -738,12 +696,6 @@ dzweatherwidget #status > span:empty::before {
   width: 60%;
   text-align: right;
   margin-top: 0;
-}
-#utilitycontent #type::before {
-  content: "Type: ";
-}
-#utilitycontent #type:empty::before, #utilitycontent #type > span:empty::before {
-  content: "";
 }
 #utilitycontent #status {
   position: absolute;
@@ -755,12 +707,6 @@ dzweatherwidget #status > span:empty::before {
   bottom: 40px;
   overflow-x:  auto;
 }
-#utilitycontent #status::before {
-  content: "Status: ";
-}
-#utilitycontent #status:empty::before, #utilitycontent #status > span:empty::before {
-  content: "";
-}
 
 /* scene items */
 #scenecontent #type {
@@ -771,12 +717,6 @@ dzweatherwidget #status > span:empty::before {
   text-align: right;
   margin-top: 0;
 }
-#scenecontent #type::before {
-  content: "Type: ";
-}
-#scenecontent #type:empty::before, #scenecontent #type > span:empty::before {
-  content: "";
-}
 #scenecontent #status {
   position: absolute;
   right: 20px;
@@ -784,12 +724,6 @@ dzweatherwidget #status > span:empty::before {
   width: 60%;
   text-align: right;
   margin-top: 0;
-}
-#scenecontent #status::before {
-  content: "";
-}
-#scenecontent #status:empty::before, #scenecontent #status > span:empty::before {
-  content: "";
 }
 
 #type .dimslider,
@@ -1400,25 +1334,33 @@ input#AcceptNewHardware:checked ~ button {
   }
 
   .navbar-inverse .navbar-inner {
-    margin-left: 20px;
+    background-color: var(--main-blue-color);
+    width: 180px;
+    height: 100%;
+    margin-left: 0;
+    margin-top: -40px;
     display: none;
     padding: 10px;
-    border: 1px solid #fff;
-    border-radius: 6px;
+    border: none;
+    border-radius: 1px;
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
-    position:absolute;
-    z-index: 1;
+    position: fixed;
+    z-index: 2;
   }
 
   button.menu-toggle {
+    position: fixed;
     display: block;
+    z-index: 3;
   }
 
   .navbar .nav {
     margin: 0 !important;
+    margin-top: 35px !important;
     float: none;
   }
   .navbar .nav > li {
+    border-bottom: 1px solid #fff;
     float: none;
   }
   .navbar .nav > li > .dropdown-menu.pull-right li {
@@ -1426,9 +1368,13 @@ input#AcceptNewHardware:checked ~ button {
   }
   .navbar .nav .dropdown-menu {
     padding: 0;
-    box-shadow: none;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
   }
   .navbar .nav li a {
+    font-family: main-font;
+    color: #fff;
+    font-size: 20px;
+    background-color: var(--main-blue-color);
     text-align: left;
   }
   .navbar .nav .current_page_item > a {
@@ -1495,6 +1441,7 @@ input#AcceptNewHardware:checked ~ button {
   }
 
   .dropdown-submenu > a:after {
+    background: var(--main-bg-color)!important;
     position: absolute;
     left: 50%;
     bottom: 10px;

@@ -3,19 +3,14 @@
     "name": "Machinon",
     "description": "Machinon custom theme, simple and light",
     "license": "GPL-2.0+",
-    "version":"1.6.1",
-    "author": "Logic Energy",
-    "homepage": "https://www.logicenergy.com",
-    "wiki": "",
-    "textcolor": "#1a1a1a",     
-    "backgroundcolor": "#f1f1f1",    
-    "backgroundimage": "",
-    "previewimage": "screenshot.png",
+    "version":"1.6.2",
+    "author": "EdddieN",
+    "homepage": "https://www.machinon.com",
+    "wiki": "https://www.domoticz.com/wiki/Machinon_Theme",
     "standby_after": 10,
     "logo": "",
-    "variants": [
-        {"default": "custom.css"}
-    ],
+    "custom_url": "https://www.domoticz.com",
+    "button_name": "Custom Page",
     "features": {
         "dark_theme": {
             "id":10,
@@ -28,7 +23,7 @@
 			"files": []
         },
 	"custom_settings_menu": {
-            "id":12,
+            "id":19,
             "enabled":true,
 			"files": []
         },
@@ -39,11 +34,16 @@
         },
 	"check_update": {
             "id":15,
-            "enabled":false,
+            "enabled":true,
 			"files": ["check_update.js"]
         },
 	"time_ago": {
             "id":16,
+            "enabled":true,
+			"files": []
+        },
+    	"custom_page_menu": {
+            "id":17,
             "enabled":true,
 			"files": []
         },

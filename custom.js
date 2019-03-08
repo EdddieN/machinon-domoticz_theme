@@ -1,34 +1,21 @@
 /* Custom.js for machinon theme */
 
-var theme = {};
-var themeName = "";
-var baseURL= "";
-var switchState = {};
-var isMobile;
-var newVersionText = '';
-var gitVersion;
-var lang;
-var user;
-var checkUpdate;
-generate_noty = undefined
+var theme = {}, themeName = "", baseURL = "", switchState = {}, isMobile, newVersionText = "", gitVersion, lang, user, themeFolder, checkUpdate;
+generate_noty = void 0;
+isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 // load files
-isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-$.ajax({url: 'json.htm?type=settings' , cache: false, async: false, dataType: 'json', success: function(data) {
-		lang = data.Language;
-		user = data.WebUserName;
-		checkUpdate = data.UseAutoUpdate;
-	}
-});
-$.ajax({url: 'acttheme/js/notify.js', async: false, dataType: 'script'});
-$.ajax({url: 'acttheme/js/themesettings.js', async: false, dataType: 'script'});
-$.ajax({url: 'acttheme/js/functions.js', async: false, dataType: 'script'});
-$.ajax({url: 'acttheme/js/time_ago.js', async: false, dataType: 'script'});
-if (['en', 'fr', 'de','sv', 'nl', 'pl'].indexOf(lang) >= 0) {
-    $.ajax({url: 'acttheme/lang/machinon.' + lang + '.js', async: false, dataType: 'script'});
-}else{
-    $.ajax({url: 'acttheme/lang/machinon.en.js', async: false, dataType: 'script'});
-}                       
+$.ajax({url:"json.htm?type=settings", cache: false, async: false, dataType:"json", success:function(b) {
+  lang = b.Language;
+  themeFolder = b.WebTheme;
+  user = b.WebUserName;
+  checkUpdate = b.UseAutoUpdate;
+}});
+$.ajax({url:"acttheme/js/notify.js", async: false, dataType:"script"});
+$.ajax({url:"acttheme/js/themesettings.js", async: false, dataType:"script"});
+$.ajax({url:"acttheme/js/functions.js", async: false, dataType:"script"});
+$.ajax({url:"acttheme/js/time_ago.js", async: false, dataType:"script"});
+0 <= "en fr de sv nl pl".split(" ").indexOf(lang) ? $.ajax({url:"acttheme/lang/machinon." + lang + ".js", async: false, dataType:"script"}) : $.ajax({url:"acttheme/lang/machinon.en.js", async: false, dataType:"script"});
 checkauth();
 //need more simplycity
 if (!isMobile){ 
@@ -82,27 +69,27 @@ document.addEventListener('DOMContentLoaded', function () {
 		getStatus(true);
 			
 		// Replace settings dropdown button to normal button.
-		if (theme.features.custom_settings_menu.enabled === true) {
-			$.ajax({url: 'acttheme/js/settings_page.js', async: false, dataType: 'script'});
-		} else {
-			$('#cSetup').click(function() {
-				showThemeSettings();
-				loadSettings();
-				enableThemeFeatures();
-			});
-		}
-		// Navbar menu and logo header
-		let navBar =  $('.navbar').append('<button class="menu-toggle"></button>');
-		let navBarInner = $(".navbar-inner");
-		let navBarToggle = $('.menu-toggle');
-		navBarToggle.click(function(){
-			navBarInner.slideToggle(400);
+		true === theme.features.custom_settings_menu.enabled ? $.ajax({url:"acttheme/js/settings_page.js", async: false, dataType:"script"}) : $("#cSetup").click(function() {
+		  showThemeSettings();
+		  loadSettings();
+		  enableThemeFeatures();
 		});
-		if ((isMobile && window.innerWidth <= 992) || (!isMobile && window.innerWidth <= 992)){
-			$('.navbar-inner a').click(function(){
-				$(".navbar-inner").slideToggle(400);
-			});
-		}
+        
+		// insert config-forms menu item into main navigation
+		true === theme.features.custom_page_menu.enabled && $.ajax({url:"acttheme/js/custom_page.js", async: false, dataType:"script"});
+		isMobile && adminRights && 992 >= window.innerWidth && $("#appnavbar").append('<li id="mLogout"><a id="cLogout" href="#Logout"><img src="images/logout.png"><span class="hidden-phone hidden-tablet" data-i18n="Logout">Logout</span></a></li>');
+		
+		// Navbar menu and logo header
+		var navBar = $(".navbar").append('<button class="menu-toggle"></button>'), navBarInner = $(".navbar-inner"), navBarToggle = $(".menu-toggle");
+		navBarToggle.click(function() {
+		  navBarInner.toggle("slide", 500);
+		});
+		(isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth) && $(".navbar-inner a").click(function() {
+		  $(".navbar-inner").toggle("slide", 500);
+		});
+		$(window).scroll(function() {
+		  50 < $(this).scrollTop() ? $("button.menu-toggle").css("background-color", "var(--main-blue-color)") : $("button.menu-toggle").css("background-color", "");
+		});
 
 		let containerLogo = '<header class="logo"><div class="container-logo">';
 		if (theme.logo.length == 0) {
@@ -113,8 +100,8 @@ document.addEventListener('DOMContentLoaded', function () {
 			$('<style>#login:before {content: url(../images/'+ theme.logo + ') !important;}</style>').appendTo('head');
 		}
 		containerLogo += '</div></header>';
-		
 		$(containerLogo).insertBefore('.navbar-inner');
+		
 		// Searchbar		
 		$('<input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="' + language.type_to_search + '" title="' + language.type_to_search + '">').appendTo('.container-logo');
 		
@@ -122,9 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		$('<div id="notify"></div>').appendTo('.container-logo');
 		$('<img id="notyIcon" src="images/notify.png"/>').appendTo('#notify').hide();
 		var existingNotes = localStorage.getItem('notify');
-		if (existingNotes) {
-			$('#notyIcon').show();
-		}
+		existingNotes && $("#notyIcon").show()
 		var state = false;
 		$('#notify').click(function(){
 			if(!state){
@@ -151,12 +136,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			$('<style>#dashcontent #lastupdate{display: block;}</style>').appendTo('head');
 			$('<style>#dashcontent #timeago{display: block;}</style>').appendTo('head');
 		}
-
-/* 		// insert config-forms menu item into main navigation
-		let configForms = mainMenu.find('#config-forms');
-		if (mainMenu.length && configForms.length == 0) {
-			mainMenu.append('<li class="divider-vertical"></li><li id="config-forms"><a href="#" class="active">Machinon</a></li>');
-		} */
 			
 		$(document).ajaxSuccess(function (event, xhr, settings) {
 			if (settings.url.startsWith('json.htm?type=devices') ||
@@ -190,19 +169,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 
 	});
-
-	window.onresize = function () {
-		//show-hide navbar on window resize
+	window.onresize = function() {
 		var nav = $(".navbar-inner");
-		if (nav === null) {
-			return;
-		}
-		let width = window.innerWidth;
-		if (width > 992) {
-			nav.css("display", "block");
-		} else {
-			nav.css("display", "none");
-		}
+		null !== nav && (992 < window.innerWidth ? nav.css("display", "block") : nav.css("display", "none"));
 	};
-
 })();

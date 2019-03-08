@@ -37,12 +37,33 @@ function showThemeSettings() {
 		$('#my-tab-content #theme').load("acttheme/themesettings.html",loadSettingsHTML);
 	}
 }
-
+function addHtmlTab(){
+    var html = '';
+    html += '<div class="span6">';
+    html +='<div id="aboutTheme">';
+    html += '<h3 id="title">Machinon theme V.' + theme.version + '</h3><br/>';
+    html += '<p>This is a theme for Domoticz. Theme is in progress with project machinon. Minimalistic design for better view for the user.<br/>';
+    html += 'Follow us on <a href="https://github.com/EdddieN/machinon">github</a>. If you have any issues with the theme, report them <a href="https://github.com/EdddieN/machinon-domoticz_theme/issues">here</a>.<br/></p>';
+    html += '<h3>General features</h3>';
+    html += '<p>The Machinon theme has several features that change the look. Machinon saves the settings in localStorge in your browser. You can have diffrent settings in seperate devices. Some of the cool features are:</p>';
+    html += '<b>Machinon settings menu:</b>';
+    html += '<p><i>A custom settings menu instead of the dropdown list. Better overview for the user.</i><br/></p>';
+    html += '<b>Switch Instead of Text:</b>';
+    html += '<p><i>Switch instead of Big text the upper right.</i></p>';
+    html += '<b>Show "Last Seen" as Time Ago:</b>';
+    html += '<p><i>Show last seen as time ago e.g "2 minutes ago", "about 4 hours ago".</i></p>';
+    html += '<b>Custom Page (Iframe):</b>';
+    html += '<p><i>Custom Page with menu button. Add button name and custom page url. Add url e.g: <code>https://www.domoticz.com</code> or a local file e.g: <code>../templates/custompage.html</code></i></p>';
+    html += '<b>Update theme:</b>';
+    html += '<p>Run terminal, putty or similar<br/>';
+    html += '<code>cd /home/${USER}/domoticz/www/styles/' + themeFolder + '</code><br/><code>git pull</code></P>';
+    html += '<p>Designed in 2018 by EdddieN.</p>';
+    html += '<p><button class="resetbtn" id="themeResetButton" data-i18n="Reset theme">Reset Theme</button> <button class="resetbtn" id="saveSettingsButton" data-i18n="Save Theme Settings">Save Theme Settings</button></p>';
+    html += '</div></div>';
+    $('#tabtheme .row-fluid').append(html);
+}
 function loadSettingsHTML(){
-	// Move active menus to theme tab
-	$('#ActiveTabs').appendTo('#theme');
-	$('#ActiveTabs').wrapAll('<div class="row-fluid" />');
-	
+	addHtmlTab();
 	// Update check
 	$("#tabtheme .span6 input:checkbox").each(function() {
 		if(typeof theme.features[this.value] !== "undefined"){
