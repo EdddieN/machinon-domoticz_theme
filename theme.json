@@ -76,6 +76,11 @@
             "id":26,
             "enabled":false,
 			"files": []
+        },
+	"navbar_icons_text": {
+            "id":27,
+            "enabled":false,
+			"files": []
         }
     }
 }
