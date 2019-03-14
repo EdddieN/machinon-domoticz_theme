@@ -23,7 +23,7 @@
 			"files": []
         },
 	"custom_settings_menu": {
-            "id":19,
+            "id":12,
             "enabled":true,
 			"files": []
         },
@@ -65,6 +65,11 @@
 	"switch_instead_of_bigtext_scenes": {
             "id":22,
             "enabled":true,
+			"files": []
+        },
+	"navbar_icons": {
+            "id":25,
+            "enabled":false,
 			"files": []
         }
     }
