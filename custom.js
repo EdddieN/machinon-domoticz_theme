@@ -141,6 +141,9 @@ document.addEventListener('DOMContentLoaded', function () {
             		$('<style>.navbar .nav li a span{display: block;}</style>').appendTo('head');
             		$('<style>@media screen and (max-width: 992px){.navbar .nav li a img {width: 24px;height: 24px;}}</style>').appendTo('head');
 		}
+		if (theme.features.hide_type.enabled === true) {
+            		$('<style>.item #type{display: none;}</style>').appendTo('head');
+        	}
 			
 		$(document).ajaxSuccess(function (event, xhr, settings) {
 			if (settings.url.startsWith('json.htm?type=devices') ||
