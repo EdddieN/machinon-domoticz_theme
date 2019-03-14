@@ -138,7 +138,11 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
         	if (theme.features.navbar_icons.enabled === true) {
             		$('<style>.navbar .nav li a img{display: inline; width: 32px; height: 32px;}</style>').appendTo('head');
-            		$('<style>.navbar .nav li a span{display: block;}</style>').appendTo('head');
+            		if (theme.features.navbar_icons_text.enabled === true) {
+                		$('<style>.navbar .nav li a span{display: block;}</style>').appendTo('head');
+            		}else{
+                		$('<style>.navbar .nav li a span{display: none;}</style>').appendTo('head');
+            		}
             		$('<style>@media screen and (max-width: 992px){.navbar .nav li a img {width: 24px;height: 24px;}}</style>').appendTo('head');
 		}
 		if (theme.features.hide_type.enabled === true) {
