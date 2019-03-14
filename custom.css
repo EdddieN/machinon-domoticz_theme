@@ -1407,8 +1407,9 @@ input#AcceptNewHardware:checked ~ button {
     display: none !important;
   }
 
-  .hidden-tablet {
-    display: block !important;
+  .hidden-tablet,
+  .hidden-phone{
+    display: inline !important;
   }
 
   .navbar-inverse .nav li.dropdown > .dropdown-toggle .caret {
