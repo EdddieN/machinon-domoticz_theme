@@ -136,6 +136,11 @@ document.addEventListener('DOMContentLoaded', function () {
 			$('<style>#dashcontent #lastupdate{display: block;}</style>').appendTo('head');
 			$('<style>#dashcontent #timeago{display: block;}</style>').appendTo('head');
 		}
+        	if (theme.features.navbar_icons.enabled === true) {
+            		$('<style>.navbar .nav li a img{display: inline; width: 32px; height: 32px;}</style>').appendTo('head');
+            		$('<style>.navbar .nav li a span{display: block;}</style>').appendTo('head');
+            		$('<style>@media screen and (max-width: 992px){.navbar .nav li a img {width: 24px;height: 24px;}}</style>').appendTo('head');
+		}
 			
 		$(document).ajaxSuccess(function (event, xhr, settings) {
 			if (settings.url.startsWith('json.htm?type=devices') ||
