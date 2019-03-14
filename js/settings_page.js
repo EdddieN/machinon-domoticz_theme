@@ -3,7 +3,7 @@ $('#appnavbar li:not(.clcustommenu)').remove('.dropdown');
 let mainMenu = $('#appnavbar');
 let mSettings = mainMenu.find('#mSettings');
 if (mainMenu.length && mSettings.length == 0 ) {
-    mainMenu.append('<li id="mSettings" style="display: none;" has-permission="Admin"><a class="settings lcursor"><img src="images/setup.png"><span data-i18n="Settings">Settings</span></a></li>');			
+    mainMenu.append('<li id="mSettings" style="display: none;" has-permission="Admin"><a class="settings lcursor"><img src="images/setup.png"><span class="hidden-phone hidden-tablet" data-i18n="Settings">Settings</span></a></li>');			
 }
 $('a.settings').click(function() {
     $("#machinoSettings").remove();
