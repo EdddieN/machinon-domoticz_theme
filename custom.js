@@ -91,6 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		  navBarInner.hide("slide", 500);
         });
         if (theme.features.sidemenu.enabled === true && !isMobile || theme.features.sidemenu.enabled === true && !isMobile && 992 >= window.innerWidth) {
+            if (adminRights === true){$("#appnavbar").append('<li id="mLogout"><a id="cLogout" href="#Logout"><img src="images/logout.png"><span class="hidden-phone hidden-tablet" data-i18n="Logout">Logout</span></a></li>');}
             $('#holder').click(function() {  
                 navBarInner.hide("slide", 500);
             });
