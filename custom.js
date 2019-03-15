@@ -146,8 +146,21 @@ document.addEventListener('DOMContentLoaded', function () {
                			$('<style>@media screen and (max-width: 992px){.navbar .nav li a img {width: 32px;height: 32px;}}</style>').appendTo('head');
                 		$('<style>@media screen and (max-width: 992px){.hidden-tablet,.hidden-phone{display: none !important;})</style>').appendTo('head');       
                 		$('<style>@media screen and (max-width: 992px){.navbar-inverse .navbar-inner {width: 60px;}}</style>').appendTo('head');
+				if (theme.features.sidemenu.enabled === true && !isMobile || theme.features.sidemenu.enabled === true && !isMobile && 992 >= window.innerWidth) {
+				    $('<style>.hidden-tablet,.hidden-phone{display: none !important;}</style>').appendTo('head');
+				    $('<style>.navbar-inverse .navbar-inner {width: 60px;}</style>').appendTo('head');
+				    $('<style>.navbar .nav > li {width: 60px;}</style>').appendTo('head');
+				}
             		}
-       		 }
+       		}
+		if (theme.features.sidemenu.enabled === true && !isMobile || theme.features.sidemenu.enabled === true && !isMobile && 992 >= window.innerWidth) {
+		    $(".navbar-inner a").click(function() {
+			$(".navbar-inner").toggle("slide", 500);
+			 });
+		    $(".container").click(function() {
+			$(".navbar-inner").hide("slide", 500);
+			 });
+		}
 		if (theme.features.hide_type.enabled === true) {
             		$('<style>.item #type{display: none;}</style>').appendTo('head');
         	}
