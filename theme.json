@@ -14,7 +14,7 @@
     "features": {
         "dark_theme": {
             "id":10,
-            "enabled":false,
+            "enabled":true,
             "files": ["dark_theme.css"]
         },
 	"footer_text_disabled": {
@@ -44,7 +44,7 @@
         },
     	"custom_page_menu": {
             "id":17,
-            "enabled":true,
+            "enabled":false,
 			"files": []
         },
 	"fade_offItems": {
