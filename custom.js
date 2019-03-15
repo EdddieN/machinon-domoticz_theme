@@ -85,17 +85,17 @@ document.addEventListener('DOMContentLoaded', function () {
 		  navBarInner.toggle("slide", 500);
 		});
 		(isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth) && $(".container").click(function() {
-		  $(".navbar-inner").toggle("slide", 500);
+		  navBarInner.hide("slide", 500);
         });
         (isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth) && $("#holder").click(function() {
-		  $(".navbar-inner").toggle("slide", 500);
+		  navBarInner.hide("slide", 500);
         });
         if (theme.features.sidemenu.enabled === true && !isMobile || theme.features.sidemenu.enabled === true && !isMobile && 992 >= window.innerWidth) {
             $('#holder').click(function() {  
-                $(".navbar-inner").hide("slide", 500);
+                navBarInner.hide("slide", 500);
             });
             $('.container').click(function() {   
-                $(".navbar-inner").hide("slide", 500);
+                navBarInner.hide("slide", 500);
             });
         }
 		$(window).scroll(function() {
@@ -156,7 +156,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 $('<style>.navbar .nav li a span{display: none;}</style>').appendTo('head');
                 $('<style>@media screen and (max-width: 992px){.navbar .nav li a img {width: 32px;height: 32px;}}</style>').appendTo('head');
                 $('<style>@media screen and (max-width: 992px){.hidden-tablet,.hidden-phone{display: none !important;}}</style>').appendTo('head');       
-                $('<style>@media screen and (max-width: 992px){.navbar-inverse .navbar-inner {width: 60px;}}</style>').appendTo('head');
+                $('<style>.navbar-inverse .navbar-inner {width: 60px;}}</style>').appendTo('head');
+                $('<style>@media screen and (max-width: 992px){.navbar .nav > li {width: 60px;}}</style>').appendTo('head');
                 if (theme.features.sidemenu.enabled === true && !isMobile || theme.features.sidemenu.enabled === true && !isMobile && 992 >= window.innerWidth) {
                     $('<style>.hidden-tablet,.hidden-phone{display: none !important;}</style>').appendTo('head');
                     $('<style>.navbar-inverse .navbar-inner {width: 60px;}</style>').appendTo('head');
