@@ -81,6 +81,11 @@
             "id":27,
             "enabled":false,
 			"files": []
+        },
+    "sidemenu": {
+            "id":28,
+            "enabled":false,
+            "files": ["sidemenu.css"]
         }
     }
 }
