@@ -1373,7 +1373,7 @@ input#AcceptNewHardware:checked ~ button {
   .navbar .nav li a {
     font-family: main-font;
     color: #fff;
-    font-size: 20px;
+    font-size: 18px;
     background-color: var(--main-blue-color);
     text-align: left;
   }
