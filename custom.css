@@ -1335,7 +1335,7 @@ input#AcceptNewHardware:checked ~ button {
 
   .navbar-inverse .navbar-inner {
     background-color: var(--main-blue-color);
-    width: 180px;
+    width: 190px;
     height: 100%;
     margin-left: 0;
     margin-top: -40px;
