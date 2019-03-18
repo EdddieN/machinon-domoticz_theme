@@ -27,5 +27,8 @@ language = {
   theme_restored: "Tema återställd",
   allow_new_hardware: "Tillåt ny hårdvara i 5 min",
   is: "är",
-  timedout: "tidsgränsen uppnådd"
+  timedout: "tidsgränsen uppnådd",
+  mainmenu: "Huvud meny",
+  you_have: "Du har",
+  messages: "meddelande(n)"
 };
