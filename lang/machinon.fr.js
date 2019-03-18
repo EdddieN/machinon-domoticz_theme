@@ -25,5 +25,8 @@ language = {
   theme_restored: "Thème réinitialiser",
   allow_new_hardware: "Autoriser le nouveau matériel pendant 5 min",
   is: "est",
-  timedout: "timed out"
+  timedout: "timed out",
+  mainmenu: "Main menu",
+  you_have: "You have",
+  messages: "message(s)"
 };
