@@ -158,6 +158,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 $('<style>@media screen and (max-width: 992px){.navbar .nav li a img {width: 32px;height: 32px;}}</style>').appendTo('head');
                 $('<style>@media screen and (max-width: 992px){.hidden-tablet,.hidden-phone{display: none !important;}}</style>').appendTo('head');
                 $('<style>@media screen and (max-width: 992px){.navbar .nav > li {width: 60px;}}</style>').appendTo('head');
+                if (isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth){
+                    $('<style>.navbar-inverse .navbar-inner {width: 60px;}}</style>').appendTo('head');
+                }
                 if (theme.features.sidemenu.enabled === true && !isMobile || theme.features.sidemenu.enabled === true && !isMobile && 992 >= window.innerWidth) {
                     $('<style>.hidden-tablet,.hidden-phone{display: none !important;}</style>').appendTo('head');
                     $('<style>.navbar-inverse .navbar-inner {width: 60px;}</style>').appendTo('head');
