@@ -1,5 +1,7 @@
 # Machinon theme
 
+[![Join the chat at https://gitter.im/machinon-domoticz_theme/community](https://badges.gitter.im/machinon-domoticz_theme/community.svg)](https://gitter.im/machinon-domoticz_theme/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) ![alt tag](https://img.shields.io/badge/dynamic/json.svg?label=Version&url=https%3A%2F%2Fraw.githubusercontent.com%2FEdddieN%2Fmachinon-domoticz_theme%2Fmaster%2Ftheme.json&query=version&colorB=blue)
+
 # WORK IN PROGRESS
 
 This is a theme for Domoticz in machinon project. Theme in progress with project machinon:
@@ -27,22 +29,20 @@ Ideas (wish list)
 On your Raspberry Pi, in Domoticz theme directory :
 
 ```
-cd domoticz/www/styles
+cd /home/${USER}/domoticz/www/styles
 git clone https://github.com/EdddieN/machinon-domoticz_theme.git machinon
 sudo /etc/init.d/domoticz.sh restart
 ```
 
-### Copy settings.html in templates folder to
+### Domoticz version previous 4.10393
 
-```
-sudo cp ~/domoticz/www/styles/machinon/templates/Settings.html ~/domoticz/www/templates/
-```  
-You may need to disable Custom menu if a visible wider space between Utility and Setup [SETUP -> Settings -> Active Menu]
+In Domoticz version before 4.10393 the tabs for switches, scenes and utility is width is not correct.
+There is modified html files in `../machinon/views` to replace files in `../www/views`
 
 
 ## Updating
 ```
-cd domoticz/www/styles/machinon
+cd /home/${USER}/domoticz/www/styles/machinon
 git pull
 ```
 
@@ -55,3 +55,20 @@ git pull
 Suggested new setup layout - partly implemented
 ![Suggested new Setup layout - not implemented yet](/images/unorganised/screen_references/setup.png)
 
+## Cache problems:
+
+A lot of the problems users experience after a domoticz update are gone when the browsercache and appcache are cleared. There are also quite a number of posts on this forum related to these kind of problems. 
+
+To summarize and sorted from little effort to a bit more effort take these steps and check after each step if it address the issues you encounter.
+
+- clear browser cache and appcache 
+Chrome: chrome://appcache-internals/#
+Firefox: https://support.mozilla.org/en-US/kb/storage 
+
+- in www/js look for domoticz.js.gz, if its there remove it, (KEEP domoticz.js !! )
+- use incognito mode using 
+Chrome [control] [shift] n
+Firefox: [control] [shift] p
+
+- restart domoticz
+- rename the location of the original installation and install the new version to an empty target directory. Next copy database and scripts from the old location and fire it up.

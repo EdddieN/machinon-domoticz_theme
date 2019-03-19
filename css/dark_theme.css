@@ -5,7 +5,8 @@
 	--main-bg-color: #333639;
 	--main-blue-color: #0b96cd;
 	--main-item-bg-color: #515558;
-	--main-text-color: #fff;
+	--main-text-color: white;
+        --main-border-color: black;
 }
 header.logo {
 	background-image: linear-gradient(275deg, #103c68, #0073a7);
@@ -15,7 +16,7 @@ body,
 h1,
 h2,
 h2 span { 
-	color: var(--main-text-color);
+	color: var(--main-text-color) !important;
 }
 .item #status,
 .sub-tabs > li > a,
@@ -38,6 +39,13 @@ h2 span {
 }
 .dropdown-content, .rectangle-8, .rectangle-8-dropdown {
 	background-color: #515558;
+}
+@media screen and (max-width: 992px) {
+.navbar-inverse .navbar-inner,
+.navbar .nav li a,
+.navbar .nav li a:hover{
+  background-color: var(--main-blue-color);
+}
 }
 .slider {
   background-color: #ccc;
