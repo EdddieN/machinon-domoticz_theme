@@ -1183,7 +1183,12 @@ div#hardwarecontent,div#cameracontent,div#devicecontent,div#logcontent {
   fill: var(--main-item-bg-color);
   stroke-width: 0;
 }
-
+.highcharts-label text .highcharts-text-outline{
+    display: none;
+}
+.highcharts-label text{
+    font-family: main-font !important;
+}
 .highcharts-title,
 .highcharts-axis-labels text,
 .highcharts-legend-item text {
@@ -1880,7 +1885,7 @@ rect.header{
     font-weight: bold !important;
 }
 .DeviceDetails text#status{
-    font-size: 150% !important;
+    font-size: 100% !important;
     fill: var(--main-blue-color) !important;
 }
 .DeviceDetails text#bigtext{
