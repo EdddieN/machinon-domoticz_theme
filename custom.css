@@ -674,7 +674,14 @@ color:var(--main-blue-color);
   right:20px;
   bottom: 15px;
 }
-
+/* lightcontent */
+#lightcontent #status{
+  background-color: transparent !important;
+  color: var(--main-text-color);
+  position: absolute;
+  top: 35%;
+  left: 5%;
+}
 /* temperature, weather items */
 dztemperaturewidget #status,
 dzweatherwidget #status {
