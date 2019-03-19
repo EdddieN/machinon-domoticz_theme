@@ -1885,7 +1885,7 @@ rect.header{
     font-weight: bold !important;
 }
 .DeviceDetails text#status{
-    font-size: 150% !important;
+    font-size: 100% !important;
     fill: var(--main-blue-color) !important;
 }
 .DeviceDetails text#bigtext{
