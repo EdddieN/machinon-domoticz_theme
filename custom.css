@@ -1207,8 +1207,6 @@ input#AcceptNewHardware:checked ~ button {
 .ui-corner-all {
   background: none;
   border-radius: 0;
-                               
-                                
   border: none;
   border-bottom: 1px solid var(--main-blue-color);
 }
@@ -1857,3 +1855,38 @@ padding-bottom:1px;
 .selectorlevels-menu {
     border-color:  var(--main-blue-color) !important;
 }
+
+/* Floorplan */		
+rect#shadow{
+    rx: 5;
+    ry: 5;
+}
+rect.popup{
+    rx: 5;
+    ry: 5;
+    fill: white !important;
+}
+rect.header{
+    rx: 0;
+    ry: 0;
+    fill: white !important;
+    stroke-width: 0 !important;
+}
+.DeviceDetails text{
+    font-family: main-font !important;
+    fill: #1a1a1a !important;
+}
+.DeviceDetails text#name{
+    font-weight: bold !important;
+}
+.DeviceDetails text#status{
+    font-size: 150% !important;
+    fill: #0b96cd !important;
+}
+.DeviceDetails text#bigtext{
+    display: none;
+}
+image#twisty{
+    display: none;
+}        
+	
