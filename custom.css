@@ -609,9 +609,6 @@ body table#itemtable tr > .options {
   overflow-x: auto;
 
 }
-#type .ui-selectmenu-text {
-color:var(--main-blue-color)
-}
 
 /* Time Ago */
 #dashcontent #timeago{
@@ -682,6 +679,7 @@ color:var(--main-blue-color);
   top: 35%;
   left: 5%;
 }
+
 /* temperature, weather items */
 dztemperaturewidget #status,
 dzweatherwidget #status {
@@ -739,6 +737,7 @@ dzweatherwidget #status {
 .statusProtected .dimslider {
   background: rgba(0, 0, 0, 0.26);
   border: none;
+  border-radius: 3px;                   
   box-shadow: none;
   height: 5px;
   bottom: 50px;
@@ -1208,6 +1207,8 @@ input#AcceptNewHardware:checked ~ button {
 .ui-corner-all {
   background: none;
   border-radius: 0;
+                               
+                                
   border: none;
   border-bottom: 1px solid var(--main-blue-color);
 }
@@ -1220,6 +1221,7 @@ input#AcceptNewHardware:checked ~ button {
   background: transparent;
   background-color: #f1f1f1;
   color: #1a1a1a;
+  font-family: main-font;                       
 }
 
 #offline {
@@ -1342,7 +1344,7 @@ input#AcceptNewHardware:checked ~ button {
 
   .navbar-inverse .navbar-inner {
     background-color: var(--main-blue-color);
-    width: 190px;
+    width: 180px;
     height: 100%;
     margin-left: 0;
     margin-top: -40px;
@@ -1380,7 +1382,7 @@ input#AcceptNewHardware:checked ~ button {
   .navbar .nav li a {
     font-family: main-font;
     color: #fff;
-    font-size: 18px;
+    font-size: 20px;
     background-color: var(--main-blue-color);
     text-align: left;
   }
@@ -1725,6 +1727,7 @@ body.dashMobile table.mobileitem td.name img{
 }
 .btn-group > .btn:first-child {
   margin-left: 0 !important;
+  -webkit-border-radius: 0px !important;
 }
 .btn-default,
 .btn-group .btn-default{
@@ -1824,4 +1827,33 @@ padding-bottom:1px;
   .container-fluid{padding: 0 !important;margin: 0 !important;}
 }
 
+/* Selector */
+.ui-menu-item-wrapper.ui-state-active {
+    background: var(--main-blue-color);
+    border: 0; 
+    font-weight: normal;
+}
+
+.ui-selectmenu-button-open {
+    background: var(--main-blue-color);
+    border-color: var(--main-blue-color);
+}
+
+.ui-button:hover, .ui-button:focus {
+    background: var(--main-blue-color);
+    border-color: var(--main-blue-color);
+    outline: none;
+}
+
+.ui-selectmenu-text {
+    color:var(--main-blue-color);
+    font-family: main-font;
+}
+
+.ui-button:hover > .ui-selectmenu-text, .ui-button:focus > .ui-selectmenu-text, .ui-selectmenu-button-open > .ui-selectmenu-text {
+    color: var(--main-item-bg-color) !important;
+}
+
+.selectorlevels-menu {
+    border-color:  var(--main-blue-color) !important;
 }
