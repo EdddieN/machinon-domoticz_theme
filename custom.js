@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
         
 		if (theme.features.hide_type.enabled === true) {
-		    $('<style>.item #type{display: none;}</style>').appendTo('head');
+		    $('<style>.item #type{color: var(--main-item-bg-color);}</style>').appendTo('head');
 		}        
 			
 		$(document).ajaxSuccess(function (event, xhr, settings) {
