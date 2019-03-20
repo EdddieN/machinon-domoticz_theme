@@ -172,6 +172,11 @@ document.addEventListener('DOMContentLoaded', function () {
 		}        
 			
 		$(document).ajaxSuccess(function (event, xhr, settings) {
+			// Iconpage
+			$('.iconlist .iconlistitem').click(function() {
+                		$('#iconsmain > div > table').show();
+				$('#iconsmain > div > tbody > tr > td:nth-child(2)').show();
+            		});
 			// Notifications
 			if ($('#msg').length == 0) {
 				var msg = localStorage.getItem('notify');
