@@ -308,7 +308,7 @@ div.clearfix{
 }
 
 div.bannercontent .row.divider{
-    padding:15px 0 0 0;
+    padding:15px 0;
     margin: 0 !important;
   
     display: -webkit-grid;
