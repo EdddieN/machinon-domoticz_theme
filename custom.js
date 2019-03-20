@@ -175,6 +175,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			// Iconpage
 			$('.iconlist .iconlistitem').click(function() {
                 		$('#iconsmain > div > table').show();
+				$('#iconsmain > div > tbody > tr > td:nth-child(2)').show();
             		});
 			// Notifications
 			if ($('#msg').length == 0) {
