@@ -268,30 +268,31 @@ function showTime(){
 }
 // Notifications
 function notify(key, type) { // type = 0 = only in notification log, 1 = only notification popup, 2 = in both
-
-	if (type == 0 || type == 2){ 
-		var existing = localStorage.getItem('notify');
-		existing = existing ? JSON.parse(existing) : {};
-		let d = new Date();
-		dd = d.getTime();
-		existing[key] = dd;
-		localStorage.setItem('notify', JSON.stringify(existing));
-		
-		$('#notyIcon').show();
-	}
-	if (type == 1 || type == 2){
-		if (type == 1)$('#notyIcon').show();
-		let width = window.innerWidth;
-		if (width > 767) {
-			$('#notyIcon').notify(key);
-		} else {
-			$('#notyIcon').notify(key, {
-				position: "right",
-				className: 'info'
-			});
-		}
-		if (type == 1)$('#notyIcon').hide();
-	}
+if (theme.features.notification.enabled === true) {
+        if (type == 0 || type == 2){ 
+            var existing = localStorage.getItem('notify');
+            existing = existing ? JSON.parse(existing) : {};
+            let d = new Date();
+            dd = d.getTime();
+            existing[key] = dd;
+            localStorage.setItem('notify', JSON.stringify(existing));
+            
+            $('#notyIcon').show();
+        }
+        if (type == 1 || type == 2){
+            if (type == 1)$('#notyIcon').show();
+            let width = window.innerWidth;
+            if (width > 767) {
+                $('#notyIcon').notify(key);
+            } else {
+                $('#notyIcon').notify(key, {
+                    position: "right",
+                    className: 'info'
+                });
+            }
+            if (type == 1)$('#notyIcon').hide();
+        }
+    }
 }
 function clearNotify(){
     if (typeof(Storage) !== "undefined") {
