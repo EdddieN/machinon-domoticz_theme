@@ -1,0 +1,61 @@
+/* Icon Page */
+#iconsmain h3{
+    font-family: main-font !important;
+    font-size: 150% !important;
+}
+.iconlist .iconlistitem p{
+    font-family: main-font !important;
+    color: var(--secondary-text-color) !important;
+}
+#iconsmain > div > div > div > h3{
+    color: var(--main-text-color) !important;
+}
+#iconsmain > div > img{
+    position: relative;
+    left: 8%;
+}
+#iconsmain > div{
+    margin-top: 2% !important;
+}
+#iconsmain > div > div{
+    background-color: var(--main-bg-color) !important;
+    color: var(--main-text-color) !important;
+    border: none;
+}
+#iconsmain > div > table{
+    display:none;
+}
+#iconsmain > div > tbody{
+    position: absolute;
+    top: 18%;
+    right: 10%;
+}
+#iconsmain input[type=file]{
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+@media screen and (max-width: 992px){
+    #iconsmain > div > tbody{
+        top: 1%;
+
+    }
+}
+
+.iconlist .iconlistitem:hover,
+.iconlist .iconlistitemselected{
+    border-radius: 2px;
+    background-color: var(--main-bg-color) !important;
+    box-shadow: 0px 0px 0px 2px rgb(11, 150, 205);
+}
+#iconsmain .iconcell{
+    margin: 20px;
+}
+.iconlist .iconlistitem {
+    padding: 0px;
+    width: 180px;
+    overflow: auto;
+    margin: 2px 0px 0px 15px;
+    height: 52px;
+}
