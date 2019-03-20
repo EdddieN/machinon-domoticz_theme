@@ -25,6 +25,9 @@
 #iconsmain > div > table{
     display:none;
 }
+#iconsmain > div > tbody > tr > td:nth-child(2){
+    display:none;
+}
 #iconsmain > div > tbody{
     position: absolute;
     top: 18%;
