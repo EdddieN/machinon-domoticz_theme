@@ -1363,6 +1363,8 @@ input#AcceptNewHardware:checked ~ button {
     position: fixed;
     display: block;
     z-index: 3;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
   }
 
   .navbar .nav {
