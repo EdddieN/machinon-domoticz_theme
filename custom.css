@@ -773,7 +773,8 @@ dzweatherwidget #status {
 }
 body {
   background: var(--main-bg-color) !important;
-  color: #1a1a1a;
+  font-family: main-font;
+  color: var(--main-text-color);
 }
 
 a:link {
