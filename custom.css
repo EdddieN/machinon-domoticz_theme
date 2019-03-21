@@ -1164,22 +1164,69 @@ div#hardwarecontent,div#cameracontent,div#devicecontent,div#logcontent {
   padding: 8px 15px;
 }
 
-/* =Panels */
+/* Charts */
 .highcharts-background {
   fill: var(--main-item-bg-color);
+  stroke-width: 0;
+}
+.highcharts-point {
   stroke-width: 0;
 }
 .highcharts-label text .highcharts-text-outline{
     display: none;
 }
-.highcharts-label text{
-    font-family: main-font !important;
-}
 .highcharts-title,
+.highcharts-menu-item,
+.highcharts-label text,
+.highcharts-axis-title text,
 .highcharts-axis-labels text,
-.highcharts-legend-item text {
-  color: grey !important;
-  fill: grey !important;
+.highcharts-legend-item text,
+.highcharts-tooltip text,
+.highcharts-data-label text {
+  color: var(--secondary-text-color) !important;
+  fill: var(--secondary-text-color) !important;
+  font-family: main-font !important;
+}
+/* Charts - Tooltip */
+.highcharts-tooltip text {
+  color: var(--secondary-text-color) !important;
+  fill: var(--secondary-text-color) !important;
+}
+.highcharts-tooltip-box {
+  fill: var(--main-bg-color);
+  fill-opacity: 0.6;
+  stroke-width: 0;
+}
+/* Charts - Grid */
+.highcharts-yaxis-grid .highcharts-grid-line {
+  stroke: var(--main-bg-color);
+}
+.highcharts-axis-line {
+  stroke: var(--main-bg-color);
+}
+.highcharts-tick {
+  stroke: var(--main-bg-color);
+}
+.highcharts-yaxis .highcharts-tick {
+  display: none;
+}
+
+/* Charts - Export button/menu */
+.highcharts-button-box {
+  fill: var(--main-item-bg-color);
+}
+.highcharts-button-symbol {
+  stroke: var(--secondary-text-color) !important;
+}
+.highcharts-contextbutton:hover {
+  cursor: pointer;
+}
+.highcharts-menu {
+  background: var(--main-bg-color) !important;
+}
+.highcharts-menu-item:hover {
+  background: var(--main-text-color) !important;
+  color: var(--main-bg-color) !important;
 }
 
 /* Setup */
