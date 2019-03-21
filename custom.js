@@ -119,22 +119,24 @@ document.addEventListener('DOMContentLoaded', function () {
 		$('<input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="' + language.type_to_search + '" title="' + language.type_to_search + '">').appendTo('.container-logo');
 		
 		// Notifications
-		$('<div id="notify"></div>').appendTo('.container-logo');
-		$('<img id="notyIcon" src="images/notify.png"/>').appendTo('#notify').hide();
-		var existingNotes = localStorage.getItem('notify');
-		existingNotes && $("#notyIcon").show()
-		var state = false;
-		var msgCount = 0;
+		if (theme.features.notification.enabled === true) {
+		    $('<div id="notify"></div>').appendTo('.container-logo');
+		    $('<img id="notyIcon" src="images/notify.png"/>').appendTo('#notify').hide();
+		    var existingNotes = localStorage.getItem('notify');
+		    existingNotes && $("#notyIcon").show()
+		    var state = false;
+		    var msgCount = 0;
 
-		$('#notify').click(function(){
-		    if(!state){
-		    $('#msg').show();
-		    }else {
-		    $('#msg').remove();
-		    msgCount = 0;
-		    }
-		    state = !state;
-		});
+		    $('#notify').click(function(){
+			if(!state){
+			$('#msg').show();
+			}else {
+			$('#msg').remove();
+			msgCount = 0;
+			}
+			state = !state;
+		    });
+        	}
 		
 		// Features
 		if (theme.features.footer_text_disabled.enabled === true) {
@@ -170,6 +172,11 @@ document.addEventListener('DOMContentLoaded', function () {
 		}        
 			
 		$(document).ajaxSuccess(function (event, xhr, settings) {
+			// Iconpage
+			$('.iconlist .iconlistitem').click(function() {
+                		$('#iconsmain > div > table').show();
+				$('#iconsmain > div > tbody > tr > td:nth-child(2)').show();
+            		});
 			// Notifications
 			if ($('#msg').length == 0) {
 				var msg = localStorage.getItem('notify');
