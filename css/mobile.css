@@ -172,6 +172,8 @@ body.dashMobile table.mobileitem td.name img{
     position: fixed;
     display: block;
     z-index: 3;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
     }
 
     .navbar .nav {
@@ -285,11 +287,9 @@ body.dashMobile table.mobileitem td.name img{
         flex-wrap: wrap;
         font-size: 0.9em;
     }
-
-    /*fix flex bug. need to be improve*/
+	
     .bannercontent {
-    padding:0 !important;
-    margin:0 !important;
+    padding-top:0 !important;
     }
     .container-fluid{padding: 0 !important;margin: 0 !important;}
 }   
