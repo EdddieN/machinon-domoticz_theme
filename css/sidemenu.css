@@ -55,6 +55,7 @@ text-align: left;
 }
 .navbar .nav li a:hover{
 background-color: var(--main-blue-color) !important;
+color: #000 !important;
 }
 .navbar .nav .current_page_item > a {
 text-align: left;
