@@ -53,6 +53,9 @@ font-size: 20px;
 background-color: var(--main-blue-color);
 text-align: left;
 }
+.navbar .nav li a:hover{
+background-color: var(--main-blue-color) !important;
+}
 .navbar .nav .current_page_item > a {
 text-align: left;
 }
