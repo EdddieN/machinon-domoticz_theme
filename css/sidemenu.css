@@ -139,3 +139,6 @@ position: static !important;
 #iconsmain > div > tbody{
     top: 1%;
 }
+.events-editor{
+  margin-top: -40px;
+}
