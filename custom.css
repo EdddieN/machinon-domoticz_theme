@@ -1737,6 +1737,12 @@ body.dashMobile table.mobileitem td.name img{
     }
 }
 @media screen and (max-width: 992px){
+    #timesun{
+    margin-top: 0px;
+    }
+    .events-editor{
+        margin-top: -40px;
+    }
     #settings .row-fluid {
         flex-wrap: wrap;
         font-size: 0.9em;
