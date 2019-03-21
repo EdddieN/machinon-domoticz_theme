@@ -1819,6 +1819,10 @@ body.dashMobile table.mobileitem td.name img{
     background-color: var(--main-blue-color);
     text-align: left;
     }
+    .navbar .nav li a:hover{
+    background-color: var(--main-blue-color);
+    color: #000;
+    }
     .navbar .nav .current_page_item > a {
     text-align: left;
     }
