@@ -928,15 +928,15 @@ button.menu-toggle {
   color: #1a1a1a;
 }
 
-.bannav a.btnstylerev,
-.bannav a.btnstyle {
+a.btnstylerev,
+a.btnstyle {
   position: relative;
   overflow: visible;
   padding: 0em 1em;
 }
 
-.bannav a.btnstylerev::before,
-.bannav a.btnstyle::after {
+a.btnstylerev::before,
+a.btnstyle::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -947,17 +947,17 @@ button.menu-toggle {
   border-right: 0.1vmin solid #1a1a1a;
 }
 
-.bannav a.btnstylerev::before {
+a.btnstylerev::before {
   left: 0;
   transform: translate3d(0, -50%, 0) rotate(-135deg);
 }
 
-.bannav a.btnstyle::after {
+a.btnstyle::after {
   right: 0;
   transform: translate3d(0, -50%, 0) rotate(45deg);
 }
 
-.bannav a.btnstyle {
+a.btnstyle {
   position: relative;
   overflow: visible;
   margin-left: 16px;
@@ -1562,14 +1562,19 @@ padding-bottom:1px;
 
 /*System page*/
 #settings .row-fluid {
-  background: var(--main-item-bg-color);
   height: auto;
   border-radius: 6px;
   
   display:flex;
   justify-content: center;
 }
-
+#settings .row-fluid > div {
+  background: var(--main-item-bg-color);
+  border: 1px solid var(--main-item-bg-color);
+}
+#settings .row-fluid > div:hover {
+  border-color: var(--main-blue-color);
+}
 #settings .row-fluid > .span4, #settings .row-fluid > .span6, #settings .row-fluid > .span12 {
   min-height: 210px;
   height:auto;

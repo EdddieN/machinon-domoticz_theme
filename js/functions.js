@@ -211,8 +211,12 @@ function searchFunction() {
 	if ($('#dashcontent') || $('lightcontent') || $('scenecontent')|| $('utilitycontent') || $('weatherwidgets') || $('tempwidgets')){
 		var value = $('#searchInput').val().toLowerCase();
 		$("div .item").filter(function() {
-		  $(this).toggle($(this).find('#name').html().toLowerCase().indexOf(value) > -1)
+          var element = $(this);
+          if($('#dashcontent').length)
+            element = $(this).parent();
+          element.toggle($(this).find('#name').html().toLowerCase().indexOf(value) > -1)
 		});
+
     };
 };
 

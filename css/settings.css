@@ -21,8 +21,10 @@ border: none;
   margin-left:10px;;
 }
 .mHeaderBtn {
-	margin-left:60%;
-	margin-top: -1.8%;
+  margin-left:60%;
+  margin-top: -1.8%;
+  margin-right: 20px;
+  margin-bottom: 20px;
   display: -webkit-flex;
   display:flex;
 justify-content:space-around
