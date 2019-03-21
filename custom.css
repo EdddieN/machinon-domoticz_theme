@@ -1737,6 +1737,12 @@ body.dashMobile table.mobileitem td.name img{
     }
 }
 @media screen and (max-width: 992px){
+    #timesun{
+    margin-top: 0px;
+    }
+    .events-editor{
+        margin-top: -40px;
+    }
     #settings .row-fluid {
         flex-wrap: wrap;
         font-size: 0.9em;
@@ -1812,6 +1818,10 @@ body.dashMobile table.mobileitem td.name img{
     font-size: 20px;
     background-color: var(--main-blue-color);
     text-align: left;
+    }
+    .navbar .nav li a:hover{
+    background-color: var(--main-blue-color);
+    color: #000;
     }
     .navbar .nav .current_page_item > a {
     text-align: left;
