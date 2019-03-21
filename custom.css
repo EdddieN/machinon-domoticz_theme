@@ -1562,14 +1562,19 @@ padding-bottom:1px;
 
 /*System page*/
 #settings .row-fluid {
-  background: var(--main-item-bg-color);
   height: auto;
   border-radius: 6px;
   
   display:flex;
   justify-content: center;
 }
-
+#settings .row-fluid > div {
+  background: var(--main-item-bg-color);
+  border: 1px solid var(--main-item-bg-color);
+}
+#settings .row-fluid > div:hover {
+  border-color: var(--main-blue-color);
+}
 #settings .row-fluid > .span4, #settings .row-fluid > .span6, #settings .row-fluid > .span12 {
   min-height: 210px;
   height:auto;
