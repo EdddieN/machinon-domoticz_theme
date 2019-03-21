@@ -3,9 +3,6 @@ img.header__icon {
 left: 50%;
 transform: translate(-50%, -50%);
 }
-.container-fluid{
-    margin-top: -40px;
-}
 .bannercontent {
     padding: 0px 2% 0 2%;
 }
