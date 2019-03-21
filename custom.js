@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		if (theme.features.notification.enabled === true) {
 		    $('<div id="notify"></div>').appendTo('.container-logo');
 		    $('<img id="notyIcon" src="images/notify.png"/>').appendTo('#notify').hide();
-		    var existingNotes = localStorage.getItem('notify');
+		    var existingNotes = localStorage.getItem(themeFolder + ".notify");
 		    existingNotes && $("#notyIcon").show()
 		    var state = false;
 		    var msgCount = 0;
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function () {
             		});
 			// Notifications
 			if ($('#msg').length == 0) {
-				var msg = localStorage.getItem('notify');
+				var msg = localStorage.getItem(themeFolder + ".notify");
 				msg = JSON.parse(msg);
 				var myObj = msg;
 				$('#notify').append('<div id="msg" class="msg"><ul></ul><center><a class="btn btn-info" onclick="clearNotify();">'+$.t('Clear')+'</a></center></div>');
