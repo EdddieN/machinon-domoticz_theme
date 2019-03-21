@@ -270,12 +270,12 @@ function showTime(){
 function notify(key, type) { // type = 0 = only in notification log, 1 = only notification popup, 2 = in both
 if (theme.features.notification.enabled === true) {
         if (type == 0 || type == 2){ 
-            var existing = localStorage.getItem('notify');
+            var existing = localStorage.getItem(themeFolder + ".notify");
             existing = existing ? JSON.parse(existing) : {};
             let d = new Date();
             dd = d.getTime();
             existing[key] = dd;
-            localStorage.setItem('notify', JSON.stringify(existing));
+            localStorage.setItem(themeFolder + ".notify", JSON.stringify(existing));
             
             $('#notyIcon').show();
         }
@@ -296,7 +296,7 @@ if (theme.features.notification.enabled === true) {
 }
 function clearNotify(){
     if (typeof(Storage) !== "undefined") {
-		localStorage.removeItem('notify');
+		localStorage.removeItem(themeFolder + ".notify");
 		$('#notyIcon').hide();
     }
 }
