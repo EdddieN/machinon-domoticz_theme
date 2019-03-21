@@ -76,7 +76,7 @@ function loadSettingsHTML(){
 			if ( typeof theme.upgradeAlerted === "undefined"){
 				bootbox.alert('<h3>Congratulations on the theme upgrade!</h3><p>Please reset the theme by clicking here:</p><p><a onClick="resetTheme(); return false;" href=""><button class="btn btn-info">Reset theme</button></a></p><p>(or find the theme reset button on the theme settings page)<p>');
 				if (isEmptyObject(theme) === false){
-					localStorage.setObject("themeSettings", theme);
+					localStorage.setObject(themeFolder + ".themeSettings", theme);
                 }			
 			}
 		}
@@ -143,7 +143,7 @@ function loadSettingsHTML(){
 			});			
 		}
 		// Saves the new settings.
-		localStorage.setObject("themeSettings", theme);
+		localStorage.setObject(themeFolder + ".themeSettings", theme);
 		console.log(theme.name + ' - theme settings saved');
 	});
 	$('#saveSettingsButton').click(function() {
@@ -155,7 +155,7 @@ function loadSettingsHTML(){
 			var value = $(this).val();
 			theme[this.name] = value; 
 		});
-		localStorage.setObject("themeSettings", theme);
+		localStorage.setObject(themeFolder + ".themeSettings", theme);
 		//console.log(themeName + ' - theme settings saved');
 		notify(language.theme_settings_saved, 2);
 		location.reload();
@@ -176,13 +176,13 @@ function loadSettings() {
 			theme = localJson;
 			themeName = theme.name;
 			if (isEmptyObject(theme) === false) {
-				localStorage.setObject("themeSettings", theme);
+				localStorage.setObject(themeFolder + ".themeSettings", theme);
             }
 			console.log(themeName + " - local theme settingsfile loaded and saved to localSto");
 			}
 		});
 		} else { // If setting is saved in localstorge(browser), try to load those.
-			theme = localStorage.getObject("themeSettings", theme);
+			theme = localStorage.getObject(themeFolder + ".themeSettings", theme);
 			themeName = theme.name;
 			console.log(themeName + " - theme settings was already found in the browser.");
 		}
@@ -192,7 +192,7 @@ function loadSettings() {
 // reset theme to defaults. Useful after an upgrade.
 function resetTheme(){
     if (typeof(Storage) !== "undefined") {
-		localStorage.removeItem('themeSettings');
+		localStorage.removeItem(themeFolder + ".themeSettings");
 		location.reload();    
     }
 }
