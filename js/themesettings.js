@@ -171,7 +171,7 @@ function loadSettingsHTML(){
 // Load theme settings
 function loadSettings() {
  if (typeof (Storage) !== "undefined") {
-	 if (localStorage.getItem("themeSettings") === null) { // If theme settings is missing in localstorage(browser) then load settings from local file e.g theme.json 
+	 if (localStorage.getItem(themeFolder + ".themeSettings") === null) { // If theme settings is missing in localstorage(browser) then load settings from local file e.g theme.json 
 		$.ajax({url: 'acttheme/theme.json' , cache: false, async: false, dataType: 'json', success: function(localJson) {
 			theme = localJson;
 			themeName = theme.name;
