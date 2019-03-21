@@ -59,7 +59,7 @@ h2,
 .item #status,
 .item #name {
   font-family: main-font-bold;
-}#type
+}
 h1,
 .page-header-small h1 {
 	font-family: main-font-bold;
@@ -225,8 +225,8 @@ input[type="text"]{
   display: block;
   width: 40px;
   height: 20px;
-  top: 20%;
-  right: 10%;
+  top: 20px;
+  right: 40px;
 }
 .switch input {
   display: none;
@@ -293,7 +293,7 @@ div.clearfix{
 }
 
 div.bannercontent .row.divider{
-    padding:15px 0 0 0;
+    padding:15px 0;
     margin: 0 !important;
   
     display: -webkit-grid;
@@ -382,7 +382,7 @@ div.bannercontent .row.divider{
   font-size: 1.4em;
   position: absolute;
   top: 10%;
-  right: 4%;
+  right: 10%;
 }
 
 @media (min-width: 980px) {
@@ -758,7 +758,8 @@ dzweatherwidget #status {
 }
 body {
   background: var(--main-bg-color) !important;
-  color: #1a1a1a;
+  font-family: main-font;
+  color: var(--main-text-color);
 }
 
 a:link {
