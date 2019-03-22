@@ -5,6 +5,7 @@
 @import url("css/icons_on_tabs.css");
 @import url("css/iconsupload.css");
 @import url("css/floorplan.css");
+@import url("css/nanoscroller.css");
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 /* author at footer */
@@ -204,6 +205,13 @@ border-bottom: none;
     font-family: main-font-bold;
     letter-spacing: 7px;
 }
+.nano .nano-slider {
+    background: var(--main-blue-color) !important;
+}
+.nano .nano-pane {
+    background: rgba(64,64,64,.25) !important;
+}
+
 input[type="number"]{
 	width: 30px;
 	background-color: transparent;
@@ -637,10 +645,11 @@ display:none;
   right: 20px;
   top: 60px;
   width: 60%;
+  height: 60px;
   text-align: right;
   margin-top: 0;
   bottom: 40px;
-  overflow-x:  auto;
+  overflow:  hidden;
 }
 #dashcontent .selectorlevels {
   position: absolute;
@@ -671,10 +680,11 @@ dzweatherwidget #status {
   right: 20px;
   top: 60px;
   width: 60%;
+  height: 60px;
   text-align: right;
   margin-top: 0;
   bottom: 40px;
-  overflow-x:  auto;
+  overflow-x:  hidden;
 }
 
 /* utility items */
@@ -690,11 +700,12 @@ dzweatherwidget #status {
   position: absolute;
   right: 20px;
   top: 80px;
+  height: 60px;
   width: 60%;
   text-align: right;
   margin-top: 0;
   bottom: 40px;
-  overflow-x:  auto;
+  overflow: hidden;
 }
 
 /* scene items */

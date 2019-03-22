@@ -159,6 +159,17 @@ function applySwitchersAndSubmenus() {
 			}
 		}
 	});
+
+    /* Set nice scrollbar on status area */
+    $("#status", "tr").not(".nano").each(function() {
+            var html = $(this).html();
+            if (html.length) {
+                    $(this).html("<div class='nano-content'>" +  html + "</div>");
+                    $(this).addClass("status nano");
+                    $(this).nanoScroller();
+            }
+    });
+
 	// console.log('Switchers loaded');
 }
 
