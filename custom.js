@@ -61,9 +61,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 		}
 		requirejs.config({ waitSeconds: 30 });
-		// function adds the theme tab
-		showThemeSettings();
+
 		// load theme settings
+        showThemeSettings();
 		loadSettings();
 		enableThemeFeatures();
 		if (checkUpdate != 0)CheckDomoticzUpdate(true);
@@ -86,25 +86,21 @@ document.addEventListener('DOMContentLoaded', function () {
 		navBarToggle.click(function() {
 		  navBarInner.toggle("slide", 500);
 		});
+        
+        // Close navbar if the user clicks outside of it
 		(isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth) && $(".container").click(function() {
 		  navBarInner.hide("slide", 500);
 		});
 		(isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth) && $("#holder").click(function() {
 			  navBarInner.hide("slide", 500);
 		});
-		if (theme.features.sidemenu.enabled === true && !isMobile || theme.features.sidemenu.enabled === true && !isMobile && 992 >= window.innerWidth) {
-		    if (adminRights === true){$("#appnavbar").append('<li id="mLogout"><a id="cLogout" href="#Logout"><img src="images/logout.png"><span class="hidden-phone hidden-tablet" data-i18n="Logout">Logout</span></a></li>');}
-		    $('#holder').click(function() {  
-			navBarInner.hide("slide", 500);
-		    });
-		    $('.container').click(function() {   
-			navBarInner.hide("slide", 500);
-		    });
-		}
+
+        // Menu icon follows when scrolling down
 		$(window).scroll(function() {
 		  50 < $(this).scrollTop() ? $("button.menu-toggle").css("background-color", "var(--main-blue-color)") : $("button.menu-toggle").css("background-color", "");
 		});
-
+        
+        // Header logo
 		let containerLogo = '<header class="logo"><div class="container-logo">';
 		if (theme.logo.length == 0) {
 			containerLogo += '<img class="header__icon" src="images/logo.png">';
@@ -147,27 +143,39 @@ document.addEventListener('DOMContentLoaded', function () {
 			$('<style>#dashcontent #lastupdate{display: block;}</style>').appendTo('head');
 			$('<style>#dashcontent #timeago{display: block;}</style>').appendTo('head');
 		}
-        	if (theme.features.navbar_icons.enabled === true) {
-         		$('<style>.navbar .nav li a img{display: inline; width: 32px; height: 32px;}</style>').appendTo('head');
-            	if (theme.features.navbar_icons_text.enabled === true) {
-			$('<style>.navbar .nav li a span{display: block;}</style>').appendTo('head');
-			$('<style>@media screen and (max-width: 992px){.navbar .nav li a img {width: 24px;height: 24px;}}</style>').appendTo('head');
-			}else{
-			$('<style>.navbar .nav li a span{display: none;}</style>').appendTo('head');
-			$('<style>@media screen and (max-width: 992px){.navbar .nav li a img {width: 32px;height: 32px;}}</style>').appendTo('head');
-			$('<style>@media screen and (max-width: 992px){.hidden-tablet,.hidden-phone{display: none !important;}}</style>').appendTo('head');
-			$('<style>@media screen and (max-width: 992px){.navbar .nav > li {width: 60px;}}</style>').appendTo('head');
-			if (isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth){
-			    $('<style>.navbar-inverse .navbar-inner {width: 60px;}}</style>').appendTo('head');
-			}
-			if (theme.features.sidemenu.enabled === true && !isMobile || theme.features.sidemenu.enabled === true && !isMobile && 992 >= window.innerWidth) {
-			    $('<style>.hidden-tablet,.hidden-phone{display: none !important;}</style>').appendTo('head');
-			    $('<style>.navbar-inverse .navbar-inner {width: 60px;}</style>').appendTo('head');
-			    $('<style>.navbar .nav > li {width: 60px;}</style>').appendTo('head');
-			}
-		    }
+        if (theme.features.sidemenu.enabled === true && !isMobile || theme.features.sidemenu.enabled === true && !isMobile && 992 >= window.innerWidth) {
+		    if (adminRights === true){$("#appnavbar").append('<li id="mLogout"><a id="cLogout" href="#Logout"><img src="images/logout.png"><span class="hidden-phone hidden-tablet" data-i18n="Logout">Logout</span></a></li>');}
+		    $('#holder').click(function() {  
+			navBarInner.hide("slide", 500);
+		    });
+		    $('.container').click(function() {   
+			navBarInner.hide("slide", 500);
+		    });
 		}
-        
+        if (theme.features.navbar_icons.enabled === true) {
+            $('<style>.navbar .nav li a img{display: inline; width: 32px; height: 32px;}</style>').appendTo('head');
+            if (!isMobile && 992 <= window.innerWidth && theme.features.sidemenu.enabled === false){
+                    $('<style>.events-editor{margin-top: 70px;}#timesun{margin-top: 0px;}</style>').appendTo('head');
+                }
+            if (theme.features.navbar_icons_text.enabled === true) {
+                $('<style>.navbar .nav li a span{display: block;}</style>').appendTo('head');
+                $('<style>@media screen and (max-width: 992px){.navbar .nav li a img {width: 24px;height: 24px;}}</style>').appendTo('head');
+
+            }else{
+                $('<style>.navbar .nav li a span{display: none;}</style>').appendTo('head');
+                $('<style>@media screen and (max-width: 992px){.navbar .nav li a img {width: 32px;height: 32px;}}</style>').appendTo('head');
+                $('<style>@media screen and (max-width: 992px){.hidden-tablet,.hidden-phone{display: none !important;}}</style>').appendTo('head');
+                $('<style>@media screen and (max-width: 992px){.navbar .nav > li {width: 60px;}}</style>').appendTo('head');
+                if (isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth){
+                    $('<style>.navbar-inverse .navbar-inner {width: 60px;}</style>').appendTo('head');
+                }
+                if (theme.features.sidemenu.enabled === true && !isMobile || theme.features.sidemenu.enabled === true && !isMobile && 992 >= window.innerWidth) {
+                    $('<style>.hidden-tablet,.hidden-phone{display: none !important;}</style>').appendTo('head');
+                    $('<style>.navbar-inverse .navbar-inner {width: 60px;}</style>').appendTo('head');
+                    $('<style>.navbar .nav > li {width: 60px;}</style>').appendTo('head');
+                }
+            }
+		}
 		if (theme.features.hide_type.enabled === true) {
 		    $('<style>.item #type{color: var(--main-item-bg-color);}</style>').appendTo('head');
 		}        
@@ -195,7 +203,6 @@ document.addEventListener('DOMContentLoaded', function () {
 				settings.url.startsWith('json.htm?type=scenes')) {
 				let counter = 0;
 				let intervalId = setInterval(function () {
-					// console.log("Check DOM");
 					if ($('#main-view').find('.item').length > 0) {
 						applySwitchersAndSubmenus();
 						clearInterval(intervalId);
