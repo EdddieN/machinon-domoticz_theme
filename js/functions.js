@@ -219,11 +219,11 @@ function unloadThemeFeatureFiles(featureName)
 }
 
 function searchFunction() {
-	if ($('#dashcontent') || $('lightcontent') || $('scenecontent')|| $('utilitycontent') || $('weatherwidgets') || $('tempwidgets')){
+	if ($('#dashcontent').length || $('#lightcontent').length || $('#scenecontent').length || $('#utilitycontent').length || $('#weatherwidgets').length || $('#tempwidgets').length){
 		var value = $('#searchInput').val().toLowerCase();
 		$("div .item").filter(function() {
           var element = $(this);
-          if($('#dashcontent').length)
+          if($('#dashcontent').length ||  $('#weatherwidgets').length || $('#tempwidgets').length)
             element = $(this).parent();
           element.toggle($(this).find('#name').html().toLowerCase().indexOf(value) > -1)
 		});
