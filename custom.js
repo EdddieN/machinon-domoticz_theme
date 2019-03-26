@@ -28,6 +28,7 @@ var observer = new MutationObserver(function(mutations, observer) {
 			$('#main-view').contents().removeClass('container').toggleClass('container-fluid');
 			console.log('change container class to container-fluid');
 			var changeclass = true
+            $("#searchInput").val('');
 		};
 		
 		if ($('#main-view div.row').next().length != 0 ){
@@ -45,8 +46,8 @@ var observer = new MutationObserver(function(mutations, observer) {
 	});
 });
 
-window.onhashchange = locationHashChanged;
 }
+window.onhashchange = locationHashChanged;
 document.addEventListener('DOMContentLoaded', function () {
 
 });
@@ -113,7 +114,18 @@ document.addEventListener('DOMContentLoaded', function () {
 		$(containerLogo).insertBefore('.navbar-inner');
 		
 		// Searchbar		
-		$('<input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="' + language.type_to_search + '" title="' + language.type_to_search + '">').appendTo('.container-logo');
+		$('<input type="text" id="searchInput" autocomplete="off" onkeyup="searchFunction()" placeholder="' + language.type_to_search + '" title="' + language.type_to_search + '">').appendTo('.container-logo');
+        $('#searchInput').keyup(function(event) {
+          if (event.keyCode === 13) {
+            /* Return key */
+            $('#searchInput').blur();
+          }
+          if (event.keyCode === 27) {
+            /* Escape key */
+            $('#searchInput').val('');
+            $('#searchInput').keyup();
+          }
+        });
 		
 		// Notifications
 		if (theme.features.notification.enabled === true) {

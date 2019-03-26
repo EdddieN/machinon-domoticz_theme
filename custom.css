@@ -133,13 +133,63 @@ border-bottom: none;
   color: #fff;
   padding: 12px 0px 8px 30px;
   outline: 0;
-  border-width: 0 0 1px;
-  border-color: #fff;
-  margin-bottom: 12px;
+  border-width: 0 1px 1px 1px;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: #fff;
+  transition: all .5s;
 }
 #searchInput::placeholder {
-	color: #fff;
-	opacity: 0.5;
+  color: #fff;
+  opacity: 0.5;
+}
+#searchInput:read-only {
+  opacity: 0.3;
+  border-bottom-color: #ccc;
+  cursor: default;
+}
+#searchInput:-moz-read-only {
+  opacity: 0.3;
+  border-bottom-color: #ccc;
+  cursor: default;
+}
+@media (max-width: 767px){
+        #searchInput {
+            width:0;
+            margin-right: 10px;
+        }
+        #searchInput:-moz-read-write:focus,
+        #searchInput:read-write:focus {
+            transform: translateY(39px);
+            border: 0;
+            border-radius: 0;
+            margin: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            width: -moz-available;          /* WebKit-based browsers will ignore this. */
+            width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+            width: fill-available;
+            background: linear-gradient(to right, #0bcdc7 0%, var(--main-blue-color) 100%);
+        }
+}
+@media (min-width: 768px){
+        #searchInput:read-write:hover,
+        #searchInput:read-write:hover {
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+          border-bottom-color: transparent;
+          background-color: rgba(0,0,0,.2);
+          width: 10%;
+        }
+        #searchInput:-moz-read-write:focus,
+        #searchInput:-moz-read-write:focus {
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+          border-bottom-color: transparent;
+          background-color: rgba(0,0,0,.2);
+          width: 10%;
+        }
 }
 #notify {
   float: right;

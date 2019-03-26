@@ -7,6 +7,7 @@ if (mainMenu.length && mSettings.length == 0 ) {
 }
 $('a.settings').click(function() {
     $("#machinoSettings").remove();
+    $("#searchInput").attr("readonly", "readonly");
     if ($('#holder #main-view #machinoSettings').length === 0) {
         $('#holder #main-view').empty();
         $('#holder #main-view').append('<div id="machinoSettings">');

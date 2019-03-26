@@ -219,17 +219,19 @@ function unloadThemeFeatureFiles(featureName)
 }
 
 function searchFunction() {
-	if ($('#dashcontent') || $('lightcontent') || $('scenecontent')|| $('utilitycontent') || $('weatherwidgets') || $('tempwidgets')){
-		var value = $('#searchInput').val().toLowerCase();
-		$("div .item").filter(function() {
-          var element = $(this);
-          if($('#dashcontent').length)
-            element = $(this).parent();
-          element.toggle($(this).find('#name').html().toLowerCase().indexOf(value) > -1)
-		});
+	var value = $('#searchInput').val().toLowerCase();
+	$("div .item").filter(function() {
+       var element = $(this);
+       if($('#dashcontent').length ||  $('#weatherwidgets').length || $('#tempwidgets').length) {
+         element = $(this).parent();
+       }
+       element.toggle($(this).find('#name').html().toLowerCase().indexOf(value) > -1)
+	});
+	$(".mobileitem tr").filter(function() {
+       $(this).toggle($(this).html().toLowerCase().indexOf(value) > -1)
+	});
 
-    };
-};
+}
 
 function DelRow() {
 	$('#main-view div.row').each(function(){
@@ -240,6 +242,9 @@ function DelRow() {
 }
 
 function locationHashChanged() {
+
+  isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if(!isMobile) {
     if ( location.hash === "#/LightSwitches" || "#/DashBoard" ) {
 		var changeclass = false;
 		observer.disconnect();
@@ -252,6 +257,15 @@ function locationHashChanged() {
 			console.log('Page change for: ' + location.hash);
 		
     }
+  }
+
+  /* Is this screen searchable / screen with devices */
+  console.log(location.hash);
+  if (location.hash == "#/Dashboard" || location.hash == "#/LightSwitches" || location.hash == "#/Scenes" || location.hash == "#/Temperature" || location.hash == "#/Weather" || location.hash == "#/Utility") {
+    $("#searchInput").removeAttr('readonly');
+  } else {
+    $("#searchInput").attr('readonly', 'readonly');
+  }
 }
 
 function showTime(){
