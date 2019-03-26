@@ -148,11 +148,17 @@ border-bottom: none;
   border-bottom-color: #ccc;
   cursor: default;
 }
+#searchInput:-moz-read-only {
+  opacity: 0.3;
+  border-bottom-color: #ccc;
+  cursor: default;
+}
 @media (max-width: 767px){
         #searchInput {
             width:0;
             margin-right: 10px;
         }
+        #searchInput:-moz-read-write:focus,
         #searchInput:read-write:focus {
             transform: translateY(39px);
             border: 0;
@@ -169,7 +175,15 @@ border-bottom: none;
 }
 @media (min-width: 768px){
         #searchInput:read-write:hover,
-        #searchInput:read-write:focus {
+        #searchInput:read-write:hover {
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+          border-bottom-color: transparent;
+          background-color: rgba(0,0,0,.2);
+          width: 10%;
+        }
+        #searchInput:-moz-read-write:focus,
+        #searchInput:-moz-read-write:focus {
           border-bottom-left-radius: 5px;
           border-bottom-right-radius: 5px;
           border-bottom-color: transparent;
@@ -177,7 +191,6 @@ border-bottom: none;
           width: 10%;
         }
 }
-
 #notify {
   float: right;
   padding: 12px 50px 8px 30px;
