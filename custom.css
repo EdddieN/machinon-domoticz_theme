@@ -695,7 +695,7 @@ display:none;
   right: 20px;
   top: 60px;
   width: 60%;
-  height: 60px;
+  height: 45px;
   text-align: right;
   margin-top: 0;
   bottom: 40px;
@@ -730,7 +730,7 @@ dzweatherwidget #status {
   right: 20px;
   top: 60px;
   width: 60%;
-  height: 60px;
+  height: 45px;
   text-align: right;
   margin-top: 0;
   bottom: 40px;
@@ -750,7 +750,7 @@ dzweatherwidget #status {
   position: absolute;
   right: 20px;
   top: 80px;
-  height: 60px;
+  height: 45px;
   width: 60%;
   text-align: right;
   margin-top: 0;
