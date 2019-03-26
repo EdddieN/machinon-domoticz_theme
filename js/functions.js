@@ -231,7 +231,7 @@ function searchFunction() {
        $(this).toggle($(this).html().toLowerCase().indexOf(value) > -1)
 	});
 
-};
+}
 
 function DelRow() {
 	$('#main-view div.row').each(function(){

@@ -24,8 +24,6 @@ var targetedNode = document;
 MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
 var observer = new MutationObserver(function(mutations, observer) {
 	mutations.forEach(function(mutation) {	
-
-
 		if ($('#main-view').contents().hasClass('container') ) {
 			$('#main-view').contents().removeClass('container').toggleClass('container-fluid');
 			console.log('change container class to container-fluid');
