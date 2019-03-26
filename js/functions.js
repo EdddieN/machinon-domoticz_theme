@@ -222,8 +222,9 @@ function searchFunction() {
 	var value = $('#searchInput').val().toLowerCase();
 	$("div .item").filter(function() {
        var element = $(this);
-    if($('#dashcontent').length ||  $('#weatherwidgets').length || $('#tempwidgets').length)
-       element = $(this).parent();
+       if($('#dashcontent').length ||  $('#weatherwidgets').length || $('#tempwidgets').length) {
+         element = $(this).parent();
+       }
        element.toggle($(this).find('#name').html().toLowerCase().indexOf(value) > -1)
 	});
 	$(".mobileitem tr").filter(function() {
