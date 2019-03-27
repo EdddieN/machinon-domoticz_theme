@@ -422,6 +422,7 @@ div.bannercontent .row.divider{
   position: absolute;
   top: 10%;
   left: 5%;
+  max-width: 60%;
 }
 
 @media (min-width: 1200px) {
