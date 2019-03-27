@@ -116,6 +116,7 @@ function applySwitchersAndSubmenus() {
 			if (type.length == 0) {
 				$(this).find('.options').append('<a class="btnsmall" id="idno"><i>Idx: ' + itemID + '</i></a>');
 			}
+            removeEmptySectionDashboard();
 		}
 		// options to not have switch instaed of bigText on scene devices
 		let switchOnScenes = false;
@@ -232,7 +233,7 @@ function searchFunction() {
 	$(".mobileitem tr").filter(function() {
        $(this).toggle($(this).html().toLowerCase().indexOf(value) > -1)
 	});
-
+    removeEmptySectionDashboard();
 }
 
 function DelRow() {
@@ -434,4 +435,13 @@ function checkauth(){
 		}
 	}
 	});
+}
+
+function removeEmptySectionDashboard() {
+    $('#dashcontent section').each(function() {
+           $(this).show();
+           if (!$(this).children('div.row').children(':visible').length) {
+                $(this).hide();
+            }
+    });
 }
