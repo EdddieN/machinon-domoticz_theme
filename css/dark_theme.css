@@ -82,7 +82,7 @@ header.logo {
 
 @media (max-width: 767px){
     #searchInput:read-write:focus {
-       background: linear-gradient(to right, #0bcdc7 0%, var(--main-blue-color) 100%);
+       background: linear-gradient(275deg, #103c68, #0073a7);
     }
 }
 
