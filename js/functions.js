@@ -246,7 +246,6 @@ function DelRow() {
 function locationHashChanged() {
 
   isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  applySwitchersAndSubmenus();
   if(!isMobile) {
     if ( location.hash === "#/LightSwitches" || "#/DashBoard" ) {
 		var changeclass = false;
