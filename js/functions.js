@@ -92,6 +92,7 @@ function applySwitchersAndSubmenus() {
 			$(this).on('click', '.options__bars', function (e) {
 			e.preventDefault();
 			$(this).siblings('tbody').find('td.options').slideToggle(400);
+			$(this).siblings('tbody').find('td.options').unbind("mouseleave");
 			$(this).siblings('tbody').find('td.options').mouseleave(function() { $(this).slideToggle(400); $(this).unbind("mouseleave"); });
 			});
 			// Move Timers and log to item
@@ -245,6 +246,7 @@ function DelRow() {
 function locationHashChanged() {
 
   isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  applySwitchersAndSubmenus();
   if(!isMobile) {
     if ( location.hash === "#/LightSwitches" || "#/DashBoard" ) {
 		var changeclass = false;
