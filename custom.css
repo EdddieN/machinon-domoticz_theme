@@ -410,11 +410,6 @@ div.bannercontent .row.divider{
 	box-shadow: 0px 0px 0px 2px rgb(11, 150, 205);
 }
 
-.item #type .selectorlevels, .item #type .btn-group{
-  display: flex;
-  width: 65%;
-}
-
 /* name */
 .item #name {
   background-color: transparent !important;
