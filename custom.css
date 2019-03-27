@@ -739,8 +739,8 @@ dzweatherwidget #status {
 /* utility items */
 #utilitycontent #type {
   position: absolute;
-  right: 20px;
-  top: 60px;
+  right: 0;
+  top: 50px;
   width: 60%;
   text-align: right;
   margin-top: 0;
@@ -748,7 +748,7 @@ dzweatherwidget #status {
 #utilitycontent #status {
   position: absolute;
   right: 20px;
-  top: 60px;
+  top: 70px;
   height: 45px;
   width: 60%;
   text-align: right;
