@@ -6,18 +6,12 @@
 	--main-blue-color: #0b96cd;
 	--main-item-bg-color: #515558;
 	--main-text-color: white;
-        --main-border-color: black;
+    --main-border-color: black;
 }
 header.logo {
 	background-image: linear-gradient(275deg, #103c68, #0073a7);
 }
-#dashcontent h2,
-body,
-h1,
-h2,
-h2 span { 
-	color: var(--main-text-color) !important;
-}
+
 .item #status,
 .sub-tabs > li > a,
 .sub-tabs > .active > a,
@@ -68,19 +62,6 @@ h2 span {
 .options {
   background: #515558;
 }
-.btnstylerev,
-.btnstyle,
-.btnsmall,
-.bannav a.btnstylerev,
-.bannav a.btnstyle,
-.btnsmall:hover {
-  color: var(--main-text-color);
-}
-.bannav a.btnstylerev::before,
-.bannav a.btnstyle::after {
-	  border-top: 0.1vmin solid #fff;
-  border-right: 0.1vmin solid #fff;
-}
 .mDropdown-Text,
 .machinoSettings h2,
 .machinoText{
@@ -98,3 +79,10 @@ h2 span {
 #login:before {
     background-image: linear-gradient(275deg, #103c68, #0073a7);
 }
+
+@media (max-width: 767px){
+    #searchInput:read-write:focus {
+       background: linear-gradient(275deg, #103c68, #0073a7);
+    }
+}
+
