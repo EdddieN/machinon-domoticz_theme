@@ -46,7 +46,10 @@
 .item #type,
 .item #lastupdate {
   font-family: main-font;
+  color: var(--main-text-color);
 }
+
+h1,
 h2,
 #tophtm,
 #temptophtm,
@@ -59,10 +62,6 @@ h2,
 .item #status,
 .item #name {
   font-family: main-font-bold;
-}
-h1,
-.page-header-small h1 {
-	font-family: main-font-bold;
 }
 #tabs,
 .span6,
@@ -100,7 +99,6 @@ h1,
     color: var(--secondary-text-color)!important;
     text-shadow: none;
     background-color: var(--main-item-bg-color)!important;
-    border-color: none;
 }
 #popup_setpoint{
     font-family: main-font;
@@ -279,7 +277,7 @@ input[type="text"]{
   width: 40px;
   height: 20px;
   top: 20px;
-  right: 40px;
+  right: 20px;
 }
 .switch input {
   display: none;
@@ -417,6 +415,7 @@ div.bannercontent .row.divider{
   position: absolute;
   top: 10%;
   left: 5%;
+  line-height: 20px;
   max-width: 60%;
 }
 
@@ -428,6 +427,7 @@ div.bannercontent .row.divider{
 /* bigtext */
 .item #bigtext {
   color: var(--main-blue-color);
+  line-height: 20px;
   font-size: 1.4em;
   position: absolute;
   top: 10%;
@@ -471,20 +471,23 @@ dzweatherwidget .item #lastupdate {
 .options__bars {
   display: block;
   position: absolute;
-  top: 0;
+  top: 3px;
   right: 0;
   height: 25px;
   width: 20px;
+  color: var(--secondary-text-color);
   z-index: 2;
+  cursor: pointer;
   overflow: hidden;
 }
 .options__bars::before {
   display: block;
-  color: var(--secondary-text-color);
   content: "\22ee";
   font-size: 20px;
   text-align: center;
-  cursor: pointer;
+}
+.options__bars:hover {
+  color: var(--main-blue-color);
 }
 
 body table#itemtable tr > .options {
@@ -636,7 +639,7 @@ body table#itemtable tr > .options {
 .ui-selectmenu-button.ui-button{
   width:auto !important;
 }
-#type .selectorlevels {
+.selectorlevels {
   position: absolute;
   right: 20px;
   bottom: 40px;
@@ -671,15 +674,6 @@ dzweatherwidget .item #timeago {
 }
 
 /* dashboard items */
-/*Modifie dans le dashboard, l'espace entre bigtext et le bord droit*/
-#dashcontent .bigtext{
-right:20px;
-}
-/*idem pour le switch*/
-#dashcontent .switch{
-right:20px;
-}
-/*efface le lastupdate du dashboard*/
 #dashcontent .lastupdate{
 display:none;
 }
@@ -693,14 +687,6 @@ display:none;
   margin-top: 0;
   bottom: 40px;
   overflow:  hidden;
-}
-#dashcontent .selectorlevels {
-  position: absolute;
-  right: 20px;
-  bottom: 40px;
-}
-#dashcontent .ui-selectmenu-text {
-color:var(--main-blue-color);
 }
 
 #dashcontent .item #lastupdate {
@@ -828,7 +814,6 @@ header.logo {
   background: -o-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%);
   background: -ms-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%);
   background: linear-gradient(to right, #0bcdc7 0%, var(--main-blue-color) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#0bcdc7", endColorstr="var(--main-blue-color)", GradientType=1 );
 }
 
 .container-logo {
@@ -972,14 +957,15 @@ button.menu-toggle {
   color: #fff;
 }
 
-#timesun font {
-  color: #1a1a1a;
+#timesun font,
+#timesun span {
+  color: var(--main-text-color) !important;
 }
 
 .btnstylerev,
 .btnstyle {
   background: none;
-  color: #1a1a1a;
+  color: var(--main-text-color); 
 }
 
 a.btnstylerev,
@@ -997,8 +983,8 @@ a.btnstyle::after {
   width: 1vmin;
   height: 1vmin;
   background: transparent;
-  border-top: 0.1vmin solid #1a1a1a;
-  border-right: 0.1vmin solid #1a1a1a;
+  border-top: 0.1vmin solid var(--main-text-color);
+  border-right: 0.1vmin solid var(--main-text-color);
 }
 
 a.btnstylerev::before {
@@ -1167,8 +1153,10 @@ tr.odd td.sorting_1, tr.even td.sorting_1{
 	border-radius: 2px;
 }
 
-.ng-scope h2 {
-  color: black;
+h1,
+h2,
+h2 span {
+    color: var(--main-text-color) !important;
 }
 
 body table#itemtabledoubleicon tr td:first-child {
@@ -1321,7 +1309,6 @@ input#AcceptNewHardware:checked ~ button {
   background: -o-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%) !important;
   background: -ms-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%) !important;
   background: linear-gradient(to right, #0bcdc7 0%, var(--main-blue-color) 100%) !important;
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#0bcdc7", endColorstr="var(--main-blue-color)", GradientType=1 ) !important;
 }
 
 #offline h3 {
