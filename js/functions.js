@@ -92,6 +92,7 @@ function applySwitchersAndSubmenus() {
 			$(this).on('click', '.options__bars', function (e) {
 			e.preventDefault();
 			$(this).siblings('tbody').find('td.options').slideToggle(400);
+			$(this).siblings('tbody').find('td.options').mouseleave(function() { $(this).slideToggle(400); $(this).unbind("mouseleave"); });
 			});
 			// Move Timers and log to item
 			$(this).find('table').append('<div class="timers_log"></div>');
