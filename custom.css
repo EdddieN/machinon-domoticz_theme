@@ -431,7 +431,7 @@ div.bannercontent .row.divider{
   font-size: 1.4em;
   position: absolute;
   top: 10%;
-  right: 10%;
+  right: 20px;
 }
 
 @media (min-width: 980px) {
@@ -471,18 +471,19 @@ dzweatherwidget .item #lastupdate {
 .options__bars {
   display: block;
   position: absolute;
-  top: -5px;
-  height: 30px;
-  right: 10px;
+  top: 0;
+  right: 0;
+  height: 25px;
+  width: 20px;
   z-index: 2;
   overflow: hidden;
-  width: 20px;
 }
 .options__bars::before {
   display: block;
   color: var(--secondary-text-color);
-  content: "…";
+  content: "\22ee";
   font-size: 20px;
+  text-align: center;
   cursor: pointer;
 }
 
