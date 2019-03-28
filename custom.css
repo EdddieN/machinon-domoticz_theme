@@ -583,6 +583,7 @@ body table#itemtable tr > .options {
 }
 .item .img img,
 .item #img img {
+  width: 48px;
   height: auto;
 }
 
