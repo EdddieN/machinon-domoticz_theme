@@ -682,9 +682,9 @@ display:none;
 #dashcontent .status{
   position: absolute;
   right: 20px;
-  top: 60px;
+  top: 50px;
   width: 60%;
-  height: 45px;
+  height: 55px;
   text-align: right;
   margin-top: 0;
   bottom: 40px;
@@ -709,9 +709,9 @@ dztemperaturewidget #status,
 dzweatherwidget #status {
   position: absolute;
   right: 20px;
-  top: 60px;
+  top: 45px;
   width: 60%;
-  height: 45px;
+  height: 65px;
   text-align: right;
   margin-top: 0;
   bottom: 40px;
