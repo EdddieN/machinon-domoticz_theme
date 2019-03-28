@@ -26,10 +26,8 @@ header.logo {
 .navbar-inverse .navbar-inner {
   background-color: #000;
 }
-.navbar .nav li a,
-.navbar .nav li a:hover {
+.navbar .nav li a {
   background-color: #000;
-  color: var(--main-text-color);
 }
 .dropdown-content,
 .mHeaderBtn li,

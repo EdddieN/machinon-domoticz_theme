@@ -3,7 +3,7 @@
 function showThemeSettings() { 
      
     if( !$('#tabsystem').length ){
-        setTimeout(showThemeSettings, 5000);
+        setTimeout(showThemeSettings, 1000);
         return;
     }
     

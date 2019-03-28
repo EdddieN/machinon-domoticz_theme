@@ -263,10 +263,10 @@ function locationHashChanged() {
 			console.log('Page change for: ' + location.hash);
 		
     }
+     $("#mSettings").removeClass("current_page_item");
   }
 
   /* Is this screen searchable / screen with devices */
-  console.log(location.hash);
   if (location.hash == "#/Dashboard" || location.hash == "#/LightSwitches" || location.hash == "#/Scenes" || location.hash == "#/Temperature" || location.hash == "#/Weather" || location.hash == "#/Utility") {
     $("#searchInput").removeAttr('readonly');
   } else {

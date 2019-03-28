@@ -12,10 +12,6 @@
 #copyright p:after {
   content: "  | 'Machinon' theme";
 }
-/* Navbar move abit to left */
-.navbar .nav {
-	  float: left;
-}
 /*var in way of change color*/
 :root {
 	/*use with var(--main-blue-color)*/
@@ -869,6 +865,10 @@ button.menu-toggle {
   color: #1a1a1a;
 }
 
+/* Navbar move abit to left */
+.navbar .nav {
+	  float: left;
+}
 .navbar .brand {
   position: absolute;
   top: 5px;
@@ -881,15 +881,19 @@ button.menu-toggle {
 .navbar .divider-vertical {
   margin: 0 5px;
 }
-.navbar .nav li a,
-.navbar .nav li a:hover {
+.navbar .nav li a {
   background: none;
   text-shadow: none;
-  background-color: #fff;
-  color: #1a1a1a;
+  background-color: var(--main-item-bg-color);
+  color: var(--main-text-color);
   border: none;
   border-radius: 0;
   position: relative;
+}
+.navbar .nav li a:hover {
+  color: var(--main-text-color);
+  background: var(--main-bg-color);
+  border: none;
 }
 .navbar .nav li a:before,
 .navbar .nav li a:hover:before {

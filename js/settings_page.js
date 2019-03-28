@@ -7,6 +7,8 @@ if (mainMenu.length && mSettings.length == 0 ) {
 }
 $('a.settings').click(function() {
     $("#machinoSettings").remove();
+    $("#appnavbar li").removeClass("current_page_item");
+    $("#mSettings").addClass("current_page_item");
     $("#searchInput").attr("readonly", "readonly");
     if ($('#holder #main-view #machinoSettings').length === 0) {
         $('#holder #main-view').empty();
