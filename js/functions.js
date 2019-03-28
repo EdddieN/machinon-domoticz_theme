@@ -2,6 +2,7 @@
 
 // main switchers and submenus logic function
 function applySwitchersAndSubmenus() {
+    isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 	
 	//translate switchstates
 	switchState = {
@@ -164,14 +165,16 @@ function applySwitchersAndSubmenus() {
 	});
 
     /* Set nice scrollbar on status area */
-    $("#status", "tr").not(".nano").each(function() {
+    if (!isMobile) {
+       $("#status", "tr").not(".nano").each(function() {
             var html = $(this).html();
             if (html.length) {
                     $(this).html("<div class='nano-content'>" +  html.replace(/,/g, '<br/>') + "</div>");
                     $(this).addClass("status nano");
                     $(this).nanoScroller();
             }
-    });
+       });
+    }
 
 	// console.log('Switchers loaded');
 }

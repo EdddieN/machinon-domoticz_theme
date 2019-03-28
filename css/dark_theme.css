@@ -31,7 +31,10 @@ header.logo {
   background-color: #000;
   color: var(--main-text-color);
 }
-.dropdown-content, .rectangle-8, .rectangle-8-dropdown {
+.dropdown-content,
+.mHeaderBtn li,
+.rectangle-8,
+.rectangle-8-dropdown {
 	background-color: #515558;
 }
 @media screen and (max-width: 992px) {
