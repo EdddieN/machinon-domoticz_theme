@@ -26,12 +26,13 @@ header.logo {
 .navbar-inverse .navbar-inner {
   background-color: #000;
 }
-.navbar .nav li a,
-.navbar .nav li a:hover {
+.navbar .nav li a {
   background-color: #000;
-  color: var(--main-text-color);
 }
-.dropdown-content, .rectangle-8, .rectangle-8-dropdown {
+.dropdown-content,
+.mHeaderBtn li,
+.rectangle-8,
+.rectangle-8-dropdown {
 	background-color: #515558;
 }
 @media screen and (max-width: 992px) {

@@ -12,10 +12,6 @@
 #copyright p:after {
   content: "  | 'Machinon' theme";
 }
-/* Navbar move abit to left */
-.navbar .nav {
-	  float: left;
-}
 /*var in way of change color*/
 :root {
 	/*use with var(--main-blue-color)*/
@@ -161,8 +157,8 @@ border-bottom: none;
             border: 0;
             margin: 0;
             width: 100%;
-            width: -moz-available;          /* WebKit-based browsers will ignore this. */
-            width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+            width: -moz-available;
+            width: -webkit-fill-available;
             width: fill-available;
             background: linear-gradient(to right, #0bcdc7 0%, var(--main-blue-color) 100%);
         }
@@ -583,6 +579,7 @@ body table#itemtable tr > .options {
 }
 .item .img img,
 .item #img img {
+  width: 48px;
   height: auto;
 }
 
@@ -630,6 +627,7 @@ body table#itemtable tr > .options {
 /* item with button group */
 #type .btn-group,
 .input .btn-group {
+  background: var(--main-bg-color) !important;
   position: absolute;
   right: 20px;
   bottom: 40px;
@@ -680,9 +678,9 @@ display:none;
 #dashcontent .status{
   position: absolute;
   right: 20px;
-  top: 60px;
+  top: 50px;
   width: 60%;
-  height: 45px;
+  height: 55px;
   text-align: right;
   margin-top: 0;
   bottom: 40px;
@@ -707,9 +705,9 @@ dztemperaturewidget #status,
 dzweatherwidget #status {
   position: absolute;
   right: 20px;
-  top: 60px;
+  top: 45px;
   width: 60%;
-  height: 45px;
+  height: 55px;
   text-align: right;
   margin-top: 0;
   bottom: 40px;
@@ -867,6 +865,10 @@ button.menu-toggle {
   color: #1a1a1a;
 }
 
+/* Navbar move abit to left */
+.navbar .nav {
+	  float: left;
+}
 .navbar .brand {
   position: absolute;
   top: 5px;
@@ -879,15 +881,19 @@ button.menu-toggle {
 .navbar .divider-vertical {
   margin: 0 5px;
 }
-.navbar .nav li a,
-.navbar .nav li a:hover {
+.navbar .nav li a {
   background: none;
   text-shadow: none;
-  background-color: #fff;
-  color: #1a1a1a;
+  background-color: var(--main-item-bg-color);
+  color: var(--main-text-color);
   border: none;
   border-radius: 0;
   position: relative;
+}
+.navbar .nav li a:hover {
+  color: var(--main-text-color);
+  background: var(--main-bg-color);
+  border: none;
 }
 .navbar .nav li a:before,
 .navbar .nav li a:hover:before {
@@ -1527,7 +1533,6 @@ input.parentunrequiredchild{
 
 .btn-group .btn {
   margin: 0 0 0 -1px !important;
-  background: #fff !important;
   text-shadow: none !important;
   color: #ccccccff;
   box-shadow: none;
@@ -1541,21 +1546,20 @@ input.parentunrequiredchild{
 }
 .btn-default,
 .btn-group .btn-default{
-  background: #fff !important;
+  background: none !important;
   color: var(--main-blue-color);
-  border-color: var(--main-blue-color) !important;
+  border-color: var(--main-item-bg-color) !important;
   border-radius: 1px !important;
-
 }
 .btn-default.active,
 .btn-group .btn-default.active{
-  color: #fff;	
+  color: var(--main-item-bg-color);
   background: var(--main-blue-color) !important;
   border-color: var(--main-blue-color) !important;
 }
 .btn-default:hover,
 .btn-group .btn-primary{
-  color:#fff;
+  color: var(--main-item-bg-color);
   background: var(--main-blue-color) !important;
   border-color: var(--main-blue-color) !important;
   border-radius: 1px !important;
@@ -1590,15 +1594,18 @@ input.parentunrequiredchild{
 margin-bottom:10px;
 height: 6px;
 border-radius:5px;
-background-color:#eee;
+background-color: var(--main-bg-color);
 
 }
 .btn-group::-webkit-scrollbar-thumb {
 background: var(--main-blue-color); 
 border-radius: 5px;
 }
+
 .btn-group{
 padding-bottom:1px;
+scrollbar-width: thin;
+scrollbar-color: var(--main-blue-color) var(--main-bg-color);
 }
 
 /*System page*/

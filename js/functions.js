@@ -2,6 +2,7 @@
 
 // main switchers and submenus logic function
 function applySwitchersAndSubmenus() {
+    isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 	
 	//translate switchstates
 	switchState = {
@@ -164,14 +165,16 @@ function applySwitchersAndSubmenus() {
 	});
 
     /* Set nice scrollbar on status area */
-    $("#status", "tr").not(".nano").each(function() {
+    if (!isMobile) {
+       $("#status", "tr").not(".nano").each(function() {
             var html = $(this).html();
             if (html.length) {
-                    $(this).html("<div class='nano-content'>" +  html + "</div>");
+                    $(this).html("<div class='nano-content'>" +  html.replace(/,/g, '<br/>') + "</div>");
                     $(this).addClass("status nano");
                     $(this).nanoScroller();
             }
-    });
+       });
+    }
 
 	// console.log('Switchers loaded');
 }
@@ -260,10 +263,10 @@ function locationHashChanged() {
 			console.log('Page change for: ' + location.hash);
 		
     }
+     $("#mSettings").removeClass("current_page_item");
   }
 
   /* Is this screen searchable / screen with devices */
-  console.log(location.hash);
   if (location.hash == "#/Dashboard" || location.hash == "#/LightSwitches" || location.hash == "#/Scenes" || location.hash == "#/Temperature" || location.hash == "#/Weather" || location.hash == "#/Utility") {
     $("#searchInput").removeAttr('readonly');
   } else {

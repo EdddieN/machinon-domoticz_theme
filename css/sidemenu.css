@@ -47,7 +47,7 @@ padding: 0;
 box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
 }
 .navbar .nav li a {
-font-family: main-font;
+font-family: main-font-bold;
 color: #fff;
 font-size: 20px;
 background-color: var(--main-blue-color);
@@ -56,6 +56,9 @@ text-align: left;
 .navbar .nav li a:hover{
 background-color: var(--main-blue-color) !important;
 color: #000 !important;
+}
+.nav li a img {
+padding-right: 10px;
 }
 .navbar .nav .current_page_item > a {
 text-align: left;
