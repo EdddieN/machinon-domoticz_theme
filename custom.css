@@ -17,10 +17,11 @@
 	/*use with var(--main-blue-color)*/
 	--main-bg-color: #f1f1f1; 
 	--main-blue-color: #0b96cd;
+    --main-navbar-bg-color: white;
 	--main-item-bg-color: white;
 	--main-text-color: #1a1a1a;
 	--secondary-text-color: gray;
-  --main-border-color: #dedede;
+    --main-border-color: #dedede;
 }
 @font-face {
     font-family: main-font;
@@ -494,7 +495,7 @@ body table#itemtable tr > .options {
 .options {
   font-family: main-font-bold;
   position: absolute;
-  background: white;
+  background: var(--main-item-bg-color);
   border-radius: 5px;
   right: 5px;
   top: 8px;
@@ -853,7 +854,7 @@ button.menu-toggle {
 
 .navbar-inverse .navbar-inner {
   border: none;
-  background-color: #fff;
+  background-color: var(--main-navbar-bg-color);
 }
 .navbar-inverse .nav li.dropdown > .dropdown-toggle .caret {
     margin: 0;
@@ -867,9 +868,10 @@ button.menu-toggle {
   border-top-color: var(--main-text-color);
   border-bottom-color: var(--main-text-color);
 }
-.navbar-inverse .nav li.dropdown.open > .dropdown-toggle {
-  background-color: #fff;
-  color: #1a1a1a;
+.navbar-inverse .nav li.dropdown.open > .dropdown-toggle,
+.navbar-inverse .nav li.dropdown.open > .dropdown-toggle:before {
+  background: var(--main-bg-color);
+  color: var(--main-text-color);
 }
 
 /* Navbar move abit to left */
@@ -891,7 +893,7 @@ button.menu-toggle {
 .navbar .nav li a {
   background: none;
   text-shadow: none;
-  background-color: var(--main-item-bg-color);
+  background-color: var(--main-navbar-bg-color);
   color: var(--main-text-color);
   border: none;
   border-radius: 0;
@@ -913,7 +915,10 @@ button.menu-toggle {
   bottom: 0;
 }
 .navbar .nav > li > .dropdown-menu:after {
-  border-bottom: 6px solid #0bcdc7;
+  display: none;
+}
+.navbar .nav > li > .dropdown-menu.pull-right:before {
+  display: none;
 }
 .navbar .nav > li > .dropdown-menu.pull-right li {
   margin-top: 5px;
@@ -923,7 +928,8 @@ button.menu-toggle {
 }
 .navbar .nav .dropdown-menu {
   border: none;
-  background: #0bcdc7;
+  background: var(--main-bg-color);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5); */
 }
 .navbar .pull-right > li > .dropdown-menu .dropdown-menu,
 .navbar .nav > li > .dropdown-menu.pull-right .dropdown-menu {
