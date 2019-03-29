@@ -855,10 +855,17 @@ button.menu-toggle {
   border: none;
   background-color: #fff;
 }
+.navbar-inverse .nav li.dropdown > .dropdown-toggle .caret {
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 5px;
+}
 .navbar-inverse .nav li.dropdown > a:hover .caret,
 .navbar-inverse .nav li.dropdown.open > .dropdown-toggle .caret {
-  border-top-color: #1a1a1a;
-  border-bottom-color: #1a1a1a;
+  border-top-color: var(--main-text-color);
+  border-bottom-color: var(--main-text-color);
 }
 .navbar-inverse .nav li.dropdown.open > .dropdown-toggle {
   background-color: #fff;
@@ -1909,14 +1916,6 @@ body.dashMobile table.mobileitem td.name img{
     .hidden-tablet,
     .hidden-phone{
     display: inline !important;
-    }
-
-    .navbar-inverse .nav li.dropdown > .dropdown-toggle .caret {
-    margin: 0;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    bottom: 10px;
     }
 
     .navbar .pull-right > li > .dropdown-menu, .navbar .nav > li > .dropdown-menu.pull-right {
