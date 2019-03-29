@@ -156,7 +156,7 @@ function loadSettingsHTML(){
 			theme[this.name] = value; 
 		});
 		localStorage.setObject(themeFolder + ".themeSettings", theme);
-		//console.log(themeName + ' - theme settings saved');
+        storeUserVariableThemeSettings('update'); 
 		notify(language.theme_settings_saved, 2);
 		location.reload();
 	});
@@ -177,8 +177,9 @@ function loadSettings() {
 			themeName = theme.name;
 			if (isEmptyObject(theme) === false) {
 				localStorage.setObject(themeFolder + ".themeSettings", theme);
+                checkUserVariableThemeSettings();
             }
-			console.log(themeName + " - local theme settingsfile loaded and saved to localSto");
+			console.log(themeName + " - local theme settingsfile loaded and saved to localStorage");
 			}
 		});
 		} else { // If setting is saved in localstorge(browser), try to load those.
@@ -189,11 +190,138 @@ function loadSettings() {
 	}
 }
 
+function checkUserVariableThemeSettings() {
+    $.ajax({
+        url: "/json.htm?type=command&param=getuservariables",
+        async: true,
+        dataType: 'json',
+        success: function (data) {
+            if (data.status == "ERR") {
+                console.log("server responded with error while getting user variables");
+                $.get('/json.htm?type=command&param=addlogmessage&message=Theme Error - The theme was unable to load your preferences from Domoticz.');
+            }
+            // If we got good data from Domoticz, load the preferences.
+            if (data.status == "OK"){
+                var didDomoticzHaveSettings = false;
+                var featuresVarName = "theme-" + themeFolder + "-features";
+                $.each(data.result, function(variable, value) {
+                    if(value.Name == featuresVarName){
+                        console.log("THEME JS - found theme feature settings in Domoticz database (user variable Idx: " + value.idx + ")");
+                        didDomoticzHaveSettings = true;
+                        theme.userfeaturesvariable = value.idx;
+                        getUserVariableThemeSettings(value.idx);
+                    }
+                });
+                if(didDomoticzHaveSettings === false){
+                    storeUserVariableThemeSettings("add");
+                }
+
+            }           
+        },
+        error: function () {
+            console.log("The theme was unable to check if Domoticz had theme settings. Permission denied? Still on login page? No connection? Stopping..");
+        }
+    });
+}
+function storeUserVariableThemeSettings(action){ // 'add' or 'update'
+
+    var settings = [];
+    $.each(theme.features, function(key,feature){
+        if(feature.enabled === true){
+            settings.push(feature.id);
+        }
+    });
+    var variableURL = 'json.htm?type=command&param=' + action + 'uservariable&vname=theme-' + themeFolder + '-features&vtype=2&vvalue='+ JSON.stringify(settings);
+    $.ajax({
+        url: variableURL,
+        async: true,
+        dataType: 'json',
+        success: function (data) {
+            if (data.status == "ERR") {
+                bootbox.alert("Unable to create or update theme settings uservariable, Try to reset the theme");
+                console.log("THEME JS - unable to create theme settings storage in Domoticz. (tip:max datasze is 200 bytes)");
+            }
+            // If we got good data from Domoticz.
+            if (data.status == "OK") {
+                console.log(themeName + " - theme settings uservariable is updated");
+            }
+        },
+        error: function () {
+            console.log("THEME JS - Ajax error wile creating or updating user variable in Domotcz.");
+        }
+    });   
+}
+// here we get the feature settings that are stored in domoticz as a user variable.
+function getUserVariableThemeSettings(idx){
+    
+    console.log("THEME JS - getting feature settings from Domoticz. User variable ID = " + idx);
+    $.ajax({
+        url: "json.htm?type=command&param=getuservariable" +
+        "&idx=" + idx,
+        async: true,
+        dataType: 'json',
+        success: function (data) {
+            if (data.status == "ERR") {
+                console.log("THEME JS - Although they seem to exist, there was an error loading theme preferences from Domoticz");
+                $.get('/json.htm?type=command&param=addlogmessage&message=Theme Error - The theme was unable to load your user variable.');
+                userVariableThemeLoaded = false;
+            }
+            if (data.status == "OK") {
+                console.log("THEME JS - succesfully loaded theme feature settings from Domoticz");
+                var themeSettingsFromDomoticz = JSON.parse(data.result[0].Value);
+                // Update the theme object with the settings from Domoticz.
+                $.each(theme.features, function(key,feature){
+                    if($.inArray(feature.id, themeSettingsFromDomoticz) > -1){
+                        theme.features[key].enabled = true;
+                    }else{
+                        theme.features[key].enabled = false;
+                    }
+                });
+                
+                localStorage.setObject(themeFolder + ".themeSettings", theme); // save loaded preferences in local object.
+                userVariableThemeLoaded = true;
+                location.reload();
+            }            
+        },
+        error: function () {
+            console.log("THEME JS - ERROR reading feature settings from Domoticz for theme" + theme.name + "from user variable #" + idx);
+            userVariableThemeLoaded = false;
+        }
+    });
+}
+
 // reset theme to defaults. Useful after an upgrade.
 function resetTheme(){
     if (typeof(Storage) !== "undefined") {
-		localStorage.removeItem(themeFolder + ".themeSettings");
-		location.reload();    
+        if(typeof theme.userfeaturesvariable !== 'undefined'){
+            var deleteFeaturesURL = '/json.htm?type=command&param=deleteuservariable&idx=' + theme.userfeaturesvariable;
+            $.ajax({
+                url: deleteFeaturesURL,
+                async: true,
+                dataType: 'json',
+                success: function (data) {
+                    if (data.status == "ERR") {
+                        console.log("THEME JS - server responded with error while deleting user variable that stored feature settings");
+                        bootbox.alert($.t('Domoticz gave an error when trying to remove the theme feature settings data'));
+                    }
+                    if (data.status == "OK") {
+                        console.log("THEME JS - deleting user variable that stored features was succesful");
+                        localStorage.removeItem(themeFolder + ".themeSettings");
+                        $.get('/json.htm?type=command&param=addlogmessage&message=' + themeFolder + ' theme was reset to defaults');
+                        
+                        location.reload();
+                    }
+                },
+                error: function () {
+                    console.log("THEME JS - The theme was unable to delete the user variable in Domoticz that holds the theme feature settings");
+                    bootbox.alert($.t('Error communicating with Domoticz, theme feature settings not reset.'));
+                }
+            });
+        }
+        else{
+            localStorage.removeItem(themeFolder + ".themeSettings");
+            location.reload();
+        }        
     }
 }
 
