@@ -9,8 +9,8 @@ rect.popup{
     fill: var(--main-item-bg-color) !important;
 }
 rect.header{
-    rx: 0;
-    ry: 0;
+    rx: 5;
+    ry: 5;
     fill: var(--main-item-bg-color) !important;
     stroke-width: 0 !important;
 }
