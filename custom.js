@@ -1,6 +1,6 @@
 /* Custom.js for machinon theme */
 
-var theme = {}, themeName = "", baseURL = "", switchState = {}, isMobile, newVersionText = "", gitVersion, lang, user, themeFolder, checkUpdate;
+var theme = {}, themeName = "", baseURL = "", switchState = {}, isMobile, newVersionText = "", gitVersion, lang, user, themeFolder, checkUpdate, userVariableThemeLoaded = false;
 generate_noty = void 0;
 isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
