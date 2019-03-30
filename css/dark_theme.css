@@ -49,7 +49,7 @@ header.logo {
 .ui-corner-all,
 .display .ui-widget-content,
 .ui-widget-content{
-	background: var(--main-bg-color);
+	background: var(--main-bg-color) !important;
 	color: var(--main-text-color)
 }
 .ui-dialog .ui-dialog-buttonpane{
