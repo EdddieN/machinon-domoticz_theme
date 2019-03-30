@@ -4,6 +4,7 @@
 	/*use with var(--main-blue-color)*/
 	--main-bg-color: #333639;
 	--main-blue-color: #0b96cd;
+    --main-navbar-bg-color: black;
 	--main-item-bg-color: #515558;
 	--main-text-color: white;
     --main-border-color: black;
@@ -23,12 +24,6 @@ header.logo {
 	color:var(--main-blue-color);
 }
 
-.navbar-inverse .navbar-inner {
-  background-color: #000;
-}
-.navbar .nav li a {
-  background-color: #000;
-}
 .dropdown-content,
 .mHeaderBtn li,
 .rectangle-8,
@@ -54,14 +49,11 @@ header.logo {
 .ui-corner-all,
 .display .ui-widget-content,
 .ui-widget-content{
-	background: var(--main-bg-color);
+	background: var(--main-bg-color) !important;
 	color: var(--main-text-color)
 }
 .ui-dialog .ui-dialog-buttonpane{
 	background: var(--main-bg-color);
-}
-.options {
-  background: #515558;
 }
 .mDropdown-Text,
 .machinoSettings h2,
