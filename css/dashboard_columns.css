@@ -1,0 +1,20 @@
+@media (min-width: 1200px){
+        #dashcontent {
+            padding:0;
+        }
+
+        #dashcontent > section > h2 {
+            text-align: center;
+        }
+
+        #dashcontent > section {
+            width: calc(100% / 4 - 20px);
+            float: left;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+            
+        #dashcontent > section > div.row.divider {
+           grid-template-columns: none !important;
+        }
+}

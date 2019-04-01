@@ -4,40 +4,19 @@
 	/*use with var(--main-blue-color)*/
 	--main-bg-color: #333639;
 	--main-blue-color: #0b96cd;
+    --main-navbar-bg-color: black;
 	--main-item-bg-color: #515558;
 	--main-text-color: white;
-        --main-border-color: black;
+    --main-border-color: black;
 }
 header.logo {
 	background-image: linear-gradient(275deg, #103c68, #0073a7);
 }
-#dashcontent h2,
-body,
-h1,
-h2,
-h2 span { 
-	color: var(--main-text-color) !important;
-}
-.item #status,
-.sub-tabs > li > a,
-.sub-tabs > .active > a,
-.nav-tabs > .active > a:hover {
-  color:var(--main-text-color);
-}
-.sub-tabs > li > a:hover{
-	background-color: #333630;
-	color:var(--main-blue-color);
-}
 
-.navbar-inverse .navbar-inner {
-  background-color: #000;
-}
-.navbar .nav li a,
-.navbar .nav li a:hover {
-  background-color: #000;
-  color: var(--main-text-color);
-}
-.dropdown-content, .rectangle-8, .rectangle-8-dropdown {
+.dropdown-content,
+.mHeaderBtn li,
+.rectangle-8,
+.rectangle-8-dropdown {
 	background-color: #515558;
 }
 @media screen and (max-width: 992px) {
@@ -59,27 +38,11 @@ h2 span {
 .ui-corner-all,
 .display .ui-widget-content,
 .ui-widget-content{
-	background: var(--main-bg-color);
+	background: var(--main-bg-color) !important;
 	color: var(--main-text-color)
 }
 .ui-dialog .ui-dialog-buttonpane{
 	background: var(--main-bg-color);
-}
-.options {
-  background: #515558;
-}
-.btnstylerev,
-.btnstyle,
-.btnsmall,
-.bannav a.btnstylerev,
-.bannav a.btnstyle,
-.btnsmall:hover {
-  color: var(--main-text-color);
-}
-.bannav a.btnstylerev::before,
-.bannav a.btnstyle::after {
-	  border-top: 0.1vmin solid #fff;
-  border-right: 0.1vmin solid #fff;
 }
 .mDropdown-Text,
 .machinoSettings h2,
@@ -98,3 +61,10 @@ h2 span {
 #login:before {
     background-image: linear-gradient(275deg, #103c68, #0073a7);
 }
+
+@media (max-width: 767px){
+    #searchInput:read-write:focus {
+       background: linear-gradient(275deg, #103c68, #0073a7);
+    }
+}
+

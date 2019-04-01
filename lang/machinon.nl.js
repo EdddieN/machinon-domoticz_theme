@@ -29,5 +29,8 @@ language = {
   theme_restored: "Theme restored",
   allow_new_hardware: "Allow new hardware for 5 min",
   is: "is",
-  timedout: "timed out"
+  timedout: "timed out",
+  mainmenu: "Main menu",
+  you_have: "You have",
+  messages: "message(s)"
 };

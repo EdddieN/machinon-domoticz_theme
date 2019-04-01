@@ -9,28 +9,41 @@
         <div class="span6">
             <h2><span data-i18n="General options">General options</span>:</h2>
             <input id="themevar10" name="themevar10" value="dark_theme" type="checkbox"><label for="themevar10" data-i18n="Dark Theme"> Dark Theme</label><br/>
+            <input id="themevar28" name="themevar28" value="sidemenu" type="checkbox"><label for="themevar28" data-i18n="Side Menu"> Side Menu</label><br/>
             <input id="themevar11" name="themevar11" value="footer_text_disabled" type="checkbox"><label for="themevar11" data-i18n="Footer text"> Footer Text Disabled</label><br/>
             <input id="themevar12" name="themevar12" value="custom_settings_menu" type="checkbox"><label for="themevar12" data-i18n="Custom Settings Menu"> Machinon Settings Menu</label><br/>
+            <p><input id="themevar25" class="parentrequired" name="themevar25" value="navbar_icons" type="checkbox"><label for="themevar25" data-i18n="Navbar Icons"> Navbar Icons</label><br/>
+            <input id="themevar27" class="parentrequiredchild" name="themevar27" value="navbar_icons_text" type="checkbox"><label for="themevar27" data-i18n="Enable Icons Text"> Enable Icons Text</label><br/></p>
             <p><input id="themevar13" class="parentrequired" name="themevar13" value="standby" type="checkbox"><label for="themevar13" data-i18n="Enable Standby"> Standby Enabled</label>
             <br/>
-            <label for="themevar14" data-i18n="Standby After Minutes" style="padding-left: 2em;"> Standby After Minutes: </label><input id="themevar14" class="parentrequiredchild" name="standby_after" value="0" type="number" min="1"><p/>
-            <input id="themevar15" name="themevar15" value="check_update" type="checkbox"><label for="themevar15" data-i18n="Check For Update"> Check For Update</label>
+            <label for="themevar14" data-i18n="Standby After Minutes" style="padding-left: 2em;"> Standby After Minutes: </label><input id="themevar14" class="parentrequiredchild ui-widget-content ui-corner-all" name="standby_after" value="0" type="number" min="1"><p/>
+            <input id="themevar15" name="themevar15" value="check_update" type="checkbox"><label for="themevar15" data-i18n="Check For Update"> Check For Update</label><br/>
+            <input id="themevar29" name="themevar29" value="notification" type="checkbox"><label for="themevar29" data-i18n="Notification"> Notification</label><br/>
             <p><input id="themevar19" class="parentrequired" name="themevar19" value="custom_page_menu" type="checkbox"><label for="themevar19" data-i18n="Custom Page"> Custom Page (Iframe)</label><br/>
-            <label for="themevar23" data-i18n="Button Name" style="padding-left: 2em;"> Button Name: </label><input id="themevar23" class="themevar23" name="button_name" value="Name" type="text"><br/>
-            <label for="themevar24" data-i18n="Iframe Url" style="padding-left: 2em;"> Iframe Url: </label><input id="themevar24" class="themevar24" name="custom_url" value="url" type="text"><br/><p/>
+            <label for="themevar23" data-i18n="Button Name" style="padding-left: 2em;"> Button Name: </label><input id="themevar23" class="themevar23 ui-widget-content ui-corner-all" name="button_name" value="Name" type="text"><br/>
+            <label for="themevar24" data-i18n="Iframe Url" style="padding-left: 2em;"> Iframe Url: </label><input id="themevar24" class="themevar24 ui-widget-content ui-corner-all" name="custom_url" value="url" type="text"><br/><p/>
             
             <h2><span data-i18n="Dashboard options">Dashboard options</span>:</h2>
             <input id="themevar16" name="themevar16" value="time_ago" type="checkbox"><label for="themevar16" data-i18n="Time Ago"> Show Last Seen as Time ago</label><br/>
             <input id="themevar18" name="themevar18" value="fade_offItems" type="checkbox"><label for="themevar18" data-i18n="Time Ago"> Fade when device is off</label>
-            <p><input id="themevar20" class="parentrequired" name="themevar20" value="switch_instead_of_bigtext" type="checkbox"><label for="themevar21" data-i18n="Switch Instead of Text"> Switch Instead of Text</label>
-            <br/>
+            <p><input id="themevar20" class="parentrequired" name="themevar20" value="switch_instead_of_bigtext" type="checkbox"><label for="themevar21" data-i18n="Switch Instead of Text"> Switch Instead of Text</label><br/>
             <input id="themevar22" class="parentrequiredchild" name="themevar22" value="switch_instead_of_bigtext_scenes" type="checkbox"><label for="themevar22" data-i18n="Scene Devices">Scene Devices</label></p>
-            <input id="themevar21" name="themevar21" value="dashboard_show_last_update" type="checkbox"><label for="themevar21" data-i18n="Show last seen"> Show Last Seen On Dashboard</label><br/><br/>
+            <input id="themevar21" name="themevar21" value="dashboard_show_last_update" type="checkbox"><label for="themevar21" data-i18n="Show last seen"> Show Last Seen On Dashboard</label><br/>
+            <input id="themevar26" name="themevar26" value="hide_type" type="checkbox"><label for="themevar26" data-i18n="Hide Type"> Hide Type Description</label><br/>
+            <input id="themevar30" name="themevar30" value="dashboard_columns" type="checkbox"><label for="themevar30" data-i18n="Dashboard in columns"> Display Dashboard in columns (screen width > 1200px)</label><br/><br/>
             <p>Add your own logo. Leave empty for Machinon logo. Upload your logo to images folder in machinon theme folder (recomended size 200x30px).<br/></p>
-            <label for="themevar17" data-i18n="logo"> Logo: </label><input id="themevar17" class="themevar17" name="logo" value="logo.png" type="text"><br/>		
+            <label for="themevar17" data-i18n="logo"> Logo: </label><input id="themevar17" class="themevar17 ui-widget-content ui-corner-all" name="logo" value="logo.png" type="text"><br/>		
         </div>          
     </div>
 </div>
 <script>
 $("#themesettings").i18n();
+if (isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth) {
+    $('#themevar28').prop('disabled', true);
+    $('label[for="themevar28"]').css("color", "#D3D3D3");
+}
+if (1200 >= window.innerWidth) {
+    $('#themevar30').prop('disabled', true);
+    $('label[for="themevar30"]').css("color", "#D3D3D3");
+}
 </script>

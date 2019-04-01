@@ -3,7 +3,7 @@
     "name": "Machinon",
     "description": "Machinon custom theme, simple and light",
     "license": "GPL-2.0+",
-    "version":"1.6.2",
+    "version":"1.6.9",
     "author": "EdddieN",
     "homepage": "https://www.machinon.com",
     "wiki": "https://www.domoticz.com/wiki/Machinon_Theme",
@@ -23,7 +23,7 @@
 			"files": []
         },
 	"custom_settings_menu": {
-            "id":19,
+            "id":12,
             "enabled":true,
 			"files": []
         },
@@ -66,6 +66,36 @@
             "id":22,
             "enabled":true,
 			"files": []
+        },
+	"navbar_icons": {
+            "id":25,
+            "enabled":false,
+			"files": []
+        },
+	"hide_type": {
+            "id":26,
+            "enabled":false,
+			"files": []
+        },
+	"navbar_icons_text": {
+            "id":27,
+            "enabled":false,
+			"files": []
+        },
+    "sidemenu": {
+            "id":28,
+            "enabled":false,
+            "files": ["sidemenu.css"]
+        },
+    "notification": {
+            "id":29,
+            "enabled":true,
+            "files": []
+        },
+    "dashboard_columns": {
+            "id":30,
+            "enabled":false,
+            "files": ["dashboard_columns.css"]
         }
     }
 }

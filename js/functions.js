@@ -2,6 +2,7 @@
 
 // main switchers and submenus logic function
 function applySwitchersAndSubmenus() {
+    isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 	
 	//translate switchstates
 	switchState = {
@@ -92,6 +93,8 @@ function applySwitchersAndSubmenus() {
 			$(this).on('click', '.options__bars', function (e) {
 			e.preventDefault();
 			$(this).siblings('tbody').find('td.options').slideToggle(400);
+			$(this).siblings('tbody').find('td.options').unbind("mouseleave");
+			$(this).siblings('tbody').find('td.options').mouseleave(function() { $(this).slideToggle(400); $(this).unbind("mouseleave"); });
 			});
 			// Move Timers and log to item
 			$(this).find('table').append('<div class="timers_log"></div>');
@@ -114,6 +117,7 @@ function applySwitchersAndSubmenus() {
 			if (type.length == 0) {
 				$(this).find('.options').append('<a class="btnsmall" id="idno"><i>Idx: ' + itemID + '</i></a>');
 			}
+            removeEmptySectionDashboard();
 		}
 		// options to not have switch instaed of bigText on scene devices
 		let switchOnScenes = false;
@@ -159,6 +163,32 @@ function applySwitchersAndSubmenus() {
 			}
 		}
 	});
+
+    if (!isMobile) {
+       /* DESKTOP */
+       /* Set nice scrollbar on status area */
+       $("#status", "tr").not(".nano").each(function() {
+            var html = $(this).html();
+            if (html.length) {
+                    $(this).html("<div class='nano-content'>" +  html.replace(/,/g, '<br/>') + "</div>");
+                    $(this).addClass("status nano");
+                    $(this).nanoScroller();
+            }
+       });
+    } else {
+       /* MOBILE */
+       /* Display native seleector on mobile for better usability */
+       $(".selectorlevels span.ui-selectmenu-button").each(function() {
+            $(this).hide();
+            var selectorId = $(this).attr('id').split('-',1)[0];
+            $('#'+selectorId).addClass('ui-widget ui-corner-all').show();
+            $('#'+selectorId).on("change", function(e) {
+                var selected = $(this).children("option:selected");
+                SwitchSelectorLevel($(this).attr('data-idx'), selected.text(), selected.val());
+            });
+        });
+    }
+
 	// console.log('Switchers loaded');
 }
 
@@ -208,13 +238,19 @@ function unloadThemeFeatureFiles(featureName)
 }
 
 function searchFunction() {
-	if ($('#dashcontent') || $('lightcontent') || $('scenecontent')|| $('utilitycontent') || $('weatherwidgets') || $('tempwidgets')){
-		var value = $('#searchInput').val().toLowerCase();
-		$("div .item").filter(function() {
-		  $(this).toggle($(this).find('#name').html().toLowerCase().indexOf(value) > -1)
-		});
-    };
-};
+	var value = $('#searchInput').val().toLowerCase();
+	$("div .item").filter(function() {
+       var element = $(this);
+       if($('#dashcontent').length ||  $('#weatherwidgets').length || $('#tempwidgets').length) {
+         element = $(this).parent();
+       }
+       element.toggle($(this).find('#name').html().toLowerCase().indexOf(value) > -1)
+	});
+	$(".mobileitem tr").filter(function() {
+       $(this).toggle($(this).html().toLowerCase().indexOf(value) > -1)
+	});
+    removeEmptySectionDashboard();
+}
 
 function DelRow() {
 	$('#main-view div.row').each(function(){
@@ -225,6 +261,9 @@ function DelRow() {
 }
 
 function locationHashChanged() {
+
+  isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if(!isMobile) {
     if ( location.hash === "#/LightSwitches" || "#/DashBoard" ) {
 		var changeclass = false;
 		observer.disconnect();
@@ -237,6 +276,15 @@ function locationHashChanged() {
 			console.log('Page change for: ' + location.hash);
 		
     }
+     $("#mSettings").removeClass("current_page_item");
+  }
+
+  /* Is this screen searchable / screen with devices */
+  if (location.hash == "#/Dashboard" || location.hash == "#/LightSwitches" || location.hash == "#/Scenes" || location.hash == "#/Temperature" || location.hash == "#/Weather" || location.hash == "#/Utility") {
+    $("#searchInput").removeAttr('readonly');
+  } else {
+    $("#searchInput").attr('readonly', 'readonly');
+  }
 }
 
 function showTime(){
@@ -268,34 +316,35 @@ function showTime(){
 }
 // Notifications
 function notify(key, type) { // type = 0 = only in notification log, 1 = only notification popup, 2 = in both
-
-	if (type == 0 || type == 2){ 
-		var existing = localStorage.getItem('notify');
-		existing = existing ? JSON.parse(existing) : {};
-		let d = new Date();
-		dd = d.getTime();
-		existing[key] = dd;
-		localStorage.setItem('notify', JSON.stringify(existing));
-		
-		$('#notyIcon').show();
-	}
-	if (type == 1 || type == 2){
-		if (type == 1)$('#notyIcon').show();
-		let width = window.innerWidth;
-		if (width > 767) {
-			$('#notyIcon').notify(key);
-		} else {
-			$('#notyIcon').notify(key, {
-				position: "right",
-				className: 'info'
-			});
-		}
-		if (type == 1)$('#notyIcon').hide();
-	}
+if (theme.features.notification.enabled === true) {
+        if (type == 0 || type == 2){ 
+            var existing = localStorage.getItem(themeFolder + ".notify");
+            existing = existing ? JSON.parse(existing) : {};
+            let d = new Date();
+            dd = d.getTime();
+            existing[key] = dd;
+            localStorage.setItem(themeFolder + ".notify", JSON.stringify(existing));
+            
+            $('#notyIcon').show();
+        }
+        if (type == 1 || type == 2){
+            if (type == 1)$('#notyIcon').show();
+            let width = window.innerWidth;
+            if (width > 767) {
+                $('#notyIcon').notify(key);
+            } else {
+                $('#notyIcon').notify(key, {
+                    position: "right",
+                    className: 'info'
+                });
+            }
+            if (type == 1)$('#notyIcon').hide();
+        }
+    }
 }
 function clearNotify(){
     if (typeof(Storage) !== "undefined") {
-		localStorage.removeItem('notify');
+		localStorage.removeItem(themeFolder + ".notify");
 		$('#notyIcon').hide();
     }
 }
@@ -402,4 +451,13 @@ function checkauth(){
 		}
 	}
 	});
+}
+
+function removeEmptySectionDashboard() {
+    $('#dashcontent section').each(function() {
+           $(this).show();
+           if (!$(this).children('div.row').children(':visible').length) {
+                $(this).hide();
+            }
+    });
 }

@@ -4,38 +4,40 @@ var standbyTime = 0;
 var standby_after = theme.standby_after;
 var md = window.matchMedia("only screen and (max-width: 992px)");
 
+
 if (md.matches) {
-	console.log(theme.name + " - Width smaller the 992px");
+    console.log(theme.name + " - Width smaller the 992px");
 }else {
-	if (!isMobile) {
-		$('body').bind('mousemove', function (e) {
-			standbyTime = 0;
-			disableStandby();
-		});
-	} 
+    if (!isMobile) {
+        $('body').bind('mousemove', function (e) {
+            standbyTime = 0;
+            disableStandby();
+        });
+    } 
 }
 
 $('body').bind('touchend click', function (e) {
-	setTimeout(function () {
-		standbyTime = 0;
-		disableStandby();
-	}, 100);
+    setTimeout(function () {
+        standbyTime = 0;
+        disableStandby();
+    }, 100);
 });
 
 if (parseFloat(standby_after) > 0) {
-	setInterval(function () {
-		standbyTime += 5000;
-		if (standbyActive != true) {
-			if (standbyTime >= ((standby_after * 1000) * 60)) {
-				$('body').addClass('standby');
-				buildStandby();
-			}
-		}
-	}, 5000);
+    setInterval(function () {
+        standbyTime += 5000;
+        if (standbyActive != true) {
+            if (standbyTime >= ((standby_after * 1000) * 60)) {
+                $('body').addClass('standby');
+                buildStandby();
+            }
+        }
+    }, 5000);
 }
 
+
 function buildStandby(){
-	
+	standbyActive = true
 	if($('.screenstandby').length==0){
 		var screenhtml = '<div class="screen screenstandby" style="height:'+$(window).height()+'px"><div class="row"></div>';
 		$('#main-view').hide();
@@ -58,7 +60,9 @@ function disableStandby() {
     $('.screenstandby').remove();
     $('body').removeClass('standby');
     $('#main-view').show();
-    if (md.matches) {$('.container-logo').show();} else{ $('.navbar-inner').show();};
+    if (theme.features.sidemenu.enabled === false){
+        if (md.matches) {$('.container-logo').show();} else{ $('.navbar-inner').show();};
+    }
     $('.logo').show();
     $('#copyright').show();
     standbyActive = false;
