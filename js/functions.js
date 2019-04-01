@@ -461,7 +461,3 @@ function removeEmptySectionDashboard() {
             }
     });
 }
-
-function colDashboard() {
-
-}
