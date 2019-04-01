@@ -164,8 +164,9 @@ function applySwitchersAndSubmenus() {
 		}
 	});
 
-    /* Set nice scrollbar on status area */
     if (!isMobile) {
+       /* DESKTOP */
+       /* Set nice scrollbar on status area */
        $("#status", "tr").not(".nano").each(function() {
             var html = $(this).html();
             if (html.length) {
@@ -174,6 +175,18 @@ function applySwitchersAndSubmenus() {
                     $(this).nanoScroller();
             }
        });
+    } else {
+       /* MOBILE */
+       /* Display native seleector on mobile for better usability */
+       $(".selectorlevels span.ui-selectmenu-button").each(function() {
+            $(this).hide();
+            var selectorId = $(this).attr('id').split('-',1)[0];
+            $('#'+selectorId).addClass('ui-widget ui-corner-all').show();
+            $('#'+selectorId).on("change", function(e) {
+                var selected = $(this).children("option:selected");
+                SwitchSelectorLevel($(this).attr('data-idx'), selected.text(), selected.val());
+            });
+        });
     }
 
 	// console.log('Switchers loaded');

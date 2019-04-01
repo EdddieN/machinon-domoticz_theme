@@ -91,6 +91,11 @@
             "id":29,
             "enabled":true,
             "files": []
+        },
+    "dashboard_columns": {
+            "id":30,
+            "enabled":false,
+            "files": ["dashboard_columns.css"]
         }
     }
 }
