@@ -56,6 +56,7 @@ h2,
 .beforebannav,
 .machinoText,
 .mHeader,
+.ui-widget,
 .item #status,
 .item #name {
   font-family: main-font-bold;
@@ -645,6 +646,11 @@ body table#itemtable tr > .options {
   max-width:  250px;
   overflow-x: auto;
 
+}
+.selectorlevels > select {
+  padding: 5px;
+  color: var(--main-blue-color) !important;
+  outline: 0;
 }
 
 /* Time Ago */
