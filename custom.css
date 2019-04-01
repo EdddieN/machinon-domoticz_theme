@@ -61,16 +61,6 @@ h2,
 .item #name {
   font-family: main-font-bold;
 }
-#tabs,
-.span6,
-.span6,
-.span12 {
-	font-family: main-font;
-}
-/* aboutpage */
-#aboutcontent {
-	font-family: main-font;
-}
 #aboutcontent #canvas2 {
 	display:none;
 }
@@ -465,6 +455,17 @@ dzweatherwidget .item #lastupdate {
   padding: 0 20px;
 }
 
+.item #status,
+.item .status {
+  color: var(--main-text-color);
+  text-align: right;
+  overflow: hidden;
+  width: 60%;
+  position: absolute;
+  right: 20px;
+  bottom: 40px;
+}
+
 /* item subnav applying by click*/
 .options__bars {
   display: block;
@@ -683,15 +684,9 @@ dzweatherwidget .item #timeago {
 display:none;
 }
 #dashcontent .status{
-  position: absolute;
-  right: 20px;
   top: 50px;
-  width: 60%;
   height: 55px;
-  text-align: right;
   margin-top: 0;
-  bottom: 40px;
-  overflow:  hidden;
 }
 
 #dashcontent .item #lastupdate {
@@ -702,7 +697,6 @@ display:none;
 #lightcontent #status{
   background-color: transparent !important;
   color: var(--main-text-color);
-  position: absolute;
   top: 35%;
   left: 5%;
 }
@@ -710,15 +704,8 @@ display:none;
 /* temperature, weather items */
 dztemperaturewidget #status,
 dzweatherwidget #status {
-  position: absolute;
-  right: 20px;
   top: 45px;
-  width: 60%;
   height: 55px;
-  text-align: right;
-  margin-top: 0;
-  bottom: 40px;
-  overflow-x:  hidden;
 }
 
 /* utility items */
@@ -731,15 +718,8 @@ dzweatherwidget #status {
   margin-top: 0;
 }
 #utilitycontent #status {
-  position: absolute;
-  right: 20px;
   top: 70px;
   height: 45px;
-  width: 60%;
-  text-align: right;
-  margin-top: 0;
-  bottom: 40px;
-  overflow: hidden;
 }
 
 /* scene items */
@@ -752,12 +732,7 @@ dzweatherwidget #status {
   margin-top: 0;
 }
 #scenecontent #status {
-  position: absolute;
-  right: 20px;
   top: 80px;
-  width: 60%;
-  text-align: right;
-  margin-top: 0;
 }
 
 #type .dimslider,
@@ -962,10 +937,15 @@ button.menu-toggle {
 .nav-tabs > .active > a:hover {
   background: none;
   border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--main-text-color);
+  cursor: pointer;
 }
 
+.sub-tabs > li > a:hover,
 .sub-tabs > .active > a,
 .nav-tabs > .active > a:hover {
+  background: none;
   border-bottom: 2px solid var(--main-blue-color);
 }
 
@@ -1313,6 +1293,7 @@ input#AcceptNewHardware:checked ~ button {
   border-radius: 0;
   border: none;
   border-bottom: 1px solid var(--main-blue-color);
+  font-family: main-font;
 }
 /* =Setup */
 /* Footer */
@@ -1803,9 +1784,18 @@ body.dashMobile table.mobileitem td.name img{
     .msg{
       left: 20px;
     }
-    body {
-    padding-right: 20px !important;
-    padding-left: 20px !important;
+    #settings section:last-child {
+      margin-bottom: 50px;
+    }
+    #settings li.pull-right {
+      position: fixed;
+      left: 0;
+      bottom: 5px;
+      width: 100%;
+    }
+    #settings li.pull-right a {
+      margin: 0 20px;
+      box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
     }
 }
 @media screen and (max-width: 992px){
@@ -1815,17 +1805,6 @@ body.dashMobile table.mobileitem td.name img{
     .events-editor{
         margin-top: -40px;
     }
-    #settings .row-fluid {
-        flex-wrap: wrap;
-        font-size: 0.9em;
-    }
-    /*fix flex bug. need to be improve*/
-    .bannercontent {
-    padding:0 !important;
-    margin:0 !important;
-    }
-    .container-fluid{padding: 0 !important;margin: 0 !important;}
-
     .standbyClock {
         font-size: 60px;
     }
@@ -1975,9 +1954,21 @@ body.dashMobile table.mobileitem td.name img{
         flex-wrap: wrap;
         font-size: 0.9em;
     }
+    #settings .row-fluid > .span4, #settings .row-fluid > .span6, #settings .row-fluid > .span12 {
+        min-height: unset;
+        margin: 10px;
+    }
+    #settings input, #settings select {
+        width: auto !important;
+    }
+    #settings section > br {
+        display: none;
+    }
 	
     .bannercontent {
-    padding-top:10px !important;
+        padding:0 !important;
+        margin:0 !important;
+        padding-top:10px !important;
     }
     .container-fluid{padding: 0 !important;margin: 0 !important;}
-}   
+}
