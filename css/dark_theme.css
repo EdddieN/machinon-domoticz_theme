@@ -19,10 +19,6 @@ header.logo {
 .nav-tabs > .active > a:hover {
   color:var(--main-text-color);
 }
-.sub-tabs > li > a:hover{
-	background-color: #333630;
-	color:var(--main-blue-color);
-}
 
 .dropdown-content,
 .mHeaderBtn li,
