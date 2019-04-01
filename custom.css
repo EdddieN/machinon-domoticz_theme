@@ -455,6 +455,17 @@ dzweatherwidget .item #lastupdate {
   padding: 0 20px;
 }
 
+.item #status,
+.item .status {
+  color: var(--main-text-color);
+  text-align: right;
+  overflow: hidden;
+  width: 60%;
+  position: absolute;
+  right: 20px;
+  bottom: 40px;
+}
+
 /* item subnav applying by click*/
 .options__bars {
   display: block;
@@ -673,15 +684,9 @@ dzweatherwidget .item #timeago {
 display:none;
 }
 #dashcontent .status{
-  position: absolute;
-  right: 20px;
   top: 50px;
-  width: 60%;
   height: 55px;
-  text-align: right;
   margin-top: 0;
-  bottom: 40px;
-  overflow:  hidden;
 }
 
 #dashcontent .item #lastupdate {
@@ -692,7 +697,6 @@ display:none;
 #lightcontent #status{
   background-color: transparent !important;
   color: var(--main-text-color);
-  position: absolute;
   top: 35%;
   left: 5%;
 }
@@ -700,15 +704,8 @@ display:none;
 /* temperature, weather items */
 dztemperaturewidget #status,
 dzweatherwidget #status {
-  position: absolute;
-  right: 20px;
   top: 45px;
-  width: 60%;
   height: 55px;
-  text-align: right;
-  margin-top: 0;
-  bottom: 40px;
-  overflow-x:  hidden;
 }
 
 /* utility items */
@@ -721,15 +718,8 @@ dzweatherwidget #status {
   margin-top: 0;
 }
 #utilitycontent #status {
-  position: absolute;
-  right: 20px;
   top: 70px;
   height: 45px;
-  width: 60%;
-  text-align: right;
-  margin-top: 0;
-  bottom: 40px;
-  overflow: hidden;
 }
 
 /* scene items */
@@ -742,12 +732,7 @@ dzweatherwidget #status {
   margin-top: 0;
 }
 #scenecontent #status {
-  position: absolute;
-  right: 20px;
   top: 80px;
-  width: 60%;
-  text-align: right;
-  margin-top: 0;
 }
 
 #type .dimslider,
@@ -953,6 +938,7 @@ button.menu-toggle {
   background: none;
   border: none;
   border-bottom: 2px solid transparent;
+  color: var(--main-text-color);
   cursor: pointer;
 }
 

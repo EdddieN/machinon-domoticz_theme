@@ -13,13 +13,6 @@ header.logo {
 	background-image: linear-gradient(275deg, #103c68, #0073a7);
 }
 
-.item #status,
-.sub-tabs > li > a,
-.sub-tabs > .active > a,
-.nav-tabs > .active > a:hover {
-  color:var(--main-text-color);
-}
-
 .dropdown-content,
 .mHeaderBtn li,
 .rectangle-8,
