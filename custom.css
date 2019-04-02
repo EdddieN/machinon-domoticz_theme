@@ -31,6 +31,14 @@
     font-family: main-font-bold;
     src: url(font/OpenSans-SemiBold.ttf);
 }
+/* Bootbox */
+.bootbox.modal.fade.in{
+    background-color: white !important;
+}
+.modal-footer{
+    border-top: 1px solid #f1f2f3 !important;
+    background-color: white !important;
+}
 /* Add fonts */
 .btnstylerev,
 .btnstyle,

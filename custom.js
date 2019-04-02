@@ -1,6 +1,6 @@
 /* Custom.js for machinon theme */
 
-var theme = {}, themeName = "", baseURL = "", switchState = {}, isMobile, newVersionText = "", gitVersion, lang, user, themeFolder, checkUpdate;
+var theme = {}, themeName = "", baseURL = "", switchState = {}, isMobile, newVersionText = "", gitVersion, lang, user, themeFolder, checkUpdate, userVariableThemeLoaded = false;
 generate_noty = void 0;
 isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		// load theme settings
         showThemeSettings();
+        checkUserVariableThemeSettings();
 		loadSettings();
 		enableThemeFeatures();
 		if (checkUpdate != 0)CheckDomoticzUpdate(true);
@@ -190,8 +191,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 		if (theme.features.hide_type.enabled === true) {
 		    $('<style>.item #type{color: var(--main-item-bg-color);}</style>').appendTo('head');
-		}        
-			
+		}	
 		$(document).ajaxSuccess(function (event, xhr, settings) {
 			// Iconpage
 			$('.iconlist .iconlistitem').click(function() {
