@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		// load theme settings
         showThemeSettings();
+        checkUserVariableThemeSettings();
 		loadSettings();
 		enableThemeFeatures();
 		if (checkUpdate != 0)CheckDomoticzUpdate(true);
@@ -190,8 +191,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 		if (theme.features.hide_type.enabled === true) {
 		    $('<style>.item #type{color: var(--main-item-bg-color);}</style>').appendTo('head');
-		}        
-			
+		}	
 		$(document).ajaxSuccess(function (event, xhr, settings) {
 			// Iconpage
 			$('.iconlist .iconlistitem').click(function() {
