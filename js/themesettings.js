@@ -74,7 +74,11 @@ function loadSettingsHTML(){
 			}
 		}else{
 			if ( typeof theme.upgradeAlerted === "undefined"){
-				bootbox.alert('<h3>Congratulations on the theme upgrade!</h3><p>Please reset the theme by clicking here:</p><p><a onClick="resetTheme(); return false;" href=""><button class="btn btn-info">Reset theme</button></a></p><p>(or find the theme reset button on the theme settings page)<p>');
+				bootbox.alert({
+                    message: '<p>Please reset the theme by clicking here:</p><p><a onClick="resetTheme(); return false;" href=""><button class="btn btn-info">Reset theme</button></a></p><p>(or find the theme reset button on the theme settings page)<p>',
+                    title: 'Congratulations on the theme upgrade!',
+                });
+                
 				if (isEmptyObject(theme) === false){
 					localStorage.setObject(themeFolder + ".themeSettings", theme);
                 }			
@@ -164,11 +168,13 @@ function loadSettingsHTML(){
 	// Resetbutton theme tab
 	$('#themeResetButton').click(function() {
         bootbox.confirm({
-            message: "Do you want to reset the theme to default settings?",
+            message: '<p>Do you want to reset the theme to default settings?</p>',
+            title: '<font color="red">Warning!</font>',
+            size: "small",
             buttons: {
                 confirm: {
                     label: $.t('Yes'),
-                    className: 'btn-default'
+                    className: 'btn-info'
                 },
                 cancel: {
                     label: $.t('No'),
@@ -196,12 +202,9 @@ function loadSettings() {
 			themeName = theme.name;
 			if (isEmptyObject(theme) === false) {
 				localStorage.setObject(themeFolder + ".themeSettings", theme);
-                bootbox.alert({
-                    message: "Theme settings was not found in the browser. Loading saved/default theme settings",
-                    callback: function (result) {
-                           location.reload();
-                    }
-                });
+                setTimeout(function(){
+                    location.reload();
+                }, 3000);
              }
 			console.log(themeName + " - local theme settingsfile loaded and saved to localStorage");
 			}
@@ -401,7 +404,7 @@ function resetTheme(){
             });
             var deleteCustomURL = '/json.htm?type=command&param=deleteuservariable&idx=' + theme.usercustomsvariable;
             $.get(deleteCustomURL);
-	    setTimeout(function(){
+            setTimeout(function(){
                 location.reload();
             }, 1000);
         }
