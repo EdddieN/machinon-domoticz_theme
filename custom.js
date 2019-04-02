@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				$('#iconsmain > div > tbody > tr > td:nth-child(2)').show();
             		});
 			// Notifications
-			if ($('#msg').length == 0) {
+			if (theme.features.notification.enabled === true && $('#msg').length == 0) {
 				var msg = localStorage.getItem(themeFolder + ".notify");
 				msg = JSON.parse(msg);
 				var myObj = msg;
