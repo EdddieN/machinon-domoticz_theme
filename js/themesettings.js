@@ -401,6 +401,9 @@ function resetTheme(){
             });
             var deleteCustomURL = '/json.htm?type=command&param=deleteuservariable&idx=' + theme.usercustomsvariable;
             $.get(deleteCustomURL);
+	    setTimeout(function(){
+                location.reload();
+            }, 1000);
         }
         else{
             localStorage.removeItem(themeFolder + ".themeSettings");
