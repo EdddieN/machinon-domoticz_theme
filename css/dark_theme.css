@@ -68,3 +68,12 @@ header.logo {
     }
 }
 
+.scroll:before {
+  top   : 0;
+  background-image : linear-gradient(to top, rgba(81,85,88, 0), rgba(81,85,88, 1) 90%);
+}
+.scroll:after {
+  bottom   : 0;
+  background-image : linear-gradient(to bottom, rgba(81,85,88, 0), rgba(81,85,88, 1) 90%);
+}
+
