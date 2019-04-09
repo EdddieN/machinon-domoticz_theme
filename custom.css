@@ -1973,6 +1973,7 @@ body.dashMobile table.mobileitem td.name img{
 
 #copyright {
     background: var(--main-navbar-bg-color);
+    opacity: 0.6;
     border-top: 0;
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
 }
