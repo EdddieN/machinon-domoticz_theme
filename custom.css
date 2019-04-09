@@ -855,7 +855,6 @@ img.header__icon {
 
 button.menu-toggle {
   display: none;
-  position: absolute;
   top: -6px;
   left: 10px;
   width: 40px;
@@ -863,6 +862,11 @@ button.menu-toggle {
   background: transparent;
   border: none;
   outline: 0 !important;
+}
+button.menu-toggle.scrolled {
+  background: var(--main-blue-color);
+  transition: background-color 1s ease;
+  opacity: 0.7;
 }
 
 .navbar-inverse .navbar-inner {
