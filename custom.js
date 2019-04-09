@@ -146,15 +146,11 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 			state = !state;
 		    });
-        	}
+        }
 		
 		// Features
 		if (theme.features.footer_text_disabled.enabled === true) {
 			$('#copyright').remove();
-		}
-		if (theme.features.dashboard_show_last_update.enabled === true) {
-			$('<style>#dashcontent #lastupdate{display: block;}</style>').appendTo('head');
-			$('<style>#dashcontent #timeago{display: block;}</style>').appendTo('head');
 		}
         if (theme.features.sidemenu.enabled === true && !isMobile || theme.features.sidemenu.enabled === true && !isMobile && 992 >= window.innerWidth) {
 		    if (adminRights === true){$("#appnavbar").append('<li id="mLogout"><a id="cLogout" href="#Logout"><img src="images/logout.png"><span class="hidden-phone hidden-tablet" data-i18n="Logout">Logout</span></a></li>');}
@@ -165,33 +161,10 @@ document.addEventListener('DOMContentLoaded', function () {
 			navBarInner.hide("slide", 500);
 		    });
 		}
-        if (theme.features.navbar_icons.enabled === true) {
-            $('<style>.navbar .nav li a img{display: inline; width: 32px; height: 32px;}</style>').appendTo('head');
-            if (!isMobile && 992 <= window.innerWidth && theme.features.sidemenu.enabled === false){
-                    $('<style>.events-editor{margin-top: 70px;}#timesun{margin-top: 0px;}</style>').appendTo('head');
-                }
-            if (theme.features.navbar_icons_text.enabled === true) {
-                $('<style>.navbar .nav li a span{display: block;}</style>').appendTo('head');
-                $('<style>@media screen and (max-width: 992px){.navbar .nav li a img {width: 24px;height: 24px;}}</style>').appendTo('head');
+        if (theme.features.navbar_icons_text.enabled !== true) {
+                $('.navbar').addClass('notext');
+        }
 
-            }else{
-                $('<style>.navbar .nav li a span{display: none;}</style>').appendTo('head');
-                $('<style>@media screen and (max-width: 992px){.navbar .nav li a img {width: 32px;height: 32px;}}</style>').appendTo('head');
-                $('<style>@media screen and (max-width: 992px){.hidden-tablet,.hidden-phone{display: none !important;}}</style>').appendTo('head');
-                $('<style>@media screen and (max-width: 992px){.navbar .nav > li {width: 60px;}}</style>').appendTo('head');
-                if (isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth){
-                    $('<style>.navbar-inverse .navbar-inner {width: 60px;}</style>').appendTo('head');
-                }
-                if (theme.features.sidemenu.enabled === true && !isMobile || theme.features.sidemenu.enabled === true && !isMobile && 992 >= window.innerWidth) {
-                    $('<style>.hidden-tablet,.hidden-phone{display: none !important;}</style>').appendTo('head');
-                    $('<style>.navbar-inverse .navbar-inner {width: 60px;}</style>').appendTo('head');
-                    $('<style>.navbar .nav > li {width: 60px;}</style>').appendTo('head');
-                }
-            }
-		}
-		if (theme.features.hide_type.enabled === true) {
-		    $('<style>.item #type{color: var(--main-item-bg-color);}</style>').appendTo('head');
-		}	
 		$(document).ajaxSuccess(function (event, xhr, settings) {
 			// Iconpage
 			$('.iconlist .iconlistitem').click(function() {

@@ -447,11 +447,6 @@ dztemperaturewidget .item #lastupdate,
 dzweatherwidget .item #lastupdate {
   right: 40px;
 }
-@media (min-width: 1200px) {
-  .item #lastupdate {
-    bottom: 15px;
-  }
-}
 /* type */
 .item #type {
   color: var(--secondary-text-color);
@@ -722,7 +717,6 @@ dzweatherwidget #status {
   right: 0;
   top: 50px;
   width: 60%;
-  text-align: right;
   margin-top: 0;
 }
 #utilitycontent #status {
