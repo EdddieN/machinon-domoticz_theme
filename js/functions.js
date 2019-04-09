@@ -164,20 +164,17 @@ function applySwitchersAndSubmenus() {
 		}
 	});
     /* Set autoscroll for long status */
-    
-    if (location.hash !== "#/LightSwitches") {
-        $("#status", "tr").not(".scroll").each(function() {
-            var html = $(this).html();
-            if (html.length) {
-                var status = html.replace(/,/g, '<br/>');
-                if ($(this).prop('scrollHeight') > $(this).prop('clientHeight')) {
-                    status = "<div class='status-content'>" + status  + "</div>";
-                    $(this).addClass("scroll");
-                }
-                $(this).html(status);
+    $("#status", "tr").not(".scroll").each(function() {
+        var html = $(this).html();
+        if (html.length) {
+            var status = html.replace(/,/g, '<br/>');
+            if ($(this).prop('scrollHeight') > $(this).prop('clientHeight')) {
+                status = "<div class='status-content'>" + status  + "</div>";
+                $(this).addClass("scroll");
             }
-        });
-    }
+            $(this).html(status);
+        }
+    });
 
     if (!isMobile) {
        /* DESKTOP */
