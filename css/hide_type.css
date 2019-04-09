@@ -1,3 +1,3 @@
 .item td#type {
-    display: none;
+    color: var(--main-item-bg-color);
 }
