@@ -8,10 +8,6 @@
 @import url("css/nanoscroller.css");
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
-/* author at footer */
-#copyright p:after {
-  content: "  | 'Machinon' theme";
-}
 /*var in way of change color*/
 :root {
 	/*use with var(--main-blue-color)*/
@@ -1973,4 +1969,21 @@ body.dashMobile table.mobileitem td.name img{
         padding-top:10px !important;
     }
     .container-fluid{padding: 0 !important;margin: 0 !important;}
+}
+
+#copyright {
+    background: var(--main-navbar-bg-color);
+    border-top: 0;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+}
+#copyright p {
+    font-family: main-font;
+    color: var(--main-text-color);
+}
+#copyright p a {
+    color: var(--main-blue-color);
+}
+/* author at footer */
+#copyright p:after {
+    content: "  | 'Machinon' theme";
 }
