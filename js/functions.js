@@ -163,21 +163,24 @@ function applySwitchersAndSubmenus() {
 			}
 		}
 	});
+    /* Set autoscroll for long status */
+    $("#status", "tr").not(".scroll").each(function() {
+        var html = $(this).html();
+        if (html.length) {
+            var status = html.replace(/,/g, '<br/>');
+            if ($(this).prop('scrollHeight') > $(this).prop('clientHeight')) {
+                status = "<div class='status-content'>" + status  + "</div>";
+                $(this).addClass("scroll");
+            }
+            $(this).html(status);
+        }
+    });
 
     if (!isMobile) {
        /* DESKTOP */
-       /* Set nice scrollbar on status area */
-       $("#status", "tr").not(".nano").each(function() {
-            var html = $(this).html();
-            if (html.length) {
-                    $(this).html("<div class='nano-content'>" +  html.replace(/,/g, '<br/>') + "</div>");
-                    $(this).addClass("status nano");
-                    $(this).nanoScroller();
-            }
-       });
     } else {
        /* MOBILE */
-       /* Display native seleector on mobile for better usability */
+       /* Display native selector on mobile for better usability */
        $(".selectorlevels span.ui-selectmenu-button").each(function() {
             $(this).hide();
             var selectorId = $(this).attr('id').split('-',1)[0];
