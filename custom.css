@@ -372,25 +372,21 @@ div.clearfix{
 div.bannercontent .row.divider{
     padding:15px 0;
     margin: 0 !important;
-  
-    display: -webkit-grid;
     display: grid;
     grid-auto-columns:auto;
-    grid-auto-rows: 10vmax;
-  
     gap:15px;
     justify-items: stretch;
     align-items: stretch;
 }
-/*need to change this for all media screen...*/
 
+/*need to change this for all media screen...*/
 @media (max-width: 767px){
 div.bannercontent .row.divider{
     grid-template-columns:repeat(1,1fr);
     grid-auto-rows: 140px;
   }
 }
-@media (min-width: 768px){
+@media (min-width: 768px) and (max-width: 1199px){
 div.bannercontent .row.divider{
     grid-template-columns:repeat(3,1fr);
     grid-auto-rows: 140px;
@@ -702,11 +698,6 @@ dzweatherwidget .item #timeago {
   right: 60px;
   bottom: 5px;
 }
-@media (min-width: 1200px) {
-  .item #timeago{
-    bottom: 15px;
-  }
-}
 #dashcontent .item #timeago {
   right:20px;
   bottom: 15px;
@@ -722,10 +713,6 @@ display:none;
   margin-top: 0;
 }
 
-#dashcontent .item #lastupdate {
-  right:20px;
-  bottom: 15px;
-}
 /* lightcontent */
 #lightcontent #status{
   background-color: transparent !important;
@@ -940,13 +927,16 @@ button.menu-toggle.scrolled {
 .navbar .nav > li > .dropdown-menu.pull-right li {
   margin-top: 5px;
 }
+.navbar .nav > li > .dropdown-menu.pull-right li a:before {
+  height: 0;
+}
 .navbar .nav > li > .dropdown-menu.pull-right li:first-child {
   margin: 0;
 }
 .navbar .nav .dropdown-menu {
   border: none;
   background: var(--main-bg-color);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5); */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 }
 .navbar .pull-right > li > .dropdown-menu .dropdown-menu,
 .navbar .nav > li > .dropdown-menu.pull-right .dropdown-menu {

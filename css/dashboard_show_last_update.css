@@ -5,3 +5,8 @@
 #dashcontent #timeago{
     display: block;
 }
+
+#dashcontent #lastupdate {
+  right:20px;
+  bottom: 15px;
+}
