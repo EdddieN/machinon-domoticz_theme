@@ -71,6 +71,18 @@ $(document).ready(function() {
     if (checkUpdate != 0)CheckDomoticzUpdate(true);
     getStatus(true);
 
+    // Header logo
+    let containerLogo = '<header class="logo"><div class="container-logo">';
+    if (theme.logo.length == 0) {
+        containerLogo += '<img class="header__icon" src="images/logo.png">';
+        $('<style>#login:before {content: url(../images/logo.png) !important;}</style>').appendTo('head');
+    }else {
+        containerLogo += '<img class="header__icon" src="images/' + theme.logo + '"';
+        $('<style>#login:before {content: url(../images/'+ theme.logo + ') !important;}</style>').appendTo('head');
+    }
+    containerLogo += '</div></header>';
+    $(containerLogo).insertBefore('.navbar-inner');
+ 
     // Searchbar		
     $('<input type="text" id="searchInput" autocomplete="off" onkeyup="searchFunction()" placeholder="' + language.type_to_search + '" title="' + language.type_to_search + '">').appendTo('.container-logo');
     $('#searchInput').keyup(function(event) {
@@ -84,18 +96,6 @@ $(document).ready(function() {
         $('#searchInput').keyup();
       }
     });
-    
-    // Header logo
-    let containerLogo = '<header class="logo"><div class="container-logo">';
-    if (theme.logo.length == 0) {
-        containerLogo += '<img class="header__icon" src="images/logo.png">';
-        $('<style>#login:before {content: url(../images/logo.png) !important;}</style>').appendTo('head');
-    }else {
-        containerLogo += '<img class="header__icon" src="images/' + theme.logo + '"';
-        $('<style>#login:before {content: url(../images/'+ theme.logo + ') !important;}</style>').appendTo('head');
-    }
-    containerLogo += '</div></header>';
-    $(containerLogo).insertBefore('.navbar-inner');
     
     // Feature - Replace settings dropdown button to normal button
     true === theme.features.custom_settings_menu.enabled ? $.ajax({url:"acttheme/js/settings_page.js", async: false, dataType:"script"}) : $("#cSetup").click(function() {
