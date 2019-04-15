@@ -566,6 +566,7 @@ body table#itemtable tr > .options {
   justify-self: right;
   align-self: center;
   padding-right: 20px;
+  max-width: 100%;
 }
 .selectorlevels {
   font-size: 15px;
@@ -574,6 +575,7 @@ body table#itemtable tr > .options {
   padding: 5px;
   color: var(--main-blue-color) !important;
   outline: 0;
+  max-width: 100%;
 }
 
 /* Time Ago */
