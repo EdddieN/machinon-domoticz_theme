@@ -1,5 +1,15 @@
 /* functions.js */
 
+function removeRowDivider() {
+    if ($('#dashcontent').length) {
+        $('#dashcontent > section').each(function() {
+            $('div.row.divider:not(:first)', this).children().appendTo('div.row.divider:first');
+        });
+    } else {
+        $('div.row.divider:not(:first)').children().appendTo('div.row.divider:first');
+    }
+}
+
 // main switchers and submenus logic function
 function applySwitchersAndSubmenus() {
     isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
@@ -31,7 +41,8 @@ function applySwitchersAndSubmenus() {
         	} else {
         		$(this).css('opacity', '');
         	}
-        	}                   
+       	}
+
 		if (status.length == 0) {
 			status = bigText.attr('data-status');
 		} else {
@@ -97,11 +108,11 @@ function applySwitchersAndSubmenus() {
 			$(this).siblings('tbody').find('td.options').mouseleave(function() { $(this).slideToggle(400); $(this).unbind("mouseleave"); });
 			});
 			// Move Timers and log to item
-			$(this).find('table').append('<div class="timers_log"></div>');
+			$(this).find('table tr').append('<td class="timers_log"></td>');
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall[data-i18n="Log"]'));
 			$(this).find('.timers_log .btnsmall[data-i18n="Log"]').append("<img id='logImg' title='" + $.t('Log') + "' src='images/options/log.png'/>");
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall[data-i18n="Timers"]'));
-			$(this).find('.timers_log .btnsmall[data-i18n="Timers"]').append("<img id='timerOffImg' title='" + $.t('Timers') + "' src='images/options/timer_off.png' height='18' width='18'/>");
+			$(this).find('.timers_log .btnsmall[data-i18n="Timers"]').append("<img id='timerOffImg' title='" + $.t('Timers') + "' src='images/options/timer_off.png'/>");
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall-sel[data-i18n="Timers"]'));
 			$(this).find('.timers_log .btnsmall-sel[data-i18n="Timers"]').append("<img id='timerOnImg' title='" + $.t('Timers') + "' src='images/options/timer_on.png' height='18' width='18'/>");
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall[href*="Log"]'));
@@ -136,34 +147,34 @@ function applySwitchersAndSubmenus() {
 						let checked = (status == switchState.on) ? 'checked' : '';
 						if (switcher.length == 0) {
 							let string = '<label class="switch" title="' + title + '"><input type="checkbox"' + checked + '><span class="slider round"></span></label>';
-							bigText.after(string);
+							bigText.append(string);
+                            bigText.children("span").hide();
+                            bigText.css("font-size", "0");
 						}
 						switcher.attr('title', title);
 						switcher.find('input').attr('checked', checked.length > 0);
-						bigText.css('display', 'none');
 					} else if (status == switchState.open || status == switchState.closed) {
 						let title = (status == switchState.closed) ? $.t('Open Blinds') : $.t('Close Blinds');
 						let checked = (status == switchState.open) ? 'checked' : '';
 						if (switcher.length == 0) {
 							let string = '<label class="switch" title="' + title + '"><input type="checkbox"' + checked + '><span class="slider round"></span></label>';
-							bigText.after(string);
+							bigText.append(string);
+                            bigText.children("span").hide();
+                            bigText.css("font-size", "0");
 						}
 						switcher.attr('title', title);
 						switcher.find('input').attr('checked', checked.length > 0);
-						bigText.css('display', 'none');
 					} else {
-						bigText.css('display', 'block');
+                        bigText.children("span").show();
 						switcher.remove();
 					}
 					bigText.attr('data-status', status);
-					} else {
-					bigText.css('display', 'block');
 					}
 				}
 			}
 		}
 	});
-    /* Set autoscroll for long status */
+    /* Set autoscroll for long status or hide empty status */
     $("#status", "tr").not(".scroll").each(function() {
         var html = $(this).html();
         if (html.length) {
@@ -173,6 +184,8 @@ function applySwitchersAndSubmenus() {
                 $(this).addClass("scroll");
             }
             $(this).html(status);
+        } else {
+            $(this).hide();
         }
     });
 
@@ -266,21 +279,22 @@ function DelRow() {
 function locationHashChanged() {
 
   isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+/*
   if(!isMobile) {
-    if ( location.hash === "#/LightSwitches" || "#/DashBoard" ) {
-		var changeclass = false;
-		observer.disconnect();
-		observer.observe(targetedNode, {
-			childList: true,
-			subtree: true
-		});
-		
+
+    if ( location.hash === "#/LightSwitches" ) {
+        var targetedNode = document.getElementById('lightcontent');
     } else {
-			console.log('Page change for: ' + location.hash);
-		
+        var targetedNode = document.getElementById('main-view');
     }
-     $("#mSettings").removeClass("current_page_item");
+	observer.disconnect();
+	observer.observe(targetedNode, {
+        childList: true,
+		subtree: true
+	});
+    $("#mSettings").removeClass("current_page_item");
   }
+*/
 
   /* Is this screen searchable / screen with devices */
   if (location.hash == "#/Dashboard" || location.hash == "#/LightSwitches" || location.hash == "#/Scenes" || location.hash == "#/Temperature" || location.hash == "#/Weather" || location.hash == "#/Utility") {

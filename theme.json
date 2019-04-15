@@ -42,7 +42,7 @@
             "enabled":true,
 			"files": []
         },
-    	"custom_page_menu": {
+   	"custom_page_menu": {
             "id":17,
             "enabled":true,
 			"files": []
@@ -55,7 +55,7 @@
 	"switch_instead_of_bigtext": {
             "id":20,
             "enabled":true,
-			"files": []
+			"files": ["switch.css"]
         },
 	"dashboard_show_last_update": {
             "id":21,
