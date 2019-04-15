@@ -380,6 +380,7 @@ div.bannercontent .row.divider{
   line-height: 20px;
   grid-area: name;
   align-self: center;
+  white-space: nowrap;
 }
 
 @media (min-width: 1200px) {
@@ -390,12 +391,13 @@ div.bannercontent .row.divider{
 /* bigtext */
 .item #bigtext {
   color: var(--main-blue-color);
+  background: var(--main-item-bg-color);
   line-height: 20px;
   font-size: 1.4em;
   grid-area: bigtext;
   justify-self: right;
   align-self: center;
-  padding-right: 20px;
+  padding: 0 20px;
 }
 
 @media (min-width: 980px) {
