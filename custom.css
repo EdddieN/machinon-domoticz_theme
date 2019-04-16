@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 /* import css files */
+@import url("css/mobile.css");
 @import url("css/settings.css");
 @import url("css/icons_on_tabs.css");
 @import url("css/iconsupload.css");
@@ -1540,117 +1541,6 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
 
 .selectorlevels-menu {
     border-color:  var(--main-blue-color) !important;
-}
-/***** MOBILE *****/
-table.mobileitem{
-    width: 100%;
-    padding: 0;
-    margin-top:20px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-}
-table.mobileitem > thead{
-    display: flex;
-}
-table.mobileitem > thead > tr {
-    display:flex;
-	background: none;
-}
-table.mobileitem > thead > tr > th:first-of-type{
-    flex-grow:1;
-}
-
-table.mobileitem .status > span > span{margin-right:7px;}
-
-.mobileitem th{
-    display:inline;
-    background-color: transparent;
-    text-shadow: none;
-}
-.mobileitem tr{
-    margin: 0!important;
-    padding: 0!important;
-    box-sizing: border-box;
-    height: auto;
-    display: flex;
-    flex-grow: 1;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-}
-.mobileitem td{
-    height: auto!important;
-    margin-right: 0!important;
-    /*word-break: break-word;*/
-    /*margin: 0!important;*/
-    background-image: none!important;
-    display: inline-flex;
-    width: auto;
-    flex-grow: 1;
-    flex-shrink: 1;
-    align-items: center; 
-    padding:5px!important;
-    min-height:35px;
-}
-.mobileitem td > div {margin: 0!important;}
-
-.mobileitem td:last-child{
-    flex-wrap:wrap;
-}
-.mobileitem td label{
-    white-space: nowrap;
-    height:50%;
-}
-body.dashMobile table.mobileitem td#name,
-body.dashMobile table.mobileitem td.name{
-    font-size: 100%;
-    position: inherit;
-    padding:0 0 0 10px!important;
-    height:auto;
-    min-height:30px;
-}
-body.dashMobile table.mobileitem td#name img,
-body.dashMobile table.mobileitem td.name img{
-    margin-right:5px;
-}
-.mobileitem .btn-mini{
-    margin-left: 2px;
-}
-#dashcontent .mobileitem .dimslider{
-  background: rgba(0, 0, 0, 0.26);
-  border: none;
-  box-shadow: none;
-  height: 5px;
-}
-#dashcontent .mobileitem .dimslider .ui-slider-range{
-  background: rgba(11, 151, 205, 0.5);
-}
-#dashcontent .mobileitem .dimslider .ui-slider-handle{
-  width: 15px;
-  height: 15px;
-  background: var(--main-blue-color);
-  border-radius: 50%;
-  top: -6px;
-}
-#dashcontent .mobileitem td#status,
-#dashcontent .mobileitem td.status{
-    display: flex;
-    position:initial;
-    flex-direction: row;
-    white-space: normal;
-    width: auto;
-    max-width:60%;
-    justify-content: flex-end;
-    padding: 0;
-    flex-grow: 1;
-    flex-shrink: 1;
-    margin: 0;
-    text-align: end;
-}
-#dashcontent .mobileitem .selectorlevels {
-  position: relative;
-  right: 0px;
-  bottom: 0px;
 }
 @media (max-width: 767px) {
     #notify {
