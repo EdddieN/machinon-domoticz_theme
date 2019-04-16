@@ -5,7 +5,6 @@
 @import url("css/icons_on_tabs.css");
 @import url("css/iconsupload.css");
 @import url("css/floorplan.css");
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 /*var in way of change color*/
 :root {
@@ -20,11 +19,17 @@
 }
 @font-face {
     font-family: main-font;
-    src: url(font/OpenSans-Regular.ttf);
+    font-style: normal;
+    font-weight: 400;
+    src:url('font/OpenSans-Regular.woff2') format('woff2'), 
+        url('font/OpenSans-Regular.ttf') format('ttf');
 }
 @font-face {
     font-family: main-font-bold;
-    src: url(font/OpenSans-SemiBold.ttf);
+    font-style: normal;
+    font-weight: 600;
+    src:url('font/OpenSans-SemiBold.woff2') format('woff2'),
+        url('font/OpenSans-SemiBold.ttf') format('ttf');
 }
 /* Bootbox */
 .bootbox.modal.fade.in{
@@ -742,6 +747,8 @@ button.menu-toggle.scrolled {
 .navbar .nav li a {
   background: none;
   text-shadow: none;
+  font-family: main-font-bold;
+  font-size: 11pt;
   background-color: var(--main-navbar-bg-color);
   color: var(--main-text-color);
   border: none;
@@ -795,6 +802,7 @@ button.menu-toggle.scrolled {
   color: #fff;
   background-image: none;
   background-color: var(--main-blue-color);
+  font-family: main-font-bold;
   border: none;
   border-radius: 0;
 }
