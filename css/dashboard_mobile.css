@@ -1,58 +1,55 @@
 /***** MOBILE *****/
+body.dashMobile section.dashCategory div.row.divider:first-of-type {
+    display: none;
+}
+
 table.mobileitem{
     width: 100%;
     padding: 0;
     margin-top:20px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-}
-table.mobileitem > thead{
-    display: flex;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
 }
 table.mobileitem > thead > tr {
-    display:flex;
 	background: none;
 }
 table.mobileitem > thead > tr > th:first-of-type{
+    font-family: main-font-bold;
     flex-grow:1;
 }
 
 table.mobileitem .status > span > span{margin-right:7px;}
 
 .mobileitem th{
+    box-shadow: none;
     display:inline;
-    background-color: transparent;
     text-shadow: none;
+    background: var(--main-border-color);
+    color: var(--main-text-color);
 }
 .mobileitem tr{
-    margin: 0!important;
-    padding: 0!important;
-    box-sizing: border-box;
-    height: auto;
+    background: var(--main-item-bg-color);
     display: flex;
     flex-grow: 1;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
 }
+.mobileitem tr:hover {
+    background: var(--main-item-bg-color);
+}
 .mobileitem td{
-    height: auto!important;
-    margin-right: 0!important;
-    /*word-break: break-word;*/
-    /*margin: 0!important;*/
-    background-image: none!important;
     display: inline-flex;
-    width: auto;
+    color: var(--main-text-color);
     flex-grow: 1;
     flex-shrink: 1;
     align-items: center; 
     padding:5px!important;
     min-height:35px;
+    border-color: var(--main-bg-color);
 }
-.mobileitem td > div {margin: 0!important;}
 
 .mobileitem td:last-child{
-    flex-wrap:wrap;
+    font-family: main-font-bold;   
 }
 .mobileitem td label{
     white-space: nowrap;
@@ -68,14 +65,17 @@ body.dashMobile table.mobileitem td.name{
 }
 body.dashMobile table.mobileitem td#name img,
 body.dashMobile table.mobileitem td.name img{
-    margin-right:5px;
+    margin-right:10px;
+    vertical-align: middle;
 }
 .mobileitem .btn-mini{
     margin-left: 2px;
+    font-family: main-font-bold;
+    text-shadow: none;
 }
 #dashcontent .mobileitem .dimslider{
-  background: rgba(0, 0, 0, 0.26);
   border: none;
+  border-radius: 3px;
   box-shadow: none;
   height: 5px;
 }
@@ -91,21 +91,9 @@ body.dashMobile table.mobileitem td.name img{
 }
 #dashcontent .mobileitem td#status,
 #dashcontent .mobileitem td.status{
-    display: flex;
-    position:initial;
-    flex-direction: row;
-    white-space: normal;
-    width: auto;
     max-width:60%;
     justify-content: flex-end;
-    padding: 0;
     flex-grow: 1;
     flex-shrink: 1;
-    margin: 0;
     text-align: end;
-}
-#dashcontent .mobileitem .selectorlevels {
-  position: relative;
-  right: 0px;
-  bottom: 0px;
 }
