@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /* import css files */
-@import url("css/mobile.css");
+@import url("css/dashboard_mobile.css");
 @import url("css/settings.css");
 @import url("css/icons_on_tabs.css");
 @import url("css/iconsupload.css");
