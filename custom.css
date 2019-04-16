@@ -577,6 +577,9 @@ body table#itemtable tr > .options {
   outline: 0;
   max-width: 100%;
 }
+.selectorlevels > span {
+  max-width: -webkit-fill-available;
+}
 
 /* Time Ago */
 #dashcontent #timeago{

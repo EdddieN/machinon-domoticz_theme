@@ -72,11 +72,6 @@
             "enabled":false,
 			"files": ["navbar_icons.css"]
         },
-	"hide_type": {
-            "id":26,
-            "enabled":false,
-			"files": ["hide_type.css"]
-        },
 	"navbar_icons_text": {
             "id":27,
             "enabled":false,
