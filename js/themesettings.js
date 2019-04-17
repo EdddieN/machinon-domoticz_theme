@@ -45,7 +45,7 @@ function addHtmlTab(){
     html += '<p>This is a theme for Domoticz. Theme is in progress with project machinon. Minimalistic design for better view for the user.<br/>';
     html += 'Follow us on <a href="https://github.com/EdddieN/machinon">github</a>. If you have any issues with the theme, report them <a href="https://github.com/EdddieN/machinon-domoticz_theme/issues">here</a>.<br/></p>';
     html += '<h3>General features</h3>';
-    html += '<p>The Machinon theme has several features that change the look. Machinon saves the settings in localStorge in your browser. You can have diffrent settings in seperate devices. Some of the cool features are:</p>';
+    html += '<p>The Machinon theme has several features that change the look. Machinon saves the settings as two uservariables. Some of the cool features are:</p>';
     html += '<b>Machinon settings menu:</b>';
     html += '<p><i>A custom settings menu instead of the dropdown list. Better overview for the user.</i><br/></p>';
     html += '<b>Switch Instead of Text:</b>';
