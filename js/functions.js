@@ -100,13 +100,13 @@ function applySwitchersAndSubmenus() {
 		let subnav = $(this).find('.options');
 		let subnavButton = $(this).find('.options__bars');
 		if (subnav.length && subnavButton.length == 0) {
-			$(this).find('table').append('<div class="options__bars" title="' + $.t('More options') + '"></div>');
-			$(this).on('click', '.options__bars', function (e) {
-			e.preventDefault();
-			$(this).siblings('tbody').find('td.options').slideToggle(400);
-			$(this).siblings('tbody').find('td.options').unbind("mouseleave");
-			$(this).siblings('tbody').find('td.options').mouseleave(function() { $(this).slideToggle(400); $(this).unbind("mouseleave"); });
-			});
+			$(this).find('table > tbody > tr').append('<td class="options__bars" title="' + $.t('More options') + '"></td>');
+			$(this).on('click', 'td.options__bars', function (e) {
+                e.preventDefault();
+                $(this).siblings('td.options').slideToggle(400);
+                $(this).siblings('td.options').unbind("mouseleave");
+                $(this).siblings('td.options').mouseleave(function() { $(this).slideToggle(400); $(this).unbind("mouseleave"); });
+            });
 			// Move Timers and log to item
 			$(this).find('table tr').append('<td class="timers_log"></td>');
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall[data-i18n="Log"]'));
