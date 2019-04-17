@@ -400,7 +400,6 @@ div.bannercontent .row.divider{
 .item #bigtext {
   color: var(--main-blue-color);
   background: var(--main-item-bg-color);
-  line-height: 20px;
   font-size: 1.4em;
   grid-area: bigtext;
   justify-self: right;
