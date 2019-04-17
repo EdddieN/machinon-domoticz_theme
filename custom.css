@@ -22,15 +22,17 @@
     font-family: main-font;
     font-style: normal;
     font-weight: 400;
-    src:url('font/OpenSans-Regular.woff2') format('woff2'), 
-        url('font/OpenSans-Regular.ttf') format('ttf');
+    src: local('Open Sans Regular'), local('OpenSans-Regular'),
+         url('font/open-sans-v16-latin_latin-ext-regular.woff2') format('woff2'),
+         url('font/open-sans-v16-latin_latin-ext-regular.woff') format('woff');
 }
 @font-face {
     font-family: main-font-bold;
     font-style: normal;
     font-weight: 600;
-    src:url('font/OpenSans-SemiBold.woff2') format('woff2'),
-        url('font/OpenSans-SemiBold.ttf') format('ttf');
+    src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'),
+         url('font/open-sans-v16-latin_latin-ext-600.woff2') format('woff2'),
+         url('font/open-sans-v16-latin_latin-ext-600.woff') format('woff');
 }
 /* Bootbox */
 .bootbox.modal.fade.in{
