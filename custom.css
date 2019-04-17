@@ -380,7 +380,6 @@ div.bannercontent .row.divider{
 .item:hover {
 	box-shadow: 0px 0px 0px 2px rgb(11, 150, 205);
 }
-
 /* name */
 .item #name {
   padding: 10px 0 0 10px;
@@ -1226,17 +1225,17 @@ input#AcceptNewHardware:checked ~ button {
   display: block;
   background: none;
 }
+.item.fadeOff {
+    opacity: 0.5;
+}
 /*  Device is timeout  */
 .item.statusTimeout{
 	box-shadow: 0px 0px 10px 2px rgb(199,67,67,0.5);
+	opacity:0.5;
 	/*! background-color: transparent !important; */
 }
 .item.statusTimeout:hover{
 	box-shadow: 0px 0px 0px 2px rgb(199,67,67);
-}
-.item.statusTimeout{
-	/*! color: #c74343 !important; */
-	opacity:0.5;
 }
 /* Switch is protected */
 .item.statusProtected{

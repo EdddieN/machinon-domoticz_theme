@@ -31,15 +31,12 @@ function applySwitchersAndSubmenus() {
 		if (onImage.length == 0) {
 			onImage = bigText.siblings('#img1').find('img')
 		}
+
 		if (theme.features.fade_offItems.enabled === true) {
         	if (status == switchState.off) {
-        		if (theme.features.dark_theme.enabled === true) {
-        			$(this).css('opacity', '0.5');
-        		} else {
-        			$(this).css('opacity', '0.6');
-        		}
+                $(this).addClass('fadeOff');
         	} else {
-        		$(this).css('opacity', '');
+        		$(this).removeClass('fadeOff');
         	}
        	}
 
@@ -264,34 +261,7 @@ function searchFunction() {
     removeEmptySectionDashboard();
 }
 
-function DelRow() {
-	$('#main-view div.row').each(function(){
-		x=$(this).nextAll().children().detach();
-		$(this).append(x).nextAll().remove();
-		console.log('suppression de multiple row');
-	});
-}
-
 function locationHashChanged() {
-
-  isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-/*
-  if(!isMobile) {
-
-    if ( location.hash === "#/LightSwitches" ) {
-        var targetedNode = document.getElementById('lightcontent');
-    } else {
-        var targetedNode = document.getElementById('main-view');
-    }
-	observer.disconnect();
-	observer.observe(targetedNode, {
-        childList: true,
-		subtree: true
-	});
-    $("#mSettings").removeClass("current_page_item");
-  }
-*/
-
   /* Is this screen searchable / screen with devices */
   if (location.hash == "#/Dashboard" || location.hash == "#/LightSwitches" || location.hash == "#/Scenes" || location.hash == "#/Temperature" || location.hash == "#/Weather" || location.hash == "#/Utility") {
     $("#searchInput").removeAttr('readonly');
@@ -386,6 +356,7 @@ function timedOut(idx, value, device) {
 	}
 	timeOut[idx] = value;
 }
+
 var oldstates = [];
 function triggerChange(idx, value, device) {
 	let textmsg = device.Name + ' ' + language.is + ' ' + $.t(device.Data);
@@ -401,7 +372,6 @@ function triggerChange(idx, value, device) {
 		oldstates[idx] = value;
 }
 function getnotifications(idx, state) {
-	
 	var msg;
 	$.ajax({
 		url: 'json.htm?type=notifications&idx=' + idx + '',
@@ -453,6 +423,7 @@ function getStatus(dialog) {
 		});
 	}, 5000);
 }
+
 var adminRights = false;
 function checkauth(){
 	$.ajax({url: 'json.htm?type=command&param=getauth' , cache: false, async: false, dataType: 'json', success: function(data) {
