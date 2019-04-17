@@ -402,6 +402,7 @@ div.bannercontent .row.divider{
   line-height: 20px;
   grid-area: bigtext;
   justify-self: right;
+  text-align: right;
   padding: 10px 0 0 20px;
 }
 
