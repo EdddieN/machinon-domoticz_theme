@@ -4,9 +4,11 @@ function removeRowDivider() {
     if ($('#dashcontent').length) {
         $('#dashcontent > section').each(function() {
             $('div.row.divider:not(:first)', this).children().appendTo('div.row.divider:first');
+            $('div.row.divider:not(:first)', this).hide();
         });
     } else {
         $('div.row.divider:not(:first)').children().appendTo('div.row.divider:first');
+        $('div.row.divider:not(:first)').hide();
     }
 }
 
