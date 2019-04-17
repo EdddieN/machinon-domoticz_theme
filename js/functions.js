@@ -16,10 +16,10 @@ function applySwitchersAndSubmenus() {
 	
 	//translate switchstates
 	switchState = {
-	on: $.t('On'),
-	off: $.t('Off'),
-	open: $.t('Open'),
-	closed: $.t('Closed')
+        on: $.t('On'),
+        off: $.t('Off'),
+        open: $.t('Open'),
+        closed: $.t('Closed')
 	};
 	
 	//switcher for lights and windows
@@ -148,7 +148,6 @@ function applySwitchersAndSubmenus() {
 						if (switcher.length == 0) {
 							let string = '<label class="switch" title="' + title + '"><input type="checkbox"' + checked + '><span class="slider round"></span></label>';
 							bigText.append(string);
-                            bigText.children("span").hide();
                             bigText.css("font-size", "0");
 						}
 						switcher.attr('title', title);
@@ -159,7 +158,6 @@ function applySwitchersAndSubmenus() {
 						if (switcher.length == 0) {
 							let string = '<label class="switch" title="' + title + '"><input type="checkbox"' + checked + '><span class="slider round"></span></label>';
 							bigText.append(string);
-                            bigText.children("span").hide();
                             bigText.css("font-size", "0");
 						}
 						switcher.attr('title', title);
