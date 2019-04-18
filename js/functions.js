@@ -97,10 +97,10 @@ function applySwitchersAndSubmenus() {
 		}
 		// insert submenu buttons to each item table (not on dashboard)
 		let subnav = $(this).find('.options');
-		let subnavButton = $(this).find('.options__bars');
+		let subnavButton = $(this).find('.options-cell');
 		if (subnav.length && subnavButton.length == 0) {
-			$(this).find('table > tbody > tr').append('<td class="options__bars" title="' + $.t('More options') + '"></td>');
-			$(this).on('click', 'td.options__bars', function (e) {
+			$(this).find('table > tbody > tr').append('<td class="options-cell" title="' + $.t('More options') + '"></td>');
+			$(this).on('click', 'td.options-cell', function (e) {
                 e.preventDefault();
                 $(this).siblings('td.options').slideToggle(400);
                 $(this).siblings('td.options').unbind("mouseleave");
@@ -145,9 +145,9 @@ function applySwitchersAndSubmenus() {
 						let title = (status == switchState.off) ? $.t('Turn On') : $.t('Turn Off');
 						let checked = (status == switchState.on) ? 'checked' : '';
 						if (switcher.length == 0) {
-							let string = '<label class="switch" title="' + title + '"><input type="checkbox"' + checked + '><span class="slider round"></span></label>';
-							bigText.append(string);
-                            bigText.css("font-size", "0");
+							let string = '<td class="switch-cell"><label class="switch" title="' + title + '"><input type="checkbox"' + checked + '><span class="slider round"></span></label></td>';
+							bigText.after(string);
+                            bigText.hide();
 						}
 						switcher.attr('title', title);
 						switcher.find('input').attr('checked', checked.length > 0);
@@ -155,9 +155,9 @@ function applySwitchersAndSubmenus() {
 						let title = (status == switchState.closed) ? $.t('Open Blinds') : $.t('Close Blinds');
 						let checked = (status == switchState.open) ? 'checked' : '';
 						if (switcher.length == 0) {
-							let string = '<label class="switch" title="' + title + '"><input type="checkbox"' + checked + '><span class="slider round"></span></label>';
-							bigText.append(string);
-                            bigText.css("font-size", "0");
+							let string = '<td class="switch-cell"><label class="switch" title="' + title + '"><input type="checkbox"' + checked + '><span class="slider round"></span></label></td>';
+							bigText.after(string);
+                            bigText.hide();
 						}
 						switcher.attr('title', title);
 						switcher.find('input').attr('checked', checked.length > 0);

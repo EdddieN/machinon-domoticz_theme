@@ -398,6 +398,7 @@ div.bannercontent .row.divider{
 .item #bigtext {
   color: var(--main-blue-color);
   background: var(--main-item-bg-color);
+  background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1) 15px);
   font-size: 1.4em;
   line-height: 20px;
   grid-area: bigtext;
@@ -443,20 +444,20 @@ div.bannercontent .row.divider{
 }
 
 /* item subnav applying by click*/
-.options__bars {
+.options-cell {
   padding-right:5px;
   color: var(--secondary-text-color);
   cursor: pointer;
   grid-area: options;
   justify-self: left;
 }
-.options__bars::before {
+.options-cell::before {
   display: block;
   content: "\22ee";
   font-size: 20px;
   text-align: center;
 }
-.options__bars:hover {
+.options-cell:hover {
   color: var(--main-blue-color);
 }
 
