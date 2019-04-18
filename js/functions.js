@@ -271,6 +271,7 @@ function locationHashChanged() {
   } else {
     $("#searchInput").attr('readonly', 'readonly');
   }
+  $(".current_page_item:not(:first)").removeClass("current_page_item");
 }
 
 function showTime(){
