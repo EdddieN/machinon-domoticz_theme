@@ -195,8 +195,8 @@ $(document).ajaxSuccess(function (event, xhr, settings) {
                     clearInterval(intervalId);
                 }
             }
+            nativeSelectors();
         }, 1000);
-        nativeSelectors();
     } else if (settings.url.startsWith('json.htm?type=command&param=switchscene')) {
         let id = settings.url.split('&')[2];
         id = id.substr(4); // from string 'idx=?'

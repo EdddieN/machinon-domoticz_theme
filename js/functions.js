@@ -185,6 +185,7 @@ function applySwitchersAndSubmenus() {
             $(this).hide();
         }
     });
+    //nativeSelectors();
 }
 
 function nativeSelectors() {
