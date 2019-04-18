@@ -58,7 +58,6 @@ function addHtmlTab(){
     html += '<p>Run terminal, putty or similar<br/>';
     html += '<code>cd /home/${USER}/domoticz/www/styles/' + themeFolder + '</code><br/><code>git pull</code></P>';
     html += '<p>Designed in 2018 by EdddieN.</p>';
-    html += '<p><button class="resetbtn" id="themeResetButton" data-i18n="Reset theme">Reset Theme</button> <button class="resetbtn" id="saveSettingsButton" data-i18n="Save Theme Settings">Save Theme Settings</button></p>';
     html += '</div></div>';
     $('#tabtheme .row-fluid').append(html);
 }

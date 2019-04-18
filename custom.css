@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 /* import css files */
+@import url("css/dashboard_mobile.css");
 @import url("css/settings.css");
 @import url("css/icons_on_tabs.css");
 @import url("css/iconsupload.css");
@@ -248,30 +249,20 @@ border-bottom: none;
     letter-spacing: 7px;
 }
 .scroll > .status-content {
-    position: absolute;
-    top: 0;
-    right: 0;
     transform:translateY(60px);
     animation-name: autoscroll;
     animation-duration: 5s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
 }
-.scroll:before, .scroll:after {
+.scroll:before {
   content  : "";
   position : absolute;
+  left:0;
   z-index  : 1;
-  left     : 0;
   width    : 100%;
-  height   : 8px;
-}
-.scroll:before {
-  top   : 0;
+  height   : 5px;
   background-image : linear-gradient(to top, rgba(255,255,255, 0), rgba(255,255,255, 1) 90%);
-}
-.scroll:after {
-  bottom   : 0;
-  background-image : linear-gradient(to bottom, rgba(255,255,255, 0), rgba(255,255,255, 1) 90%);
 }
 
 @keyframes autoscroll {
@@ -301,64 +292,6 @@ input[type="text"]{
 	outline: 0;
 	border-width: 0 0 1px;
 	border-color: var(--main-blue-color);
-}
-/* bootstrap switcher */
-/* The switch - the box around the slider */
-.switch {
-  position: absolute;
-  display: block;
-  width: 40px;
-  height: 20px;
-  top: 20px;
-  right: 30px;
-}
-.switch input {
-  display: none;
-}
-
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: -10px;
-  bottom: -2px;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-  background-color: #fafafa;
-  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.7);
-}
-.slider.round {
-  border-radius: 34px;
-}
-.slider.round:before {
-  border-radius: 50%;
-}
-
-input:checked + .slider {
-  background-color: rgba(11, 151, 205, 0.5);
-}
-input:checked + .slider:before {
-  -webkit-transform: translateX(34px);
-  -ms-transform: translateX(34px);
-  transform: translateX(34px);
-  background-color: var(--main-blue-color);
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px rgba(11, 151, 205, 0.5);
 }
 
 /* common features */
@@ -390,7 +323,7 @@ div.bannercontent .row.divider{
 @media (max-width: 767px){
 div.bannercontent .row.divider{
     grid-template-columns:repeat(1,1fr);
-    grid-auto-rows: 140px;
+    grid-auto-rows: auto;
   }
 }
 @media (min-width: 768px) and (max-width: 1199px){
@@ -426,26 +359,34 @@ div.bannercontent .row.divider{
 }
 
 #holder .row .item table[id^="item"] > tbody > tr{
-  
   box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 40px minmax(0,1fr) minmax(0,20px);
+  grid-template-columns: 58px 48px minmax(0,.7fr) minmax(0,1fr) 25px 10px;
+  gap: 10px;
+  min-height: 0;
+  min-width: 0;
+  grid-template-areas:
+    'name name bigtext bigtext bigtext options'
+    'img img2 status status status status'
+    'lastupdate lastupdate lastupdate lastupdate tools tools'
 }
-
+#holder #dashcontent .row .item table[id^="item"] > tbody > tr {
+  grid-template-rows: 40px minmax(0,1fr) 0;
+}
+#holder #lightcontent .row .item table[id^="item"] > tbody > tr {
+  grid-template-columns: 58px 48px minmax(0,.7fr) minmax(0,1fr) 45px;
+}
 .item:hover {
 	box-shadow: 0px 0px 0px 2px rgb(11, 150, 205);
 }
-
 /* name */
 .item #name {
-  background-color: transparent !important;
+  padding: 10px 0 0 10px;
   color: var(--main-text-color);
-  position: absolute;
-  top: 10%;
-  left: 5%;
   line-height: 20px;
-  max-width: 60%;
+  grid-area: name;
+  white-space: nowrap;
 }
 
 @media (min-width: 1200px) {
@@ -456,11 +397,14 @@ div.bannercontent .row.divider{
 /* bigtext */
 .item #bigtext {
   color: var(--main-blue-color);
-  line-height: 20px;
+  background: var(--main-item-bg-color);
+  background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1) 15px);
   font-size: 1.4em;
-  position: absolute;
-  top: 10%;
-  right: 20px;
+  line-height: 20px;
+  grid-area: bigtext;
+  justify-self: right;
+  text-align: right;
+  padding: 10px 0 0 20px;
 }
 
 @media (min-width: 980px) {
@@ -472,56 +416,48 @@ div.bannercontent .row.divider{
 /* last update */
 .item #lastupdate {
   color: var(--secondary-text-color);
-  position: absolute;
-  right: 60px;
-  bottom: 5px;
-}
-dztemperaturewidget .item #lastupdate,
-dzweatherwidget .item #lastupdate {
-  right: 40px;
+  grid-area: lastupdate;
+  justify-self: right;
+  padding-right: 20px;
 }
 /* type */
 .item #type {
   color: var(--secondary-text-color);
-  margin-top: -35px;
-    /*! position: absolute; */
-  /*! right: 20px; */
-  /*! top: 60px; */
-  text-align: right;
-  padding: 0 20px;
+  grid-area: status;
+  justify-self: right;
+  align-self: center;
+  padding-right: 20px;
+  max-width: 100%;
+  font-size: 0;
 }
 
 .item #status,
 .item .status {
   color: var(--main-text-color);
+  grid-area: status;
+  padding-right: 20px;
+  align-self: center;
+  justify-self: right;
   text-align: right;
+  max-height: 100%;
   overflow: hidden;
-  width: 60%;
-  position: absolute;
-  right: 20px;
-  bottom: 40px;
 }
 
 /* item subnav applying by click*/
-.options__bars {
-  display: block;
-  position: absolute;
-  top: 3px;
-  right: 0;
-  height: 25px;
-  width: 20px;
+.options-cell {
+  padding-right:5px;
   color: var(--secondary-text-color);
-  z-index: 2;
   cursor: pointer;
-  overflow: hidden;
+  grid-area: options;
+  justify-self: left;
 }
-.options__bars::before {
+.options-cell::before {
   display: block;
   content: "\22ee";
   font-size: 20px;
   text-align: center;
 }
-.options__bars:hover {
+.options-cell:hover {
   color: var(--main-blue-color);
 }
 
@@ -556,79 +492,38 @@ body table#itemtable tr > .options {
   color: #818183;
 }
 .timers_log{
-	display: inline;
-	padding: 0px 5px;
+    grid-area: tools;
+    justify-self: center;
 }
 .timers_log .btnsmall,
 .timers_log .btnsmall-sel,
 .timers_log .btnsmall:hover,
 .timers_log .btnsmall-sel:hover {
 	color: transparent;
+    display: inline-block;
+    padding: 0 3px;
 }
-.timers_log .btnsmall[data-i18n="Log"] {
-	font-size: 8px;
-	position: absolute;
-	right: 10px;
-	bottom: 8px;
-}
-
-.timers_log .btnsmall[data-i18n="Timers"] {
-	font-size: 11px;
-	position: absolute;
-	right: 30px;
-	bottom: 5px;
-
-}
-.timers_log .btnsmall-sel[data-i18n="Timers"] {
-	background: transparent;
-	font-size: 11px;
-	position: absolute;
-	right: 30px;
-	bottom: 6px;
-}
-.timers_log .btnsmall[href*="Log"] {
-	font-size: 8px;
-	position: absolute;
-	right: 10px;
-	bottom: 8px;
+.timers_log .btnsmall {
+	font-size: 0;
 }
 
 @media (min-width: 1200px) {
   .options {
     top: 5px;
   }
-  .timers_log .btnsmall[data-i18n="Timers"],
-  .timers_log .btnsmall-sel[data-i18n="Timers"]{
-	bottom: 16px;  
-  }
-  .timers_log .btnsmall[href*="Log"],
-  .timers_log .btnsmall[data-i18n="Log"]{
-	bottom:18px;
-  }
 }
 
 /* images */
 .item .img,
 .item #img {
-  order: 1000;
-  margin-bottom: 0;
-  position: absolute;
-  left: 20px;
-  bottom: 15px;
+   grid-area: img;
+   align-self: end;
+   padding: 0 10px;
 }
 .item .img img,
 .item #img img {
   width: 48px;
   height: auto;
-}
-
-.item #img1 {
-  order: 1000;
-  margin-bottom: 0;
-  position: absolute;
-  left: 20px;
-  bottom: 15px;
-  width: 30px;
 }
 .item #img1 img {
   height: auto;
@@ -640,11 +535,8 @@ body table#itemtable tr > .options {
 }
 
 .item #img2 {
-  order: 1000;
-  margin-bottom: 0;
-  position: absolute;
-  left: 72px;
-  bottom: 15px;
+  grid-area: img2;
+   align-self: end;
 }
 .item #img2 img {
   height: auto;
@@ -667,98 +559,48 @@ body table#itemtable tr > .options {
 #type .btn-group,
 .input .btn-group {
   background: var(--main-bg-color) !important;
-  position: absolute;
-  right: 20px;
-  bottom: 40px;
-  width: 65%;
   overflow-x:  auto;
+  max-width: 100%;
 }
 .ui-selectmenu-button.ui-button{
   width:auto !important;
 }
+.item td.input {
+  grid-area: status;
+  justify-self: right;
+  align-self: center;
+  padding-right: 20px;
+  max-width: 100%;
+}
 .selectorlevels {
-  position: absolute;
-  right: 20px;
-  bottom: 40px;
-  max-width:  250px;
-  overflow-x: auto;
-
+  font-size: 15px;
 }
 .selectorlevels > select {
   padding: 5px;
   color: var(--main-blue-color) !important;
   outline: 0;
+  max-width: 100%;
+}
+.selectorlevels > span {
+  max-width: -webkit-fill-available;
 }
 
 /* Time Ago */
 #dashcontent #timeago{
-display:none;
-}
-dztemperaturewidget .item #timeago,
-dzweatherwidget .item #timeago {
-  right: 40px;
+  display:none;
+  grid-area: lastupdate / lastupdate / tools / tools;
+  padding-right: 20px;
 }
 .item #timeago {
   color: var(--secondary-text-color);
   font-family: main-font;
-  position: absolute;
-  right: 60px;
-  bottom: 5px;
-}
-#dashcontent .item #timeago {
-  right:20px;
-  bottom: 15px;
+  grid-area: lastupdate;
+  justify-self: right;
 }
 
 /* dashboard items */
 #dashcontent .lastupdate{
-display:none;
-}
-#dashcontent .status{
-  top: 50px;
-  height: 55px;
-  margin-top: 0;
-}
-
-/* lightcontent */
-#lightcontent #status{
-  background-color: transparent !important;
-  color: var(--main-text-color);
-  top: 35%;
-  left: 5%;
-}
-
-/* temperature, weather items */
-dztemperaturewidget #status,
-dzweatherwidget #status {
-  top: 45px;
-  height: 55px;
-}
-
-/* utility items */
-#utilitycontent #type {
-  position: absolute;
-  right: 0;
-  top: 50px;
-  width: 60%;
-  margin-top: 0;
-}
-#utilitycontent #status {
-  top: 70px;
-  height: 45px;
-}
-
-/* scene items */
-#scenecontent #type {
-  position: absolute;
-  right: 20px;
-  top: 60px;
-  width: 60%;
-  text-align: right;
-  margin-top: 0;
-}
-#scenecontent #status {
-  top: 80px;
+  display:none;
 }
 
 #type .dimslider,
@@ -1385,20 +1227,17 @@ input#AcceptNewHardware:checked ~ button {
   display: block;
   background: none;
 }
+.item.fadeOff {
+    opacity: 0.5;
+}
 /*  Device is timeout  */
 .item.statusTimeout{
 	box-shadow: 0px 0px 10px 2px rgb(199,67,67,0.5);
+	opacity:0.5;
 	/*! background-color: transparent !important; */
 }
 .item.statusTimeout:hover{
 	box-shadow: 0px 0px 0px 2px rgb(199,67,67);
-}
-.item.statusTimeout{
-	/*! color: #c74343 !important; */
-	opacity:0.5;
-}
-.item.statusTimeout td#img{
-	opacity:0.2;
 }
 /* Switch is protected */
 .item.statusProtected{
@@ -1701,117 +1540,6 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
 .selectorlevels-menu {
     border-color:  var(--main-blue-color) !important;
 }
-/***** MOBILE *****/
-table.mobileitem{
-    width: 100%;
-    padding: 0;
-    margin-top:20px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-}
-table.mobileitem > thead{
-    display: flex;
-}
-table.mobileitem > thead > tr {
-    display:flex;
-	background: none;
-}
-table.mobileitem > thead > tr > th:first-of-type{
-    flex-grow:1;
-}
-
-table.mobileitem .status > span > span{margin-right:7px;}
-
-.mobileitem th{
-    display:inline;
-    background-color: transparent;
-    text-shadow: none;
-}
-.mobileitem tr{
-    margin: 0!important;
-    padding: 0!important;
-    box-sizing: border-box;
-    height: auto;
-    display: flex;
-    flex-grow: 1;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-}
-.mobileitem td{
-    height: auto!important;
-    margin-right: 0!important;
-    /*word-break: break-word;*/
-    /*margin: 0!important;*/
-    background-image: none!important;
-    display: inline-flex;
-    width: auto;
-    flex-grow: 1;
-    flex-shrink: 1;
-    align-items: center; 
-    padding:5px!important;
-    min-height:35px;
-}
-.mobileitem td > div {margin: 0!important;}
-
-.mobileitem td:last-child{
-    flex-wrap:wrap;
-}
-.mobileitem td label{
-    white-space: nowrap;
-    height:50%;
-}
-body.dashMobile table.mobileitem td#name,
-body.dashMobile table.mobileitem td.name{
-    font-size: 100%;
-    position: inherit;
-    padding:0 0 0 10px!important;
-    height:auto;
-    min-height:30px;
-}
-body.dashMobile table.mobileitem td#name img,
-body.dashMobile table.mobileitem td.name img{
-    margin-right:5px;
-}
-.mobileitem .btn-mini{
-    margin-left: 2px;
-}
-#dashcontent .mobileitem .dimslider{
-  background: rgba(0, 0, 0, 0.26);
-  border: none;
-  box-shadow: none;
-  height: 5px;
-}
-#dashcontent .mobileitem .dimslider .ui-slider-range{
-  background: rgba(11, 151, 205, 0.5);
-}
-#dashcontent .mobileitem .dimslider .ui-slider-handle{
-  width: 15px;
-  height: 15px;
-  background: var(--main-blue-color);
-  border-radius: 50%;
-  top: -6px;
-}
-#dashcontent .mobileitem td#status,
-#dashcontent .mobileitem td.status{
-    display: flex;
-    position:initial;
-    flex-direction: row;
-    white-space: normal;
-    width: auto;
-    max-width:60%;
-    justify-content: flex-end;
-    padding: 0;
-    flex-grow: 1;
-    flex-shrink: 1;
-    margin: 0;
-    text-align: end;
-}
-#dashcontent .mobileitem .selectorlevels {
-  position: relative;
-  right: 0px;
-  bottom: 0px;
-}
 @media (max-width: 767px) {
     #notify {
       float: left;
@@ -1862,7 +1590,7 @@ body.dashMobile table.mobileitem td.name img{
 
     .navbar-inverse .navbar-inner {
     background-color: var(--main-blue-color);
-    width: 180px;
+    width: 200px;
     height: 100%;
     margin-left: 0;
     margin-top: -40px;
@@ -1873,6 +1601,7 @@ body.dashMobile table.mobileitem td.name img{
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
     position: fixed;
     z-index: 2;
+    overflow: hidden;
     }
 
     button.menu-toggle {
@@ -2006,7 +1735,7 @@ body.dashMobile table.mobileitem td.name img{
         margin:0 !important;
         padding-top:10px !important;
     }
-    .container-fluid{padding: 0 !important;margin: 0 !important;}
+    .container-fluid{padding: 0 10px !important;margin: 0 !important;}
 }
 
 #copyright {

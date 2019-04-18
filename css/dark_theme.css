@@ -72,8 +72,6 @@ header.logo {
   top   : 0;
   background-image : linear-gradient(to top, rgba(81,85,88, 0), rgba(81,85,88, 1) 90%);
 }
-.scroll:after {
-  bottom   : 0;
-  background-image : linear-gradient(to bottom, rgba(81,85,88, 0), rgba(81,85,88, 1) 90%);
+#bigtext, .switch-cell {
+  background: linear-gradient(to right, rgba(81,85,88, 0), rgba(81,85,88, 1) 15px) !important;
 }
-
