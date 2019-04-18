@@ -1590,7 +1590,7 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
 
     .navbar-inverse .navbar-inner {
     background-color: var(--main-blue-color);
-    width: 180px;
+    width: 200px;
     height: 100%;
     margin-left: 0;
     margin-top: -40px;
