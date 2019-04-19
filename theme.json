@@ -94,7 +94,7 @@
         },
     "dashboard_camera": {
             "id":31,
-            "enabled":false,
+            "enabled":true,
             "files": ["dashboard_camera.css"]
         }
     }
