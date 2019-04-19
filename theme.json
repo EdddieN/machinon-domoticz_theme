@@ -91,6 +91,11 @@
             "id":30,
             "enabled":false,
             "files": ["dashboard_columns.css"]
+        },
+    "dashboard_camera": {
+            "id":31,
+            "enabled":false,
+            "files": ["dashboard_camera.css"]
         }
     }
 }
