@@ -53,11 +53,6 @@ body.dashMobile table.mobileitem td label{
     white-space: nowrap;
     height:50%;
 }
-body.dashMobile table.mobileitem td#name,
-body.dashMobile table.mobileitem td.name{
-    height:auto;
-    min-height:30px;
-}
 body.dashMobile table.mobileitem td#name img,
 body.dashMobile table.mobileitem td.name img{
     margin-right:10px;
