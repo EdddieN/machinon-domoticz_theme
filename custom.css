@@ -369,7 +369,7 @@ div.bannercontent .row.divider{
   grid-template-areas:
     'name name bigtext bigtext bigtext options'
     'img img2 status status status status'
-    'lastupdate lastupdate lastupdate lastupdate tools tools'
+    'lastupdate lastupdate lastupdate lastupdate tools tools';
 }
 #holder #dashcontent .row .item table[id^="item"] > tbody > tr {
   grid-template-rows: 40px minmax(0,1fr) 0;

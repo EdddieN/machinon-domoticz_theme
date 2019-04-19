@@ -128,7 +128,7 @@ function applySwitchersAndSubmenus() {
 				$(this).find('.options').append('<a class="btnsmall" id="idno"><i>Idx: ' + itemID + '</i></a>');
 			}
             removeEmptySectionDashboard();
-		}
+        }
 		// options to not have switch instaed of bigText on scene devices
 		let switchOnScenes = false;
 		let switchOnScenesDash = false;
@@ -171,6 +171,22 @@ function applySwitchersAndSubmenus() {
 			}
 		}
 	});
+    /* Feature - Display camera preview on dashboard */
+    if (theme.features.dashboard_camera.enabled === true){
+        $('#bigtext > span > a').each(function() {
+            camId = $(this).attr('href').split(/\'/)[3];
+            if ($(this).parents('tr.with-cam-preview').length == 0) {
+                $(this).parents('tr').attr('data-cam', camId).append('<td><img id="preview-cam' + camId + '"></td>');
+                $(this).parents('tr').attr('data-cam', camId).addClass('with-cam-preview').on('click', function(e) {
+                    ShowCameraLiveStream('Camera', $(this).attr('data-cam'));
+                }).children('td:not(#name)').hide();
+            }
+            // Prevent flickering by preloading img first
+            $('#preview-cam' + camId).attr('src', 'camsnapshot.jpg?idx=' + camId + '?t=' +  Date.now()).on('load', function() {  
+                $(this).parents('tr').css('background-image', 'url(' + $(this).attr('src') + ')');
+            });
+        });
+    }
     /* Set autoscroll for long status or hide empty status */
     $("#status", "tr").not(".scroll").each(function() {
         var html = $(this).html();
