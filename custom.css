@@ -502,8 +502,6 @@ body table#itemtable tr > .options {
 	color: transparent;
     display: inline-block;
     padding: 0 3px;
-}
-.timers_log .btnsmall {
 	font-size: 0;
 }
 
@@ -1223,7 +1221,7 @@ input#AcceptNewHardware:checked ~ button {
   color: white;
 }
 
-.btnsmall {
+.btnsmall,.btnsmall-sel {
   display: block;
   background: none;
 }
