@@ -3,6 +3,7 @@
 var theme = {}, themeName = "", baseURL = "", switchState = {}, isMobile, newVersionText = "", gitVersion, lang, user, themeFolder, checkUpdate, userVariableThemeLoaded = false;
 generate_noty = void 0;
 isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+var msgCount = 0;
 
 // Load extra JS files
 $.ajax({url:"json.htm?type=settings", cache: false, async: false, dataType:"json", success:function(b) {
@@ -124,7 +125,6 @@ $(document).ready(function() {
         var existingNotes = localStorage.getItem(themeFolder + ".notify");
         existingNotes && $("#notyIcon").show()
         var state = false;
-        var msgCount = 0;
 
         $('#notify').click(function(){
             if(!state){
@@ -173,7 +173,7 @@ $(document).ajaxSuccess(function (event, xhr, settings) {
         var msg = localStorage.getItem(themeFolder + ".notify");
         msg = JSON.parse(msg);
         var myObj = msg;
-        $('#notify').append('<div id="msg" class="msg"><ul></ul><center><a class="btn btn-info" onclick="clearNotify();">'+$.t('Clear')+'</a></center></div>');
+        $('#notify').append('<div id="msg" class="msg"><ul></ul><center><a class="btn btn-info" onclick="clearNotify();">'+(typeof $.t === "undefined" ? "Clear" : $.t('Clear'))+'</a></center></div>');
         for (x in myObj) {
             $('#msg ul').append('<li>' + x + '<span> -- ' + jQuery.timeago(myObj[x]) + '</span></li>');
             msgCount++;
