@@ -41,8 +41,8 @@ function addHtmlTab(){
     var html = '';
     html += '<div class="span6">';
     html +='<div id="aboutTheme">';
-    html += '<h3 id="title">Machinon theme V.' + theme.version + '</h3><br/>';
-    html += '<p>This is a theme for Domoticz. Theme is in progress with project machinon. Minimalistic design for better view for the user.<br/>';
+    html += '<h2 id="title">Machinon theme V.' + theme.version + '</h2>';
+    html += '<p>Theme is in progress with project machinon. Minimalistic design for better view for the user.<br/>';
     html += 'Follow us on <a href="https://github.com/EdddieN/machinon">github</a>. If you have any issues with the theme, report them <a href="https://github.com/EdddieN/machinon-domoticz_theme/issues">here</a>.</p>';
     html += '<h3>General features</h3>';
     html += '<p>The Machinon theme has several features that change the look. Machinon saves the settings as two uservariables. Some of the cool features are:</p>';
@@ -126,13 +126,13 @@ function loadSettingsHTML(){
 					if( $(this).is('.parentrequiredchild') ){
 						$(this).attr('checked', false);
 						var childName = $(this).val();
-						if (isNaN(childName)){
+                        if (typeof theme.features[childName] !== "undefined") {
 							unloadThemeFeatureFiles( childName );
 							theme.features[childName].enabled = false;
 						}
 					}
 				});
-			}			
+			}
 			theme.features[this.value].enabled = false;
 			unloadThemeFeatureFiles(this.value);
 		}

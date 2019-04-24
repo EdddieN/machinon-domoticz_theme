@@ -1,7 +1,8 @@
 <style>
 #themesettings h1 { display: inline }
 #themesettings p { margin: 2px 0; }
-#themesettings h3 { margin: 10px 0; }
+#themesettings h3 { margin-top: 20px; }
+#themesettings h4 { margin-top: 10px; }
 </style>
 
 <div id="themesettings">
@@ -22,9 +23,10 @@
             <p><input id="themevar15" name="themevar15" value="check_update" type="checkbox"><label for="themevar15" data-i18n="Check For Update"> Check For Update</label></p>
             <p><input id="themevar29" name="themevar29" value="notification" type="checkbox"><label for="themevar29" data-i18n="Notification"> Notification</label></p>
             <p><input id="themevar19" class="parentrequired" name="themevar19" value="custom_page_menu" type="checkbox"><label for="themevar19" data-i18n="Custom Page"> Custom Page (Iframe)</label><br/>
-            <label for="themevar23" data-i18n="Button Name" style="padding-left: 2em;"> Button Name: </label><input id="themevar23" class="themevar23 ui-widget-content ui-corner-all" name="button_name" value="Name" type="text"><br/>
-            <label for="themevar24" data-i18n="Iframe Url" style="padding-left: 2em;"> Iframe Url: </label><input id="themevar24" class="themevar24 ui-widget-content ui-corner-all" name="custom_url" value="url" type="text"></p>
+            <label for="themevar23" data-i18n="Button Name" style="padding-left: 2em;"> Button Name: </label><input id="themevar23" class="parentrequiredchild themevar23 ui-widget-content ui-corner-all" name="button_name" value="Name" type="text"><br/>
+            <label for="themevar24" data-i18n="Iframe Url" style="padding-left: 2em;"> Iframe Url: </label><input id="themevar24" class="parentrequiredchild themevar24 ui-widget-content ui-corner-all" name="custom_url" value="url" type="text"></p>
             
+            <br/>
             <h2><span data-i18n="Dashboard options">Dashboard options</span>:</h2>
             <p><input id="themevar16" name="themevar16" value="time_ago" type="checkbox"><label for="themevar16" data-i18n="Time Ago"> Show Last Seen as Time ago</label></p>
             <p><input id="themevar18" name="themevar18" value="fade_offItems" type="checkbox"><label for="themevar18" data-i18n="Time Ago"> Fade when device is off</label></p>

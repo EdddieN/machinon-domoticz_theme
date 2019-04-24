@@ -261,8 +261,13 @@ function loadThemeFeatureFiles(featureName) {
 
 function unloadThemeFeatureFiles(featureName)
 {
-    $('head link[href*=' + featureName + ']').remove();
-    $('head script[src*=' + featureName + ']').remove();
+    var files = theme.features[featureName].files;
+    var arrayLength = files.length;
+    for (var i = 0; i < arrayLength; i++) {
+        if(files[i].split('.').pop() == "css"){
+            $('head link[href*="' + files[i] + '"]').remove();
+        }
+    }
 }
 
 function searchFunction() {
