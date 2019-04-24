@@ -57,7 +57,7 @@ function addHtmlTab(){
     html += '- Go to the device notifications</br>- In notifications settings select browser</i></p>';
     html += '<b>Custom Page (Iframe):</b>';
     html += '<p><i>Custom Page with menu button. Add button name and custom page url. Add url e.g: <code>https://www.domoticz.com</code> or a local file e.g: <code>../templates/custompage.html</code></i></p>';
-    html += '<b>Update theme:</b>';
+    html += '<h3>Update theme:</h3>';
     html += '<p>Run terminal, putty or similar<br/>';
     html += '<code>cd /home/${USER}/domoticz/www/styles/' + themeFolder + '</code><br/><code>git pull</code></P>';
     html += '<p>Designed in 2018 by EdddieN.</p>';
