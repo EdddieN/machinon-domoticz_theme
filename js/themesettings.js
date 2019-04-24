@@ -53,7 +53,7 @@ function addHtmlTab(){
     html += '<b>Show "Last Seen" as Time Ago:</b>';
     html += '<p><i>Show last seen as time ago e.g "2 minutes ago", "about 4 hours ago".</i></p>';
     html += '<b>Notifications:</b>';
-    html += '<p><i>To get visual notifcation when a device is changing status or value:</br/';
+    html += '<p><i>To get visual notifcation when a device is changing status or value:</br>';
     html += '- Go to the device notifications</br>- In notifications settings select browser</i></p>';
     html += '<b>Custom Page (Iframe):</b>';
     html += '<p><i>Custom Page with menu button. Add button name and custom page url. Add url e.g: <code>https://www.domoticz.com</code> or a local file e.g: <code>../templates/custompage.html</code></i></p>';
