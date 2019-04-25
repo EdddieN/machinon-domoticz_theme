@@ -34,3 +34,10 @@ g text{
 image#twisty{
     display: none;
 }
+.bullet{
+    border: 1px solid var(--main-blue-color) !important;
+}
+.bulletSelected {
+    border: 1px solid var(--main-blue-color) !important;
+    background: var(--main-blue-color) !important;
+}
