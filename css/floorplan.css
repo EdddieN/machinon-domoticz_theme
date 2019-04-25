@@ -28,6 +28,9 @@ rect.header{
 .DeviceDetails text#bigtext{
     display: none;
 }
+g text{
+    fill: var(--main-text-color) !important;
+}
 image#twisty{
     display: none;
 }
