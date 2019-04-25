@@ -153,8 +153,8 @@ $(document).ready(function() {
         });
     }
 
-    // Feature - Disable navbar text
-    if (theme.features.navbar_icons_text.enabled !== true) {
+    // Feature - Enable navbar text
+    if (theme.features.navbar_icons_text.enabled !== false) {
         $('.navbar').addClass('notext');
     }
 });
