@@ -3,7 +3,10 @@
 function removeRowDivider() {
     if ($('#dashcontent').length) {
         $('#dashcontent > section').each(function() {
-            $('div.row.divider:not(:first)', this).children().appendTo('div.row.divider:first');
+            $('div.row.divider:not(:first)', this).children().appendTo($(this).find('div.row.divider:first'));
+            if ($('div.row.divider:first > div:first', this).hasClass('span3')) {
+                $('div.row.divider:first', this).addClass('compact');
+            }
             $('div.row.divider:not(:first)', this).hide();
         });
     } else {
