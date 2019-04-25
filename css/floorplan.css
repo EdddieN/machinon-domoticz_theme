@@ -28,6 +28,16 @@ rect.header{
 .DeviceDetails text#bigtext{
     display: none;
 }
+g text{
+    fill: var(--main-text-color) !important;
+}
 image#twisty{
     display: none;
+}
+.bullet{
+    border: 1px solid var(--main-blue-color) !important;
+}
+.bulletSelected {
+    border: 1px solid var(--main-blue-color) !important;
+    background: var(--main-blue-color) !important;
 }
