@@ -1,0 +1,99 @@
+/***** MOBILE *****/
+body.dashMobile section.dashCategory div.row.divider:first-of-type {
+    display: none;
+}
+
+body.dashMobile table.mobileitem{
+    width: 100%;
+    padding: 0;
+    margin-top:20px;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+}
+body.dashMobile table.mobileitem > thead > tr {
+	background: none;
+}
+body.dashMobile table.mobileitem > thead > tr > th:first-of-type{
+    font-family: main-font-bold;
+    flex-grow:1;
+}
+
+body.dashMobile table.mobileitem th{
+    box-shadow: none;
+    display:inline;
+    text-shadow: none;
+    background: var(--main-border-color);
+    color: var(--main-text-color);
+}
+body.dashMobile table.mobileitem tr{
+    background: var(--main-item-bg-color);
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+body.dashMobile table.mobileitem tr:hover {
+    background: var(--main-item-bg-color);
+}
+body.dashMobile table.mobileitem td{
+    display: inline-flex;
+    color: var(--main-text-color);
+    flex-grow: 1;
+    flex-shrink: 1;
+    align-items: center; 
+    padding:5px!important;
+    min-height:35px;
+    border-color: var(--main-bg-color);
+}
+
+body.dashMobile table.mobileitem td:last-child{
+    font-family: main-font-bold;   
+}
+body.dashMobile table.mobileitem td label{
+    white-space: nowrap;
+    height:50%;
+}
+body.dashMobile table.mobileitem td#name img,
+body.dashMobile table.mobileitem td.name img{
+    margin-right:10px;
+    vertical-align: middle;
+}
+body.dashMobile table.mobileitem td#status,
+body.dashMobile table.mobileitem td.status{
+    max-width:60%;
+    justify-content: flex-end;
+    flex-grow: 1;
+    flex-shrink: 1;
+    text-align: end;
+}
+body.dashMobile table.mobileitem .status > span > span{
+    margin-right:7px;
+}
+body.dashMobile table.mobileitem .btn-mini{
+    margin-left: 2px;
+    font-family: main-font-bold;
+    text-shadow: none;
+}
+body.dashMobile table.mobileitem .dimslider{
+    border: none;
+    border-radius: 3px;
+    box-shadow: none;
+    height: 5px;
+}
+body.dashMobile table.mobileitem .dimslider .ui-slider-range{
+    background: rgba(11, 151, 205, 0.5);
+}
+body.dashMobile table.mobileitem .dimslider .ui-slider-handle{
+    width: 15px;
+    height: 15px;
+    background: var(--main-blue-color);
+    border-radius: 50%;
+    top: -6px;
+}
+body.dashMobile table.mobileitem .selectorlevels .ui-selectmenu-button{
+    display: none;
+}
+
+body.dashMobile table.mobileitem .selectorlevels{
+    width: 100%;
+}

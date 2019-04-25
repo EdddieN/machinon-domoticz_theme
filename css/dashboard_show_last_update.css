@@ -1,6 +1,15 @@
 /* Shows last Seen on dashboard */
+#holder #dashcontent .row .item table[id^="item"] > tbody > tr {
+  grid-template-rows: 40px minmax(0,1fr) 20px;
+}
 
 #dashcontent .lastupdate,
+#dashcontent #lastupdate,
 #dashcontent #timeago{
-display: block;
+  display: block;
+}
+
+#dashcontent #lastupdate {
+  right:20px;
+  bottom: 15px;
 }

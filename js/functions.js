@@ -1,15 +1,27 @@
 /* functions.js */
 
+function removeRowDivider() {
+    if ($('#dashcontent').length) {
+        $('#dashcontent > section').each(function() {
+            $('div.row.divider:not(:first)', this).children().appendTo('div.row.divider:first');
+            $('div.row.divider:not(:first)', this).hide();
+        });
+    } else {
+        $('div.row.divider:not(:first)').children().appendTo('div.row.divider:first');
+        $('div.row.divider:not(:first)').hide();
+    }
+}
+
 // main switchers and submenus logic function
 function applySwitchersAndSubmenus() {
     isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 	
 	//translate switchstates
 	switchState = {
-	on: $.t('On'),
-	off: $.t('Off'),
-	open: $.t('Open'),
-	closed: $.t('Closed')
+        on: $.t('On'),
+        off: $.t('Off'),
+        open: $.t('Open'),
+        closed: $.t('Closed')
 	};
 	
 	//switcher for lights and windows
@@ -21,17 +33,15 @@ function applySwitchersAndSubmenus() {
 		if (onImage.length == 0) {
 			onImage = bigText.siblings('#img1').find('img')
 		}
+
 		if (theme.features.fade_offItems.enabled === true) {
         	if (status == switchState.off) {
-        		if (theme.features.dark_theme.enabled === true) {
-        			$(this).css('opacity', '0.5');
-        		} else {
-        			$(this).css('opacity', '0.6');
-        		}
+                $(this).addClass('fadeOff');
         	} else {
-        		$(this).css('opacity', '');
+        		$(this).removeClass('fadeOff');
         	}
-        	}                   
+       	}
+
 		if (status.length == 0) {
 			status = bigText.attr('data-status');
 		} else {
@@ -87,23 +97,23 @@ function applySwitchersAndSubmenus() {
 		}
 		// insert submenu buttons to each item table (not on dashboard)
 		let subnav = $(this).find('.options');
-		let subnavButton = $(this).find('.options__bars');
+		let subnavButton = $(this).find('.options-cell');
 		if (subnav.length && subnavButton.length == 0) {
-			$(this).find('table').append('<div class="options__bars" title="' + $.t('More options') + '"></div>');
-			$(this).on('click', '.options__bars', function (e) {
-			e.preventDefault();
-			$(this).siblings('tbody').find('td.options').slideToggle(400);
-			$(this).siblings('tbody').find('td.options').unbind("mouseleave");
-			$(this).siblings('tbody').find('td.options').mouseleave(function() { $(this).slideToggle(400); $(this).unbind("mouseleave"); });
-			});
+			$(this).find('table > tbody > tr').append('<td class="options-cell" title="' + $.t('More options') + '"></td>');
+			$(this).on('click', 'td.options-cell', function (e) {
+                e.preventDefault();
+                $(this).siblings('td.options').slideToggle(400);
+                $(this).siblings('td.options').unbind("mouseleave");
+                $(this).siblings('td.options').mouseleave(function() { $(this).slideToggle(400); $(this).unbind("mouseleave"); });
+            });
 			// Move Timers and log to item
-			$(this).find('table').append('<div class="timers_log"></div>');
+			$(this).find('table tr').append('<td class="timers_log"></td>');
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall[data-i18n="Log"]'));
 			$(this).find('.timers_log .btnsmall[data-i18n="Log"]').append("<img id='logImg' title='" + $.t('Log') + "' src='images/options/log.png'/>");
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall[data-i18n="Timers"]'));
-			$(this).find('.timers_log .btnsmall[data-i18n="Timers"]').append("<img id='timerOffImg' title='" + $.t('Timers') + "' src='images/options/timer_off.png' height='18' width='18'/>");
+			$(this).find('.timers_log .btnsmall[data-i18n="Timers"]').append("<img id='timerOffImg' title='" + $.t('Timers') + "' src='images/options/timer_off.png'/>");
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall-sel[data-i18n="Timers"]'));
-			$(this).find('.timers_log .btnsmall-sel[data-i18n="Timers"]').append("<img id='timerOnImg' title='" + $.t('Timers') + "' src='images/options/timer_on.png' height='18' width='18'/>");
+			$(this).find('.timers_log .btnsmall-sel[data-i18n="Timers"]').append("<img id='timerOnImg' title='" + $.t('Timers') + "' src='images/options/timer_on.png'/>");
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall[href*="Log"]'));
 			$(this).find('.timers_log .btnsmall[href*="Log"]:not(.btnsmall[data-i18n="Log"])').append("<img id='logImg' title='" + $.t('Log') + "' src='images/options/log.png'/>");
 		}
@@ -118,7 +128,7 @@ function applySwitchersAndSubmenus() {
 				$(this).find('.options').append('<a class="btnsmall" id="idno"><i>Idx: ' + itemID + '</i></a>');
 			}
             removeEmptySectionDashboard();
-		}
+        }
 		// options to not have switch instaed of bigText on scene devices
 		let switchOnScenes = false;
 		let switchOnScenesDash = false;
@@ -135,61 +145,79 @@ function applySwitchersAndSubmenus() {
 						let title = (status == switchState.off) ? $.t('Turn On') : $.t('Turn Off');
 						let checked = (status == switchState.on) ? 'checked' : '';
 						if (switcher.length == 0) {
-							let string = '<label class="switch" title="' + title + '"><input type="checkbox"' + checked + '><span class="slider round"></span></label>';
+							let string = '<td class="switch-cell"><label class="switch" title="' + title + '"><input type="checkbox"' + checked + '><span class="slider round"></span></label></td>';
 							bigText.after(string);
+                            bigText.hide();
 						}
 						switcher.attr('title', title);
 						switcher.find('input').attr('checked', checked.length > 0);
-						bigText.css('display', 'none');
 					} else if (status == switchState.open || status == switchState.closed) {
 						let title = (status == switchState.closed) ? $.t('Open Blinds') : $.t('Close Blinds');
 						let checked = (status == switchState.open) ? 'checked' : '';
 						if (switcher.length == 0) {
-							let string = '<label class="switch" title="' + title + '"><input type="checkbox"' + checked + '><span class="slider round"></span></label>';
+							let string = '<td class="switch-cell"><label class="switch" title="' + title + '"><input type="checkbox"' + checked + '><span class="slider round"></span></label></td>';
 							bigText.after(string);
+                            bigText.hide();
 						}
 						switcher.attr('title', title);
 						switcher.find('input').attr('checked', checked.length > 0);
-						bigText.css('display', 'none');
 					} else {
-						bigText.css('display', 'block');
+                        bigText.children("span").show();
 						switcher.remove();
 					}
 					bigText.attr('data-status', status);
-					} else {
-					bigText.css('display', 'block');
 					}
 				}
 			}
 		}
 	});
-
-    if (!isMobile) {
-       /* DESKTOP */
-       /* Set nice scrollbar on status area */
-       $("#status", "tr").not(".nano").each(function() {
-            var html = $(this).html();
-            if (html.length) {
-                    $(this).html("<div class='nano-content'>" +  html.replace(/,/g, '<br/>') + "</div>");
-                    $(this).addClass("status nano");
-                    $(this).nanoScroller();
+    /* Feature - Display camera preview on dashboard */
+    if (theme.features.dashboard_camera.enabled === true){
+        $('#bigtext > span > a').each(function() {
+            camId = $(this).attr('href').split(/\'/)[3];
+            if ($(this).parents('tr.with-cam-preview').length == 0) {
+                $(this).parents('tr').attr('data-cam', camId).append('<td><img id="preview-cam' + camId + '"></td>');
+                $(this).parents('tr').attr('data-cam', camId).addClass('with-cam-preview').on('click', function(e) {
+                    ShowCameraLiveStream('Camera', $(this).attr('data-cam'));
+                }).children('td:not(#name)').hide();
             }
-       });
-    } else {
-       /* MOBILE */
-       /* Display native seleector on mobile for better usability */
-       $(".selectorlevels span.ui-selectmenu-button").each(function() {
-            $(this).hide();
-            var selectorId = $(this).attr('id').split('-',1)[0];
-            $('#'+selectorId).addClass('ui-widget ui-corner-all').show();
-            $('#'+selectorId).on("change", function(e) {
-                var selected = $(this).children("option:selected");
-                SwitchSelectorLevel($(this).attr('data-idx'), selected.text(), selected.val());
+            // Prevent flickering by preloading img first
+            $('#preview-cam' + camId).attr('src', 'camsnapshot.jpg?idx=' + camId + '?t=' +  Date.now()).on('load', function() {  
+                $(this).parents('tr').css('background-image', 'url(' + $(this).attr('src') + ')');
             });
         });
     }
+    /* Set autoscroll for long status or hide empty status */
+    $("#status", "tr").not(".scroll").each(function() {
+        var html = $(this).html();
+        if (html.length) {
+            var status = html.replace(/,/g, '<br/>');
+            if ($(this).prop('scrollHeight') > $(this).prop('clientHeight')) {
+                status = "<div class='status-content'>" + status  + "</div>";
+                $(this).addClass("scroll");
+            }
+            $(this).html(status);
+        } else {
+            $(this).hide();
+        }
+    });
+    //nativeSelectors();
+}
 
-	// console.log('Switchers loaded');
+function nativeSelectors() {
+    isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (!isMobile) return;
+
+    /* Display native selector on mobile for better usability */
+    $(".selectorlevels span.ui-selectmenu-button").each(function() {
+        $(this).hide();
+        var selectorId = $(this).attr('id').split('-',1)[0];
+        $('#'+selectorId).addClass('ui-widget ui-corner-all').show();
+        $('#'+selectorId).on("change", function(e) {
+            var selected = $(this).children("option:selected");
+            SwitchSelectorLevel($(this).attr('data-idx'), selected.text(), selected.val());
+        });
+    });
 }
 
 function enableThemeFeatures()
@@ -233,8 +261,13 @@ function loadThemeFeatureFiles(featureName) {
 
 function unloadThemeFeatureFiles(featureName)
 {
-    $('head link[href*=' + featureName + ']').remove();
-    $('head script[src*=' + featureName + ']').remove();
+    var files = theme.features[featureName].files;
+    var arrayLength = files.length;
+    for (var i = 0; i < arrayLength; i++) {
+        if(files[i].split('.').pop() == "css"){
+            $('head link[href*="' + files[i] + '"]').remove();
+        }
+    }
 }
 
 function searchFunction() {
@@ -252,39 +285,14 @@ function searchFunction() {
     removeEmptySectionDashboard();
 }
 
-function DelRow() {
-	$('#main-view div.row').each(function(){
-		x=$(this).nextAll().children().detach();
-		$(this).append(x).nextAll().remove();
-		console.log('suppression de multiple row');
-	});
-}
-
 function locationHashChanged() {
-
-  isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  if(!isMobile) {
-    if ( location.hash === "#/LightSwitches" || "#/DashBoard" ) {
-		var changeclass = false;
-		observer.disconnect();
-		observer.observe(targetedNode, {
-			childList: true,
-			subtree: true
-		});
-		
-    } else {
-			console.log('Page change for: ' + location.hash);
-		
-    }
-     $("#mSettings").removeClass("current_page_item");
-  }
-
   /* Is this screen searchable / screen with devices */
   if (location.hash == "#/Dashboard" || location.hash == "#/LightSwitches" || location.hash == "#/Scenes" || location.hash == "#/Temperature" || location.hash == "#/Weather" || location.hash == "#/Utility") {
     $("#searchInput").removeAttr('readonly');
   } else {
     $("#searchInput").attr('readonly', 'readonly');
   }
+  $(".current_page_item:not(:first)").removeClass("current_page_item");
 }
 
 function showTime(){
@@ -373,6 +381,7 @@ function timedOut(idx, value, device) {
 	}
 	timeOut[idx] = value;
 }
+
 var oldstates = [];
 function triggerChange(idx, value, device) {
 	let textmsg = device.Name + ' ' + language.is + ' ' + $.t(device.Data);
@@ -388,7 +397,6 @@ function triggerChange(idx, value, device) {
 		oldstates[idx] = value;
 }
 function getnotifications(idx, state) {
-	
 	var msg;
 	$.ajax({
 		url: 'json.htm?type=notifications&idx=' + idx + '',
@@ -440,6 +448,7 @@ function getStatus(dialog) {
 		});
 	}, 5000);
 }
+
 var adminRights = false;
 function checkauth(){
 	$.ajax({url: 'json.htm?type=command&param=getauth' , cache: false, async: false, dataType: 'json', success: function(data) {

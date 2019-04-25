@@ -68,3 +68,15 @@ header.logo {
     }
 }
 
+.scroll:before {
+  top   : 0;
+  background-image : linear-gradient(to top, rgba(81,85,88, 0), rgba(81,85,88, 1) 90%);
+}
+#bigtext, .switch-cell {
+  background: linear-gradient(to right, rgba(81,85,88, 0), rgba(81,85,88, 1) 15px) !important;
+}
+
+#holder .row .item table[id^="item"] > tbody > tr.with-cam-preview > #name {
+  background: rgba(0,0, 0, 0.2) !important;
+}
+
