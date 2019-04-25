@@ -66,6 +66,7 @@ h4,
 #weathertophtm,
 #lightcontent td,
 #utilitycontent td,
+.warning-text,
 .beforebannav,
 .machinoText,
 .mHeader,
@@ -338,6 +339,11 @@ div.bannercontent .row.divider{
     grid-template-columns:repeat(4,1fr);
     grid-auto-rows: 10vmax;
   }
+}
+
+.span3 {
+    width: 100%;
+    margin-left: 0;
 }
 
 #holder .row dzweatherwidget,
@@ -1028,10 +1034,12 @@ tr.odd td.sorting_1, tr.even td.sorting_1{
 
 .btnstyle3-dis, .btnstyle3, .btnstyle3-sel {
   background: var(--main-blue-color);
+  color: #fff;
   margin-top: 15px;
   border-radius: 2px;
 }
 .btnstyle3:disabled{
+    cursor: not-allowed;
 	background: gray;
 	border-radius: 2px;
 }
@@ -1060,11 +1068,12 @@ div#hardwarecontent,div#cameracontent,div#devicecontent,div#logcontent {
 }
 
 .label, .badge{
+    font-family: main-font-bold;
 	border-radius: 2px;
 	background-color: var(--main-blue-color);
 	background-color: var(--main-blue-color);
 	text-align: center;
-	color: #ffffff;
+    color: #fff;
 	padding-right:10px;
 	padding-left:10px;
 }
@@ -1074,6 +1083,7 @@ div#hardwarecontent,div#cameracontent,div#devicecontent,div#logcontent {
 }
 
 .ui-dialog-buttonset button {
+  font-family: main-font-bold;
   background: var(--main-blue-color) !important;
   color: white !important;
   border: none !important;
@@ -1286,22 +1296,10 @@ input#AcceptNewHardware:checked ~ button {
     margin-left: 90px;
     transform: translateX(0);
   }
-
-  .span3 {
-    width: 226px;
-  }
-}
-@media (min-width: 992px) {
-  .span3 {
-    width: 298px;
-  }
 }
 @media (min-width: 1200px) {
   .container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
     width: 1270px;
-  }
-  .span3 {
-    width: 378px;
   }
 
   #itemtablenostatus #type,
@@ -1428,13 +1426,13 @@ input.parentunrequiredchild{
 }
 .btn-default.active,
 .btn-group .btn-default.active{
-  color: var(--main-item-bg-color);
+  color: #fff;
   background: var(--main-blue-color) !important;
   border-color: var(--main-blue-color) !important;
 }
 .btn-default:hover,
 .btn-group .btn-primary{
-  color: var(--main-item-bg-color);
+  color: #fff;
   background: var(--main-blue-color) !important;
   border-color: var(--main-blue-color) !important;
   border-radius: 1px !important;
