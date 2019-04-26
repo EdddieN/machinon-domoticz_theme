@@ -1750,6 +1750,40 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
 }
 
 /* Compact mode */
+section.compact {
+    border: 1px dotted var(--main-item-bg-color);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 15px;
+}
+section.compact:before {
+    display: block;
+    position: relative;
+    top: -15px;
+    left: -25px;
+    height: 0;
+    opacity: 0.5;
+}
+section#dashSwitches.compact:before {
+    content: url(/images/lightbulb.png);
+}
+
+section#dashTemperature.compact:before {
+    content: url(/images/temperature.png);
+}
+
+section#dashWeather.compact:before {
+    content: url(/images/rain.png);
+}
+
+section#dashUtility.compact:before {
+    content: url(/images/utility.png);
+}
+
+section.compact h2 {
+    display: none;
+}
+
 section.compact .row.divider {
     display: grid;
     grid-template-columns: repeat(auto-fill, 200px);
@@ -1757,18 +1791,17 @@ section.compact .row.divider {
     row-gap: 0;
     padding: 0;
 }
+
 .span3 {
     margin: 10px;
     padding: 0;
     width: 200px;
-    min-width: 200px;
-    max-width: 200px;
 }
 
 .span3 #name {
     text-align: center;
     padding: 0;
-    border-bottom: 1px dotted var(--main-bg-color);
+    font-size: 14px;
 }
 
 .span3 .switch-cell {
@@ -1776,7 +1809,8 @@ section.compact .row.divider {
     align-self: center;
 }
 
-#dashSwitches .span3 #bigtext {
+#dashSwitches .span3 #bigtext,
+#dashUtility .span3 #bigtext {
     display: none;
 }
 
@@ -1806,5 +1840,4 @@ section.compact .row.divider {
     'img img2 status'
     'lastupdate lastupdate lastupdate';
   overflow: hidden;
-  max-width: 200px;
 }
