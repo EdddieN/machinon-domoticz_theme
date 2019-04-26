@@ -1788,6 +1788,7 @@ section.compact .row.divider {
     display: grid;
     grid-template-columns: repeat(auto-fill, 200px);
     grid-auto-flow: row dense;
+    justify-content: space-evenly;
     row-gap: 0;
     padding: 0;
 }
