@@ -317,6 +317,7 @@ div.bannercontent .row.divider{
     margin: 0 !important;
     display: grid;
     grid-auto-columns:auto;
+    grid-auto-rows: auto;
     gap:15px;
     justify-items: stretch;
     align-items: stretch;
@@ -326,24 +327,16 @@ div.bannercontent .row.divider{
 @media (max-width: 767px){
 div.bannercontent .row.divider{
     grid-template-columns:repeat(1,1fr);
-    grid-auto-rows: auto;
   }
 }
 @media (min-width: 768px) and (max-width: 1199px){
 div.bannercontent .row.divider{
     grid-template-columns:repeat(3,1fr);
-    grid-auto-rows: 140px;
   }
 }@media (min-width: 1200px){
 div.bannercontent .row.divider{
     grid-template-columns:repeat(4,1fr);
-    grid-auto-rows: 10vmax;
   }
-}
-
-.span3 {
-    width: 100%;
-    margin-left: 0;
 }
 
 #holder .row dzweatherwidget,
@@ -367,19 +360,21 @@ div.bannercontent .row.divider{
 }
 
 #holder .row .item table[id^="item"] > tbody > tr{
-  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
   display: grid;
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+  min-height: 0;
+  min-width: 0;
+}
+#holder .row .span4 table[id^="item"] > tbody > tr{
   grid-template-rows: 40px minmax(0,1fr) minmax(0,20px);
   grid-template-columns: 58px 48px minmax(0,.7fr) minmax(0,1fr) 25px 10px;
   gap: 10px;
-  min-height: 0;
-  min-width: 0;
   grid-template-areas:
     'name name bigtext bigtext bigtext options'
     'img img2 status status status status'
     'lastupdate lastupdate lastupdate lastupdate tools tools';
 }
-#holder #dashcontent .row .item table[id^="item"] > tbody > tr {
+#holder #dashcontent .row .span4 .item table[id^="item"] > tbody > tr {
   grid-template-rows: 40px minmax(0,1fr) 0;
 }
 #holder #lightcontent .row .item table[id^="item"] > tbody > tr {
@@ -447,7 +442,7 @@ div.bannercontent .row.divider{
   align-self: center;
   justify-self: right;
   text-align: right;
-  max-height: 100%;
+  max-height: 60px;
   overflow: hidden;
 }
 
@@ -1769,4 +1764,98 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
 /* author at footer */
 #copyright p:after {
     content: "  | 'Machinon' theme";
+}
+
+/* Compact mode */
+section.compact {
+    border: 1px dotted var(--main-item-bg-color);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 15px;
+}
+section.compact:before {
+    display: block;
+    position: relative;
+    top: -15px;
+    left: -25px;
+    height: 0;
+    opacity: 0.5;
+}
+section#dashSwitches.compact:before {
+    content: url(/images/lightbulb.png);
+}
+
+section#dashTemperature.compact:before {
+    content: url(/images/temperature.png);
+}
+
+section#dashWeather.compact:before {
+    content: url(/images/rain.png);
+}
+
+section#dashUtility.compact:before {
+    content: url(/images/utility.png);
+}
+
+section.compact h2 {
+    display: none;
+}
+
+section.compact .row.divider {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 200px);
+    grid-auto-flow: row dense;
+    justify-content: space-evenly;
+    row-gap: 0;
+    padding: 0;
+}
+
+.span3 {
+    margin: 10px;
+    padding: 0;
+    width: 200px;
+}
+
+.span3 #name {
+    text-align: center;
+    padding: 0;
+    font-size: 14px;
+}
+
+.span3 .switch-cell {
+    grid-area: status;
+    align-self: center;
+}
+
+#dashSwitches .span3 #bigtext,
+#dashUtility .span3 #bigtext {
+    display: none;
+}
+
+#dashWeather .span3 .status,
+#dashTemperature .span3 .status {
+    display: none;
+}
+
+#dashWeather .span3 #bigtext,
+#dashTemperature .span3 #bigtext {
+    grid-area: status;
+    padding: 0 10px;
+    align-self: center;
+    font-size: 1.4em;
+}
+
+.span #type .dimslider, .input .dimslider, .statusNormal .dimslider, .statusProtected .dimslider {
+    width: 100px !important;
+}
+
+#holder #dashcontent .row .span3 .item table[id^="item"] > tbody > tr {
+  grid-template-rows: 20px 60px 0;
+  grid-template-columns: 58px 5px 1fr;
+  gap: 5px;
+  grid-template-areas:
+    'name name name'
+    'img img2 status'
+    'lastupdate lastupdate lastupdate';
+  overflow: hidden;
 }

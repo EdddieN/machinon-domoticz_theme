@@ -13,6 +13,10 @@
             margin-left: 10px;
             margin-right: 10px;
         }
+
+        #dashcontent > section.compact {
+            width: calc(100% / 4 - 50px);
+        }
             
         #dashcontent > section > div.row.divider {
            grid-template-columns: none !important;
