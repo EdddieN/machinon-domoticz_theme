@@ -1818,13 +1818,18 @@ section.compact .row.divider {
 
 .span3 #name {
     text-align: center;
-    padding: 0;
+    padding: 2px 0;
     font-size: 14px;
+}
+
+.span3 td.input {
+    padding-right: 10px;
 }
 
 .span3 .switch-cell {
     grid-area: status;
     align-self: center;
+    padding-right: 10px;
 }
 
 #dashSwitches .span3 #bigtext,
