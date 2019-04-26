@@ -902,6 +902,10 @@ a.btnstyle {
   color: #fff;
   padding: 10px 20px;
 }
+/* Settings button, z-wave etc. */
+.label-info[href], .badge-info[href] {
+    background-color: var(--main-blue-color);
+}
 
 /* Panels */
 .btn-mini {
