@@ -923,16 +923,29 @@ a.btnstyle {
   color: #fff;
   border-radius: 1px;
 }
+.btn-success{
+  background: none;
+  border-color: #5bb75b;
+  color: #5bb75b;
+  border-radius: 1px;
+}
+.btn-success:hover{
+  background: none;
+  background-color: #5bb75b;
+  border-color: #5bb75b;
+  color: #fff;
+  border-radius: 1px;
+}
 .btn-warning{
   background: none;
   border-color: #FF8C00;
-  color: var(--main-blue-color);
+  color: #FF8C00;
   border-radius: 1px;
 }
 .btn-warning:hover{
   background: none;
   background-color: #FF8C00;
-  border-color: #FF8C0);
+  border-color: #FF8C00;
   color: #fff;
   border-radius: 1px;
 }
