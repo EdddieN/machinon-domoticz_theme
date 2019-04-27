@@ -58,6 +58,8 @@ git checkout beta
 
 ![Idea of theme machinon](/idea_domoticz_machinon.jpg)
 
+![Dark Theme](/dark%20theme.png)
+
 Suggested new setup layout - partly implemented
 ![Suggested new Setup layout - not implemented yet](/images/unorganised/screen_references/setup.png)
 
