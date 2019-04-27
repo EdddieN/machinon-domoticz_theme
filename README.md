@@ -58,7 +58,11 @@ git checkout beta
 
 ![Idea of theme machinon](/idea_domoticz_machinon.jpg)
 
+Dark Theme
 ![Dark Theme](/dark%20theme.png)
+
+Compact Dashboard with camera
+![Compact Dashboatd camera](/Compact%20dash.png)
 
 Suggested new setup layout - partly implemented
 ![Suggested new Setup layout - not implemented yet](/images/unorganised/screen_references/setup.png)
