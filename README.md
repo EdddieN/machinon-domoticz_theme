@@ -9,9 +9,9 @@ https://github.com/EdddieN/machinon
 
 ToDo
 - [X]   In Progress
-- [ ] 1.- Selector boxes, need update design -> Eddie
-- [ ] 2.- Hardware page and devices need updating -> guidelines in Zeplin
-- [X] 3.- Tiles with new text and bigger size values -> Eddie -> Zeplin
+- [X] 1.- Selector boxes, need update design
+- [X] 2.- Hardware page and devices need updating 
+- [X] 3.- Tiles with new text and bigger size values
 - [X] 4.- Settings page re-design -> Eddie 
 - [X] 5.- When a device is offline the tile should fade off, is this possible? -> Zeplin
 - [X] 6.- Timers screen -> Eddie -> Zeplin
@@ -21,7 +21,7 @@ ToDo
 Ideas (wish list)
 - [ ]   In Progress
 - [ ] 1.- Custom merge multiple metrics into one tile (ie: energy + trigger switch)
-- [X] 2.- Dark theme -> Work in progress
+- [X] 2.- Dark theme 
 
 
 ## Installing
@@ -64,7 +64,7 @@ Dark Theme
 Compact Dashboard with camera
 ![Compact Dashboatd camera](/Compact%20dash.png)
 
-Suggested new setup layout - partly implemented
+New setup layout
 ![Suggested new Setup layout - not implemented yet](/images/unorganised/screen_references/setup.png)
 
 ## Cache problems:
