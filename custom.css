@@ -1431,9 +1431,10 @@ input.parentunrequiredchild{
 }
 .btn-default,
 .btn-group .btn-default{
-  background: none !important;
+  text-shadow: none !important;
+  background: var(--main-item-bg-color) !important;
   color: var(--main-blue-color);
-  border-color: var(--main-item-bg-color) !important;
+  border-color: var(--main-blue-color) !important;
   border-radius: 1px !important;
 }
 .btn-default.active,
