@@ -650,9 +650,9 @@ body {
   color: var(--main-text-color);
 }
 
-a:link {
+/* a:link {
   color: inherit;
-}
+} */
 
 /* Header */
 header.logo {
@@ -912,14 +912,14 @@ a.btnstyle {
 .btn-primary{
   background: none;
   border-color: var(--main-blue-color);
-  color: var(--main-blue-color);
+  color: var(--main-blue-color) !important;
   border-radius: 1px;
 }
 .btn-primary:hover{
   background: none;
   background-color: var(--main-blue-color);
   border-color: var(--main-blue-color);
-  color: #fff;
+  color: #fff !important;
   border-radius: 1px;
 }
 .btn-success{
@@ -932,20 +932,20 @@ a.btnstyle {
   background: none;
   background-color: #5bb75b;
   border-color: #5bb75b;
-  color: #fff;
+  color: #fff !important;
   border-radius: 1px;
 }
 .btn-warning{
   background: none;
   border-color: #FF8C00;
-  color: #FF8C00;
+  color: #FF8C00 !important;
   border-radius: 1px;
 }
 .btn-warning:hover{
   background: none;
   background-color: #FF8C00;
   border-color: #FF8C00;
-  color: #fff;
+  color: #fff !important;
   border-radius: 1px;
 }
 .btn-info{
@@ -961,6 +961,9 @@ a.btnstyle {
   border-color: var(--main-blue-color);
   color: var(--main-blue-color);
   border-radius: 1px;
+}
+.btn-info:visited{
+  color: #fff;
 }
 .btn-danger{
   background: none;
