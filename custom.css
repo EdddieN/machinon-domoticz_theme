@@ -650,9 +650,9 @@ body {
   color: var(--main-text-color);
 }
 
-/* a:link {
+a:link {
   color: inherit;
-} */
+}
 
 /* Header */
 header.logo {
