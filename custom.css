@@ -891,8 +891,19 @@ a.btnstyle {
 /* Reset theme button */ 
 .resetbtn,
 .resetbtn:hover {
+  background-color: #c74343;
+  border: 2px solid #c74343 !important;
+  border-radius: 2px;
+  color: #fff;
+  padding: 10px 20px;
+}
+button.resetbtn:active {
+  border: 2px solid #fff !important;
+}
+.savebtn,
+.savebtn:hover {
   background-color: var(--main-blue-color);
-  border: none !important;
+  border: 2px solid var(--main-blue-color) !important;
   border-radius: 2px;
   color: #fff;
   padding: 10px 20px;
