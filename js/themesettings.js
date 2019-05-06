@@ -116,6 +116,7 @@ function addImgInsteadofIcon() {
             console.log(theme[this.name]);
     });
     localStorage.setObject(themeFolder + ".themeSettings", theme);
+    storeUserVariableThemeSettings('update');
 }
 function loadSettingsHTML(){
 	addHtmlTab();
