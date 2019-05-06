@@ -335,7 +335,7 @@ div.bannercontent .row.divider{
     margin: 0 !important;
     display: grid;
     grid-auto-columns:auto;
-    grid-auto-rows: auto;
+    grid-auto-rows: 1fr;
     gap:15px;
     justify-items: stretch;
     align-items: stretch;
