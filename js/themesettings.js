@@ -272,7 +272,7 @@ function loadSettings() {
 		}
 	}
 }
-
+var unableCreateUserVariable = false;
 function checkUserVariableThemeSettings() {
     $.ajax({
         url: "/json.htm?type=command&param=getuservariables",
@@ -303,7 +303,11 @@ function checkUserVariableThemeSettings() {
                 });
                                 
                 if(didDomoticzHaveSettings === false){
-                    storeUserVariableThemeSettings("add");
+                    if (unableCreateUserVariable = false){
+                        storeUserVariableThemeSettings("add");
+                    }else{
+                        storeUserVariableThemeSettings("save");
+                    }
                 }                
             }           
         },
@@ -332,6 +336,7 @@ function storeUserVariableThemeSettings(action){ // 'add' or 'update'
             success: function (data) {
                 if (data.status == "ERR") {
                     bootbox.alert("Unable to create or update theme settings uservariable, Try to reset the theme");
+		    unableCreateUserVariable = true
                 }
                 // If we got good data from Domoticz.
                 if (data.status == "OK") {
