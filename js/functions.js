@@ -132,6 +132,7 @@ function applySwitchersAndSubmenus() {
 			}
             removeEmptySectionDashboard();
         }
+
 		// options to not have switch instaed of bigText on scene devices
 		let switchOnScenes = false;
 		let switchOnScenesDash = false;
@@ -173,7 +174,30 @@ function applySwitchersAndSubmenus() {
 				}
 			}
 		}
+        
+        if (theme.features.icon_image.enabled === true){
+            var icons = theme.icons
+            for (var i = 0; i < icons.length; i++) {
+                if ($('#dashcontent').length == 0) {
+                   var deviceItem = $(this).closest('#' + icons[i].idx);
+                   var IDX = icons[i].idx
+                }else{
+                    var deviceItem = $(this).closest('#light_' + icons[i].idx);
+                    var IDX = 'light_' + icons[i].idx
+                }
+                if (deviceItem.attr('id') === IDX){
+                    if (status == switchState.on){
+                    $(this).find('table tr #img img').attr("src", $(this).find('table tr #img img').attr("src").replace("images/Light48_On.png", 'images/' + icons[i].img));
+                        $(this).find('table tr #img img').addClass('userOn');
+                    }else{
+                        $(this).find('table tr #img img').attr("src", $(this).find('table tr #img img').attr("src").replace("images/Light48_Off.png", 'images/' + icons[i].img));
+                        $(this).find('table tr #img img').addClass('user');
+                    }
+                }
+            }
+        }
 	});
+    
     /* Feature - Display camera preview on dashboard */
     if (theme.features.dashboard_camera.enabled === true){
         $('#bigtext > span > a').each(function() {
