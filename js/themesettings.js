@@ -76,9 +76,9 @@ function addIconshtml(){
     html += '<div id="icons">';
     html += '<h2>Image instead of icons:</h2>';
     html += '<p>Change or add new <code>{"idx":"35","img":"IMG_0138.jpg"}</code> No comma at the end!</br>';
-    html += 'Only works with light devices and lightbulb as icon.</br>Upload your images to images folder in machinon theme folder</p>';
+    html += 'Only works with light devices and lightbuld as icon.</br>Upload your images to images folder in machinon theme folder</p>';
     html += '<p><input id="themevar32" name="themevar32" value="icon_image" type="checkbox" class="parentrequired"><label for="themevar32" data-i18n="Images Instead of Icons"> Images Instead of Icons</label></br></br>';
-    html += '<textarea rows="6" cols="50" id="myTextarea" name="icons" class="parentrequiredchild myTextarea ui-widget-content ui-corner-all">' + code + '</textarea></p>';
+    html += '<textarea rows="6" cols="50" id="textareaIcons" name="icons" class="parentrequiredchild textareaIcons ui-widget-content ui-corner-all">' + code + '</textarea></p>';
     html += '</br></br>'
     html += '<p><button type="button" class="savebtn" onclick="addImgInsteadofIcon()">'+ $.t('Add') +'</button></p>';
     html += '</div></div>';
@@ -93,7 +93,7 @@ function addIconshtml(){
     $('#tabtheme').append(html);
 }
 function addImgInsteadofIcon() {
-  	$('#tabtheme #myTextarea').each(function(){    
+  	$('#tabtheme #textareaIcons').each(function(){    
 			var value = $(this).val();
             value = '[' + value + ']';
 			theme[this.name] = JSON.parse(value);
@@ -332,7 +332,7 @@ function storeUserVariableThemeSettings(action){ // 'add' or 'update'
             custom.push(theme.button_name);
             custom.push(theme.custom_url);
             custom.push(theme.logo);
-	    custom.push(theme.icons);
+            custom.push(theme.icons);
         }
         
         var variableURL = 'json.htm?type=command&param=' + action + 'uservariable&vname=theme-' + themeFolder + '-custom&vtype=2&vvalue='+ JSON.stringify(custom);
@@ -411,7 +411,7 @@ function getCustomThemeSettings(idx){
                 theme.button_name = customThemeSettings[1];
                 theme.custom_url = customThemeSettings[2];
                 theme.logo = customThemeSettings[3];
-		theme.icons = customThemeSettings[4];
+                theme.icons = customThemeSettings[4];
                 
                 localStorage.setObject(themeFolder + ".themeSettings", theme); // save loaded preferences in local object.
                 userVariableThemeLoaded = true;
