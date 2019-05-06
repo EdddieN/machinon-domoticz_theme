@@ -303,7 +303,7 @@ function checkUserVariableThemeSettings() {
                 });
                                 
                 if(didDomoticzHaveSettings === false){
-                    if (unableCreateUserVariable = false){
+                    if (unableCreateUserVariable == false){
                         storeUserVariableThemeSettings("add");
                     }else{
                         storeUserVariableThemeSettings("save");
