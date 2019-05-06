@@ -76,7 +76,7 @@ function addIconshtml(){
     html += '<div id="icons">';
     html += '<h2>Image instead of icons:</h2>';
     html += '<p>Change or add new <code>{"idx":"35","img":"IMG_0138.jpg"}</code> No comma at the end!</br>';
-    html += 'Only works with light devices and lightbuld as icon.</br>Upload your images to images folder in machinon theme folder</p>';
+    html += 'Only works with light devices and lightbulb as icon.</br>Upload your images to images folder in machinon theme folder</p>';
     html += '<p><input id="themevar32" name="themevar32" value="icon_image" type="checkbox" class="parentrequired"><label for="themevar32" data-i18n="Images Instead of Icons"> Images Instead of Icons</label></br></br>';
     html += '<textarea rows="6" cols="50" id="myTextarea" name="icons" class="parentrequiredchild myTextarea ui-widget-content ui-corner-all">' + code + '</textarea></p>';
     html += '</br></br>'
