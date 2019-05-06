@@ -2,6 +2,9 @@
 #holder #dashcontent .row .item table[id^="item"] > tbody > tr {
   grid-template-rows: 40px minmax(0,1fr) 20px !important;
 }
+#holder #dashcontent .row .span3 .item table[id^="item"] > tbody > tr {
+  grid-template-rows: 20px 60px 20px !important;
+}
 
 #dashcontent .lastupdate,
 #dashcontent #lastupdate,
