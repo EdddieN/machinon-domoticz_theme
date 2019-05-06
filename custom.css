@@ -78,6 +78,24 @@ h4,
 #aboutcontent #canvas2 {
 	display:none;
 }
+.user {
+  display: block;
+  opacity: 0.4;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+
+  object-fit: cover;
+}
+.userOn {
+  display: block;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+
+  object-fit: cover;
+}
+
 /* logpage */
 #logdata,
 #logdata_status,
@@ -524,7 +542,7 @@ body table#itemtable tr > .options {
 .item .img img,
 .item #img img {
   width: 48px;
-  height: auto;
+  height: 48px;
 }
 .item #img1 img {
   height: auto;
@@ -888,7 +906,7 @@ a.btnstyle {
 }
 
 
-/* Reset theme button */ 
+/* Reset/save theme button */ 
 .resetbtn,
 .resetbtn:hover {
   background-color: #c74343;
@@ -907,6 +925,9 @@ button.resetbtn:active {
   border-radius: 2px;
   color: #fff;
   padding: 10px 20px;
+}
+button.savebtn:active {
+  border: 2px solid #fff !important;
 }
 /* Settings button, z-wave etc. */
 .label-info[href], .badge-info[href] {
@@ -1347,6 +1368,7 @@ input.parentunrequiredchild{
 }
 /* if a sub-setting needs the parent settings to be checked. */
 #settingscontent input.parentrequired:not(:checked) ~ input.parentrequiredchild,
+#settingscontent input.parentrequired:not(:checked) ~ textarea.parentrequiredchild,
 #settingscontent input.parentrequired:not(:checked) ~ input.parentrequiredchild + label{
 	color: #D3D3D3;
 }
@@ -1533,6 +1555,11 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
   flex-basis: 500px;
   width: auto;
   flex-grow:1;
+}
+#textareaIcons {
+    resize: none;
+    width:100%;
+    min-height: 200px;
 }
 
 /* Selector */

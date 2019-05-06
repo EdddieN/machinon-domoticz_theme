@@ -3,7 +3,7 @@
     "name": "Machinon",
     "description": "Machinon custom theme, simple and light",
     "license": "GPL-2.0+",
-    "version":"1.7.5",
+    "version":"1.8.0",
     "author": "EdddieN",
     "homepage": "https://www.machinon.com",
     "wiki": "https://www.domoticz.com/wiki/Machinon_Theme",
@@ -11,6 +11,11 @@
     "logo": "",
     "custom_url": "https://www.domoticz.com",
     "button_name": "Custom Page",
+    "icons": [
+        {"idx":"36","img":"IMG_0138.jpg"},
+        {"idx":"38","img":"IMG_0137.jpg"},
+        {"idx":"94","img":"IMG_0263.JPG"}
+        ],
     "features": {
         "dark_theme": {
             "id":10,
@@ -96,6 +101,16 @@
             "id":31,
             "enabled":true,
             "files": ["dashboard_camera.css"]
+        },
+    "icon_image": {
+            "id":32,
+            "enabled":false,
+            "files": []
+        },
+    "center_popups": {
+            "id":33,
+            "enabled":false,
+            "files": ["center_popups.css"]
         }
     }
 }
