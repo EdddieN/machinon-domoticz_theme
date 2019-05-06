@@ -947,7 +947,7 @@ button.savebtn:active {
   color: var(--main-blue-color) !important;
   border-radius: 1px;
 }
-.btn-primary:hover{
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
   background: none;
   background-color: var(--main-blue-color);
   border-color: var(--main-blue-color);
@@ -1456,6 +1456,7 @@ input.parentunrequiredchild{
   margin: 0 0 0 -1px !important;
   text-shadow: none !important;
   color: #ccccccff;
+  font-family: main-font;
   box-shadow: none;
   border-width: 0.1em !important;
   border-color: #ccc !important;
@@ -1473,6 +1474,8 @@ input.parentunrequiredchild{
   border-color: var(--main-blue-color) !important;
   border-radius: 1px !important;
 }
+.btn.btn-selected,
+.btn-group .btn-selected,
 .btn-default.active,
 .btn-group .btn-default.active{
   color: #fff;
@@ -1582,7 +1585,8 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
 
 .ui-selectmenu-text {
     color:var(--main-blue-color);
-    font-family: main-font;
+    font-family: main-font-bold;
+    font-weight: 600;
 }
 
 .ui-button:hover > .ui-selectmenu-text, .ui-button:focus > .ui-selectmenu-text, .ui-selectmenu-button-open > .ui-selectmenu-text {
@@ -1866,6 +1870,50 @@ section.compact .row.divider {
 
 .span3 td.input {
     padding-right: 10px;
+    width: calc(100% - 10px);
+}
+
+.span3 td.input .dimslider, .span3 .statusNormal .dimslider, .span3 .statusProtected .dimslider {
+    width: 100px !important;
+}
+
+.span3 td.input .btn-group {
+    white-space: normal;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin-left: 2px;
+    margin-top: 0 !important;
+    height: 50px;
+    width: calc(100% - 5px);
+    scrollbar-width: thin;
+    background: var(--main-bg-item-color) !important;
+}
+.span3 td.input .btn-group::-webkit-scrollbar {
+    width: 3px;
+}
+
+.span3 td.input .btn-group button {
+    width: 100%;
+    display: none;
+}
+.span3 td.input .btn-group button.btn-selected {
+    display: block;
+    height: 100%;
+    border: 0 !important;
+    color: var(--main-blue-color);
+    background: var(--main-item-bg-color) !important;
+    font-family: main-font;
+    font-size: 18px;
+    text-align: right;
+    padding-right: 0;
+}
+
+.span3 td.input .btn-group:hover button {
+    display: block;
+}
+
+.span3 td.input .btn-group:hover button.btn-selected {
+    display: none;
 }
 
 .span3 .switch-cell {
@@ -1890,10 +1938,6 @@ section.compact .row.divider {
     padding: 0 10px;
     align-self: center;
     font-size: 1.4em;
-}
-
-.span #type .dimslider, .input .dimslider, .statusNormal .dimslider, .statusProtected .dimslider {
-    width: 100px !important;
 }
 
 #holder #dashcontent .row .span3 .item table[id^="item"] > tbody > tr {

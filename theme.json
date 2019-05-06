@@ -10,7 +10,7 @@
     "standby_after": 10,
     "logo": "",
     "custom_url": "https://www.domoticz.com",
-    "button_name": "Custom Page",
+    "button_name": "Domoticz",
     "icons": [
         {"idx":"36","img":"IMG_0138.jpg"},
         {"idx":"38","img":"IMG_0137.jpg"},
