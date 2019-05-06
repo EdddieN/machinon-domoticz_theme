@@ -93,6 +93,15 @@ function addIconshtml(){
     $('#tabtheme').append(html);
 }
 function addImgInsteadofIcon() {
+    try {
+        JSON.parse("[" + $('#tabtheme #textareaIcons').val() + "]");
+    } catch (e) {
+        bootbox.alert({
+            message: '<p>Data not saved!</p><p>Please check the syntax. Be sure you didn\'t add a comma at the end! <p>',
+            title: 'Syntax error',
+        });
+        return false;
+    }
   	$('#tabtheme #textareaIcons').each(function(){    
 			var value = $(this).val();
             value = '[' + value + ']';
