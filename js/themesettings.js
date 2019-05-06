@@ -332,6 +332,7 @@ function storeUserVariableThemeSettings(action){ // 'add' or 'update'
             custom.push(theme.button_name);
             custom.push(theme.custom_url);
             custom.push(theme.logo);
+	    custom.push(theme.icons);
         }
         
         var variableURL = 'json.htm?type=command&param=' + action + 'uservariable&vname=theme-' + themeFolder + '-custom&vtype=2&vvalue='+ JSON.stringify(custom);
@@ -410,6 +411,7 @@ function getCustomThemeSettings(idx){
                 theme.button_name = customThemeSettings[1];
                 theme.custom_url = customThemeSettings[2];
                 theme.logo = customThemeSettings[3];
+		theme.icons = customThemeSettings[4];
                 
                 localStorage.setObject(themeFolder + ".themeSettings", theme); // save loaded preferences in local object.
                 userVariableThemeLoaded = true;
