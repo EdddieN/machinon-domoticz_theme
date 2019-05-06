@@ -113,7 +113,6 @@ function addImgInsteadofIcon() {
 			var value = $(this).val();
             value = '[' + value + ']';
 			theme[this.name] = JSON.parse(value);
-            console.log(theme[this.name]);
     });
     localStorage.setObject(themeFolder + ".themeSettings", theme);
     storeUserVariableThemeSettings('update');
