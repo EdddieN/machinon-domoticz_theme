@@ -1556,7 +1556,7 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
   width: auto;
   flex-grow:1;
 }
-#myTextarea {
+#textareaIcons {
     resize: none;
     width:100%;
     min-height: 200px;
