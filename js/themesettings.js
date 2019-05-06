@@ -69,28 +69,35 @@ function addHtmlTab(){
 
 function addIconshtml(){
     var code = JSON.stringify(theme.icons);
-    code = code.replace('[','').replace(']','');
-    var html = '';
-    html += '<div class="row-fluid">'
-    html += '<div class="span6">';
-    html += '<div id="icons">';
-    html += '<h2>Image instead of icons:</h2>';
-    html += '<p>Change or add new <code>{"idx":"35","img":"YOUR_IMAGE.jpg"}</code> No comma at the end!</br>';
-    html += 'Only works with light devices and lightbuld as icon.</br>Upload your images to images folder in machinon theme folder</p>';
-    html += '<p><input id="themevar32" name="themevar32" value="icon_image" type="checkbox" class="parentrequired"><label for="themevar32" data-i18n="Images Instead of Icons"> Images Instead of Icons</label></br></br>';
-    html += '<textarea rows="6" cols="50" id="textareaIcons" name="icons" class="parentrequiredchild textareaIcons ui-widget-content ui-corner-all">' + code + '</textarea></p>';
-    html += '</br></br>'
-    html += '<p><button type="button" class="savebtn" onclick="addImgInsteadofIcon()">'+ $.t('Add') +'</button></p>';
-    html += '</div></div>';
-    html += '<div class="span6">';
-    html += '<h2>Logo:</h2>';
-    html += '<p>Add your own logo. Leave empty for Machinon logo. Upload your logo to images folder in machinon theme folder (recommended size 200x30px).<br/>';
-    html += '<label for="themevar17" data-i18n="logo"> Logo: </label><input id="themevar17" class="themevar17 ui-widget-content ui-corner-all" name="logo" value="logo.png" type="text"></p>';
-    html += '</br>';
-    html += '<h3>Save/Reset theme:</h3></br>';
-    html += '<p><button class="resetbtn" id="themeResetButton" data-i18n="Reset theme">Reset Theme</button> <button class="savebtn" id="saveSettingsButton" data-i18n="Save Theme Settings">Save Theme Settings</button></p>';
-    html += '</div></div>';
-    $('#tabtheme').append(html);
+    if (typeof code === 'undefined'){
+        bootbox.alert({
+            message: '<p>Please reset the theme by clicking here:</p><p><a onClick="resetTheme(); return false;" href=""><button class="btn btn-info">Reset theme</button></a></p><p>(or find the theme reset button on the theme settings page)<p>',
+            title: 'Congratulations on the theme upgrade!',
+        });     
+    }else{
+        code = code.replace('[','').replace(']','');
+        var html = '';
+        html += '<div class="row-fluid">'
+        html += '<div class="span6">';
+        html += '<div id="icons">';
+        html += '<h2>Image instead of icons:</h2>';
+        html += '<p>Change or add new <code>{"idx":"35","img":"IMG_0138.jpg"}</code> No comma at the end!</br>';
+        html += 'Only works with light devices and lightbuld as icon.</br>Upload your images to images folder in machinon theme folder</p>';
+        html += '<p><input id="themevar32" name="themevar32" value="icon_image" type="checkbox" class="parentrequired"><label for="themevar32" data-i18n="Images Instead of Icons"> Images Instead of Icons</label></br></br>';
+        html += '<textarea rows="6" cols="50" id="textareaIcons" name="icons" class="parentrequiredchild textareaIcons ui-widget-content ui-corner-all">' + code + '</textarea></p>';
+        html += '</br></br>'
+        html += '<p><button type="button" class="savebtn" onclick="addImgInsteadofIcon()">'+ $.t('Add') +'</button></p>';
+        html += '</div></div>';
+        html += '<div class="span6">';
+        html += '<h2>Logo:</h2>';
+        html += '<p>Add your own logo. Leave empty for Machinon logo. Upload your logo to images folder in machinon theme folder (recommended size 200x30px).<br/>';
+        html += '<label for="themevar17" data-i18n="logo"> Logo: </label><input id="themevar17" class="themevar17 ui-widget-content ui-corner-all" name="logo" value="logo.png" type="text"></p>';
+        html += '</br>';
+        html += '<h3>Save/Reset theme:</h3></br>';
+        html += '<p><button class="resetbtn" id="themeResetButton" data-i18n="Reset theme">Reset Theme</button> <button class="savebtn" id="saveSettingsButton" data-i18n="Save Theme Settings">Save Theme Settings</button></p>';
+        html += '</div></div>';
+        $('#tabtheme').append(html);
+    }
 }
 function addImgInsteadofIcon() {
     try {
