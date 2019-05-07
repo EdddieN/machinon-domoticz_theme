@@ -1860,12 +1860,17 @@ section.compact .row.divider {
 }
 
 .span3 td.input {
-    padding-right: 10px;
+    padding: 10px;
     width: calc(100% - 10px);
+    align-self: start;
 }
 
 .span3 td.input .dimslider, .span3 .statusNormal .dimslider, .span3 .statusProtected .dimslider {
-    width: 100px !important;
+    width: 100% !important;
+    position: relative;
+    bottom: 0;
+    right: 0;
+    margin: 0 !important;
 }
 
 .span3 td.input .btn-group {
@@ -1908,7 +1913,7 @@ section.compact .row.divider {
 
 .span3 .switch-cell {
     grid-area: status;
-    align-self: center;
+    align-self: end;
     padding-right: 10px;
 }
 
