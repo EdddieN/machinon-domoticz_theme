@@ -1819,18 +1819,7 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
 
 /* Compact mode */
 section.compact {
-    border: 1px dotted var(--main-item-bg-color);
-    border-radius: 10px;
-    padding: 10px;
-    margin: 15px;
-}
-section.compact:before {
-    display: block;
-    position: relative;
-    top: -15px;
-    left: -25px;
-    height: 0;
-    opacity: 0.5;
+    margin-bottom: 20px;
 }
 
 section.compact h2 {
@@ -1862,6 +1851,7 @@ section.compact .row.divider {
 .span3 td.input {
     padding: 10px;
     width: calc(100% - 10px);
+    max-width: 100px;
     align-self: center;
 }
 
@@ -1912,18 +1902,19 @@ section.compact .row.divider {
 }
 
 .span3 td.switch-cell~td.input {
-    align-self: start;
+    align-self: end;
 }
 
 .span3 .switch-cell {
     grid-area: status;
-    align-self: end;
-    padding-right: 10px;
+    align-self: start;
+    padding: 0 10px;
 }
 
 #dashSwitches .span3 #bigtext,
 #dashWeather .span3 .status,
-#dashTemperature .span3 .status {
+#dashTemperature .span3 .status,
+#dashUtility .span3 .item:not(.Text):not(.Alert) .status {
     display: none;
 }
 
