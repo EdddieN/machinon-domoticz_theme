@@ -1862,7 +1862,7 @@ section.compact .row.divider {
 .span3 td.input {
     padding: 10px;
     width: calc(100% - 10px);
-    align-self: start;
+    align-self: center;
 }
 
 .span3 td.input .dimslider, .span3 .statusNormal .dimslider, .span3 .statusProtected .dimslider {
@@ -1909,6 +1909,10 @@ section.compact .row.divider {
 
 .span3 td.input .btn-group:hover button.btn-selected {
     display: none;
+}
+
+.span3 td.switch-cell~td.input {
+    align-self: start;
 }
 
 .span3 .switch-cell {
