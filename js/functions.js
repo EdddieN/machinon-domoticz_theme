@@ -209,9 +209,11 @@ function applySwitchersAndSubmenus() {
                 }).children('td:not(#name)').hide();
             }
             // Prevent flickering by preloading img first
-            $('#preview-cam' + camId).attr('src', 'camsnapshot.jpg?idx=' + camId + '?t=' +  Date.now()).on('load', function() {  
-                $(this).parents('tr').css('background-image', 'url(' + $(this).attr('src') + ')');
-            });
+            if (isDocumentVisible()) {
+                $('#preview-cam' + camId).attr('src', 'camsnapshot.jpg?idx=' + camId + '?t=' +  Date.now()).on('load', function() {  
+                    $(this).parents('tr').css('background-image', 'url(' + $(this).attr('src') + ')');
+                });
+            }
         });
     }
     /* Set autoscroll for long status or hide empty status */
@@ -496,4 +498,12 @@ function removeEmptySectionDashboard() {
                 $(this).hide();
             }
     });
+}
+
+function isDocumentVisible() {
+    if(document.visibilityState == "hidden") {
+        return false;
+    } else {
+        return true;
+    }  
 }

@@ -346,12 +346,16 @@ div.bannercontent .row.divider{
 div.bannercontent .row.divider{
     grid-template-columns:repeat(1,1fr);
   }
+.span3{
+    width: 100% !important;
+  }
 }
 @media (min-width: 768px) and (max-width: 1199px){
 div.bannercontent .row.divider{
     grid-template-columns:repeat(3,1fr);
   }
-}@media (min-width: 1200px){
+}
+@media (min-width: 1200px){
 div.bannercontent .row.divider{
     grid-template-columns:repeat(4,1fr);
   }
@@ -593,6 +597,7 @@ body table#itemtable tr > .options {
 }
 .selectorlevels {
   font-size: 15px;
+  text-align: right;
 }
 .selectorlevels > select {
   padding: 5px;
@@ -985,13 +990,13 @@ button.savebtn:active {
   background: none;
   background-color: var(--main-blue-color);
   border-color: var(--main-blue-color);
-  color: #fff;
+  color: #fff !important;
   border-radius: 1px;
 }
 .btn-info:hover{
   background: none;
   border-color: var(--main-blue-color);
-  color: var(--main-blue-color);
+  color: var(--main-blue-color) !important;
   border-radius: 1px;
 }
 .btn-info:visited{
@@ -1827,21 +1832,6 @@ section.compact:before {
     height: 0;
     opacity: 0.5;
 }
-section#dashSwitches.compact:before {
-    content: url(/images/lightbulb.png);
-}
-
-section#dashTemperature.compact:before {
-    content: url(/images/temperature.png);
-}
-
-section#dashWeather.compact:before {
-    content: url(/images/rain.png);
-}
-
-section#dashUtility.compact:before {
-    content: url(/images/utility.png);
-}
 
 section.compact h2 {
     display: none;
@@ -1852,12 +1842,12 @@ section.compact .row.divider {
     grid-template-columns: repeat(auto-fill, 200px);
     grid-auto-flow: row dense;
     justify-content: space-evenly;
-    row-gap: 0;
+    row-gap: 20px;
     padding: 0;
 }
 
 .span3 {
-    margin: 10px;
+    margin: 0;
     padding: 0;
     width: 200px;
 }
@@ -1880,12 +1870,10 @@ section.compact .row.divider {
 
 .span3 td.input .btn-group {
     white-space: normal;
-    overflow-x: hidden;
-    overflow-y: auto;
     margin-left: 2px;
     margin-top: 0 !important;
     height: 50px;
-    width: calc(100% - 5px);
+    width: 100%;
     scrollbar-width: thin;
     background: var(--main-bg-item-color) !important;
 }
@@ -1911,6 +1899,7 @@ section.compact .row.divider {
 
 .span3 td.input .btn-group:hover button {
     display: block;
+    margin-left: 0 !important;
 }
 
 .span3 td.input .btn-group:hover button.btn-selected {
@@ -1924,17 +1913,15 @@ section.compact .row.divider {
 }
 
 #dashSwitches .span3 #bigtext,
-#dashUtility .span3 #bigtext {
-    display: none;
-}
-
 #dashWeather .span3 .status,
 #dashTemperature .span3 .status {
     display: none;
 }
 
+#dashScenes .span3 #bigtext,
 #dashWeather .span3 #bigtext,
-#dashTemperature .span3 #bigtext {
+#dashTemperature .span3 #bigtext,
+#dashUtility .span3 #bigtext {
     grid-area: status;
     padding: 0 10px;
     align-self: center;
