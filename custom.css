@@ -1126,6 +1126,12 @@ div#hardwarecontent,div#cameracontent,div#devicecontent,div#logcontent {
     width: auto;
 }
 
+.devices-filters__group-title {
+    border-color: var(--main-blue-color);
+    background-color: var(--main-item-bg-color);
+    color: var(--main-secondary-text-color);
+}
+
 .label, .badge{
     font-family: main-font-bold;
 	border-radius: 2px;
@@ -1853,6 +1859,10 @@ section.compact .row.divider {
     font-size: 14px;
     text-overflow: ellipsis;
     overflow: hidden;
+}
+
+.span3 #status {
+    color: var(--main-blue-color);
 }
 
 .span3 td.input {
