@@ -121,13 +121,15 @@ h4,
     background-color: var(--main-item-bg-color)!important;
 }
 #popup_setpoint{
-    font-family: main-font;
+    font-family: main-font-bold;
     color: var(--main-blue-color)!important;
     border-color: var(--main-item-bg-color)!important;
     background: var(--main-item-bg-color)!important;
 }
 .ui-close{
     background: url(../images/Close.png);
+    width: 32px;
+    height: 32px;
 }
 .ui-close:hover {
     background-position: 0 0px
@@ -349,6 +351,9 @@ div.bannercontent .row.divider{
 .span3{
     width: 100% !important;
   }
+.span3 td.input {
+    max-width: 100% !important;
+  }
 }
 @media (min-width: 768px) and (max-width: 1199px){
 div.bannercontent .row.divider{
@@ -409,7 +414,7 @@ div.bannercontent .row.divider{
 .item #name {
   padding: 10px 0 0 10px;
   color: var(--main-text-color);
-  line-height: 20px;
+  line-height: 18px;
   grid-area: name;
   white-space: nowrap;
 }
@@ -607,6 +612,7 @@ body table#itemtable tr > .options {
 }
 .selectorlevels > span {
   max-width: -webkit-fill-available;
+  padding: 0;
 }
 
 /* Time Ago */
@@ -1849,7 +1855,7 @@ section.compact .row.divider {
 }
 
 .span3 td.input {
-    padding: 10px;
+    padding: 10px 15px;
     width: calc(100% - 10px);
     max-width: 100px;
     align-self: center;
