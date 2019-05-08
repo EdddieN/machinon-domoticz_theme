@@ -69,6 +69,10 @@ body.dashMobile table.mobileitem td.status{
 body.dashMobile table.mobileitem .status > span > span{
     margin-right:7px;
 }
+body.dashMobile table.mobileitem .btn-group{
+    white-space: normal;
+    padding: 10px 5px;
+}
 body.dashMobile table.mobileitem .btn-mini{
     margin-left: 2px;
     font-family: main-font-bold;

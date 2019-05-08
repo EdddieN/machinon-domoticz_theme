@@ -477,6 +477,7 @@ div.bannercontent .row.divider{
 .options-cell {
   padding-right:5px;
   color: var(--secondary-text-color);
+  background: var(--main-item-bg-color);
   cursor: pointer;
   grid-area: options;
   justify-self: left;
@@ -1469,7 +1470,7 @@ input.parentunrequiredchild{
   color: #ccccccff;
   font-family: main-font;
   box-shadow: none;
-  border-width: 0.1em !important;
+  border-width: 1px !important;
   border-color: #ccc !important;
   border-style: solid !important;
 }
