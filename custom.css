@@ -348,9 +348,6 @@ div.bannercontent .row.divider{
 div.bannercontent .row.divider{
     grid-template-columns:repeat(1,1fr);
   }
-.span3{
-    width: 100% !important;
-  }
 .span3 td.input {
     max-width: 100% !important;
   }
@@ -419,11 +416,6 @@ div.bannercontent .row.divider{
   white-space: nowrap;
 }
 
-@media (min-width: 1200px) {
-  .item #name {
-    font-size: 16px;
-  }
-}
 /* bigtext */
 .item #bigtext {
   color: var(--main-blue-color);
@@ -435,12 +427,6 @@ div.bannercontent .row.divider{
   justify-self: right;
   text-align: right;
   padding: 10px 0 0 20px;
-}
-
-@media (min-width: 980px) {
-  .item #bigtext {
-    font-size: 1.7em;
-  }
 }
 
 /* last update */
@@ -475,7 +461,7 @@ div.bannercontent .row.divider{
 
 /* item subnav applying by click*/
 .options-cell {
-  padding-right:5px;
+  margin-right:5px;
   color: var(--secondary-text-color);
   background: var(--main-item-bg-color);
   cursor: pointer;
@@ -1841,7 +1827,7 @@ section.compact h2 {
 
 section.compact .row.divider {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 200px);
+    grid-template-columns: repeat(auto-fill, 180px);
     grid-auto-flow: row dense;
     justify-content: space-evenly;
     row-gap: 20px;
@@ -1851,7 +1837,7 @@ section.compact .row.divider {
 .span3 {
     margin: 0;
     padding: 0;
-    width: 200px;
+    width: 100%;
 }
 
 .span3 #name {
@@ -1948,7 +1934,7 @@ section.compact .row.divider {
 #holder #dashcontent .row .span3 .item table[id^="item"] > tbody > tr {
   grid-template-rows: 20px 60px 0;
   grid-template-columns: 58px 5px 1fr;
-  gap: 5px;
+  gap: 2px;
   grid-template-areas:
     'name name name'
     'img img2 status'
