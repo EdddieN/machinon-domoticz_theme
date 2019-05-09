@@ -102,6 +102,16 @@ ul.machinon_ul li {
 .rectangle-8-dropdown:hover .dropdown-content {
     display: block;
 }
+
+.forkme {
+    margin: -21px -21px 0 0;
+}
+
+#themesettings h1 { display: inline }
+#themesettings p { margin: 2px 0; }
+#themesettings h3 { margin-top: 20px; }
+#themesettings h4 { margin-top: 10px; }
+
 @media all and (max-width: 767px){
     #machinoSettings {
         padding: 0;

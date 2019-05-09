@@ -37,37 +37,8 @@ function showThemeSettings() {
 		$('#my-tab-content #theme').load("acttheme/themesettings.html",loadSettingsHTML);
 	}
 }
-function addHtmlTab(){
-    var html = '';
-    html += '<div class="span6">';
-    html +='<div id="aboutTheme">';
-    html += '<h2 id="title">Machinon theme V.' + theme.version + '</h2>';
-    html += '<p>Theme is in progress with project machinon. Minimalistic design for better view for the user.<br/>';
-    html += 'Follow us on <a href="https://github.com/EdddieN/machinon">github</a>. If you have any issues with the theme, report them <a href="https://github.com/EdddieN/machinon-domoticz_theme/issues">here</a>.</p>';
-    html += '<h3>General features</h3>';
-    html += '<p>The Machinon theme has several features that change the look. Machinon saves the settings as two uservariables. Some of the cool features are:</p>';
-    html += '<h4>Machinon settings menu:</h4>';
-    html += '<p><i>A custom settings menu instead of the dropdown list. Better overview for the user.</i><br/></p>';
-    html += '<h4>Switch Instead of Text:</h4>';
-    html += '<p><i>Switch instead of Big text the upper right.</i></p>';
-    html += '<h4>Show "Last Seen" as Time Ago:</h4>';
-    html += '<p><i>Show last seen as time ago e.g "2 minutes ago", "about 4 hours ago".</i></p>';
-    html += '<h4>Notifications:</h4>';
-    html += '<p><i>To get visual notification when a device is changing status or value:</br>';
-    html += '- Go to the device notifications</br>- In notifications settings select browser</i></p>';
-    html += '<h4>Camera Preview on Dashboard:</h4>';
-    html += '<p><i>Create a virtual switch, assign this switch to the camera and set this switch as favorite (<a href="https://www.domoticz.com/forum/viewtopic.php?t=7553" target="_blank">detailed steps</a>)</i></p>';
-    html += '<h4>Custom Page (Iframe):</h4>';
-    html += '<p><i>Custom Page with menu button. Add button name and custom page url. Add url e.g: <code>https://www.domoticz.com</code> or a local file e.g: <code>../templates/custompage.html</code></i></p>';
-    html += '<h3>Update theme:</h3>';
-    html += '<p>Run terminal, putty or similar<br/>';
-    html += '<code>cd /home/${USER}/domoticz/www/styles/' + themeFolder + '</code><br/><code>git pull</code></P>';
-    html += '<p>Designed in 2018 by EdddieN.</p>';
-    html += '</div></div>';    
-    $('#tabtheme .row-fluid').append(html);
-}
 
-function addIconshtml(){
+function setupIcons(){
     var code = JSON.stringify(theme.icons);
     if (typeof code === 'undefined'){
         bootbox.alert({
@@ -76,27 +47,7 @@ function addIconshtml(){
         });     
     }else{
         code = code.replace('[','').replace(']','');
-        var html = '';
-        html += '<div class="row-fluid">'
-        html += '<div class="span6">';
-        html += '<div id="icons">';
-        html += '<h2>Image instead of icons:</h2>';
-        html += '<p>Change or add new <code>{"idx":"35","img":"IMG_0138.jpg"}</code> No comma at the end!</br>';
-        html += 'Only works with light devices and lightbuld as icon.</br>Upload your images to images folder in machinon theme folder</p>';
-        html += '<p><input id="themevar32" name="themevar32" value="icon_image" type="checkbox" class="parentrequired"><label for="themevar32" data-i18n="Images Instead of Icons"> Images Instead of Icons</label></br></br>';
-        html += '<textarea rows="6" cols="50" id="textareaIcons" name="icons" class="parentrequiredchild textareaIcons ui-widget-content ui-corner-all">' + code + '</textarea></p>';
-        html += '</br></br>'
-        html += '<p><button type="button" class="savebtn" onclick="addImgInsteadofIcon()">'+ $.t('Add') +'</button></p>';
-        html += '</div></div>';
-        html += '<div class="span6">';
-        html += '<h2>Logo:</h2>';
-        html += '<p>Add your own logo. Leave empty for Machinon logo. Upload your logo to images folder in machinon theme folder (recommended size 200x30px).<br/>';
-        html += '<label for="themevar17" data-i18n="logo"> Logo: </label><input id="themevar17" class="themevar17 ui-widget-content ui-corner-all" name="logo" value="logo.png" type="text"></p>';
-        html += '</br>';
-        html += '<h3>Save/Reset theme:</h3></br>';
-        html += '<p><button class="resetbtn" id="themeResetButton" data-i18n="Reset theme">Reset Theme</button> <button class="savebtn" id="saveSettingsButton" data-i18n="Save Theme Settings">Save Theme Settings</button></p>';
-        html += '</div></div>';
-        $('#tabtheme').append(html);
+        $('#textareaIcons').val(code);
     }
 }
 function addImgInsteadofIcon() {
@@ -118,10 +69,21 @@ function addImgInsteadofIcon() {
     storeUserVariableThemeSettings('update');
 }
 function loadSettingsHTML(){
-	addHtmlTab();
-    addIconshtml();
+    $('#themeversion').text(theme.version);
+    $('#themefolder').text(themeFolder);
+    $("#themesettings").i18n();
+    if (isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth) {
+        $('#themevar28').prop('disabled', true);
+        $('label[for="themevar28"]').addClass("disabledText");
+    }
+    if (1200 >= window.innerWidth) {
+        $('#themevar30').prop('disabled', true);
+        $('label[for="themevar30"]').addClass("disabledText");
+    }
+
+    setupIcons();
 	// Update check
-	$("#tabtheme .span6 input:checkbox").each(function() {
+	$("#tabtheme input:checkbox").each(function() {
 		if(typeof theme.features[this.value] !== "undefined"){
 			if (theme.features[this.value].enabled === true) {
 				$(this).prop("checked", true);

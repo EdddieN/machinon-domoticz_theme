@@ -1,16 +1,10 @@
-<style>
-#themesettings h1 { display: inline }
-#themesettings p { margin: 2px 0; }
-#themesettings h3 { margin-top: 20px; }
-#themesettings h4 { margin-top: 10px; }
-</style>
-
 <div id="themesettings">
     <br/>
-    <h1 data-i18n="Theme">Theme</h1><h1> </h1><h1 data-i18n="Settings">Settings</h1>
+    <h1 data-i18n="Theme">Theme</h1><h1> </h1>
+    <div class="pull-right"><button class="resetbtn" id="themeResetButton" data-i18n="Reset theme">Reset Theme</button> <button class="savebtn" id="saveSettingsButton" data-i18n="Save Theme Settings">Save Theme Settings</button></div>
     <div class="row-fluid">
-        <div class="span6 machinon_settings">
-            <h2><span data-i18n="General options">General options</span>:</h2>
+        <div class="span4 machinon_settings">
+            <h2><span data-i18n="General options">General</span>:</h2>
             <p><input id="themevar10" name="themevar10" value="dark_theme" type="checkbox"><label for="themevar10" data-i18n="Dark Theme"> Dark Theme</label></p>
             <p><input id="themevar28" name="themevar28" value="sidemenu" type="checkbox"><label for="themevar28" data-i18n="Side Menu"> Side Menu</label></p>
             <p><input id="themevar11" name="themevar11" value="footer_text_disabled" type="checkbox"><label for="themevar11" data-i18n="Footer text"> Footer Text Disabled</label></p>
@@ -26,8 +20,9 @@
             <label for="themevar23" data-i18n="Button Name" style="padding-left: 2em;"> Button Name: </label><input id="themevar23" class="parentrequiredchild themevar23 ui-widget-content ui-corner-all" name="button_name" value="Name" type="text"><br/>
             <label for="themevar24" data-i18n="Iframe Url" style="padding-left: 2em;"> Iframe Url: </label><input id="themevar24" class="parentrequiredchild themevar24 ui-widget-content ui-corner-all" name="custom_url" value="url" type="text"></p>
             <p><input id="themevar33" name="themevar33" value="center_popups" type="checkbox"><label for="themevar33" data-i18n="Center Popups"> Center Popups</label></p>
-            <br/>
-            <h2><span data-i18n="Dashboard options">Dashboard options</span>:</h2>
+        </div>
+        <div class="span4">
+            <h2><span data-i18n="Dashboard options">Dashboard</span>:</h2>
             <p><input id="themevar16" name="themevar16" value="time_ago" type="checkbox"><label for="themevar16" data-i18n="Time Ago"> Show Last Seen as Time ago</label></p>
             <p><input id="themevar18" name="themevar18" value="fade_offItems" type="checkbox"><label for="themevar18" data-i18n="Time Ago"> Fade when device is off</label></p>
             <p><input id="themevar20" class="parentrequired" name="themevar20" value="switch_instead_of_bigtext" type="checkbox"><label for="themevar20" data-i18n="Switch Instead of Text"> Switch Instead of Text</label><br/>
@@ -35,17 +30,53 @@
             <p><input id="themevar21" name="themevar21" value="dashboard_show_last_update" type="checkbox"><label for="themevar21" data-i18n="Show last seen"> Show Last Seen On Dashboard</label></p>
             <p><input id="themevar30" name="themevar30" value="dashboard_columns" type="checkbox"><label for="themevar30" data-i18n="Dashboard in columns"> Display Dashboard in columns (screen width &gt; 1200px)</label></p>
             <p><input id="themevar31" name="themevar31" value="dashboard_camera" type="checkbox"><label for="themevar31" data-i18n="Camera Preview on Dashboard"> Display Camera Preview on Dashboard</label></p>
-        </div>          
+            <br/>
+            <h2><span data-i18n="Logo">Logo:</span></h2>
+            <p>Add your own logo. Leave empty for Machinon logo. Upload your logo to images folder in machinon theme folder (recommended size 200x30px).<br/>
+            <label for="themevar17" data-i18n="logo"> Logo: </label><input id="themevar17" class="themevar17 ui-widget-content ui-corner-all" name="logo" value="logo.png" type="text"></p>
+        </div>
     </div>
-</div>
-<script>
-$("#themesettings").i18n();
-if (isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth) {
-    $('#themevar28').prop('disabled', true);
-    $('label[for="themevar28"]').css("color", "#D3D3D3");
-}
-if (1200 >= window.innerWidth) {
-    $('#themevar30').prop('disabled', true);
-    $('label[for="themevar30"]').css("color", "#D3D3D3");
-}
-</script>
+    <div class="row-fluid">
+        <div class="span12">
+                <h2><span data-i18n="Image instead Icons">Image instead of icons:</span></h2>
+                <p>Change or add new <code>{"idx":"35","img":"IMG_0138.jpg"}</code> No comma at the end!</br>
+                Only works with light devices and lightbuld as icon.</br>Upload your images to images folder in machinon theme folder</p>
+                <p><input id="themevar32" name="themevar32" value="icon_image" type="checkbox" class="parentrequired"><label for="themevar32" data-i18n="Images Instead of Icons"> Images Instead of Icons</label></br></br>
+                <textarea rows="3" cols="50" id="textareaIcons" name="icons" class="parentrequiredchild textareaIcons ui-widget-content ui-corner-all"></textarea>
+                <br><br>
+                <button type="button" class="parentrequiredchild savebtn" onclick="addImgInsteadofIcon()" data-i18n="Add"></button></p>
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span12">
+            <div id="aboutTheme">
+                <a href="https://github.com/EdddieN/machinon" class="forkme pull-right"><img width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+                <h2 id="title">Machinon theme V.<span id="themeversion"></span></h2>
+                <p>Theme is in progress with project machinon. Minimalistic design for better view for the user.<br/>
+                Follow us on <a href="https://github.com/EdddieN/machinon">github</a>. If you have any issues with the theme, report them <a href="https://github.com/EdddieN/machinon-domoticz_theme/issues">here</a>.</p>
+                <h3>General features</h3>
+                <p>The Machinon theme has several features that change the look. Machinon saves the settings as two uservariables. Some of the cool features are:</p>
+                <ul class="unstyled">
+                    <li><h4>Machinon settings menu:</h4>
+                    <i>A custom settings menu instead of the dropdown list. Better overview for the user.</i><br/></li>
+                    <li><h4>Switch Instead of Text:</h4>
+                    <i>Switch instead of Big text the upper right.</i></li>
+                    <li><h4>Show "Last Seen" as Time Ago:</h4>
+                    <i>Show last seen as time ago e.g "2 minutes ago", "about 4 hours ago".</i></li>
+                    <li><h4>Notifications:</h4>
+                    <i>To get visual notification when a device is changing status or value:</br>
+                    - Go to the device notifications</br>- In notifications settings select browser</i></li>
+                    <li><h4>Camera Preview on Dashboard:</h4>
+                    <i>Create a virtual switch, assign this switch to the camera and set this switch as favorite (<a href="https://www.domoticz.com/forum/viewtopic.php?t=7553" target="_blank">detailed steps</a>)</i></li>
+                    <li><h4>Custom Page (Iframe):</h4>
+                    <i>Custom Page with menu button. Add button name and custom page url. Add url e.g: <code>https://www.domoticz.com</code> or a local file e.g: <code>../templates/custompage.html</code></i></li>
+                </ul>
+                <h3>Update theme:</h3>
+                <p>Run terminal, putty or similar<br/>
+                <code>cd /home/${USER}/domoticz/www/styles/<span id="themefolder"></span></code><br/><code>git pull</code></p>
+                <p>Designed in 2018 by EdddieN.</p>
+            </div>
+        </div>
+    </div>
+<div>

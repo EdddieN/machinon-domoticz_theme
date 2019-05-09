@@ -17,6 +17,7 @@
 	--main-text-color: #1a1a1a;
 	--secondary-text-color: gray;
     --main-border-color: #dedede;
+    --main-disabled-color: #d3d3d3;
 }
 @font-face {
     font-family: main-font;
@@ -92,8 +93,15 @@ h4,
   width: 48px;
   height: 48px;
   border-radius: 50%;
-
   object-fit: cover;
+}
+
+.disabledText {
+  color: var(--main-disabled-color);
+}
+
+.disabledBg {
+  background: var(--main-disabled-color);
 }
 
 /* logpage */
@@ -927,6 +935,10 @@ button.resetbtn:active {
 button.savebtn:active {
   border: 2px solid #fff !important;
 }
+button.savebtn:disabled {
+  background-color: var(--main-disabled-color);
+  border-color: var(--main-disabled-color) !important;
+}
 /* Settings button, z-wave etc. */
 .label-info[href], .badge-info[href] {
     background-color: var(--main-blue-color);
@@ -1374,7 +1386,7 @@ input.parentunrequiredchild{
 #settingscontent input.parentrequired:not(:checked) ~ input.parentrequiredchild,
 #settingscontent input.parentrequired:not(:checked) ~ textarea.parentrequiredchild,
 #settingscontent input.parentrequired:not(:checked) ~ input.parentrequiredchild + label{
-	color: #D3D3D3;
+	color: var(--main-disabled-color);
 }
 #settingscontent input.parentrequired:checked ~ input.parentrequiredchild,
 #settingscontent input.parentrequired:checked ~ input.parentrequiredchild + label{
@@ -1566,7 +1578,6 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
 #textareaIcons {
     resize: none;
     width:100%;
-    min-height: 200px;
 }
 
 /* Selector */
