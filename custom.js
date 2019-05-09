@@ -72,6 +72,16 @@ $(document).ready(function() {
     }
     containerLogo += '</div></header>';
     $(containerLogo).insertBefore('.navbar-inner');
+
+    if (theme.background_img.length) {
+        if (theme.background_img.startsWith('http')) {
+            bg_url = theme.background_img;
+        } else {
+            bg_url = '../images/' + theme.background_img;
+        }
+        $('#holder').addClass(theme.background_type);
+        $('#holder').css('background-image', 'url(' + bg_url + ')');
+    }
  
     // Searchbar		
     $('<input type="text" id="searchInput" autocomplete="off" onkeyup="searchFunction()" placeholder="' + language.type_to_search + '" title="' + language.type_to_search + '">').appendTo('.container-logo');
