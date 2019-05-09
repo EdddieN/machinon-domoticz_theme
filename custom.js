@@ -79,8 +79,9 @@ $(document).ready(function() {
         } else {
             bg_url = '../images/' + theme.background_img;
         }
-        $('#holder').addClass(theme.background_type);
-        $('#holder').css('background-image', 'url(' + bg_url + ')');
+        $('html').addClass(theme.background_type);
+        $('html').css('background-image', 'url(' + bg_url + ')');
+        $('body').css('cssText', 'background: transparent !important');
     }
  
     // Searchbar		
