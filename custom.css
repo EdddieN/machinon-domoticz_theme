@@ -673,13 +673,14 @@ body {
   color: var(--main-text-color);
 }
 
-#holder.cover {
+html.cover {
     background-position: center center !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
     background-attachment: fixed !important;
+    height: 125%;
 }
-#holder.pattern {
+html.pattern {
     background-size: auto !important;
     background-repeat: repeat !important;
     background-attachment: scroll !important;
