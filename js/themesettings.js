@@ -127,6 +127,10 @@ function loadSettingsHTML(){
         	var value = theme[this.name];
         	$(this).val(value);
 	});
+	$('#tabtheme select').each(function(){    
+        	var value = theme[this.name];
+        	$(this).val(value);
+	});
 	
 	// The theme immediately saves the changes.
 	$("#tabtheme input:checkbox").click(function() {
@@ -176,7 +180,12 @@ function loadSettingsHTML(){
 		$('#tabtheme input[type="text"]').each(function(){    
 			var value = $(this).val();
 			theme[this.name] = value; 
+            console.log(value);
 		});
+        $('#tabtheme select').each(function(){    
+			var value = $(this).val();
+			theme[this.name] = value; 
+        });
 		localStorage.setObject(themeFolder + ".themeSettings", theme);
         storeUserVariableThemeSettings('update'); 
 		notify(language.theme_settings_saved, 2);
@@ -316,6 +325,8 @@ function storeUserVariableThemeSettings(action){ // 'add' or 'update'
             custom.push(theme.custom_url);
             custom.push(theme.logo);
             custom.push(theme.icons);
+            custom.push(theme.background_img);
+            custom.push(theme.background_type);
         }
         
         var variableURL = 'json.htm?type=command&param=' + action + 'uservariable&vname=theme-' + themeFolder + '-custom&vtype=2&vvalue='+ JSON.stringify(custom);
@@ -395,6 +406,8 @@ function getCustomThemeSettings(idx){
                 theme.custom_url = customThemeSettings[2];
                 theme.logo = customThemeSettings[3];
                 theme.icons = customThemeSettings[4];
+                theme.background_img = customThemeSettings[5];
+                theme.background_type = customThemeSettings[6];
                 
                 localStorage.setObject(themeFolder + ".themeSettings", theme); // save loaded preferences in local object.
                 userVariableThemeLoaded = true;

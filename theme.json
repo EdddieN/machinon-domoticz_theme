@@ -16,6 +16,8 @@
         {"idx":"38","img":"IMG_0137.jpg"},
         {"idx":"94","img":"IMG_0263.JPG"}
         ],
+    "background_img":"",
+    "background_type":"",
     "features": {
         "dark_theme": {
             "id":10,
