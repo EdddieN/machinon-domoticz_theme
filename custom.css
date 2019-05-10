@@ -561,7 +561,7 @@ body table#itemtable tr > .options {
    align-self: end;
 }
 .item #img2 img {
-  height: auto;
+  height: auto
 }
 
 .item .img3,
@@ -570,11 +570,12 @@ body table#itemtable tr > .options {
   margin-bottom: 0;
   position: absolute;
   left: 100px;
-  bottom: 15px;
+  bottom: 30px;
 }
 .item .img3 img,
 .item #img3 img {
-  height: auto;
+  width: 48px;
+  weight: 48px;
 }
 
 /* item with button group */
