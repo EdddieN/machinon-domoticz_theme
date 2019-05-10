@@ -69,7 +69,7 @@
  content: url(../images/tabs/dashboard.png);
  margin-right: 20px
 }
-.span6 H2 [data-i18n="Image instead Icons"]::before {
+.span12 H2 [data-i18n="Image instead of icons"]::before {
  content: url(../images/tabs/icons8-color-palette-16.png);
  margin-right: 20px
 }
