@@ -575,7 +575,7 @@ body table#itemtable tr > .options {
 .item .img3 img,
 .item #img3 img {
   width: 48px;
-  weight: 48px;
+  height: 48px;
 }
 
 /* item with button group */
