@@ -1625,29 +1625,32 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
 }
 @media (max-width: 767px) {
     #notify {
-      float: left;
-      margin-left: 20px;
+        float: left;
+        margin-left: 20px;
     }
     .msg{
-      left: 20px;
+        left: 20px;
     }
     #settings section:last-child {
-      margin-bottom: 50px;
+        margin-bottom: 50px;
     }
     #settings li.pull-right {
-      position: fixed;
-      left: 0;
-      bottom: 5px;
-      width: 100%;
+        position: fixed;
+        left: 0;
+        bottom: 5px;
+        width: 100%;
     }
     #settings li.pull-right a {
-      margin: 0 20px;
-      box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+        margin: 0 20px;
+        box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+    }
+    #timesun font {
+        display: none;
     }
 }
 @media screen and (max-width: 992px){
     #timesun{
-    margin-top: 0px;
+        margin-top: 0px;
     }
     .events-editor{
         margin-top: -40px;
