@@ -1577,7 +1577,6 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
   border-color: var(--main-blue-color);
 }
 #settings .row-fluid > .span4, #settings .row-fluid > .span6, #settings .row-fluid > .span12 {
-  min-height: 210px;
   height:auto;
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
   border-radius: 6px;
@@ -1586,6 +1585,12 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
   flex-basis: 500px;
   width: auto;
   flex-grow:1;
+}
+#settings input, #settings select, #settings textarea {
+    width: auto !important;
+}
+#settings textarea {
+    width: 100% !important;
 }
 #textareaIcons {
     resize: none;
@@ -1755,8 +1760,7 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
     display: none !important;
     }
 
-    .hidden-tablet,
-    .hidden-phone{
+    .hidden-tablet {
     display: inline !important;
     }
 
@@ -1808,9 +1812,6 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
     #settings .row-fluid > .span4, #settings .row-fluid > .span6, #settings .row-fluid > .span12 {
         min-height: unset;
         margin: 10px;
-    }
-    #settings input, #settings select {
-        width: auto !important;
     }
     #settings section > br {
         display: none;

@@ -131,4 +131,7 @@ ul.machinon_ul li {
         padding: 5px 40px;
         margin: 0 10px 23px 0;
     }
+    code {
+        white-space: normal;
+    }
 }
