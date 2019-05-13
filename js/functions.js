@@ -315,6 +315,7 @@ function searchFunction() {
 }
 
 function locationHashChanged() {
+  $("#searchInput").val('');
   /* Is this screen searchable / screen with devices */
   if (location.hash == "#/Dashboard" || location.hash == "#/LightSwitches" || location.hash == "#/Scenes" || location.hash == "#/Temperature" || location.hash == "#/Weather" || location.hash == "#/Utility") {
     $("#searchInput").removeAttr('readonly');

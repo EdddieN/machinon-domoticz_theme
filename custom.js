@@ -26,10 +26,7 @@ if (!isMobile){
     MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
     var observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {	
-            if ($('#main-view').contents().hasClass('container') ) {
-                $('#main-view').contents().removeClass('container').toggleClass('container-fluid');
-                $("#searchInput").val('');
-            };
+            $('#main-view').children('div.container').removeClass('container').addClass('container-fluid');
             removeRowDivider();
         });
     });
@@ -37,8 +34,6 @@ if (!isMobile){
 
 // Listener when page (hash) change
 window.onhashchange = locationHashChanged;
-    document.addEventListener('DOMContentLoaded', function () {
-});
 
 // Document is ready
 $(document).ready(function() {
@@ -207,7 +202,7 @@ $(document).ajaxSuccess(function (event, xhr, settings) {
                 }
             }
             nativeSelectors();
-        }, 1000);
+        }, 100);
     } else if (settings.url.startsWith('json.htm?type=command&param=switchscene')) {
         let id = settings.url.split('&')[2];
         id = id.substr(4); // from string 'idx=?'
