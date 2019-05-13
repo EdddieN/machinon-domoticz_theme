@@ -67,6 +67,9 @@ body.dashMobile table.mobileitem td[colspan="2"]:last-child{
     padding-bottom: 0 !important;
     padding-top: 0 !important;
 }
+body.dashMobile table.mobileitem td[colspan="2"]:last-child > div {
+    width: 100%;
+}
 body.dashMobile table.mobileitem td label{
     white-space: nowrap;
     height:50%;
