@@ -1,3 +1,87 @@
+/* Setup */
+input#AcceptNewHardware:checked ~ button {
+    display:none
+}
+.allow5min,
+.allow5min:hover {
+  background: none;
+  background-color: var(--main-blue-color);
+  color: #fff;
+  border-radius: 2px;
+  border: none;
+}
+
+/* =Setup */
+/* Footer */
+/* =Footer */
+/* Popups */
+
+/* Theme tab in Settings */
+input.parentrequiredchild{
+    margin-left:16px;
+}
+input.parentunrequiredchild{
+    margin-left:16px;
+}
+/* if a sub-setting needs the parent settings to be checked. */
+#settingscontent input.parentrequired:not(:checked) ~ input.parentrequiredchild,
+#settingscontent input.parentrequired:not(:checked) ~ textarea.parentrequiredchild,
+#settingscontent input.parentrequired:not(:checked) ~ input.parentrequiredchild + label{
+	color: var(--main-disabled-color);
+}
+#settingscontent input.parentrequired:checked ~ input.parentrequiredchild,
+#settingscontent input.parentrequired:checked ~ input.parentrequiredchild + label{
+    display:inline-block;
+}
+#settingscontent input.parentrequired:not(:checked) ~ .parentrequiredchild{display:inline-block;}
+
+/* if a sub-setting needs the parent settings to be UNchecked. */
+#settingscontent input.parentunrequired:checked ~ input.parentunrequiredchild,
+#settingscontent input.parentunrequired:checked ~ input.parentunrequiredchild + label{
+    display:inline-block;
+}
+#settingscontent input.parentunrequired:not(:checked) ~ input.parentunrequiredchild,
+#settingscontent input.parentunrequired:not(:checked) ~ input.parentunrequiredchild + label{
+    display:inline-block;
+}
+
+/*System page*/
+#settings .row-fluid {
+  height: auto;
+  border-radius: 6px;
+  
+  display:flex;
+  justify-content: center;
+}
+#settings .row-fluid > div {
+  background: var(--main-item-bg-color);
+  border: 1px solid var(--main-item-bg-color);
+}
+#settings .row-fluid > div:hover {
+  border-color: var(--main-blue-color);
+}
+#settings .row-fluid > .span4, #settings .row-fluid > .span6, #settings .row-fluid > .span12 {
+  height:auto;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  margin:20px;
+  padding:20px;
+  flex-basis: 500px;
+  width: auto;
+  flex-grow:1;
+}
+#settings input, #settings select, #settings textarea {
+    width: auto !important;
+}
+#settings textarea {
+    width: 100% !important;
+}
+#textareaIcons {
+    resize: none;
+    width:100%;
+}
+
+
 /* Settings page CSS */
 #machinoSettings {
     padding: 0 20px;
@@ -134,4 +218,33 @@ ul.machinon_ul li {
     code {
         white-space: normal;
     }
+
+    #settings section:last-child {
+        margin-bottom: 50px;
+    }
+    #settings li.pull-right {
+        position: fixed;
+        left: 0;
+        bottom: 5px;
+        width: 100%;
+    }
+    #settings li.pull-right a {
+        margin: 0 20px;
+        box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+    }
+}
+
+@media screen and (max-width: 992px){
+    #settings .row-fluid {
+        flex-wrap: wrap;
+        font-size: 0.9em;
+    }
+    #settings .row-fluid > .span4, #settings .row-fluid > .span6, #settings .row-fluid > .span12 {
+        min-height: unset;
+        margin: 10px;
+    }
+    #settings section > br {
+        display: none;
+    }
+	
 }
