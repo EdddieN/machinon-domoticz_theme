@@ -704,7 +704,6 @@ header.logo {
 
 .container-logo {
   height: 40px;
-  width: 1170px;
   margin: 0 auto;
   position: relative;
 }
@@ -727,20 +726,47 @@ img.header__icon {
   width: 150px;
 }
 
-button.menu-toggle {
+div.menu-toggle {
   display: none;
-  top: -6px;
+  z-index: 3;
+  top: 0;
   left: 10px;
-  width: 40px;
-  height: 40px;
-  background: transparent;
-  border: none;
-  outline: 0 !important;
+  width: 25px;
+  height: 25px;
+  position: fixed;
+  padding: 0 5px;
 }
-button.menu-toggle.scrolled {
+
+.menu-toggle:after, 
+.menu-toggle:before, 
+.menu-toggle div {
+  background-color: #fff;
+  border-radius: 3px;
+  content: '';
+  display: block;
+  height: 4px;
+  margin: 6px 0;
+  transition: all .2s ease-in-out;
+}
+
+div.menu-toggle.scrolled {
   background: var(--main-blue-color);
   transition: background-color 1s ease;
-  opacity: 0.7;
+  padding: 0 5px 15px 5px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.navbar-inverse .navbar-inner.slide + .menu-toggle:before {
+    transform: translateY(12px) rotate(135deg);
+}
+
+.navbar-inverse .navbar-inner.slide + .menu-toggle:after {
+    transform: translateY(-8px) rotate(-135deg);
+}
+
+.navbar-inverse .navbar-inner.slide + .menu-toggle div {
+    transform: scale(0);
 }
 
 .navbar-inverse .navbar-inner {
@@ -786,7 +812,7 @@ button.menu-toggle.scrolled {
   text-shadow: none;
   font-family: main-font-bold;
   font-size: 11pt;
-  background-color: var(--main-navbar-bg-color);
+  background-color: transparent;
   color: var(--main-text-color);
   border: none;
   border-radius: 0;
@@ -838,7 +864,7 @@ button.menu-toggle.scrolled {
   text-shadow: none;
   color: #fff;
   background-image: none;
-  background-color: var(--main-blue-color);
+  background-color: transparent;
   font-family: main-font-bold;
   border: none;
   border-radius: 0;
@@ -1298,17 +1324,6 @@ input#AcceptNewHardware:checked ~ button {
   color: var(--secondary-text-color);
 }
 
-/* Hamburger */
-.menu-toggle {
-  width: 25px;
-  height: 25px;
-}
-.menu-toggle:before {
-  content: "≡";
-  font-size: 35px;
-  color: white;
-}
-
 .btnsmall,.btnsmall-sel {
   display: block;
   background: none;
@@ -1683,9 +1698,9 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
     background-color: var(--main-blue-color);
     width: 200px;
     height: 100%;
-    margin-left: 0;
+    transform: translateX(-150%);
+    transition: transform 0.5s;
     margin-top: -40px;
-    display: none;
     padding: 10px;
     border: none;
     border-radius: 1px;
@@ -1695,12 +1710,13 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
     overflow: hidden;
     }
 
-    button.menu-toggle {
-    position: fixed;
-    display: block;
-    z-index: 3;
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 6px;
+    .navbar-inverse .navbar-inner.slide {
+        transform: translateX(0);
+    }
+
+    /* Hamburger */
+    .menu-toggle {
+      display: block !important;
     }
 
     .navbar .nav {
@@ -1723,11 +1739,10 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
     font-family: main-font;
     color: #fff;
     font-size: 20px;
-    background-color: var(--main-blue-color);
     text-align: left;
     }
     .navbar .nav li a:hover{
-    background-color: var(--main-blue-color);
+    background-color: transparent;
     color: #000;
     }
     .navbar .nav .current_page_item > a {
