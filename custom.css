@@ -694,11 +694,6 @@ a:link {
 /* Header */
 header.logo {
   background: #0bcdc7;
-  background: -moz-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%);
-  background: -webkit-gradient(left top, right top, color-stop(0%, #0bcdc7), color-stop(100%, var(--main-blue-color)));
-  background: -webkit-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%);
-  background: -o-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%);
-  background: -ms-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%);
   background: linear-gradient(to right, #0bcdc7 0%, var(--main-blue-color) 100%);
 }
 
@@ -1299,12 +1294,6 @@ input#AcceptNewHardware:checked ~ button {
 
 #offline {
   background:linear-gradient(to right, #0bcdc7 0%, #0b97cd 100%) !important;
-  background: -moz-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%) !important;
-  background: -webkit-gradient(left top, right top, color-stop(0%, #0bcdc7), color-stop(100%, var(--main-blue-color))) !important;
-  background: -webkit-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%) !important;
-  background: -o-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%) !important;
-  background: -ms-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%) !important;
-  background: linear-gradient(to right, #0bcdc7 0%, var(--main-blue-color) 100%) !important;
 }
 
 #offline h3 {
@@ -1432,13 +1421,8 @@ input#AcceptNewHardware:checked ~ button {
 }
 #login #inputs input[type=text], #login #inputs input[type=password]  {
     border: none;    
-    -moz-border-radius: none !important;
-    -webkit-border-radius: none !important;
     border-radius: none !important;
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
     box-shadow: none !important;
-    border-radius: 0;
     background: var(--main-bg-color);
     border-bottom: 1px solid #ccc;
     color: var(--main-text-color);
@@ -1478,7 +1462,7 @@ input#AcceptNewHardware:checked ~ button {
 }
 .btn-group > .btn:first-child {
   margin-left: 0 !important;
-  -webkit-border-radius: 0px !important;
+  border-radius: 0px !important;
 }
 .btn-default,
 .btn-group .btn-default{
