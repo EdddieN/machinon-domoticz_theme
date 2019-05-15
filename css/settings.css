@@ -90,7 +90,6 @@ input.parentunrequiredchild{
   margin-left: calc(100% - 660px);
   margin-top: -1.8%;
   margin-bottom: 20px;
-  display: -webkit-flex;
   display:flex;
   justify-content:space-around;
 }
@@ -101,7 +100,6 @@ input.parentunrequiredchild{
   border-radius: 2px;
   background-color: var(--main-border-color);
   cursor: pointer;
-  display: -webkit-flex;
   display: flex;
   justify-content: flex-start;
   align-items:center;
@@ -127,7 +125,6 @@ input.parentunrequiredchild{
 	margin-left:20px;
 	margin-bottom:20px;
 	flex: 1 0 15%;
-    display: -webkit-flex;
 	display: flex;
 	padding:20px;
 	justify-content: flex-start;
@@ -155,8 +152,7 @@ input.parentunrequiredchild{
 	cursor: pointer;
 }
 .machinon_ul {
-  display: -webkit-flex;
-  display:         flex;
+  display: flex;
   flex-direction:row;
   flex-wrap:wrap;
   justify-content:space-between;
