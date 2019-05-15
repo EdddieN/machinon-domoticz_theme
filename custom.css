@@ -864,7 +864,7 @@ div.menu-toggle.scrolled {
   text-shadow: none;
   color: #fff;
   background-image: none;
-  background-color: transparent;
+  background-color: var(--main-blue-color);
   font-family: main-font-bold;
   border: none;
   border-radius: 0;
