@@ -694,17 +694,11 @@ a:link {
 /* Header */
 header.logo {
   background: #0bcdc7;
-  background: -moz-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%);
-  background: -webkit-gradient(left top, right top, color-stop(0%, #0bcdc7), color-stop(100%, var(--main-blue-color)));
-  background: -webkit-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%);
-  background: -o-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%);
-  background: -ms-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%);
   background: linear-gradient(to right, #0bcdc7 0%, var(--main-blue-color) 100%);
 }
 
 .container-logo {
   height: 40px;
-  width: 1170px;
   margin: 0 auto;
   position: relative;
 }
@@ -727,20 +721,47 @@ img.header__icon {
   width: 150px;
 }
 
-button.menu-toggle {
+div.menu-toggle {
   display: none;
-  top: -6px;
+  z-index: 3;
+  top: 0;
   left: 10px;
-  width: 40px;
-  height: 40px;
-  background: transparent;
-  border: none;
-  outline: 0 !important;
+  width: 25px;
+  height: 25px;
+  position: fixed;
+  padding: 0 5px;
 }
-button.menu-toggle.scrolled {
+
+.menu-toggle:after, 
+.menu-toggle:before, 
+.menu-toggle div {
+  background-color: #fff;
+  border-radius: 3px;
+  content: '';
+  display: block;
+  height: 4px;
+  margin: 6px 0;
+  transition: all .2s ease-in-out;
+}
+
+div.menu-toggle.scrolled {
   background: var(--main-blue-color);
   transition: background-color 1s ease;
-  opacity: 0.7;
+  padding: 0 5px 15px 5px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.navbar-inverse .navbar-inner.slide + .menu-toggle:before {
+    transform: translateY(12px) rotate(135deg);
+}
+
+.navbar-inverse .navbar-inner.slide + .menu-toggle:after {
+    transform: translateY(-8px) rotate(-135deg);
+}
+
+.navbar-inverse .navbar-inner.slide + .menu-toggle div {
+    transform: scale(0);
 }
 
 .navbar-inverse .navbar-inner {
@@ -786,7 +807,7 @@ button.menu-toggle.scrolled {
   text-shadow: none;
   font-family: main-font-bold;
   font-size: 11pt;
-  background-color: var(--main-navbar-bg-color);
+  background-color: transparent;
   color: var(--main-text-color);
   border: none;
   border-radius: 0;
@@ -1273,12 +1294,6 @@ input#AcceptNewHardware:checked ~ button {
 
 #offline {
   background:linear-gradient(to right, #0bcdc7 0%, #0b97cd 100%) !important;
-  background: -moz-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%) !important;
-  background: -webkit-gradient(left top, right top, color-stop(0%, #0bcdc7), color-stop(100%, var(--main-blue-color))) !important;
-  background: -webkit-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%) !important;
-  background: -o-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%) !important;
-  background: -ms-linear-gradient(left, #0bcdc7 0%, var(--main-blue-color) 100%) !important;
-  background: linear-gradient(to right, #0bcdc7 0%, var(--main-blue-color) 100%) !important;
 }
 
 #offline h3 {
@@ -1296,17 +1311,6 @@ input#AcceptNewHardware:checked ~ button {
 
 .ui-widget-header {
   color: var(--secondary-text-color);
-}
-
-/* Hamburger */
-.menu-toggle {
-  width: 25px;
-  height: 25px;
-}
-.menu-toggle:before {
-  content: "≡";
-  font-size: 35px;
-  color: white;
 }
 
 .btnsmall,.btnsmall-sel {
@@ -1388,35 +1392,6 @@ input#AcceptNewHardware:checked ~ button {
   }
 }
 
-/* Theme tab in Settings */
-input.parentrequiredchild{
-    margin-left:16px;
-}
-input.parentunrequiredchild{
-    margin-left:16px;
-}
-/* if a sub-setting needs the parent settings to be checked. */
-#settingscontent input.parentrequired:not(:checked) ~ input.parentrequiredchild,
-#settingscontent input.parentrequired:not(:checked) ~ textarea.parentrequiredchild,
-#settingscontent input.parentrequired:not(:checked) ~ input.parentrequiredchild + label{
-	color: var(--main-disabled-color);
-}
-#settingscontent input.parentrequired:checked ~ input.parentrequiredchild,
-#settingscontent input.parentrequired:checked ~ input.parentrequiredchild + label{
-    display:inline-block;
-}
-#settingscontent input.parentrequired:not(:checked) ~ .parentrequiredchild{display:inline-block;}
-
-/* if a sub-setting needs the parent settings to be UNchecked. */
-#settingscontent input.parentunrequired:checked ~ input.parentunrequiredchild,
-#settingscontent input.parentunrequired:checked ~ input.parentunrequiredchild + label{
-    display:inline-block;
-}
-#settingscontent input.parentunrequired:not(:checked) ~ input.parentunrequiredchild,
-#settingscontent input.parentunrequired:not(:checked) ~ input.parentunrequiredchild + label{
-    display:inline-block;
-}
-
 #login:before {
     background: linear-gradient(to right, #0bcdc7 0%, var(--main-blue-color) 100%);
     text-align: center;
@@ -1446,13 +1421,8 @@ input.parentunrequiredchild{
 }
 #login #inputs input[type=text], #login #inputs input[type=password]  {
     border: none;    
-    -moz-border-radius: none !important;
-    -webkit-border-radius: none !important;
     border-radius: none !important;
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
     box-shadow: none !important;
-    border-radius: 0;
     background: var(--main-bg-color);
     border-bottom: 1px solid #ccc;
     color: var(--main-text-color);
@@ -1492,7 +1462,7 @@ input.parentunrequiredchild{
 }
 .btn-group > .btn:first-child {
   margin-left: 0 !important;
-  -webkit-border-radius: 0px !important;
+  border-radius: 0px !important;
 }
 .btn-default,
 .btn-group .btn-default{
@@ -1561,42 +1531,6 @@ scrollbar-width: thin;
 scrollbar-color: var(--main-blue-color) var(--main-bg-color);
 }
 
-/*System page*/
-#settings .row-fluid {
-  height: auto;
-  border-radius: 6px;
-  
-  display:flex;
-  justify-content: center;
-}
-#settings .row-fluid > div {
-  background: var(--main-item-bg-color);
-  border: 1px solid var(--main-item-bg-color);
-}
-#settings .row-fluid > div:hover {
-  border-color: var(--main-blue-color);
-}
-#settings .row-fluid > .span4, #settings .row-fluid > .span6, #settings .row-fluid > .span12 {
-  height:auto;
-  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
-  border-radius: 6px;
-  margin:20px;
-  padding:20px;
-  flex-basis: 500px;
-  width: auto;
-  flex-grow:1;
-}
-#settings input, #settings select, #settings textarea {
-    width: auto !important;
-}
-#settings textarea {
-    width: 100% !important;
-}
-#textareaIcons {
-    resize: none;
-    width:100%;
-}
-
 /* Selector */
 .ui-menu-item-wrapper.ui-state-active {
     background: var(--main-blue-color);
@@ -1636,19 +1570,6 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
     .msg{
         left: 20px;
     }
-    #settings section:last-child {
-        margin-bottom: 50px;
-    }
-    #settings li.pull-right {
-        position: fixed;
-        left: 0;
-        bottom: 5px;
-        width: 100%;
-    }
-    #settings li.pull-right a {
-        margin: 0 20px;
-        box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
-    }
     #timesun font {
         display: none;
     }
@@ -1683,9 +1604,9 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
     background-color: var(--main-blue-color);
     width: 200px;
     height: 100%;
-    margin-left: 0;
+    transform: translateX(-150%);
+    transition: transform 0.5s;
     margin-top: -40px;
-    display: none;
     padding: 10px;
     border: none;
     border-radius: 1px;
@@ -1695,12 +1616,13 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
     overflow: hidden;
     }
 
-    button.menu-toggle {
-    position: fixed;
-    display: block;
-    z-index: 3;
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 6px;
+    .navbar-inverse .navbar-inner.slide {
+        transform: translateX(0);
+    }
+
+    /* Hamburger */
+    .menu-toggle {
+      display: block !important;
     }
 
     .navbar .nav {
@@ -1723,11 +1645,10 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
     font-family: main-font;
     color: #fff;
     font-size: 20px;
-    background-color: var(--main-blue-color);
     text-align: left;
     }
     .navbar .nav li a:hover{
-    background-color: var(--main-blue-color);
+    background-color: transparent;
     color: #000;
     }
     .navbar .nav .current_page_item > a {
@@ -1805,18 +1726,6 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
     position: static !important;
     }
 
-    #settings .row-fluid {
-        flex-wrap: wrap;
-        font-size: 0.9em;
-    }
-    #settings .row-fluid > .span4, #settings .row-fluid > .span6, #settings .row-fluid > .span12 {
-        min-height: unset;
-        margin: 10px;
-    }
-    #settings section > br {
-        display: none;
-    }
-	
     .bannercontent {
         padding:0 !important;
         margin:0 !important;

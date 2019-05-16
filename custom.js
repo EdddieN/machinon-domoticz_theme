@@ -105,23 +105,23 @@ $(document).ready(function() {
     isMobile && adminRights && 992 >= window.innerWidth && $("#appnavbar").append('<li id="mLogout"><a id="cLogout" href="#Logout"><img src="images/logout.png"><span class="hidden-phone hidden-tablet" data-i18n="Logout">Logout</span></a></li>');
     
     // Navbar
-    var navBar = $(".navbar").append('<button class="menu-toggle"></button>'), navBarInner = $(".navbar-inner"), navBarToggle = $(".menu-toggle");
+    var navBar = $(".navbar").append('<div class="menu-toggle"><div></div></div>'), navBarInner = $(".navbar-inner"), navBarToggle = $(".menu-toggle");
     $(".menu-toggle").prop('title', language.mainmenu);
     navBarToggle.click(function() {
-        navBarInner.toggle("slide", 500);
+        navBarInner.toggleClass("slide");
     });
     
     // Close navbar if the user clicks outside of it
     (isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth) && $(".container").click(function() {
-        navBarInner.hide("slide", 500);
+        navBarInner.removeClass("slide");
     });
     (isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth) && $("#holder").click(function() {
-        navBarInner.hide("slide", 500);
+        navBarInner.removeClass("slide");
     });
 
     // Menu icon follows when scrolling down
     $(window).scroll(function() {
-        50 < $(this).scrollTop() ? $("button.menu-toggle").addClass("scrolled") : $("button.menu-toggle").removeClass("scrolled");
+        50 < $(this).scrollTop() ? $("div.menu-toggle").addClass("scrolled") : $("div.menu-toggle").removeClass("scrolled");
     });
     
     // Feature - Notifications
@@ -152,10 +152,10 @@ $(document).ready(function() {
     if (theme.features.sidemenu.enabled === true && !isMobile || theme.features.sidemenu.enabled === true && !isMobile && 992 >= window.innerWidth) {
         if (adminRights === true){$("#appnavbar").append('<li id="mLogout"><a id="cLogout" href="#Logout"><img src="images/logout.png"><span class="hidden-phone hidden-tablet" data-i18n="Logout">Logout</span></a></li>');}
         $('#holder').click(function() {  
-            navBarInner.hide("slide", 500);
+            navBarInner.removeClass("slide");
         });
         $('.container').click(function() {   
-            navBarInner.hide("slide", 500);
+            navBarInner.removeClass("slide");
         });
     }
 
