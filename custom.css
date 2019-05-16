@@ -358,6 +358,9 @@ div.bannercontent .row.divider{
 .span3 td.input {
     max-width: 100% !important;
   }
+#holder .row .span4 table[id^="item"] > tbody > tr {
+    row-gap: 2px !important;
+  }
 }
 @media (min-width: 768px) and (max-width: 1199px){
 div.bannercontent .row.divider{
@@ -598,6 +601,7 @@ body table#itemtable tr > .options {
 .selectorlevels {
   font-size: 15px;
   text-align: right;
+  margin-top: 0 !important;
 }
 .selectorlevels > select {
   padding: 5px;
