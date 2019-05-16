@@ -108,7 +108,6 @@ $(document).ready(function() {
     var navBar = $(".navbar").append('<div class="menu-toggle"><div></div></div>'), navBarInner = $(".navbar-inner"), navBarToggle = $(".menu-toggle");
     $(".menu-toggle").prop('title', language.mainmenu);
     navBarToggle.click(function() {
-        //navBarInner.toggle("slide", 500);
         navBarInner.toggleClass("slide");
     });
     
