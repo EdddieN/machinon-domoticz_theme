@@ -26,10 +26,7 @@ if (!isMobile){
     MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
     var observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {	
-            if ($('#main-view').contents().hasClass('container') ) {
-                $('#main-view').contents().removeClass('container').toggleClass('container-fluid');
-                $("#searchInput").val('');
-            };
+            $('#main-view').children('div.container').removeClass('container').addClass('container-fluid');
             removeRowDivider();
         });
     });
@@ -37,8 +34,6 @@ if (!isMobile){
 
 // Listener when page (hash) change
 window.onhashchange = locationHashChanged;
-    document.addEventListener('DOMContentLoaded', function () {
-});
 
 // Document is ready
 $(document).ready(function() {
@@ -72,6 +67,17 @@ $(document).ready(function() {
     }
     containerLogo += '</div></header>';
     $(containerLogo).insertBefore('.navbar-inner');
+
+    if (theme.background_img.length) {
+        if (theme.background_img.startsWith('http')) {
+            bg_url = theme.background_img;
+        } else {
+            bg_url = '../images/' + theme.background_img;
+        }
+        $('html').addClass(theme.background_type);
+        $('html').css('background-image', 'url(' + bg_url + ')');
+        $('body').css('cssText', 'background: transparent !important');
+    }
  
     // Searchbar		
     $('<input type="text" id="searchInput" autocomplete="off" onkeyup="searchFunction()" placeholder="' + language.type_to_search + '" title="' + language.type_to_search + '">').appendTo('.container-logo');
@@ -99,23 +105,23 @@ $(document).ready(function() {
     isMobile && adminRights && 992 >= window.innerWidth && $("#appnavbar").append('<li id="mLogout"><a id="cLogout" href="#Logout"><img src="images/logout.png"><span class="hidden-phone hidden-tablet" data-i18n="Logout">Logout</span></a></li>');
     
     // Navbar
-    var navBar = $(".navbar").append('<button class="menu-toggle"></button>'), navBarInner = $(".navbar-inner"), navBarToggle = $(".menu-toggle");
+    var navBar = $(".navbar").append('<div class="menu-toggle"><div></div></div>'), navBarInner = $(".navbar-inner"), navBarToggle = $(".menu-toggle");
     $(".menu-toggle").prop('title', language.mainmenu);
     navBarToggle.click(function() {
-        navBarInner.toggle("slide", 500);
+        navBarInner.toggleClass("slide");
     });
     
     // Close navbar if the user clicks outside of it
     (isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth) && $(".container").click(function() {
-        navBarInner.hide("slide", 500);
+        navBarInner.removeClass("slide");
     });
     (isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth) && $("#holder").click(function() {
-        navBarInner.hide("slide", 500);
+        navBarInner.removeClass("slide");
     });
 
     // Menu icon follows when scrolling down
     $(window).scroll(function() {
-        50 < $(this).scrollTop() ? $("button.menu-toggle").addClass("scrolled") : $("button.menu-toggle").removeClass("scrolled");
+        50 < $(this).scrollTop() ? $("div.menu-toggle").addClass("scrolled") : $("div.menu-toggle").removeClass("scrolled");
     });
     
     // Feature - Notifications
@@ -146,15 +152,15 @@ $(document).ready(function() {
     if (theme.features.sidemenu.enabled === true && !isMobile || theme.features.sidemenu.enabled === true && !isMobile && 992 >= window.innerWidth) {
         if (adminRights === true){$("#appnavbar").append('<li id="mLogout"><a id="cLogout" href="#Logout"><img src="images/logout.png"><span class="hidden-phone hidden-tablet" data-i18n="Logout">Logout</span></a></li>');}
         $('#holder').click(function() {  
-            navBarInner.hide("slide", 500);
+            navBarInner.removeClass("slide");
         });
         $('.container').click(function() {   
-            navBarInner.hide("slide", 500);
+            navBarInner.removeClass("slide");
         });
     }
 
-    // Feature - Disable navbar text
-    if (theme.features.navbar_icons_text.enabled !== true) {
+    // Feature - Enable navbar text
+    if (theme.features.navbar_icons_text.enabled !== false) {
         $('.navbar').addClass('notext');
     }
 });
@@ -196,7 +202,7 @@ $(document).ajaxSuccess(function (event, xhr, settings) {
                 }
             }
             nativeSelectors();
-        }, 1000);
+        }, 100);
     } else if (settings.url.startsWith('json.htm?type=command&param=switchscene')) {
         let id = settings.url.split('&')[2];
         id = id.substr(4); // from string 'idx=?'

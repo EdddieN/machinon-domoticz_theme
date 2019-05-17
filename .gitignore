@@ -1,0 +1,4 @@
+machinon-*.zip
+machinon-*.tar.gz
+*.sh
+!makerelease.sh

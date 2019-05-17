@@ -1,0 +1,6 @@
+.gitignore export-ignore
+.gitattributes export-ignore
+idea_domoticz_machinon.jpg export-ignore
+makerelease.sh export-ignore
+images/unorganised export-ignore
+views export-ignore

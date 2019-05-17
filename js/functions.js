@@ -3,7 +3,10 @@
 function removeRowDivider() {
     if ($('#dashcontent').length) {
         $('#dashcontent > section').each(function() {
-            $('div.row.divider:not(:first)', this).children().appendTo('div.row.divider:first');
+            $('div.row.divider:not(:first)', this).children().appendTo($(this).find('div.row.divider:first'));
+            if ($('div.row.divider:first > div:first', this).hasClass('span3')) {
+                $('div.row.divider:first', this).parent().addClass('compact');
+            }
             $('div.row.divider:not(:first)', this).hide();
         });
     } else {
@@ -129,6 +132,7 @@ function applySwitchersAndSubmenus() {
 			}
             removeEmptySectionDashboard();
         }
+
 		// options to not have switch instaed of bigText on scene devices
 		let switchOnScenes = false;
 		let switchOnScenesDash = false;
@@ -170,7 +174,30 @@ function applySwitchersAndSubmenus() {
 				}
 			}
 		}
+        
+        if (theme.features.icon_image.enabled === true){
+            var icons = theme.icons
+            for (var i = 0; i < icons.length; i++) {
+                if ($('#dashcontent').length == 0) {
+                   var deviceItem = $(this).closest('#' + icons[i].idx);
+                   var IDX = icons[i].idx
+                }else{
+                    var deviceItem = $(this).closest('#light_' + icons[i].idx);
+                    var IDX = 'light_' + icons[i].idx
+                }
+                if (deviceItem.attr('id') === IDX){
+                    if (status == switchState.on){
+                    $(this).find('table tr #img img').attr("src", $(this).find('table tr #img img').attr("src").replace("images/Light48_On.png", 'images/' + icons[i].img));
+                        $(this).find('table tr #img img').addClass('userOn');
+                    }else{
+                        $(this).find('table tr #img img').attr("src", $(this).find('table tr #img img').attr("src").replace("images/Light48_Off.png", 'images/' + icons[i].img));
+                        $(this).find('table tr #img img').addClass('user');
+                    }
+                }
+            }
+        }
 	});
+    
     /* Feature - Display camera preview on dashboard */
     if (theme.features.dashboard_camera.enabled === true){
         $('#bigtext > span > a').each(function() {
@@ -182,9 +209,11 @@ function applySwitchersAndSubmenus() {
                 }).children('td:not(#name)').hide();
             }
             // Prevent flickering by preloading img first
-            $('#preview-cam' + camId).attr('src', 'camsnapshot.jpg?idx=' + camId + '?t=' +  Date.now()).on('load', function() {  
-                $(this).parents('tr').css('background-image', 'url(' + $(this).attr('src') + ')');
-            });
+            if (isDocumentVisible()) {
+                $('#preview-cam' + camId).attr('src', 'camsnapshot.jpg?idx=' + camId + '?t=' +  Date.now()).on('load', function() {  
+                    $(this).parents('tr').css('background-image', 'url(' + $(this).attr('src') + ')');
+                });
+            }
         });
     }
     /* Set autoscroll for long status or hide empty status */
@@ -286,6 +315,7 @@ function searchFunction() {
 }
 
 function locationHashChanged() {
+  $("#searchInput").val('');
   /* Is this screen searchable / screen with devices */
   if (location.hash == "#/Dashboard" || location.hash == "#/LightSwitches" || location.hash == "#/Scenes" || location.hash == "#/Temperature" || location.hash == "#/Weather" || location.hash == "#/Utility") {
     $("#searchInput").removeAttr('readonly');
@@ -469,4 +499,12 @@ function removeEmptySectionDashboard() {
                 $(this).hide();
             }
     });
+}
+
+function isDocumentVisible() {
+    if(document.visibilityState == "hidden") {
+        return false;
+    } else {
+        return true;
+    }  
 }

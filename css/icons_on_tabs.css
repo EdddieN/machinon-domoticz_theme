@@ -69,6 +69,18 @@
  content: url(../images/tabs/dashboard.png);
  margin-right: 20px
 }
+.span12 H2 [data-i18n="Image instead of icons"]::before {
+ content: url(../images/tabs/icons8-color-palette-16.png);
+ margin-right: 20px
+}
+.span6 H2 [data-i18n="Background"]::before {
+ content: url(../images/tabs/icons8-camera-16.png);
+ margin-right: 20px
+}
+.span6 H2 [data-i18n="Logo"]::before {
+ content: url(../images/tabs/icons8-display-16.png);
+ margin-right: 20px
+}
 .span12 H2 [data-i18n="Light/Switches"]::before {
  content: url(../images/tabs/lights.png);
  margin-right: 20px

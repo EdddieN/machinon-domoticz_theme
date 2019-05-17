@@ -1,12 +1,26 @@
 /***** MOBILE *****/
+body.dashMobile {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+body.dashMobile .navbar-fixed-top {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
 body.dashMobile section.dashCategory div.row.divider:first-of-type {
     display: none;
+}
+
+body.dashMobile section:first-of-type table.mobileitem{
+    margin-top: 20px;
 }
 
 body.dashMobile table.mobileitem{
     width: 100%;
     padding: 0;
-    margin-top:20px;
+    margin-top:10px;
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
 }
 body.dashMobile table.mobileitem > thead > tr {
@@ -23,6 +37,9 @@ body.dashMobile table.mobileitem th{
     text-shadow: none;
     background: var(--main-border-color);
     color: var(--main-text-color);
+}
+body.dashMobile table.mobileitem th:last-child a {
+    color: var(--main-border-color) !important;
 }
 body.dashMobile table.mobileitem tr{
     background: var(--main-item-bg-color);
@@ -42,21 +59,49 @@ body.dashMobile table.mobileitem td{
     flex-shrink: 1;
     align-items: center; 
     padding:5px!important;
-    min-height:35px;
     border-color: var(--main-bg-color);
 }
 
 body.dashMobile table.mobileitem td:last-child{
     font-family: main-font-bold;   
+    min-height:25px;
+}
+body.dashMobile table.mobileitem td[colspan="2"]:last-child{
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+}
+body.dashMobile table.mobileitem td[colspan="2"]:last-child > div {
+    width: 100%;
 }
 body.dashMobile table.mobileitem td label{
     white-space: nowrap;
     height:50%;
 }
+body.dashMobile table.mobileitem th img,
 body.dashMobile table.mobileitem td#name img,
 body.dashMobile table.mobileitem td.name img{
-    margin-right:10px;
-    vertical-align: middle;
+    display:none;
+}
+body.dashMobile table.mobileitem th a,
+body.dashMobile table.mobileitem td#name a,
+body.dashMobile table.mobileitem td.name a{
+    color: var(--main-item-bg-color);
+    background: var(--main-blue-color);
+    text-decoration:none;
+    border-radius: 50%;
+    display: block;
+    height: 18px;
+    width: 18px;
+    margin-right: 5px;
+}
+body.dashMobile table.mobileitem th a:after,
+body.dashMobile table.mobileitem td#name a:after,
+body.dashMobile table.mobileitem td.name a:after{
+    content:"\2794";
+    display: block;
+    color: inherit;
+    font-size: 12px;
+    text-align: center;
 }
 body.dashMobile table.mobileitem td#status,
 body.dashMobile table.mobileitem td.status{
@@ -69,6 +114,22 @@ body.dashMobile table.mobileitem td.status{
 body.dashMobile table.mobileitem .status > span > span{
     margin-right:7px;
 }
+body.dashMobile table.mobileitem .btn-group{
+    white-space: normal;
+    padding: 10px 5px;
+    margin-top: 15px !important;
+}
+
+body.dashMobile table.mobileitem .btn-group .btn{
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    font-family: main-font-bold;
+    font-size: 10pt;
+    margin-left: 2px !important;
+    margin-bottom: 2px !important;
+    border-radius: 1px !important;
+}
+
 body.dashMobile table.mobileitem .btn-mini{
     margin-left: 2px;
     font-family: main-font-bold;
@@ -79,6 +140,7 @@ body.dashMobile table.mobileitem .dimslider{
     border-radius: 3px;
     box-shadow: none;
     height: 5px;
+    margin-top: unset !important;
 }
 body.dashMobile table.mobileitem .dimslider .ui-slider-range{
     background: rgba(11, 151, 205, 0.5);
@@ -95,5 +157,10 @@ body.dashMobile table.mobileitem .selectorlevels .ui-selectmenu-button{
 }
 
 body.dashMobile table.mobileitem .selectorlevels{
+    margin-top: -30px !important;
     width: 100%;
+}
+
+body.dashMobile table.mobileitem .selectorlevels > select {
+    padding: 0;
 }

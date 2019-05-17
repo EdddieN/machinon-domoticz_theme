@@ -37,39 +37,53 @@ function showThemeSettings() {
 		$('#my-tab-content #theme').load("acttheme/themesettings.html",loadSettingsHTML);
 	}
 }
-function addHtmlTab(){
-    var html = '';
-    html += '<div class="span6">';
-    html +='<div id="aboutTheme">';
-    html += '<h2 id="title">Machinon theme V.' + theme.version + '</h2>';
-    html += '<p>Theme is in progress with project machinon. Minimalistic design for better view for the user.<br/>';
-    html += 'Follow us on <a href="https://github.com/EdddieN/machinon">github</a>. If you have any issues with the theme, report them <a href="https://github.com/EdddieN/machinon-domoticz_theme/issues">here</a>.</p>';
-    html += '<h3>General features</h3>';
-    html += '<p>The Machinon theme has several features that change the look. Machinon saves the settings as two uservariables. Some of the cool features are:</p>';
-    html += '<h4>Machinon settings menu:</h4>';
-    html += '<p><i>A custom settings menu instead of the dropdown list. Better overview for the user.</i><br/></p>';
-    html += '<h4>Switch Instead of Text:</h4>';
-    html += '<p><i>Switch instead of Big text the upper right.</i></p>';
-    html += '<h4>Show "Last Seen" as Time Ago:</h4>';
-    html += '<p><i>Show last seen as time ago e.g "2 minutes ago", "about 4 hours ago".</i></p>';
-    html += '<h4>Notifications:</h4>';
-    html += '<p><i>To get visual notification when a device is changing status or value:</br>';
-    html += '- Go to the device notifications</br>- In notifications settings select browser</i></p>';
-    html += '<h4>Camera Preview on Dashboard:</h4>';
-    html += '<p><i>Create a virtual switch, assign this switch to the camera and set this switch as favorite (<a href="https://www.domoticz.com/forum/viewtopic.php?t=7553" target="_blank">detailed steps</a>)</i></p>';
-    html += '<h4>Custom Page (Iframe):</h4>';
-    html += '<p><i>Custom Page with menu button. Add button name and custom page url. Add url e.g: <code>https://www.domoticz.com</code> or a local file e.g: <code>../templates/custompage.html</code></i></p>';
-    html += '<h3>Update theme:</h3>';
-    html += '<p>Run terminal, putty or similar<br/>';
-    html += '<code>cd /home/${USER}/domoticz/www/styles/' + themeFolder + '</code><br/><code>git pull</code></P>';
-    html += '<p>Designed in 2018 by EdddieN.</p>';
-    html += '</div></div>';
-    $('#tabtheme .row-fluid').append(html);
+
+function setupIcons(){
+    var code = JSON.stringify(theme.icons);
+    if (typeof code === 'undefined'){
+        bootbox.alert({
+            message: '<p>Please reset the theme by clicking here:</p><p><a onClick="resetTheme(); return false;" href=""><button class="btn btn-info">Reset theme</button></a></p><p>(or find the theme reset button on the theme settings page)<p>',
+            title: 'Congratulations on the theme upgrade!',
+        });     
+    }else{
+        code = code.replace('[','').replace(']','');
+        $('#textareaIcons').val(code);
+    }
+}
+function addImgInsteadofIcon() {
+    try {
+        JSON.parse("[" + $('#tabtheme #textareaIcons').val() + "]");
+    } catch (e) {
+        bootbox.alert({
+            message: '<p>Data not saved!</p><p>Please check the syntax. Be sure you didn\'t add a comma at the end! <p>',
+            title: 'Syntax error',
+        });
+        return false;
+    }
+  	$('#tabtheme #textareaIcons').each(function(){    
+			var value = $(this).val();
+            value = '[' + value + ']';
+			theme[this.name] = JSON.parse(value);
+    });
+    localStorage.setObject(themeFolder + ".themeSettings", theme);
+    storeUserVariableThemeSettings('update');
 }
 function loadSettingsHTML(){
-	addHtmlTab();
+    $('#themeversion').text(theme.version);
+    $('#themefolder').text(themeFolder);
+    $("#themesettings").i18n();
+    if (isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth) {
+        $('#themevar28').prop('disabled', true);
+        $('label[for="themevar28"]').addClass("disabledText");
+    }
+    if (1200 >= window.innerWidth) {
+        $('#themevar30').prop('disabled', true);
+        $('label[for="themevar30"]').addClass("disabledText");
+    }
+
+    setupIcons();
 	// Update check
-	$("#tabtheme .span6 input:checkbox").each(function() {
+	$("#tabtheme input:checkbox").each(function() {
 		if(typeof theme.features[this.value] !== "undefined"){
 			if (theme.features[this.value].enabled === true) {
 				$(this).prop("checked", true);
@@ -110,6 +124,10 @@ function loadSettingsHTML(){
         	$(this).val(value);
 	});
 	$('#tabtheme input[type="text"]').each(function(){    
+        	var value = theme[this.name];
+        	$(this).val(value);
+	});
+	$('#tabtheme select').each(function(){    
         	var value = theme[this.name];
         	$(this).val(value);
 	});
@@ -162,7 +180,12 @@ function loadSettingsHTML(){
 		$('#tabtheme input[type="text"]').each(function(){    
 			var value = $(this).val();
 			theme[this.name] = value; 
+            console.log(value);
 		});
+        $('#tabtheme select').each(function(){    
+			var value = $(this).val();
+			theme[this.name] = value; 
+        });
 		localStorage.setObject(themeFolder + ".themeSettings", theme);
         storeUserVariableThemeSettings('update'); 
 		notify(language.theme_settings_saved, 2);
@@ -220,7 +243,7 @@ function loadSettings() {
 		}
 	}
 }
-
+var unableCreateUserVariable = false;
 function checkUserVariableThemeSettings() {
     $.ajax({
         url: "/json.htm?type=command&param=getuservariables",
@@ -251,7 +274,11 @@ function checkUserVariableThemeSettings() {
                 });
                                 
                 if(didDomoticzHaveSettings === false){
-                    storeUserVariableThemeSettings("add");
+                    if (unableCreateUserVariable == false){
+                        storeUserVariableThemeSettings("add");
+                    }else{
+                        storeUserVariableThemeSettings("save");
+                    }
                 }                
             }           
         },
@@ -264,59 +291,65 @@ function checkUserVariableThemeSettings() {
 }
 function storeUserVariableThemeSettings(action){ // 'add' or 'update'
 
-    var settings = [];
-    $.each(theme.features, function(key,feature){
-        if(feature.enabled === true){
-            settings.push(feature.id);
-        }
-    });
+    if (themeFolder !== 'undefined'){    
+        var settings = [];
+        $.each(theme.features, function(key,feature){
+            if(feature.enabled === true){
+                settings.push(feature.id);
+            }
+        });
     
-    var variableURL = 'json.htm?type=command&param=' + action + 'uservariable&vname=theme-' + themeFolder + '-features&vtype=2&vvalue='+ JSON.stringify(settings);
-    $.ajax({
-        url: variableURL,
-        async: true,
-        dataType: 'json',
-        success: function (data) {
-            if (data.status == "ERR") {
-                bootbox.alert("Unable to create or update theme settings uservariable, Try to reset the theme");
+        var variableURL = 'json.htm?type=command&param=' + action + 'uservariable&vname=theme-' + themeFolder + '-features&vtype=2&vvalue='+ JSON.stringify(settings);
+        $.ajax({
+            url: variableURL,
+            async: true,
+            dataType: 'json',
+            success: function (data) {
+                if (data.status == "ERR") {
+                    bootbox.alert("Unable to create or update theme settings uservariable, Try to reset the theme");
+		    unableCreateUserVariable = true
+                }
+                // If we got good data from Domoticz.
+                if (data.status == "OK") {
+                    console.log(themeName + " - theme settings uservariable is updated");
+                }
+            },
+            error: function () {
+                console.log(themeName + " - Ajax error wile creating or updating user variable in Domotcz.");
             }
-            // If we got good data from Domoticz.
-            if (data.status == "OK") {
-                console.log(themeName + " - theme settings uservariable is updated");
-            }
-        },
-        error: function () {
-            console.log(themeName + " - Ajax error wile creating or updating user variable in Domotcz.");
+        });
+        var custom = [];
+        if(custom !== 'undefined'){
+            custom.push(theme.standby_after);
+            custom.push(theme.button_name);
+            custom.push(theme.custom_url);
+            custom.push(theme.logo);
+            custom.push(theme.icons);
+            custom.push(theme.background_img);
+            custom.push(theme.background_type);
         }
-    });
-    var custom = [];
-    if(custom !== 'undefined'){
-        custom.push(theme.standby_after);
-        custom.push(theme.button_name);
-        custom.push(theme.custom_url);
-        custom.push(theme.logo);
+        
+        var variableURL = 'json.htm?type=command&param=' + action + 'uservariable&vname=theme-' + themeFolder + '-custom&vtype=2&vvalue='+ JSON.stringify(custom);
+        $.ajax({
+            url: variableURL,
+            async: true,
+            dataType: 'json',
+            success: function (data) {
+                if (data.status == "ERR") {
+                    bootbox.alert("Unable to create or update theme settings uservariable, Try to reset the theme");
+                }
+                // If we got good data from Domoticz.
+                if (data.status == "OK") {
+                    console.log(themeName + " - theme settings uservariable is updated");
+                }
+            },
+            error: function () {
+                console.log(themeName + " - Ajax error wile creating or updating user variable in Domotcz.");
+            }
+        });
+    }else{
+        return;
     }
-    
-    var variableURL = 'json.htm?type=command&param=' + action + 'uservariable&vname=theme-' + themeFolder + '-custom&vtype=2&vvalue='+ JSON.stringify(custom);
-    $.ajax({
-        url: variableURL,
-        async: true,
-        dataType: 'json',
-        success: function (data) {
-            if (data.status == "ERR") {
-                bootbox.alert("Unable to create or update theme settings uservariable, Try to reset the theme");
-            }
-            // If we got good data from Domoticz.
-            if (data.status == "OK") {
-                console.log(themeName + " - theme settings uservariable is updated");
-            }
-        },
-        error: function () {
-            console.log(themeName + " - Ajax error wile creating or updating user variable in Domotcz.");
-        }
-    });
-    
-    
 }
 // here we get the feature settings that are stored in domoticz as a user variable.
 function getFeatureThemeSettings(idx){
@@ -372,6 +405,9 @@ function getCustomThemeSettings(idx){
                 theme.button_name = customThemeSettings[1];
                 theme.custom_url = customThemeSettings[2];
                 theme.logo = customThemeSettings[3];
+                theme.icons = customThemeSettings[4];
+                theme.background_img = customThemeSettings[5];
+                theme.background_type = customThemeSettings[6];
                 
                 localStorage.setObject(themeFolder + ".themeSettings", theme); // save loaded preferences in local object.
                 userVariableThemeLoaded = true;

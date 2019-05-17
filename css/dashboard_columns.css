@@ -5,13 +5,18 @@
 
         #dashcontent > section > h2 {
             text-align: center;
+            height: 50px;
         }
 
         #dashcontent > section {
-            width: calc(100% / 4 - 20px);
+            width: calc(100% / 5 - 20px);
             float: left;
             margin-left: 10px;
             margin-right: 10px;
+        }
+
+        #dashcontent > section.compact {
+            width: 200px;
         }
             
         #dashcontent > section > div.row.divider {

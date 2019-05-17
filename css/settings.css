@@ -1,3 +1,95 @@
+/* Setup */
+input#AcceptNewHardware:checked ~ button {
+    display:none
+}
+.allow5min,
+.allow5min:hover {
+  background: none;
+  background-color: var(--main-blue-color);
+  color: #fff;
+  border-radius: 2px;
+  border: none;
+}
+
+/* =Setup */
+/* Footer */
+/* =Footer */
+/* Popups */
+
+/* Theme tab in Settings */
+input.parentrequiredchild{
+    margin-left:16px;
+}
+input.parentunrequiredchild{
+    margin-left:16px;
+}
+/* if a sub-setting needs the parent settings to be checked. */
+#settingscontent input.parentrequired:not(:checked) ~ input.parentrequiredchild,
+#settingscontent input.parentrequired:not(:checked) ~ textarea.parentrequiredchild,
+#settingscontent input.parentrequired:not(:checked) ~ input.parentrequiredchild + label{
+	color: var(--main-disabled-color);
+}
+#settingscontent input.parentrequired:checked ~ input.parentrequiredchild,
+#settingscontent input.parentrequired:checked ~ input.parentrequiredchild + label{
+    display:inline-block;
+}
+#settingscontent input.parentrequired:not(:checked) ~ .parentrequiredchild{display:inline-block;}
+
+/* if a sub-setting needs the parent settings to be UNchecked. */
+#settingscontent input.parentunrequired:checked ~ input.parentunrequiredchild,
+#settingscontent input.parentunrequired:checked ~ input.parentunrequiredchild + label{
+    display:inline-block;
+}
+#settingscontent input.parentunrequired:not(:checked) ~ input.parentunrequiredchild,
+#settingscontent input.parentunrequired:not(:checked) ~ input.parentunrequiredchild + label{
+    display:inline-block;
+}
+
+/*System page*/
+#settings .row-fluid {
+  height: auto;
+  border-radius: 6px;
+  
+  display:flex;
+  justify-content: center;
+}
+#settings .row-fluid > div {
+  background: var(--main-item-bg-color);
+  border: 1px solid var(--main-item-bg-color);
+}
+#settings .row-fluid > div:hover {
+  border-color: var(--main-blue-color);
+}
+#settings .row-fluid > .span4, #settings .row-fluid > .span6, #settings .row-fluid > .span12 {
+  height:auto;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  margin:20px;
+  padding:20px;
+  flex-basis: 500px;
+  width: auto;
+  flex-grow:1;
+}
+#settings input, #settings select, #settings textarea {
+    width: auto !important;
+}
+#settings textarea {
+    width: 100% !important;
+}
+#textareaIcons {
+    resize: none;
+    width:100%;
+}
+
+.blocklyText {
+    color: #fff !important;
+    fill: #fff !important;
+}
+
+.blocklyNonEditableText>text, .blocklyEditableText>text {
+    fill: #000 !important;
+}
+
 /* Settings page CSS */
 #machinoSettings {
     padding: 0 20px;
@@ -6,7 +98,6 @@
   margin-left: calc(100% - 660px);
   margin-top: -1.8%;
   margin-bottom: 20px;
-  display: -webkit-flex;
   display:flex;
   justify-content:space-around;
 }
@@ -17,7 +108,6 @@
   border-radius: 2px;
   background-color: var(--main-border-color);
   cursor: pointer;
-  display: -webkit-flex;
   display: flex;
   justify-content: flex-start;
   align-items:center;
@@ -43,7 +133,6 @@
 	margin-left:20px;
 	margin-bottom:20px;
 	flex: 1 0 15%;
-    display: -webkit-flex;
 	display: flex;
 	padding:20px;
 	justify-content: flex-start;
@@ -71,8 +160,7 @@
 	cursor: pointer;
 }
 .machinon_ul {
-  display: -webkit-flex;
-  display:         flex;
+  display: flex;
   flex-direction:row;
   flex-wrap:wrap;
   justify-content:space-between;
@@ -102,6 +190,16 @@ ul.machinon_ul li {
 .rectangle-8-dropdown:hover .dropdown-content {
     display: block;
 }
+
+.forkme {
+    margin: -21px -21px 0 0;
+}
+
+#themesettings h1 { display: inline }
+#themesettings p { margin: 2px 0; }
+#themesettings h3 { margin-top: 20px; }
+#themesettings h4 { margin-top: 10px; }
+
 @media all and (max-width: 767px){
     #machinoSettings {
         padding: 0;
@@ -121,4 +219,36 @@ ul.machinon_ul li {
         padding: 5px 40px;
         margin: 0 10px 23px 0;
     }
+    code {
+        white-space: normal;
+    }
+
+    #settings section:last-child {
+        margin-bottom: 50px;
+    }
+    #settings li.pull-right {
+        position: fixed;
+        left: 0;
+        bottom: 5px;
+        width: 100%;
+    }
+    #settings li.pull-right a {
+        margin: 0 20px;
+        box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+    }
+}
+
+@media screen and (max-width: 992px){
+    #settings .row-fluid {
+        flex-wrap: wrap;
+        font-size: 0.9em;
+    }
+    #settings .row-fluid > .span4, #settings .row-fluid > .span6, #settings .row-fluid > .span12 {
+        min-height: unset;
+        margin: 10px;
+    }
+    #settings section > br {
+        display: none;
+    }
+	
 }
