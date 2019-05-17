@@ -81,6 +81,14 @@ input.parentunrequiredchild{
     width:100%;
 }
 
+.blocklyText {
+    color: #fff !important;
+    fill: #fff !important;
+}
+
+.blocklyNonEditableText>text, .blocklyEditableText>text {
+    fill: #000 !important;
+}
 
 /* Settings page CSS */
 #machinoSettings {

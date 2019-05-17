@@ -38,6 +38,9 @@ body.dashMobile table.mobileitem th{
     background: var(--main-border-color);
     color: var(--main-text-color);
 }
+body.dashMobile table.mobileitem th:last-child a {
+    color: var(--main-border-color) !important;
+}
 body.dashMobile table.mobileitem tr{
     background: var(--main-item-bg-color);
     display: flex;
@@ -74,10 +77,31 @@ body.dashMobile table.mobileitem td label{
     white-space: nowrap;
     height:50%;
 }
+body.dashMobile table.mobileitem th img,
 body.dashMobile table.mobileitem td#name img,
 body.dashMobile table.mobileitem td.name img{
-    margin-right:10px;
-    vertical-align: middle;
+    display:none;
+}
+body.dashMobile table.mobileitem th a,
+body.dashMobile table.mobileitem td#name a,
+body.dashMobile table.mobileitem td.name a{
+    color: var(--main-item-bg-color);
+    background: var(--main-blue-color);
+    text-decoration:none;
+    border-radius: 50%;
+    display: block;
+    height: 18px;
+    width: 18px;
+    margin-right: 5px;
+}
+body.dashMobile table.mobileitem th a:after,
+body.dashMobile table.mobileitem td#name a:after,
+body.dashMobile table.mobileitem td.name a:after{
+    content:"\2794";
+    display: block;
+    color: inherit;
+    font-size: 12px;
+    text-align: center;
 }
 body.dashMobile table.mobileitem td#status,
 body.dashMobile table.mobileitem td.status{
