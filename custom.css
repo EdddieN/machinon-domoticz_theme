@@ -1486,14 +1486,14 @@ input#AcceptNewHardware:checked ~ button {
 }
 .btn-default:hover,
 .btn-group .btn-primary{
-  color: #fff;
+  color: #fff !important;
   background: var(--main-blue-color) !important;
   border-color: var(--main-blue-color) !important;
   border-radius: 1px !important;
 }
 .btn-group .btn-primary:hover{
   background: #fff !important;
-  color: var(--main-blue-color);
+  color: var(--main-blue-color) !important;
   border-color: var(--main-blue-color) !important;
   border-radius: 1px !important;
 }
