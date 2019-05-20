@@ -109,16 +109,27 @@ function applySwitchersAndSubmenus() {
                 $(this).siblings('td.options').unbind("mouseleave");
                 $(this).siblings('td.options').mouseleave(function() { $(this).slideToggle(400); $(this).unbind("mouseleave"); });
             });
-			// Move Timers and log to item
 			$(this).find('table tr').append('<td class="timers_log"></td>');
+			// Move Log item to tools area
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall[data-i18n="Log"]'));
 			$(this).find('.timers_log .btnsmall[data-i18n="Log"]').html("<i class='ion-ios-stats' title='" + $.t('Log') + "'></i>");
-			$(this).find('.timers_log').append($(this).find('.options .btnsmall[data-i18n="Timers"]'));
-			$(this).find('.timers_log .btnsmall[data-i18n="Timers"]').html("<i class='ion-ios-time disabledText' title='" + $.t('Timers') + "'></i>");
-			$(this).find('.timers_log').append($(this).find('.options .btnsmall-sel[data-i18n="Timers"]'));
-			$(this).find('.timers_log .btnsmall-sel[data-i18n="Timers"]').html("<i class='ion-ios-time' title='" + $.t('Timers') + "'></i>");
+
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall[href*="Log"]'));
 			$(this).find('.timers_log .btnsmall[href*="Log"]:not(.btnsmall[data-i18n="Log"])').html("<i class='ion-ios-stats' title='" + $.t('Log') + "'></i>");
+
+			// Move Timer item to tools area
+			$(this).find('.timers_log').append($(this).find('.options .btnsmall[data-i18n="Timers"]'));
+			$(this).find('.timers_log .btnsmall[data-i18n="Timers"]').html("<i class='ion-ios-timer disabledText' title='" + $.t('Timers') + "'></i>");
+
+			$(this).find('.timers_log').append($(this).find('.options .btnsmall-sel[data-i18n="Timers"]'));
+			$(this).find('.timers_log .btnsmall-sel[data-i18n="Timers"]').html("<i class='ion-ios-timer' title='" + $.t('Timers') + "'></i>");
+
+			// Move Notifications item to tools area
+			$(this).find('.timers_log').append($(this).find('.options .btnsmall[data-i18n="Notifications"]'));
+			$(this).find('.timers_log .btnsmall[data-i18n="Notifications"]').html("<i class='ion-ios-notifications-outline' title='" + $.t('Notifications') + "'></i>");
+
+			$(this).find('.timers_log').append($(this).find('.options .btnsmall[href*="Notifications"]'));
+			$(this).find('.timers_log .btnsmall[href*="Notifications"]:not(.btnsmall[data-i18n="Notifications"])').html("<i class='ion-ios-notifications-outline' title='" + $.t('Notifications') + "'></i>");
 		}
 		if ($('#dashcontent').length == 0) {
 			let item = $(this).closest('.item');
