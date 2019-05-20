@@ -115,10 +115,12 @@ input.parentunrequiredchild{
 .mHeaderBtn li:hover {
     background-color:rgba(169,169,169,0.5);
 }
+.mHeaderBtn li i {
+  font-size: 22px;
+}
 .mHeaderBtn li div {
   font-size: 14px;
   letter-spacing: -0.5px;
-  color: #000;
   margin-left:10px;;
 }
 .rectangle-8, .rectangle-8-dropdown {

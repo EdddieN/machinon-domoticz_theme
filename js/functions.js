@@ -109,16 +109,16 @@ function applySwitchersAndSubmenus() {
                 $(this).siblings('td.options').unbind("mouseleave");
                 $(this).siblings('td.options').mouseleave(function() { $(this).slideToggle(400); $(this).unbind("mouseleave"); });
             });
-			// Move Timers and log to item
 			$(this).find('table tr').append('<td class="timers_log"></td>');
-			$(this).find('.timers_log').append($(this).find('.options .btnsmall[data-i18n="Log"]'));
-			$(this).find('.timers_log .btnsmall[data-i18n="Log"]').append("<img id='logImg' title='" + $.t('Log') + "' src='images/options/log.png'/>");
-			$(this).find('.timers_log').append($(this).find('.options .btnsmall[data-i18n="Timers"]'));
-			$(this).find('.timers_log .btnsmall[data-i18n="Timers"]').append("<img id='timerOffImg' title='" + $.t('Timers') + "' src='images/options/timer_off.png'/>");
-			$(this).find('.timers_log').append($(this).find('.options .btnsmall-sel[data-i18n="Timers"]'));
-			$(this).find('.timers_log .btnsmall-sel[data-i18n="Timers"]').append("<img id='timerOnImg' title='" + $.t('Timers') + "' src='images/options/timer_on.png'/>");
-			$(this).find('.timers_log').append($(this).find('.options .btnsmall[href*="Log"]'));
-			$(this).find('.timers_log .btnsmall[href*="Log"]:not(.btnsmall[data-i18n="Log"])').append("<img id='logImg' title='" + $.t('Log') + "' src='images/options/log.png'/>");
+			// Move Log item to tools area
+			$(this).find('.timers_log').append($(this).find('.options .btnsmall[data-i18n="Log"]').html("<i class='ion-ios-stats' title='" + $.t('Log') + "'></i>"));
+
+			$(this).find('.timers_log').append($(this).find('.options .btnsmall[href*="Log"]:not(.btnsmall[data-i18n="Log"])').html("<i class='ion-ios-stats' title='" + $.t('Log') + "'></i>"));
+
+			// Move Timer item to tools area
+			$(this).find('.timers_log').append($(this).find('.options .btnsmall[data-i18n="Timers"]').html("<i class='ion-ios-timer disabledText' title='" + $.t('Timers') + "'></i>"));
+
+			$(this).find('.timers_log').append($(this).find('.options .btnsmall-sel[data-i18n="Timers"]').html("<i class='ion-ios-timer' title='" + $.t('Timers') + "'></i>"));
 		}
 		if ($('#dashcontent').length == 0) {
 			let item = $(this).closest('.item');
@@ -230,7 +230,6 @@ function applySwitchersAndSubmenus() {
             $(this).hide();
         }
     });
-    //nativeSelectors();
 }
 
 function nativeSelectors() {
@@ -246,6 +245,24 @@ function nativeSelectors() {
             var selected = $(this).children("option:selected");
             SwitchSelectorLevel($(this).attr('data-idx'), selected.text(), selected.val());
         });
+    });
+}
+
+function applyIconsStatus() {
+    $("#bstatus.statusProtected").each(function() {
+        if($(this).find("#name > i.ion-ios-lock").length === 0) {
+            $(this).find("#name").prepend("<i class='ion-ios-lock' title='Protected'></i>&nbsp;");
+        }
+    });
+    $("#bstatus.statusTimeout").each(function() {
+        if($(this).find("#name > i.ion-ios-wifi").length === 0) {
+            $(this).find("#name").prepend("<i class='ion-ios-wifi text-error' title='Timeout'></i>&nbsp;");
+        }
+    });
+    $("#bstatus.statusLowBattery").each(function() {
+        if($(this).find("#name > i.ion-ios-battery-dead").length === 0) {
+            $(this).find("#name").prepend("<i class='ion-ios-battery-dead text-error' title='Low battery'></i>&nbsp;");
+        }
     });
 }
 
@@ -317,10 +334,11 @@ function searchFunction() {
 function locationHashChanged() {
   $("#searchInput").val('');
   /* Is this screen searchable / screen with devices */
-  if (location.hash == "#/Dashboard" || location.hash == "#/LightSwitches" || location.hash == "#/Scenes" || location.hash == "#/Temperature" || location.hash == "#/Weather" || location.hash == "#/Utility") {
-    $("#searchInput").removeAttr('readonly');
+  isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if ((location.hash == "#/Dashboard" && !isMobile) || location.hash == "#/LightSwitches" || location.hash == "#/Scenes" || location.hash == "#/Temperature" || location.hash == "#/Weather" || location.hash == "#/Utility") {
+    $("#search").removeClass('readonly');
   } else {
-    $("#searchInput").attr('readonly', 'readonly');
+    $("#search").addClass('readonly');
   }
   $(".current_page_item:not(:first)").removeClass("current_page_item");
 }
