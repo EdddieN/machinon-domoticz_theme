@@ -7,6 +7,9 @@
 @import url("css/iconsupload.css");
 @import url("css/floorplan.css");
 
+/* ionicons */
+@import url("https://unpkg.com/ionicons@latest/dist/css/ionicons.min.css");
+
 /*var in way of change color*/
 :root {
 	/*use with var(--main-blue-color)*/
@@ -526,10 +529,11 @@ body table#itemtable tr > .options {
 .timers_log .btnsmall-sel,
 .timers_log .btnsmall:hover,
 .timers_log .btnsmall-sel:hover {
-	color: transparent;
-    display: inline-block;
-    padding: 0 3px;
-	font-size: 0;
+    display: inline;
+    padding: 0 5px;
+    font-size: 16px;
+    line-height: 16px;
+    color: var(--main-blue-color);
 }
 
 @media (min-width: 1200px) {

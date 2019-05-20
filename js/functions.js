@@ -112,13 +112,13 @@ function applySwitchersAndSubmenus() {
 			// Move Timers and log to item
 			$(this).find('table tr').append('<td class="timers_log"></td>');
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall[data-i18n="Log"]'));
-			$(this).find('.timers_log .btnsmall[data-i18n="Log"]').append("<img id='logImg' title='" + $.t('Log') + "' src='images/options/log.png'/>");
+			$(this).find('.timers_log .btnsmall[data-i18n="Log"]').html("<i class='ion-md-stats' title='" + $.t('Log') + "'></i>");
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall[data-i18n="Timers"]'));
-			$(this).find('.timers_log .btnsmall[data-i18n="Timers"]').append("<img id='timerOffImg' title='" + $.t('Timers') + "' src='images/options/timer_off.png'/>");
+			$(this).find('.timers_log .btnsmall[data-i18n="Timers"]').html("<i class='ion-md-time disabledText' title='" + $.t('Timers') + "'></i>");
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall-sel[data-i18n="Timers"]'));
-			$(this).find('.timers_log .btnsmall-sel[data-i18n="Timers"]').append("<img id='timerOnImg' title='" + $.t('Timers') + "' src='images/options/timer_on.png'/>");
+			$(this).find('.timers_log .btnsmall-sel[data-i18n="Timers"]').html("<i class='ion-md-time' title='" + $.t('Timers') + "'></i>");
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall[href*="Log"]'));
-			$(this).find('.timers_log .btnsmall[href*="Log"]:not(.btnsmall[data-i18n="Log"])').append("<img id='logImg' title='" + $.t('Log') + "' src='images/options/log.png'/>");
+			$(this).find('.timers_log .btnsmall[href*="Log"]:not(.btnsmall[data-i18n="Log"])').html("<i class='ion-md-stats' title='" + $.t('Log') + "'></i>");
 		}
 		if ($('#dashcontent').length == 0) {
 			let item = $(this).closest('.item');
