@@ -317,10 +317,11 @@ function searchFunction() {
 function locationHashChanged() {
   $("#searchInput").val('');
   /* Is this screen searchable / screen with devices */
-  if (location.hash == "#/Dashboard" || location.hash == "#/LightSwitches" || location.hash == "#/Scenes" || location.hash == "#/Temperature" || location.hash == "#/Weather" || location.hash == "#/Utility") {
-    $("#searchInput").removeAttr('readonly');
+  isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if ((location.hash == "#/Dashboard" && !isMobile) || location.hash == "#/LightSwitches" || location.hash == "#/Scenes" || location.hash == "#/Temperature" || location.hash == "#/Weather" || location.hash == "#/Utility") {
+    $("#search").removeClass('readonly');
   } else {
-    $("#searchInput").attr('readonly', 'readonly');
+    $("#search").addClass('readonly');
   }
   $(".current_page_item:not(:first)").removeClass("current_page_item");
 }

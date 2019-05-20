@@ -9,7 +9,7 @@ $('a.settings').click(function() {
     $("#machinoSettings").remove();
     $("#appnavbar li").removeClass("current_page_item");
     $("#mSettings").addClass("current_page_item");
-    $("#searchInput").attr("readonly", "readonly");
+    $("#search").addClass("readonly");
     if ($('#holder #main-view #machinoSettings').length === 0) {
         $('#holder #main-view').empty();
         $('#holder #main-view').append('<div id="machinoSettings">');
