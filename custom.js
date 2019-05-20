@@ -197,6 +197,7 @@ $(document).ajaxSuccess(function (event, xhr, settings) {
         let intervalId = setInterval(function () {
             if ($('#main-view').find('.item').length > 0) {
                 applySwitchersAndSubmenus();
+                applyIconsStatus();
                 clearInterval(intervalId);
             } else {
                 counter++;

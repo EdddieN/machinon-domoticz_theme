@@ -420,6 +420,9 @@ div.bannercontent .row.divider{
   grid-area: name;
   white-space: nowrap;
 }
+.item #name i {
+  font-size: 110%;
+}
 
 /* bigtext */
 .item #bigtext {
@@ -1335,15 +1338,6 @@ input#AcceptNewHardware:checked ~ button {
 }
 .item.statusProtected:hover{
 	box-shadow: 0px 0px 0px 2px rgb(0, 0, 139);
-}
-.item.statusProtected #name:before{
-	content:'';
-	display: inline-block;
-	width: 20px;
-	height: 16px;
-	background-image: url('../images/deviceProtected.png');
-	background-repeat: no-repeat;
-	background-position: center;
 }
 /* Device has low battery */
 .item.statusLowBattery{

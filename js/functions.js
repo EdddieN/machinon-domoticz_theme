@@ -230,7 +230,6 @@ function applySwitchersAndSubmenus() {
             $(this).hide();
         }
     });
-    //nativeSelectors();
 }
 
 function nativeSelectors() {
@@ -246,6 +245,24 @@ function nativeSelectors() {
             var selected = $(this).children("option:selected");
             SwitchSelectorLevel($(this).attr('data-idx'), selected.text(), selected.val());
         });
+    });
+}
+
+function applyIconsStatus() {
+    $("#bstatus.statusProtected").each(function() {
+        if($(this).find("#name > i.ion-ios-lock").length === 0) {
+            $(this).find("#name").prepend("<i class='ion-ios-lock' title='Protected'></i>&nbsp;");
+        }
+    });
+    $("#bstatus.statusTimeout").each(function() {
+        if($(this).find("#name > i.ion-ios-wifi").length === 0) {
+            $(this).find("#name").prepend("<i class='ion-ios-wifi text-error' title='Timeout'></i>&nbsp;");
+        }
+    });
+    $("#bstatus.statusLowBattery").each(function() {
+        if($(this).find("#name > i.ion-ios-battery-dead").length === 0) {
+            $(this).find("#name").prepend("<i class='ion-ios-battery-dead text-error' title='Low battery'></i>&nbsp;");
+        }
     });
 }
 
