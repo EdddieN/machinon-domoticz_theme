@@ -249,19 +249,19 @@ function nativeSelectors() {
 }
 
 function applyIconsStatus() {
-    $("#bstatus.statusProtected").each(function() {
+    $("div.item.statusProtected").each(function() {
         if($(this).find("#name > i.ion-ios-lock").length === 0) {
-            $(this).find("#name").prepend("<i class='ion-ios-lock' title='Protected'></i>&nbsp;");
+            $(this).find("#name").prepend("<i class='ion-ios-lock' title='" + $.t('Protected') + "'></i>&nbsp;");
         }
     });
-    $("#bstatus.statusTimeout").each(function() {
+    $("div.item.statusTimeout").each(function() {
         if($(this).find("#name > i.ion-ios-wifi").length === 0) {
-            $(this).find("#name").prepend("<i class='ion-ios-wifi text-error' title='Timeout'></i>&nbsp;");
+            $(this).find("#name").prepend("<i class='ion-ios-wifi text-error' title='" + $.t('Sensor Timeout') + "'></i>&nbsp;");
         }
     });
-    $("#bstatus.statusLowBattery").each(function() {
+    $("div.item.statusLowBattery").each(function() {
         if($(this).find("#name > i.ion-ios-battery-dead").length === 0) {
-            $(this).find("#name").prepend("<i class='ion-ios-battery-dead text-error' title='Low battery'></i>&nbsp;");
+            $(this).find("#name").prepend("<i class='ion-ios-battery-dead text-error' title='" + $.t('Battery Low Level') + "'></i>&nbsp;");
         }
     });
 }
