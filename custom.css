@@ -663,7 +663,7 @@ html.cover {
     background-size: cover !important;
     background-repeat: no-repeat !important;
     background-attachment: fixed !important;
-    height: 125%;
+    height: 100vh;
 }
 html.pattern {
     background-size: auto !important;
