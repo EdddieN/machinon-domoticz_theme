@@ -482,6 +482,7 @@ body table#itemtable tr > .options {
 
 .options {
   display: none;
+  font-family: main-font-bold;
   position: absolute;
   background: var(--main-item-bg-color);
   border-radius: 5px;
