@@ -482,7 +482,6 @@ body table#itemtable tr > .options {
 
 .options {
   display: none;
-  font-family: main-font-bold;
   position: absolute;
   background: var(--main-item-bg-color);
   border-radius: 5px;
@@ -492,7 +491,6 @@ body table#itemtable tr > .options {
   z-index: 1;
   padding: 8px;
   width:97px;
-  height:flex;
 }
 .options .btnsmall-sel {
   width: auto;
@@ -502,7 +500,7 @@ body table#itemtable tr > .options {
 .options .btnsmall {
   padding-top:4px;
   text-align: left;
-  color: #818183;
+  color: var(--secondary-text-color);
 }
 .timers_log{
     grid-area: tools;
@@ -1041,7 +1039,7 @@ button.savebtn:disabled {
 }
 .btnsmall,
 .btnsmall:hover {
-  color: #818183;
+  color: var(--secondary-text-color);
 }
 
 #itemtabledoubleicon td:last-child .btnsmall-sel,
