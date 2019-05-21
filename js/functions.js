@@ -102,7 +102,7 @@ function applySwitchersAndSubmenus() {
 		let subnav = $(this).find('.options');
 		let subnavButton = $(this).find('.options-cell');
 		if (subnav.length && subnavButton.length == 0) {
-			$(this).find('table > tbody > tr').append('<td class="options-cell" title="' + $.t('More options') + '"></td>');
+			$(this).find('table > tbody > tr').append('<td class="options-cell" title="' + $.t('More options') + '"><i class="ion-md-more"></i</td>');
 			$(this).on('click', 'td.options-cell', function (e) {
                 e.preventDefault();
                 $(this).siblings('td.options').slideToggle(400);
@@ -256,12 +256,12 @@ function applyIconsStatus() {
     });
     $("div.item.statusTimeout").each(function() {
         if($(this).find("#name > i.ion-ios-wifi").length === 0) {
-            $(this).find("#name").prepend("<i class='ion-ios-wifi text-error' title='" + $.t('Sensor Timeout') + "'></i>&nbsp;");
+            $(this).find("#name").prepend("<i class='ion-ios-wifi blink text-error' title='" + $.t('Sensor Timeout') + "'></i>&nbsp;");
         }
     });
     $("div.item.statusLowBattery").each(function() {
         if($(this).find("#name > i.ion-ios-battery-dead").length === 0) {
-            $(this).find("#name").prepend("<i class='ion-ios-battery-dead text-error' title='" + $.t('Battery Low Level') + "'></i>&nbsp;");
+            $(this).find("#name").prepend("<i class='ion-ios-battery-dead blink text-error' title='" + $.t('Battery Low Level') + "'></i>&nbsp;");
         }
     });
 }
