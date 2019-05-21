@@ -80,7 +80,10 @@ $(document).ready(function() {
     }
  
     // Searchbar		
-    $('<input type="text" id="searchInput" autocomplete="off" onkeyup="searchFunction()" placeholder="' + language.type_to_search + '" title="' + language.type_to_search + '">').appendTo('.container-logo');
+    $('<div id="search"><input type="text" id="searchInput" autocomplete="off" onkeyup="searchFunction()" placeholder="' + language.type_to_search + '" title="' + language.type_to_search + '"><i class="ion-md-search"></i></div>').appendTo('.container-logo');
+    $('#search').click(function() {
+        $('#searchInput').focus();
+    });
     $('#searchInput').keyup(function(event) {
       if (event.keyCode === 13) {
         /* Return key */
@@ -194,6 +197,7 @@ $(document).ajaxSuccess(function (event, xhr, settings) {
         let intervalId = setInterval(function () {
             if ($('#main-view').find('.item').length > 0) {
                 applySwitchersAndSubmenus();
+                applyIconsStatus();
                 clearInterval(intervalId);
             } else {
                 counter++;

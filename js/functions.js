@@ -102,23 +102,37 @@ function applySwitchersAndSubmenus() {
 		let subnav = $(this).find('.options');
 		let subnavButton = $(this).find('.options-cell');
 		if (subnav.length && subnavButton.length == 0) {
-			$(this).find('table > tbody > tr').append('<td class="options-cell" title="' + $.t('More options') + '"></td>');
+			$(this).find('table > tbody > tr').append('<td class="options-cell" title="' + $.t('More options') + '"><i class="ion-md-more"></i</td>');
 			$(this).on('click', 'td.options-cell', function (e) {
                 e.preventDefault();
                 $(this).siblings('td.options').slideToggle(400);
                 $(this).siblings('td.options').unbind("mouseleave");
                 $(this).siblings('td.options').mouseleave(function() { $(this).slideToggle(400); $(this).unbind("mouseleave"); });
             });
-			// Move Timers and log to item
 			$(this).find('table tr').append('<td class="timers_log"></td>');
-			$(this).find('.timers_log').append($(this).find('.options .btnsmall[data-i18n="Log"]'));
-			$(this).find('.timers_log .btnsmall[data-i18n="Log"]').append("<img id='logImg' title='" + $.t('Log') + "' src='images/options/log.png'/>");
-			$(this).find('.timers_log').append($(this).find('.options .btnsmall[data-i18n="Timers"]'));
-			$(this).find('.timers_log .btnsmall[data-i18n="Timers"]').append("<img id='timerOffImg' title='" + $.t('Timers') + "' src='images/options/timer_off.png'/>");
-			$(this).find('.timers_log').append($(this).find('.options .btnsmall-sel[data-i18n="Timers"]'));
-			$(this).find('.timers_log .btnsmall-sel[data-i18n="Timers"]').append("<img id='timerOnImg' title='" + $.t('Timers') + "' src='images/options/timer_on.png'/>");
-			$(this).find('.timers_log').append($(this).find('.options .btnsmall[href*="Log"]'));
-			$(this).find('.timers_log .btnsmall[href*="Log"]:not(.btnsmall[data-i18n="Log"])').append("<img id='logImg' title='" + $.t('Log') + "' src='images/options/log.png'/>");
+			// Move Log item to tools area
+			$(this).find('.timers_log').append($(this).find('.options .btnsmall[data-i18n="Log"]').html("<i class='ion-ios-stats' title='" + $.t('Log') + "'></i>"));
+
+			$(this).find('.timers_log').append($(this).find('.options .btnsmall[href*="Log"]:not(.btnsmall[data-i18n="Log"])').html("<i class='ion-ios-stats' title='" + $.t('Log') + "'></i>"));
+
+			// Move Timer item to tools area
+			$(this).find('.timers_log').append($(this).find('.options .btnsmall[data-i18n="Timers"]').html("<i class='ion-ios-timer disabledText' title='" + $.t('Timers') + "'></i>"));
+
+			$(this).find('.timers_log').append($(this).find('.options .btnsmall-sel[data-i18n="Timers"]').html("<i class='ion-ios-timer' title='" + $.t('Timers') + "'></i>"));
+
+			// Move Favorite item to favorite area
+			let item = $(this).closest('.item');
+			var itemID = item.attr('id');
+			if (typeof(itemID) === 'undefined') {
+				itemID = item[0].offsetParent.id;
+			}
+            if ($(this).find('table tr .options > img[src*="nofavorite"]:not(".ng-hide")').length === 0) {
+                icon = '<i class="ion-ios-star lcursor" title="' + $.t('Remove from Dashboard') + '" onclick="MakeFavorite(' + itemID + ',0);"></i></td>';
+            } else {
+                icon = '<i class="ion-ios-star-outline lcursor" title="' + $.t('Add to Dashboard') + '" onclick="MakeFavorite(' + itemID + ',1);"></i></td>';
+            }
+			$(this).find('table tr').append('<td class="favorite">' + icon + '</td>');
+            $(this).find('table tr .options').html($(this).find('table tr .options').children());
 		}
 		if ($('#dashcontent').length == 0) {
 			let item = $(this).closest('.item');
@@ -230,7 +244,6 @@ function applySwitchersAndSubmenus() {
             $(this).hide();
         }
     });
-    //nativeSelectors();
 }
 
 function nativeSelectors() {
@@ -246,6 +259,24 @@ function nativeSelectors() {
             var selected = $(this).children("option:selected");
             SwitchSelectorLevel($(this).attr('data-idx'), selected.text(), selected.val());
         });
+    });
+}
+
+function applyIconsStatus() {
+    $("div.item.statusProtected").each(function() {
+        if($(this).find("#name > i.ion-ios-lock").length === 0) {
+            $(this).find("#name").prepend("<i class='ion-ios-lock' title='" + $.t('Protected') + "'></i>&nbsp;");
+        }
+    });
+    $("div.item.statusTimeout").each(function() {
+        if($(this).find("#name > i.ion-ios-wifi").length === 0) {
+            $(this).find("#name").prepend("<i class='ion-ios-wifi blink warning-text' title='" + $.t('Sensor Timeout') + "'></i>&nbsp;");
+        }
+    });
+    $("div.item.statusLowBattery").each(function() {
+        if($(this).find("#name > i.ion-ios-battery-dead").length === 0) {
+            $(this).find("#name").prepend("<i class='ion-ios-battery-dead blink warning-text' title='" + $.t('Battery Low Level') + "'></i>&nbsp;");
+        }
     });
 }
 
@@ -317,10 +348,11 @@ function searchFunction() {
 function locationHashChanged() {
   $("#searchInput").val('');
   /* Is this screen searchable / screen with devices */
-  if (location.hash == "#/Dashboard" || location.hash == "#/LightSwitches" || location.hash == "#/Scenes" || location.hash == "#/Temperature" || location.hash == "#/Weather" || location.hash == "#/Utility") {
-    $("#searchInput").removeAttr('readonly');
+  isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if ((location.hash == "#/Dashboard" && !isMobile) || location.hash == "#/LightSwitches" || location.hash == "#/Scenes" || location.hash == "#/Temperature" || location.hash == "#/Weather" || location.hash == "#/Utility") {
+    $("#search").removeClass('readonly');
   } else {
-    $("#searchInput").attr('readonly', 'readonly');
+    $("#search").addClass('readonly');
   }
   $(".current_page_item:not(:first)").removeClass("current_page_item");
 }

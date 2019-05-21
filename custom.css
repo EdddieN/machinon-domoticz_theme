@@ -7,6 +7,9 @@
 @import url("css/iconsupload.css");
 @import url("css/floorplan.css");
 
+/* ionicons */
+@import url("https://unpkg.com/ionicons@latest/dist/css/ionicons.min.css");
+
 /*var in way of change color*/
 :root {
 	/*use with var(--main-blue-color)*/
@@ -149,69 +152,61 @@ color: var(--main-item-color);
 border-bottom: none;
 }
 /* Search */
-#searchInput {
+#search {
   float: right;
-  background-image: url('../images/searchicon.png');
-  background-color: transparent;
-  background-position: 10px 12px;
-  background-repeat: no-repeat;
-  width: 10%;
-  font-size: 12px;
+  margin-top: 5px;
+  margin-right: 10px;
   color: #fff;
-  padding: 12px 0px 8px 30px;
+  background-color: transparent;
   outline: 0;
-  border-width: 0 1px 1px 1px;
-  border-left-color: transparent;
-  border-right-color: transparent;
-  border-bottom-color: #fff;
   transition: transform .5s;
+}
+#search i {
+  font-size: 30px;
+  line-height: 30px;
+}
+#searchInput {
+  color: #fff;
+  border-color: #fff;
 }
 #searchInput::placeholder {
   color: #fff;
   opacity: 0.5;
 }
-#searchInput:read-only {
+#search.readonly {
   opacity: 0.3;
-  border-bottom-color: #ccc;
-  cursor: default;
 }
-#searchInput:-moz-read-only {
-  opacity: 0.3;
-  border-bottom-color: #ccc;
-  cursor: default;
+#search.readonly #searchInput {
+  display: none;
 }
 @media (max-width: 767px){
         #searchInput {
             width:0;
             margin-right: 10px;
         }
-        #searchInput:read-write:focus {
-            transform: translateY(39px);
-            border: 0;
-            margin: 0;
+        #search:hover #searchInput,
+        #search:active #searchInput,
+        #search:focus  #searchInput {
+            width: calc(100% - 60px);
+            transform: translate(30px, 45px);
+            background: var(--main-blue-color);
+            box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            border: 5px solid #fff;
+            padding: 10px;
+            position: relative;
+            z-index: 5;
+        }
+        #search:not(.readonly):hover,
+        #search:not(.readonly):active,
+        #search:not(.readonly):focus {
             width: 100%;
-            width: -moz-available;
-            width: -webkit-fill-available;
-            width: fill-available;
-            background: linear-gradient(to right, #0bcdc7 0%, var(--main-blue-color) 100%);
         }
-}
-@media (min-width: 768px){
-        #searchInput:read-write:hover,
-        #searchInput:read-write:focus {
-          border-bottom-left-radius: 5px;
-          border-bottom-right-radius: 5px;
-          border-bottom-color: transparent;
-          background-color: rgba(0,0,0,.2);
-          width: 10%;
-        }
-        #searchInput:-moz-read-write:hover,
-        #searchInput:-moz-read-write:focus {
-          border-bottom-left-radius: 5px;
-          border-bottom-right-radius: 5px;
-          border-bottom-color: transparent;
-          background-color: rgba(0,0,0,.2);
-          width: 10%;
+        #search:not(.readonly):hover i,
+        #search:not(.readonly):active i,
+        #search:not(.readonly):focus  i {
+          position: absolute;
+          right: 10px;
         }
 }
 #notify {
@@ -401,18 +396,15 @@ div.bannercontent .row.divider{
 }
 #holder .row .span4 table[id^="item"] > tbody > tr{
   grid-template-rows: 40px minmax(0,1fr) minmax(0,20px);
-  grid-template-columns: 58px 48px minmax(0,.7fr) minmax(0,1fr) 25px 10px;
+  grid-template-columns: 58px 48px minmax(0,.7fr) minmax(0,1fr) 25px 15px;
   gap: 10px;
   grid-template-areas:
     'name name bigtext bigtext bigtext options'
     'img img2 status status status status'
-    'lastupdate lastupdate lastupdate lastupdate tools tools';
+    'favorite lastupdate lastupdate lastupdate tools tools';
 }
 #holder #dashcontent .row .span4 .item table[id^="item"] > tbody > tr {
   grid-template-rows: 40px minmax(0,1fr) 0;
-}
-#holder #lightcontent .row .item table[id^="item"] > tbody > tr {
-  grid-template-columns: 58px 48px minmax(0,.7fr) minmax(0,1fr) 45px;
 }
 .item:hover {
 	box-shadow: 0px 0px 0px 2px rgb(11, 150, 205);
@@ -424,6 +416,9 @@ div.bannercontent .row.divider{
   line-height: 18px;
   grid-area: name;
   white-space: nowrap;
+}
+.item #name i {
+  font-size: 110%;
 }
 
 /* bigtext */
@@ -471,21 +466,13 @@ div.bannercontent .row.divider{
 
 /* item subnav applying by click*/
 .options-cell {
-  margin-right:5px;
-  color: var(--secondary-text-color);
+  padding: 0 3px !important;
+  margin-right: 5px !important;
+  color: var(--main-blue-color);
   background: var(--main-item-bg-color);
+  font-size: 26px;
   cursor: pointer;
   grid-area: options;
-  justify-self: left;
-}
-.options-cell::before {
-  display: block;
-  content: "\22ee";
-  font-size: 20px;
-  text-align: center;
-}
-.options-cell:hover {
-  color: var(--main-blue-color);
 }
 
 body table#itemtable tr > .options {
@@ -494,6 +481,7 @@ body table#itemtable tr > .options {
 }
 
 .options {
+  display: none;
   font-family: main-font-bold;
   position: absolute;
   background: var(--main-item-bg-color);
@@ -502,11 +490,11 @@ body table#itemtable tr > .options {
   top: 8px;
   box-shadow: -2px 2px 20px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  display: none;
   padding: 8px;
   width:97px;
-  height:flex;
-
+}
+.options > img {
+  display: none;
 }
 .options .btnsmall-sel {
   width: auto;
@@ -516,7 +504,14 @@ body table#itemtable tr > .options {
 .options .btnsmall {
   padding-top:4px;
   text-align: left;
-  color: #818183;
+  color: var(--secondary-text-color);
+}
+.favorite {
+    grid-area: favorite;
+    margin-left: 10px !important;
+    font-size: 16px;
+    line-height: 16px;
+    color: var(--main-blue-color);
 }
 .timers_log{
     grid-area: tools;
@@ -526,16 +521,11 @@ body table#itemtable tr > .options {
 .timers_log .btnsmall-sel,
 .timers_log .btnsmall:hover,
 .timers_log .btnsmall-sel:hover {
-	color: transparent;
-    display: inline-block;
-    padding: 0 3px;
-	font-size: 0;
-}
-
-@media (min-width: 1200px) {
-  .options {
-    top: 5px;
-  }
+    display: inline;
+    padding: 0 5px;
+    font-size: 16px;
+    line-height: 16px;
+    color: var(--main-blue-color);
 }
 
 /* images */
@@ -683,7 +673,7 @@ html.cover {
     background-size: cover !important;
     background-repeat: no-repeat !important;
     background-attachment: fixed !important;
-    height: 125%;
+    height: 100vh;
 }
 html.pattern {
     background-size: auto !important;
@@ -727,6 +717,7 @@ img.header__icon {
 
 div.menu-toggle {
   display: none;
+  cursor: pointer;
   z-index: 3;
   top: 0;
   left: 10px;
@@ -1060,7 +1051,7 @@ button.savebtn:disabled {
 }
 .btnsmall,
 .btnsmall:hover {
-  color: #818183;
+  color: var(--secondary-text-color);
 }
 
 #itemtabledoubleicon td:last-child .btnsmall-sel,
@@ -1340,15 +1331,6 @@ input#AcceptNewHardware:checked ~ button {
 .item.statusProtected:hover{
 	box-shadow: 0px 0px 0px 2px rgb(0, 0, 139);
 }
-.item.statusProtected #name:before{
-	content:'';
-	display: inline-block;
-	width: 20px;
-	height: 16px;
-	background-image: url('../images/deviceProtected.png');
-	background-repeat: no-repeat;
-	background-position: center;
-}
 /* Device has low battery */
 .item.statusLowBattery{
 	box-shadow: 0px 0px 10px 2px rgb(255,255,0,0.4);
@@ -1356,15 +1338,8 @@ input#AcceptNewHardware:checked ~ button {
 .item.statusLowBattery:hover{
 	box-shadow: 0px 0px 0px 2px rgb(255,255,0);
 }
-.item.statusLowBattery #name:before{
-	content:'';
-	display: inline-block;
-	width: 25px;
-	height: 20px;
-	background-image: url('../images/lowbattery.png');
-	background-repeat: no-repeat;
-	background-position: center;
-	animation: blinker 2s linear infinite;
+.blink {
+    animation: blinker 2s linear infinite;
 }
 @keyframes blinker {
   50% {
