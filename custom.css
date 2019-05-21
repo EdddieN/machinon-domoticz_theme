@@ -706,6 +706,7 @@ img.header__icon {
 
 div.menu-toggle {
   display: none;
+  cursor: pointer;
   z-index: 3;
   top: 0;
   left: 10px;

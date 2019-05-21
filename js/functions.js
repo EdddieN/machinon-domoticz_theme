@@ -256,12 +256,12 @@ function applyIconsStatus() {
     });
     $("div.item.statusTimeout").each(function() {
         if($(this).find("#name > i.ion-ios-wifi").length === 0) {
-            $(this).find("#name").prepend("<i class='ion-ios-wifi blink text-error' title='" + $.t('Sensor Timeout') + "'></i>&nbsp;");
+            $(this).find("#name").prepend("<i class='ion-ios-wifi blink warning-text' title='" + $.t('Sensor Timeout') + "'></i>&nbsp;");
         }
     });
     $("div.item.statusLowBattery").each(function() {
         if($(this).find("#name > i.ion-ios-battery-dead").length === 0) {
-            $(this).find("#name").prepend("<i class='ion-ios-battery-dead blink text-error' title='" + $.t('Battery Low Level') + "'></i>&nbsp;");
+            $(this).find("#name").prepend("<i class='ion-ios-battery-dead blink warning-text' title='" + $.t('Battery Low Level') + "'></i>&nbsp;");
         }
     });
 }
