@@ -396,7 +396,7 @@ div.bannercontent .row.divider{
 }
 #holder .row .span4 table[id^="item"] > tbody > tr{
   grid-template-rows: 40px minmax(0,1fr) minmax(0,20px);
-  grid-template-columns: 58px 48px minmax(0,.7fr) minmax(0,1fr) 25px 10px;
+  grid-template-columns: 58px 48px minmax(0,.7fr) minmax(0,1fr) 25px 15px;
   gap: 10px;
   grid-template-areas:
     'name name bigtext bigtext bigtext options'
@@ -405,9 +405,6 @@ div.bannercontent .row.divider{
 }
 #holder #dashcontent .row .span4 .item table[id^="item"] > tbody > tr {
   grid-template-rows: 40px minmax(0,1fr) 0;
-}
-#holder #lightcontent .row .item table[id^="item"] > tbody > tr {
-  grid-template-columns: 58px 48px minmax(0,.7fr) minmax(0,1fr) 45px;
 }
 .item:hover {
 	box-shadow: 0px 0px 0px 2px rgb(11, 150, 205);
@@ -469,13 +466,18 @@ div.bannercontent .row.divider{
 
 /* item subnav applying by click*/
 .options-cell {
-  padding: 0 3px;
-  margin-right: 5px;
+  padding: 0 3px !important;
+  margin-right: 5px !important;
   color: var(--main-blue-color);
   background: var(--main-item-bg-color);
   font-size: 26px;
   cursor: pointer;
   grid-area: options;
+}
+
+body table#itemtable tr > .options {
+  display: none;
+  padding: 8px;
 }
 
 .options {
@@ -491,7 +493,6 @@ div.bannercontent .row.divider{
   padding: 8px;
   width:97px;
   height:flex;
-
 }
 .options .btnsmall-sel {
   width: auto;
