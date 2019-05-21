@@ -469,29 +469,17 @@ div.bannercontent .row.divider{
 
 /* item subnav applying by click*/
 .options-cell {
-  margin-right:5px;
-  color: var(--secondary-text-color);
+  padding: 0 3px;
+  margin-right: 5px;
+  color: var(--main-blue-color);
   background: var(--main-item-bg-color);
+  font-size: 26px;
   cursor: pointer;
   grid-area: options;
-  justify-self: left;
-}
-.options-cell::before {
-  display: block;
-  content: "\22ee";
-  font-size: 20px;
-  text-align: center;
-}
-.options-cell:hover {
-  color: var(--main-blue-color);
-}
-
-body table#itemtable tr > .options {
-  display: none;
-  padding: 8px;
 }
 
 .options {
+  display: none;
   font-family: main-font-bold;
   position: absolute;
   background: var(--main-item-bg-color);
@@ -500,7 +488,6 @@ body table#itemtable tr > .options {
   top: 8px;
   box-shadow: -2px 2px 20px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  display: none;
   padding: 8px;
   width:97px;
   height:flex;
@@ -529,12 +516,6 @@ body table#itemtable tr > .options {
     font-size: 16px;
     line-height: 16px;
     color: var(--main-blue-color);
-}
-
-@media (min-width: 1200px) {
-  .options {
-    top: 5px;
-  }
 }
 
 /* images */
@@ -682,7 +663,7 @@ html.cover {
     background-size: cover !important;
     background-repeat: no-repeat !important;
     background-attachment: fixed !important;
-    height: 125%;
+    height: 100vh;
 }
 html.pattern {
     background-size: auto !important;
@@ -1346,15 +1327,8 @@ input#AcceptNewHardware:checked ~ button {
 .item.statusLowBattery:hover{
 	box-shadow: 0px 0px 0px 2px rgb(255,255,0);
 }
-.item.statusLowBattery #name:before{
-	content:'';
-	display: inline-block;
-	width: 25px;
-	height: 20px;
-	background-image: url('../images/lowbattery.png');
-	background-repeat: no-repeat;
-	background-position: center;
-	animation: blinker 2s linear infinite;
+.blink {
+    animation: blinker 2s linear infinite;
 }
 @keyframes blinker {
   50% {
