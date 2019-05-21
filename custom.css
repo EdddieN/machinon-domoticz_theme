@@ -401,7 +401,7 @@ div.bannercontent .row.divider{
   grid-template-areas:
     'name name bigtext bigtext bigtext options'
     'img img2 status status status status'
-    'lastupdate lastupdate lastupdate lastupdate tools tools';
+    'favorite lastupdate lastupdate lastupdate tools tools';
 }
 #holder #dashcontent .row .span4 .item table[id^="item"] > tbody > tr {
   grid-template-rows: 40px minmax(0,1fr) 0;
@@ -493,6 +493,9 @@ body table#itemtable tr > .options {
   padding: 8px;
   width:97px;
 }
+.options > img {
+  display: none;
+}
 .options .btnsmall-sel {
   width: auto;
   background: transparent;
@@ -502,6 +505,13 @@ body table#itemtable tr > .options {
   padding-top:4px;
   text-align: left;
   color: var(--secondary-text-color);
+}
+.favorite {
+    grid-area: favorite;
+    margin-left: 10px !important;
+    font-size: 16px;
+    line-height: 16px;
+    color: var(--main-blue-color);
 }
 .timers_log{
     grid-area: tools;

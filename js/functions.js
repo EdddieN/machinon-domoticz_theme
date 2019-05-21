@@ -119,6 +119,20 @@ function applySwitchersAndSubmenus() {
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall[data-i18n="Timers"]').html("<i class='ion-ios-timer disabledText' title='" + $.t('Timers') + "'></i>"));
 
 			$(this).find('.timers_log').append($(this).find('.options .btnsmall-sel[data-i18n="Timers"]').html("<i class='ion-ios-timer' title='" + $.t('Timers') + "'></i>"));
+
+			// Move Favorite item to favorite area
+			let item = $(this).closest('.item');
+			var itemID = item.attr('id');
+			if (typeof(itemID) === 'undefined') {
+				itemID = item[0].offsetParent.id;
+			}
+            if ($(this).find('table tr .options > img[src*="nofavorite"]:not(".ng-hide")').length === 0) {
+                icon = '<i class="ion-ios-star lcursor" title="' + $.t('Remove from Dashboard') + '" onclick="MakeFavorite(' + itemID + ',0);"></i></td>';
+            } else {
+                icon = '<i class="ion-ios-star-outline lcursor" title="' + $.t('Add to Dashboard') + '" onclick="MakeFavorite(' + itemID + ',1);"></i></td>';
+            }
+			$(this).find('table tr').append('<td class="favorite">' + icon + '</td>');
+            $(this).find('table tr .options').html($(this).find('table tr .options').children());
 		}
 		if ($('#dashcontent').length == 0) {
 			let item = $(this).closest('.item');
