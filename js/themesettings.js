@@ -297,11 +297,10 @@ function storeUserVariableThemeSettings(action){ // 'add' or 'update'
                 settings.push(feature.id);
             }
         });
-    
         var variableURL = 'json.htm?type=command&param=' + action + 'uservariable&vname=theme-' + themeFolder + '-features&vtype=2&vvalue='+ JSON.stringify(settings);
         $.ajax({
             url: variableURL,
-            async: true,
+            async: false,
             dataType: 'json',
             success: function (data) {
                 if (data.status == "ERR") {
@@ -331,7 +330,7 @@ function storeUserVariableThemeSettings(action){ // 'add' or 'update'
         var variableURL = 'json.htm?type=command&param=' + action + 'uservariable&vname=theme-' + themeFolder + '-custom&vtype=2&vvalue='+ JSON.stringify(custom);
         $.ajax({
             url: variableURL,
-            async: true,
+            async: false,
             dataType: 'json',
             success: function (data) {
                 if (data.status == "ERR") {
