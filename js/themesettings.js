@@ -277,7 +277,7 @@ function checkUserVariableThemeSettings() {
                     if (unableCreateUserVariable == false){
                         storeUserVariableThemeSettings("add");
                     }else{
-                        storeUserVariableThemeSettings("save");
+                        storeUserVariableThemeSettings("update");
                     }
                 }                
             }           
