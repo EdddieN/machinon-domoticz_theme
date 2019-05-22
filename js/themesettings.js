@@ -246,12 +246,12 @@ function loadSettings() {
 var unableCreateUserVariable = false;
 function checkUserVariableThemeSettings() {
     $.ajax({
-        url: "/json.htm?type=command&param=getuservariables",
+        url: "json.htm?type=command&param=getuservariables",
         async: true,
         dataType: 'json',
         success: function (data) {
             if (data.status == "ERR") {
-                $.get('/json.htm?type=command&param=addlogmessage&message=Theme Error - The theme was unable to load your preferences from Domoticz.');
+                $.get('json.htm?type=command&param=addlogmessage&message=Theme Error - The theme was unable to load your preferences from Domoticz.');
             }
             // If we got good data from Domoticz, load the preferences.
             if (data.status == "OK"){
@@ -290,7 +290,6 @@ function checkUserVariableThemeSettings() {
     
 }
 function storeUserVariableThemeSettings(action){ // 'add' or 'update'
-
     if (themeFolder !== 'undefined'){    
         var settings = [];
         $.each(theme.features, function(key,feature){
@@ -362,7 +361,7 @@ function getFeatureThemeSettings(idx){
         success: function (data) {
             if (data.status == "ERR") {
                 console.log(themeName + " - Although they seem to exist, there was an error loading theme preferences from Domoticz");
-                $.get('/json.htm?type=command&param=addlogmessage&message=Theme Error - The theme was unable to load your user variable.');
+                $.get('json.htm?type=command&param=addlogmessage&message=Theme Error - The theme was unable to load your user variable.');
                 userVariableThemeLoaded = false;
             }
             if (data.status == "OK") {
@@ -395,7 +394,7 @@ function getCustomThemeSettings(idx){
         success: function (data) {
             if (data.status == "ERR") {
                 console.log(themeName + " - Although they seem to exist, there was an error loading theme preferences from Domoticz");
-                $.get('/json.htm?type=command&param=addlogmessage&message=Theme Error - The theme was unable to load your user variable.');
+                $.get('json.htm?type=command&param=addlogmessage&message=Theme Error - The theme was unable to load your user variable.');
                 userVariableThemeLoaded = false;
             }
             if (data.status == "OK") {
@@ -424,7 +423,7 @@ function getCustomThemeSettings(idx){
 function resetTheme(){
     if (typeof(Storage) !== "undefined") {
         if(typeof theme.userfeaturesvariable !== 'undefined'){
-            var deleteFeaturesURL = '/json.htm?type=command&param=deleteuservariable&idx=' + theme.userfeaturesvariable;
+            var deleteFeaturesURL = 'json.htm?type=command&param=deleteuservariable&idx=' + theme.userfeaturesvariable;
             $.ajax({
                 url: deleteFeaturesURL,
                 async: true,
@@ -436,7 +435,7 @@ function resetTheme(){
                     }
                     if (data.status == "OK") {
                         localStorage.removeItem(themeFolder + ".themeSettings");
-                        $.get('/json.htm?type=command&param=addlogmessage&message=' + themeFolder + ' theme was reset to defaults');
+                        $.get('json.htm?type=command&param=addlogmessage&message=' + themeFolder + ' theme was reset to defaults');
                     }
                 },
                 error: function () {
@@ -444,7 +443,7 @@ function resetTheme(){
                     bootbox.alert($.t('Error communicating with Domoticz, theme feature settings not reset.'));
                 }
             });
-            var deleteCustomURL = '/json.htm?type=command&param=deleteuservariable&idx=' + theme.usercustomsvariable;
+            var deleteCustomURL = 'json.htm?type=command&param=deleteuservariable&idx=' + theme.usercustomsvariable;
             $.get(deleteCustomURL);
             setTimeout(function(){
                 location.reload();
