@@ -15,11 +15,14 @@ $.ajax({url:"json.htm?type=settings", cache: false, async: false, dataType:"json
 $.ajax({url:"acttheme/js/notify.js", async: false, dataType:"script"});
 $.ajax({url:"acttheme/js/themesettings.js", async: false, dataType:"script"});
 $.ajax({url:"acttheme/js/functions.js", async: false, dataType:"script"});
-$.ajax({url:"acttheme/js/time_ago.js", async: false, dataType:"script"});
+$.ajax({url:"acttheme/js/moment.js", async: false, dataType:"script"});
 0 <= "en fr de sv nl pl".split(" ").indexOf(lang) ? $.ajax({url:"acttheme/lang/machinon." + lang + ".js", async: false, dataType:"script"}) : $.ajax({url:"acttheme/lang/machinon.en.js", async: false, dataType:"script"});
 
 // Check if is admin
 checkauth();
+
+// Define moment language
+moment.locale(lang);
 
 // Force layout
 if (!isMobile){ 
@@ -184,7 +187,7 @@ $(document).ajaxSuccess(function (event, xhr, settings) {
         var myObj = msg;
         $('#notify').append('<div id="msg" class="msg"><ul></ul><center><a class="btn btn-info" onclick="clearNotify();">'+(typeof $.t === "undefined" ? "Clear" : $.t('Clear'))+'</a></center></div>');
         for (x in myObj) {
-            $('#msg ul').append('<li>' + x + '<span> -- ' + jQuery.timeago(myObj[x]) + '</span></li>');
+            $('#msg ul').append('<li>' + x + '<span> -- ' + moment(myObj[x]).fromNow() + '</span></li>');
             msgCount++;
             $("#notyIcon").prop('title', language.you_have +' '+ msgCount +' '+ language.messages);
         }

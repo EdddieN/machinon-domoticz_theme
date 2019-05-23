@@ -92,8 +92,9 @@ function applySwitchersAndSubmenus() {
 				$(this).find('table tbody tr').append('<td id="timeago" class="timeago"><i class="ion-ios-pulse"></i> <span id="timeago_duration"></span></td>');
 				$(this).find('#lastupdate').hide();
 			}
-			$(this).find("#timeago_duration").timeago("update", xyz.text());
+            $(this).find("#timeago_duration").text(moment(xyz.text()).fromNow());
 		}else{
+            $(this).find("#lastupdate").text(moment($(this).find("#lastupdate").text(), ["YYYY-MM-DD HH:mm:ss", "L LT"]).format('L LT'));
 			if ($(this).find('#lastSeen').length == 0) {
                 $(this).find("#lastupdate").prepend("<i id='lastSeen' class='ion-ios-pulse'></i> ");
 			}
