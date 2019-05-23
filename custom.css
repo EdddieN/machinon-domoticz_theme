@@ -1562,7 +1562,7 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
 @media (max-width: 767px) {
     #notify {
         float: left;
-        margin-left: 20px;
+        margin-left: 35px;
     }
     .msg{
         left: 20px;
