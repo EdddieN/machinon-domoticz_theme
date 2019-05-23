@@ -133,7 +133,7 @@ $(document).ready(function() {
     // Feature - Notifications
     if (theme.features.notification.enabled === true) {
         $('<div id="notify"></div>').appendTo('.container-logo');
-        $('<i id="notyIcon" class="ion-ios-notifications-outline"></i>').appendTo('#notify').hide();
+        $('<i id="notyIcon" class="ion-ios-notifications-outline lcursor"></i>').appendTo('#notify').hide();
         var existingNotes = localStorage.getItem(themeFolder + ".notify");
         existingNotes && $("#notyIcon").show()
         var state = false;
