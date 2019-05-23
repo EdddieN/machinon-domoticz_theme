@@ -26,6 +26,16 @@ function applySwitchersAndSubmenus() {
         open: $.t('Open'),
         closed: $.t('Closed')
 	};
+
+	// fix images path if domoticz is running with webroot
+	if ((location.pathname.match(/\//g)).length > 1) {
+		$('.navbar-inner img:not([src^=acttheme]').attr('src', function(index, src) {
+			return 'acttheme/' + src;
+		});
+		$('#main-view img:not([src^=acttheme]').attr('src', function(index, src) {
+			return 'acttheme/' + src;
+		});
+	}
 	
 	//switcher for lights and windows
 	$('#main-view .item').each(function () {
