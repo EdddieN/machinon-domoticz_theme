@@ -33,11 +33,19 @@
     top: 18%;
     right: 10%;
 }
+/*
 #iconsmain input[type=file]{
     position: absolute;
     left: 0;
     top: 0;
     opacity: 0;
+}
+*/
+#iconsmain input[type=file]{
+    background: transparent;
+    outline: 0;
+    border-width: 0 0 1px;
+    border-color: var(--main-blue-color);
 }
 @media screen and (max-width: 992px){
     #iconsmain > div > tbody{
