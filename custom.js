@@ -133,7 +133,7 @@ $(document).ready(function() {
     // Feature - Notifications
     if (theme.features.notification.enabled === true) {
         $('<div id="notify"></div>').appendTo('.container-logo');
-        $('<img id="notyIcon" src="images/notify.png"/>').appendTo('#notify').hide();
+        $('<i id="notyIcon" class="ion-ios-notifications-outline"></i>').appendTo('#notify').hide();
         var existingNotes = localStorage.getItem(themeFolder + ".notify");
         existingNotes && $("#notyIcon").show()
         var state = false;
@@ -190,6 +190,7 @@ $(document).ajaxSuccess(function (event, xhr, settings) {
             $('#msg ul').append('<li>' + x + '<span> -- ' + moment(myObj[x]).fromNow() + '</span></li>');
             msgCount++;
             $("#notyIcon").prop('title', language.you_have +' '+ msgCount +' '+ language.messages);
+            $("#notyIcon").attr('data-msg', msgCount);
         }
         $('#msg').hide();
     }
