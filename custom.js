@@ -62,10 +62,10 @@ $(document).ready(function() {
     // Header logo
     let containerLogo = '<header class="logo"><div class="container-logo">';
     if (theme.logo.length == 0) {
-        containerLogo += '<img class="header__icon" src="images/logo.png">';
+        containerLogo += '<img class="header__icon" src="acttheme/images/logo.png">';
         $('<style>#login:before {content: url(../images/logo.png) !important;}</style>').appendTo('head');
     }else {
-        containerLogo += '<img class="header__icon" src="images/' + theme.logo + '"';
+        containerLogo += '<img class="header__icon" src="acttheme/images/' + theme.logo + '"';
         $('<style>#login:before {content: url(../images/'+ theme.logo + ') !important;}</style>').appendTo('head');
     }
     containerLogo += '</div></header>';
@@ -108,7 +108,7 @@ $(document).ready(function() {
     
     // Feature - Insert config-forms menu item into main navigation
     true === theme.features.custom_page_menu.enabled && $.ajax({url:"acttheme/js/custom_page.js", async: false, dataType:"script"});
-    isMobile && adminRights && 992 >= window.innerWidth && $("#appnavbar").append('<li id="mLogout"><a id="cLogout" href="#Logout"><img src="images/logout.png"><span class="hidden-phone hidden-tablet" data-i18n="Logout">Logout</span></a></li>');
+    isMobile && adminRights && 992 >= window.innerWidth && $("#appnavbar").append('<li id="mLogout"><a id="cLogout" href="#Logout"><img src="acttheme/images/logout.png"><span class="hidden-phone hidden-tablet" data-i18n="Logout">Logout</span></a></li>');
     
     // Navbar
     var navBar = $(".navbar").append('<div class="menu-toggle"><div></div></div>'), navBarInner = $(".navbar-inner"), navBarToggle = $(".menu-toggle");
@@ -156,7 +156,7 @@ $(document).ready(function() {
 
     // Feature - Sidemenu enabled
     if (theme.features.sidemenu.enabled === true && !isMobile || theme.features.sidemenu.enabled === true && !isMobile && 992 >= window.innerWidth) {
-        if (adminRights === true){$("#appnavbar").append('<li id="mLogout"><a id="cLogout" href="#Logout"><img src="images/logout.png"><span class="hidden-phone hidden-tablet" data-i18n="Logout">Logout</span></a></li>');}
+        if (adminRights === true){$("#appnavbar").append('<li id="mLogout"><a id="cLogout" href="#Logout"><img src="acttheme/images/logout.png"><span class="hidden-phone hidden-tablet" data-i18n="Logout">Logout</span></a></li>');}
         $('#holder').click(function() {  
             navBarInner.removeClass("slide");
         });
