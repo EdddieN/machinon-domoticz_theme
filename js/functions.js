@@ -99,11 +99,12 @@ function applySwitchersAndSubmenus() {
 			let lastupdated = $(this).find('#timeago');
 			let xyz = $(this).find('#lastupdate');
 			if (lastupdated.length == 0) {
-				$(this).find('table tbody tr').append('<td id="timeago" class="timeago"><i class="ion-ios-pulse"></i> <span id="timeago_duration"></span></td>');
+				$(this).find('table tbody tr').append('<td id="timeago" class="timeago" title="' + $.t('Last Seen') + '"><i class="ion-ios-pulse"></i> <span id="timeago_duration"></span></td>');
 				$(this).find('#lastupdate').hide();
 			}
             $(this).find("#timeago_duration").text(moment(xyz.text()).fromNow());
 		}else{
+            $(this).find("#lastupdate").attr("title", $.t('Last Seen'));
             $(this).find("#lastupdate").text(moment($(this).find("#lastupdate").text(), ["YYYY-MM-DD HH:mm:ss", "L LT"]).format('L LT'));
 			if ($(this).find('#lastSeen').length == 0) {
                 $(this).find("#lastupdate").prepend("<i id='lastSeen' class='ion-ios-pulse'></i> ");
