@@ -89,13 +89,13 @@ function applySwitchersAndSubmenus() {
 			let lastupdated = $(this).find('#timeago');
 			let xyz = $(this).find('#lastupdate');
 			if (lastupdated.length == 0) {
-				$(this).find('table tbody tr').append('<td id="timeago" class="timeago"></td>');
+				$(this).find('table tbody tr').append('<td id="timeago" class="timeago"><i class="ion-ios-pulse"></i> <span id="timeago_duration"></span></td>');
 				$(this).find('#lastupdate').hide();
-				}
-			$(this).find("#timeago").timeago("update", xyz.text());
-			}else{
+			}
+			$(this).find("#timeago_duration").timeago("update", xyz.text());
+		}else{
 			if ($(this).find('#lastSeen').length == 0) {
-				$(this).find('#lastupdate').prepend('<t id="lastSeen">' + $.t('Last Seen')+': </t>')
+                $(this).find("#lastupdate").prepend("<i id='lastSeen' class='ion-ios-pulse'></i> ");
 			}
 		}
 		// insert submenu buttons to each item table (not on dashboard)
