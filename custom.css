@@ -1775,7 +1775,7 @@ section.compact .row.divider {
 
 .span3 #name {
     padding: 2px 10px;
-    font-size: 14px;
+    line-height: 14px;
     text-overflow: ellipsis;
     overflow: hidden;
 }
