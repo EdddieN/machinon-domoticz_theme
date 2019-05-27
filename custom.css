@@ -338,9 +338,20 @@ input[type="text"]{
 }
 
 /* common features */
-/*need fix media screen*/
+/*need ofix media screen*/
 #timesun{
     margin-top: -30px;
+    color: var(--main-text-color) !important;
+}
+#timesun font {
+    font-size: 0;
+}
+#timesun font:before {
+    color: var(--main-text-color) !important;
+    content: "\f4b7";
+    font-family: "Ionicons";
+    font-size: 14px;
+    display: inline;
 }
 div#floorplancontent {
     height: 87%;
@@ -910,11 +921,6 @@ div.menu-toggle.scrolled {
   border: none !important;
   border-radius: 2px;
   color: #fff;
-}
-
-#timesun font,
-#timesun span {
-  color: var(--main-text-color) !important;
 }
 
 .btnstylerev,
@@ -1566,9 +1572,6 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
     }
     .msg{
         left: 20px;
-    }
-    #timesun font {
-        display: none;
     }
 }
 @media screen and (max-width: 992px){

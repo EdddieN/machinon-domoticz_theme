@@ -15,11 +15,7 @@
             margin-right: 10px;
         }
 
-        #dashcontent > section.compact {
-            width: 200px;
-        }
-            
-        #dashcontent > section > div.row.divider {
+        #dashcontent > section:not(.compact) > div.row.divider {
            grid-template-columns: none !important;
         }
 }
