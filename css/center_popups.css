@@ -8,6 +8,5 @@
     top:50vh!important;
     left:50%!important;
     transform: translate(-50%, -50%)!important;
-    min-height:200px!important;
     min-width:200px!important;
 }
