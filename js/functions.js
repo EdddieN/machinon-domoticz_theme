@@ -144,7 +144,6 @@ function applySwitchersAndSubmenus() {
                 icon = '<i class="ion-ios-star-outline lcursor" title="' + $.t('Add to Dashboard') + '" onclick="MakeFavorite(' + itemID + ',1);"></i></td>';
             }
 			$(this).find('table tr').append('<td class="favorite">' + icon + '</td>');
-            $(this).find('table tr .options').html($(this).find('table tr .options').children());
 		}
 		if ($('#dashcontent').length == 0) {
 			let item = $(this).closest('.item');
