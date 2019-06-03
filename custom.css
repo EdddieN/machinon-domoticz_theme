@@ -369,6 +369,7 @@ div.bannercontent .row.divider{
     display: grid;
     grid-auto-columns:auto;
     grid-auto-rows: 1fr;
+    grid-gap:15px;
     gap:15px;
     justify-items: stretch;
     align-items: stretch;
@@ -426,6 +427,7 @@ div.bannercontent .row.divider{
 #holder .row .span4 table[id^="item"] > tbody > tr{
   grid-template-rows: 40px minmax(0,1fr) minmax(0,20px);
   grid-template-columns: 58px 48px minmax(0,.7fr) minmax(0,1fr) 25px 15px;
+  grid-gap: 10px;
   gap: 10px;
   grid-template-areas:
     'name name bigtext bigtext bigtext options'
@@ -1870,6 +1872,7 @@ section.compact .row.divider {
 #holder #dashcontent .row .span3 .item table[id^="item"] > tbody > tr {
   grid-template-rows: 20px 60px 0;
   grid-template-columns: 58px 5px 1fr;
+  grid-gap: 2px;
   gap: 2px;
   grid-template-areas:
     'name name name'
