@@ -712,10 +712,6 @@ html.pattern {
     background-attachment: scroll !important;
 }
 
-a:link {
-  color: inherit;
-}
-
 /* Header */
 header.logo {
   background: #0bcdc7;
