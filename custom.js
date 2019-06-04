@@ -15,11 +15,14 @@ $.ajax({url:"json.htm?type=settings", cache: false, async: false, dataType:"json
 $.ajax({url:"acttheme/js/notify.js", async: false, dataType:"script"});
 $.ajax({url:"acttheme/js/themesettings.js", async: false, dataType:"script"});
 $.ajax({url:"acttheme/js/functions.js", async: false, dataType:"script"});
-$.ajax({url:"acttheme/js/time_ago.js", async: false, dataType:"script"});
+$.ajax({url:"acttheme/js/moment.js", async: false, dataType:"script"});
 0 <= "en fr de sv nl pl".split(" ").indexOf(lang) ? $.ajax({url:"acttheme/lang/machinon." + lang + ".js", async: false, dataType:"script"}) : $.ajax({url:"acttheme/lang/machinon.en.js", async: false, dataType:"script"});
 
 // Check if is admin
 checkauth();
+
+// Define moment language
+moment.locale(lang);
 
 // Force layout
 if (!isMobile){ 
@@ -59,10 +62,10 @@ $(document).ready(function() {
     // Header logo
     let containerLogo = '<header class="logo"><div class="container-logo">';
     if (theme.logo.length == 0) {
-        containerLogo += '<img class="header__icon" src="images/logo.png">';
+        containerLogo += '<img class="header__icon" src="acttheme/images/logo.png">';
         $('<style>#login:before {content: url(../images/logo.png) !important;}</style>').appendTo('head');
     }else {
-        containerLogo += '<img class="header__icon" src="images/' + theme.logo + '"';
+        containerLogo += '<img class="header__icon" src="acttheme/images/' + theme.logo + '"';
         $('<style>#login:before {content: url(../images/'+ theme.logo + ') !important;}</style>').appendTo('head');
     }
     containerLogo += '</div></header>';
@@ -80,7 +83,10 @@ $(document).ready(function() {
     }
  
     // Searchbar		
-    $('<input type="text" id="searchInput" autocomplete="off" onkeyup="searchFunction()" placeholder="' + language.type_to_search + '" title="' + language.type_to_search + '">').appendTo('.container-logo');
+    $('<div id="search"><input type="text" id="searchInput" autocomplete="off" onkeyup="searchFunction()" placeholder="' + language.type_to_search + '" title="' + language.type_to_search + '"><i class="ion-md-search"></i></div>').appendTo('.container-logo');
+    $('#search').click(function() {
+        $('#searchInput').focus();
+    });
     $('#searchInput').keyup(function(event) {
       if (event.keyCode === 13) {
         /* Return key */
@@ -102,7 +108,7 @@ $(document).ready(function() {
     
     // Feature - Insert config-forms menu item into main navigation
     true === theme.features.custom_page_menu.enabled && $.ajax({url:"acttheme/js/custom_page.js", async: false, dataType:"script"});
-    isMobile && adminRights && 992 >= window.innerWidth && $("#appnavbar").append('<li id="mLogout"><a id="cLogout" href="#Logout"><img src="images/logout.png"><span class="hidden-phone hidden-tablet" data-i18n="Logout">Logout</span></a></li>');
+    isMobile && adminRights && 992 >= window.innerWidth && $("#appnavbar").append('<li id="mLogout"><a id="cLogout" href="#Logout"><img src="acttheme/images/logout.png"><span class="hidden-phone hidden-tablet" data-i18n="Logout">Logout</span></a></li>');
     
     // Navbar
     var navBar = $(".navbar").append('<div class="menu-toggle"><div></div></div>'), navBarInner = $(".navbar-inner"), navBarToggle = $(".menu-toggle");
@@ -127,7 +133,7 @@ $(document).ready(function() {
     // Feature - Notifications
     if (theme.features.notification.enabled === true) {
         $('<div id="notify"></div>').appendTo('.container-logo');
-        $('<img id="notyIcon" src="images/notify.png"/>').appendTo('#notify').hide();
+        $('<i id="notyIcon" class="ion-ios-notifications-outline lcursor"></i>').appendTo('#notify').hide();
         var existingNotes = localStorage.getItem(themeFolder + ".notify");
         existingNotes && $("#notyIcon").show()
         var state = false;
@@ -150,7 +156,7 @@ $(document).ready(function() {
 
     // Feature - Sidemenu enabled
     if (theme.features.sidemenu.enabled === true && !isMobile || theme.features.sidemenu.enabled === true && !isMobile && 992 >= window.innerWidth) {
-        if (adminRights === true){$("#appnavbar").append('<li id="mLogout"><a id="cLogout" href="#Logout"><img src="images/logout.png"><span class="hidden-phone hidden-tablet" data-i18n="Logout">Logout</span></a></li>');}
+        if (adminRights === true){$("#appnavbar").append('<li id="mLogout"><a id="cLogout" href="#Logout"><img src="acttheme/images/logout.png"><span class="hidden-phone hidden-tablet" data-i18n="Logout">Logout</span></a></li>');}
         $('#holder').click(function() {  
             navBarInner.removeClass("slide");
         });
@@ -179,11 +185,13 @@ $(document).ajaxSuccess(function (event, xhr, settings) {
         var msg = localStorage.getItem(themeFolder + ".notify");
         msg = JSON.parse(msg);
         var myObj = msg;
+        msgCount = 0;
         $('#notify').append('<div id="msg" class="msg"><ul></ul><center><a class="btn btn-info" onclick="clearNotify();">'+(typeof $.t === "undefined" ? "Clear" : $.t('Clear'))+'</a></center></div>');
         for (x in myObj) {
-            $('#msg ul').append('<li>' + x + '<span> -- ' + jQuery.timeago(myObj[x]) + '</span></li>');
+            $('#msg ul').append('<li>' + x + '<span> -- ' + moment(myObj[x]).fromNow() + '</span></li>');
             msgCount++;
             $("#notyIcon").prop('title', language.you_have +' '+ msgCount +' '+ language.messages);
+            $("#notyIcon").attr('data-msg', msgCount);
         }
         $('#msg').hide();
     }
@@ -194,6 +202,7 @@ $(document).ajaxSuccess(function (event, xhr, settings) {
         let intervalId = setInterval(function () {
             if ($('#main-view').find('.item').length > 0) {
                 applySwitchersAndSubmenus();
+                applyIconsStatus();
                 clearInterval(intervalId);
             } else {
                 counter++;
