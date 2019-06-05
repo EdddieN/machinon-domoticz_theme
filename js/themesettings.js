@@ -42,6 +42,7 @@ function setupIcons(){
     var code = JSON.stringify(theme.icons);
     if (typeof code === 'undefined'){
         bootbox.alert({
+            className: 'rubberBand animated',
             message: '<p>Please reset the theme by clicking here:</p><p><a onClick="resetTheme(); return false;" href=""><button class="btn btn-info">Reset theme</button></a></p><p>(or find the theme reset button on the theme settings page)<p>',
             title: 'Congratulations on the theme upgrade!',
         });     
@@ -55,6 +56,7 @@ function addImgInsteadofIcon() {
         JSON.parse("[" + $('#tabtheme #textareaIcons').val() + "]");
     } catch (e) {
         bootbox.alert({
+            className: 'rubberBand animated',
             message: '<p>Data not saved!</p><p>Please check the syntax. Be sure you didn\'t add a comma at the end! <p>',
             title: 'Syntax error',
         });
@@ -93,6 +95,7 @@ function loadSettingsHTML(){
 		}else{
 			if ( typeof theme.upgradeAlerted === "undefined"){
 				bootbox.alert({
+                    className: 'rubberBand animated',
                     message: '<p>Please reset the theme by clicking here:</p><p><a onClick="resetTheme(); return false;" href=""><button class="btn btn-info">Reset theme</button></a></p><p>(or find the theme reset button on the theme settings page)<p>',
                     title: 'Congratulations on the theme upgrade!',
                 });
@@ -194,24 +197,37 @@ function loadSettingsHTML(){
 	
 	// Resetbutton theme tab
 	$('#themeResetButton').click(function() {
-        bootbox.confirm({
-            message: '<p>Do you want to reset the theme to default settings?</p>',
-            title: '<font color="red">Warning!</font>',
+        bootbox.dialog({
+            title: '<font color="red">' + language.warning + '!</font>',
             size: "small",
+            className: 'rubberBand animated',
+            message: '<p>' + language.resetTheme_message + '?</p>',
             buttons: {
-                confirm: {
-                    label: $.t('Yes'),
-                    className: 'btn-info'
-                },
                 cancel: {
-                    label: $.t('No'),
-                    className: 'btn-danger'
-                }
-            },
-            callback: function (result) {
-                if (result == true){
-                    notify(language.theme_restored, 2);
-                    resetTheme();
+                    label: $.t('Cancel'),
+                    className: 'btn-info',
+                    callback: function(){
+                        console.log('Custom cancel button clicked');
+                    }
+                },
+                clear: {
+                    label: language.clear_localstorage,
+                    className: 'btn-warning',
+                    callback: function(){
+                        notify(language.storage_removed, 2);
+                        if (typeof(Storage) !== "undefined") {
+                            localStorage.removeItem(themeFolder + ".themeSettings");
+                        }
+                        location.reload();
+                    }
+                },
+                ok: {
+                    label: $.t('Reset'),
+                    className: 'btn-danger',
+                    callback: function(){
+                        notify(language.theme_restored, 2);
+                        resetTheme();
+                    }
                 }
             }
         });
