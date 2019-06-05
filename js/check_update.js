@@ -1,7 +1,7 @@
 /*
 	Check source file on github for latest version
 */
-var branch = 'master';
+var branch = 'beta';
 
 setTimeout(update, 5000);
 
