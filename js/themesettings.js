@@ -71,7 +71,11 @@ function addImgInsteadofIcon() {
     storeUserVariableThemeSettings('update');
 }
 function loadSettingsHTML(){
-    $('#themeversion').text(theme.version);
+    if (branch == 'beta') {
+        $('#themeversion').text(theme.version + ' ' + branch);
+    }else{
+        $('#themeversion').text(theme.version);
+    }
     $('#themefolder').text(themeFolder);
     $("#themesettings").i18n();
     if (isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth) {
