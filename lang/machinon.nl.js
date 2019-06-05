@@ -12,5 +12,10 @@ language = {
   timedout: "timed out",
   mainmenu: "Main menu",
   you_have: "You have",
-  messages: "message(s)"
+  messages: "message(s)",
+  warning: "Warning",
+  storage_removed: "Localstorage removed",
+  clear_localstorage: "Clear browser storage",
+  resetTheme_message: "Do you want to reset the theme to default settings, or just clear browser storage"
 };
+
