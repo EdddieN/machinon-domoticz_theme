@@ -71,7 +71,7 @@ function addImgInsteadofIcon() {
     storeUserVariableThemeSettings('update');
 }
 function loadSettingsHTML(){
-    if (branch == 'beta') {
+    if (typeof branch !== "undefined" && branch == 'beta') {
         $('#themeversion').text(theme.version + ' ' + branch);
     }else{
         $('#themeversion').text(theme.version);
