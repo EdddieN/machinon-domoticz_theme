@@ -188,6 +188,9 @@ ul.machinon_ul li {
     z-index: 1;
     position:absolute;
 }
+.dropdown-content a {
+    color: inherit;
+}
 
 .rectangle-8-dropdown:hover .dropdown-content {
     display: block;
