@@ -225,21 +225,7 @@ function applySwitchersAndSubmenus() {
     
     /* Feature - Display camera preview on dashboard */
     if (theme.features.dashboard_camera.enabled === true){
-        $('#bigtext > span > a').each(function() {
-            camId = $(this).attr('href').split(/\'/)[3];
-            if ($(this).parents('tr.with-cam-preview').length == 0) {
-                $(this).parents('tr').attr('data-cam', camId).append('<td><img id="preview-cam' + camId + '"></td>');
-                $(this).parents('tr').attr('data-cam', camId).addClass('with-cam-preview').on('click', function(e) {
-                    ShowCameraLiveStream('Camera', $(this).attr('data-cam'));
-                }).children('td:not(#name)').hide();
-            }
-            // Prevent flickering by preloading img first
-            if (isDocumentVisible()) {
-                $('#preview-cam' + camId).attr('src', 'camsnapshot.jpg?idx=' + camId + '?t=' +  Date.now()).on('load', function() {  
-                    $(this).parents('tr').css('background-image', 'url(' + $(this).attr('src') + ')');
-                });
-            }
-        });
+        cameraPreview(theme.features.dashboard_camera_section.enabled);
     }
     /* Set autoscroll for long status or hide empty status */
     $("#status", "tr").not(".scroll").each(function() {
@@ -255,6 +241,62 @@ function applySwitchersAndSubmenus() {
             $(this).hide();
         }
     });
+}
+
+function cameraPreview(section) {
+    if (section === true) {
+        if ($('#dashCameras').length == 0) {
+            $.ajax({
+                url: "json.htm?type=cameras",
+                async: false,
+                dataType: 'json',
+                success: function(data) {
+                        var compact = false;
+                        if ($("section.compact").length > 0) {
+                            compact = true;
+                        }
+ 
+                        var html = "<section class='dashCategory" + (compact ? " compact" : "" ) + "' id='dashCameras'><h2 data-i18n='Cameras'>" + $.t('Cameras') + ":</h2><div class='row divider'>";
+                        var activeCam = false;
+                        data.result.forEach(function(cam){
+                            if (cam.Enabled === "true") {
+                                activeCam = true;
+                                var camId = cam.idx;
+                                html += "<div class='" + (compact ? "span3" : "span4") + " movable ui-draggable ui-draggable-handle ui-droppable' id='cam_" + camId + "'><div class='item'>";
+                                html += "<table id='itemtablecam' class='itemtablesmall'><tbody><tr class='with-cam-preview' data-cam='" + camId + "'>";
+                                html += "<td id='name' class='name'>" + cam.Name + "</td>";
+                                html += "<td><img class='preview-cam' data-cam='" + camId + "'></td>";
+                                html += "</tr></tbody></table>";
+                                html += "</div></div>";
+                            }
+                        });
+                        if (activeCam) {
+                            html += "</div></section>";
+                            $('#dashcontent section:first').before(html);
+                            $('tr.with-cam-preview').on('click', function(e) {
+                                ShowCameraLiveStream('Camera', $(this).attr('data-cam'));
+                            });
+                        }
+                }
+            });
+        }
+    } else {
+        $('#bigtext > span > a').each(function() {
+            camId = $(this).attr('href').split(/\'/)[3];
+            if ($(this).parents('tr.with-cam-preview').length == 0) {
+                $(this).parents('tr').attr('data-cam', camId).append('<td><img class="preview-cam" data-cam ="' + camId + '"></td>');
+                $(this).parents('tr').attr('data-cam', camId).addClass('with-cam-preview').on('click', function(e) {
+                    ShowCameraLiveStream('Camera', $(this).attr('data-cam'));
+                });
+            }
+        });
+    }
+    if (isDocumentVisible()) {
+        // Refresh picture but prevent flickering by preloading img first
+        $('.preview-cam').attr('src', function() { return 'camsnapshot.jpg?idx=' + $(this).attr('data-cam') + '&t=' +  Date.now() }).on('load', function() {  
+            $(this).parents('tr').css('background-image', 'url(' + $(this).attr('src') + ')');
+        });
+    }
 }
 
 function nativeSelectors() {

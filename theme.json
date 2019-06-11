@@ -113,6 +113,11 @@
             "id":33,
             "enabled":false,
             "files": ["center_popups.css"]
+        },
+    "dashboard_camera_section": {
+            "id":34,
+            "enabled":true,
+            "files": []
         }
     }
 }

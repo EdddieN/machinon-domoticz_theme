@@ -32,6 +32,7 @@ input.parentunrequiredchild{
 #settingscontent input.parentrequired:checked ~ input.parentrequiredchild,
 #settingscontent input.parentrequired:checked ~ input.parentrequiredchild + label{
     display:inline-block;
+    margin-right: 5px;
 }
 #settingscontent input.parentrequired:not(:checked) ~ .parentrequiredchild{display:inline-block;}
 
@@ -204,6 +205,7 @@ ul.machinon_ul li {
 #themesettings p { margin: 2px 0; }
 #themesettings h3 { margin-top: 20px; }
 #themesettings h4 { margin-top: 10px; }
+#themesettings a { color: inherit }
 
 @media all and (max-width: 767px){
     #machinoSettings {
