@@ -18,9 +18,6 @@ $.ajax({url:"acttheme/js/functions.js", async: false, dataType:"script"});
 $.ajax({url:"acttheme/js/moment.js", async: false, dataType:"script"});
 0 <= "en fr de sv nl pl".split(" ").indexOf(lang) ? $.ajax({url:"acttheme/lang/machinon." + lang + ".js", async: false, dataType:"script"}) : $.ajax({url:"acttheme/lang/machinon.en.js", async: false, dataType:"script"});
 
-// Check if is admin
-checkauth();
-
 // Define moment language
 moment.locale(lang);
 
@@ -76,7 +73,7 @@ $(document).ready(function() {
     enableThemeFeatures();
 
     if (checkUpdate != 0)CheckDomoticzUpdate(true);
-    getStatus(true);
+    //getStatus(true);
 
     // Header logo
     let containerLogo = '<header class="logo"><div class="container-logo">';
@@ -117,6 +114,9 @@ $(document).ready(function() {
         $('#searchInput').keyup();
       }
     });
+
+    // Is Admin?
+    var adminRights = isAdmin();
     
     // Feature - Replace settings dropdown button to normal button
     true === theme.features.custom_settings_menu.enabled ? $.ajax({url:"acttheme/js/settings_page.js", async: false, dataType:"script"}) : $("#cSetup").click(function() {
@@ -192,7 +192,6 @@ $(document).ready(function() {
 
 // Executed whenever an Ajax request completes successfully
 $(document).ajaxSuccess(function (event, xhr, settings) {
-
     // Notifications
     if (theme.features.notification.enabled === true && $('#msg').length == 0) {
         var msg = localStorage.getItem(themeFolder + ".notify");

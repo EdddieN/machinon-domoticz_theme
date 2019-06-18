@@ -214,23 +214,9 @@ function applySwitchersAndSubmenus() {
 	});
     
     /* Feature - Display camera preview on dashboard */
-    if (theme.features.dashboard_camera.enabled === true){
+    if ((location.hash == "#/Dashboard") && (theme.features.dashboard_camera.enabled === true)) {
         cameraPreview(theme.features.dashboard_camera_section.enabled);
     }
-    /* Set autoscroll for long status or hide empty status */
-    $("#status", "tr").not(".scroll").each(function() {
-        var html = $(this).html();
-        if (html.length) {
-            var status = html.replace(/,/g, '<br/>');
-            if ($(this).prop('scrollHeight') > $(this).prop('clientHeight')) {
-                status = "<div class='status-content'>" + status  + "</div>";
-                $(this).addClass("scroll");
-            }
-            $(this).html(status);
-        } else {
-            $(this).hide();
-        }
-    });
 }
 
 function cameraPreview(section) {
@@ -534,7 +520,6 @@ function getnotifications(idx, state) {
 }
 function getStatus(dialog) {
 	setInterval(function () {
-		checkauth();
 		$.ajax({
 			url: 'json.htm?type=devices&filter=all&used=' + dialog + '&order=Name',
 			cache: false,
@@ -554,17 +539,13 @@ function getStatus(dialog) {
 	}, 5000);
 }
 
-var adminRights = false;
-function checkauth(){
-	$.ajax({url: 'json.htm?type=command&param=getauth' , cache: false, async: false, dataType: 'json', success: function(data) {
-		permission = data.rights
-		if (permission == 2){
-			adminRights = true;
-		}else{
-			adminRights = false;	
-		}
-	}
-	});
+function isAdmin(){
+    if (typeof window.angular !== "undefined") {
+        var injector = window.angular.element($("html")).injector();
+        var permissions = injector.get('permissions');
+        return permissions.hasPermission("Admin");
+    } else
+        return false;
 }
 
 function removeEmptySectionDashboard() {

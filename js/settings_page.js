@@ -20,7 +20,7 @@ $('a.settings').click(function() {
         $('#machinoSettings li.rectangle-8-dropdown').has('div.machinoText[data-i18n="Roomplan"]').children('div.dropdown-content').append('<p><a href="#Roomplan"><div class="mDropdown-Text"><span data-i18n="Roomplan">Roomplan</span></div></a></p><p><a href="#Floorplanedit"><div class="mDropdown-Text"><span data-i18n="Floorplan">Floorplan</span></div></a></p><p><a href="#Timerplan"><div class="mDropdown-Text"><span data-i18n="Timerplan">Timerplan</span></div></a></p>')
         $('#machinoSettings li.rectangle-8-dropdown').has('div.machinoText[data-i18n="Data push"]').children('div.dropdown-content').append('<p><a href="#DPFibaro"><div class="mDropdown-Text">FibaroLink</div></a></p><p><a href="#DPHttp"><div class="mDropdown-Text">HTTP</div></a></p><p><a href="#DPGooglePubSub"><div class="mDropdown-Text">Google PubSub</div></a></p><p><a href="#DPInflux"><div class="mDropdown-Text">InfluxDB</div></a></p>')
         $("#machinoSettings").i18n(); //Make the translation
-        if (!adminRights)$("#machinoSettings").remove();
+        if (!isAdmin())$("#machinoSettings").remove();
         };
 });
 //

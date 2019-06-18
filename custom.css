@@ -292,37 +292,6 @@ border-bottom: none;
     font-family: main-font-bold;
     letter-spacing: 7px;
 }
-.scroll > .status-content {
-    transform:translateY(60px);
-    animation-name: autoscroll;
-    animation-duration: 5s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-}
-.scroll:before {
-  content  : "";
-  position : absolute;
-  left:0;
-  z-index  : 1;
-  width    : 100%;
-  height   : 5px;
-  background-image : linear-gradient(to top, rgba(255,255,255, 0), rgba(255,255,255, 1) 90%);
-}
-
-@keyframes autoscroll {
-    0%   { 
-        transform: translateY(0);
-    }
-    10%   { 
-        transform: translateY(0);
-    }
-    90% { 
-        transform: translateY(-50%);
-    }
-    100%   { 
-        transform: translateY(0);
-    }
-}
 
 input[type="number"]{
 	width: 30px;
@@ -493,7 +462,21 @@ div.bannercontent .row.divider{
   justify-self: right;
   text-align: right;
   max-height: 60px;
-  overflow: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--main-blue-color) var(--main-item-bg-color);
+}
+
+.item #status::-webkit-scrollbar,
+.item .status::-webkit-scrollbar {
+  width: 6px;
+  border-radius:5px;
+
+}
+.item #status::-webkit-scrollbar-thumb,
+.item .status::-webkit-scrollbar-thumb {
+  background: var(--main-blue-color); 
+  border-radius: 5px;
 }
 
 /* item subnav applying by click*/
