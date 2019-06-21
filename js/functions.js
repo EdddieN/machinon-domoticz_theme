@@ -386,33 +386,6 @@ function locationHashChanged() {
     $(".current_page_item:not(:first)").removeClass("current_page_item");
 }
 
-function showTime(){
-    var date = new Date();
-    var h = date.getHours(); // 0 - 23
-    var m = date.getMinutes(); // 0 - 59
-    var s = date.getSeconds(); // 0 - 59
-	var day = date.getDate();
-	var mo = date.getMonth();
-	var y = date.getFullYear();
-	
-	mo = mo + 1;
-	mo = (mo < 10) ? "0" + mo : mo;
-    day = (day < 10) ? "0" + day : day;
-	
-	textDate = y +"-"+ mo +"-" + day
-
-    h = (h < 10) ? "0" + h : h;
-    m = (m < 10) ? "0" + m : m;
-    s = (s < 10) ? "0" + s : s;
-    
-    var time = h + ":" + m + ":" + s;
-    document.getElementById("MyClockDisplay").innerText = time;
-    document.getElementById("MyClockDisplay").textContent = time;
-	document.getElementById("MyDateDisplay").innerText = textDate;
-    
-    setTimeout(showTime, 1000);
-    
-}
 // Notifications
 function notify(key, type) { // type = 0 = only in notification log, 1 = only notification popup, 2 = in both
 if (theme.features.notification.enabled === true) {
@@ -540,8 +513,8 @@ function getStatus(dialog) {
 }
 
 function isAdmin(){
-    if (typeof window.angular !== "undefined") {
-        var injector = window.angular.element($("html")).injector();
+    if (typeof angular !== "undefined") {
+        var injector = angular.element($("html")).injector();
         var permissions = injector.get('permissions');
         return permissions.hasPermission("Admin");
     } else

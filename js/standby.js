@@ -35,6 +35,12 @@ if (parseFloat(standby_after) > 0) {
     }, 5000);
 }
 
+function showTime(){
+    $("#MyClockDisplay").text(moment().format("LTS"));
+    $("#MyDateDisplay").text(moment().format("L"));
+    setTimeout(showTime, 1000);
+
+}
 
 function buildStandby(){
 	standbyActive = true
