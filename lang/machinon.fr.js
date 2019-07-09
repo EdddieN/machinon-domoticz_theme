@@ -15,6 +15,6 @@ language = {
   messages: "message(s)",
   warning: "Attention",
   storage_removed: "Stockage local supprimé",
-  clear_localstorage: "Vider le caache du navigateur",
+  clear_localstorage: "Vider le cache du navigateur",
   resetTheme_message: "Voulez-vous réinitialiser le thème ou vider le cache du navigateur ?"
 };
