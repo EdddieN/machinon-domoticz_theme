@@ -106,11 +106,8 @@ display: inline !important;
 }
 
 .navbar-inverse .nav li.dropdown > .dropdown-toggle .caret {
-margin: 0;
-position: absolute;
-left: 50%;
-transform: translate(-50%);
-bottom: 10px;
+border-top-color: #fff;
+border-bottom-color: #fff;
 }
 
 .navbar .pull-right > li > .dropdown-menu, .navbar .nav > li > .dropdown-menu.pull-right {

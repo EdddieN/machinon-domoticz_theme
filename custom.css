@@ -780,6 +780,8 @@ div.menu-toggle.scrolled {
     left: 50%;
     transform: translate(-50%);
     bottom: 5px;
+    border-top-color: var(--main-text-color);
+    border-bottom-color: var(--main-text-color);
 }
 .navbar-inverse .nav li.dropdown > a:hover .caret,
 .navbar-inverse .nav li.dropdown.open > .dropdown-toggle .caret {

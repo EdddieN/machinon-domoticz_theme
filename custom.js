@@ -137,7 +137,7 @@ $(document).ready(function() {
     });
     
     // Close navbar if the user clicks outside of it
-    (isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth) && $(".container").click(function() {
+    (isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth) && $(".container li:not('.dropdown')").click(function() {
         navBarInner.removeClass("slide");
     });
     (isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth) && $("#holder").click(function() {
@@ -179,7 +179,7 @@ $(document).ready(function() {
         $('#holder').click(function() {  
             navBarInner.removeClass("slide");
         });
-        $('.container').click(function() {   
+        $('.container li:not(.dropdown)').click(function() {   
             navBarInner.removeClass("slide");
         });
     }
