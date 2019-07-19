@@ -137,7 +137,8 @@ $(document).ready(function() {
     });
     
     // Close navbar if the user clicks outside of it
-    (isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth) && $(".container li:not('.dropdown')").click(function() {
+    (isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth) && $(".container li").not(".dropdown").not(".dropdown-submenu").click(function() {
+        console.log(this);
         navBarInner.removeClass("slide");
     });
     (isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth) && $("#holder").click(function() {

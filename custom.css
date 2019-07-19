@@ -790,7 +790,7 @@ div.menu-toggle.scrolled {
 }
 .navbar-inverse .nav li.dropdown.open > .dropdown-toggle,
 .navbar-inverse .nav li.dropdown.open > .dropdown-toggle:before {
-  background: var(--main-bg-color);
+  background: rgba(0,0,0,0.2);
   color: var(--main-text-color);
 }
 
@@ -1586,8 +1586,9 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
 
     .navbar-inverse .navbar-inner {
     background-color: var(--main-blue-color);
-    width: 200px;
-    height: 100%;
+    width: 75%;
+    max-width: 400px;
+    height: calc(100% - 20px);
     transform: translateX(-150%);
     transition: transform 0.5s;
     margin-top: -40px;
@@ -1597,11 +1598,12 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
     position: fixed;
     z-index: 2;
-    overflow: hidden;
     }
 
     .navbar-inverse .navbar-inner.slide {
         transform: translateX(0);
+        overflow-x: hidden;
+        overflow-y: auto;
     }
 
     /* Hamburger */
@@ -1635,11 +1637,15 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
     background-color: transparent;
     color: #000;
     }
+    .navbar .nav ul.dropdown-menu li a span {
+    display: inline;
+    }
     .navbar .nav .current_page_item > a {
     text-align: left;
     }
-    .navbar .nav li ul li a {
-    padding-left: 30px !important;
+    .navbar-inverse .nav li.dropdown > .dropdown-toggle .caret {
+        border-top-color: #fff;
+        border-bottom-color: #fff;
     }
     .navbar .nav li ul li ul {
     right: 0 !important;
@@ -1651,6 +1657,7 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
     }
     .navbar .nav li ul li ul li a {
     padding-left: 50px !important;
+    font-size: 15px;
     }
     .navbar .nav li ul li ul li ul {
     top: 345% !important;
@@ -1686,18 +1693,18 @@ scrollbar-color: var(--main-blue-color) var(--main-bg-color);
     .navbar .nav > li > .dropdown-menu.pull-right .dropdown-menu,
     .navbar .pull-right > li > .dropdown-menu .dropdown-menu,
     .navbar .nav > li > .dropdown-menu.pull-right .dropdown-menu {
-    background: white !important;
+    background: rgba(0,0,0,0.4) !important;
     position: relative;
     }
 
     .dropdown-submenu > a:after {
-    background: var(--main-bg-color)!important;
+    background: transparent !important;
     position: absolute;
     left: 50%;
     bottom: 10px;
     transform: translate(-50%);
     transform: rotate(90deg);
-    border-left-color: #000;
+    border-left-color: #fff;
     border-width: 4px;
     }
 
