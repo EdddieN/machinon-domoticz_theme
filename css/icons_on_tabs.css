@@ -61,12 +61,8 @@
  content: url(../images/tabs/icons8-menu-16.png);
  margin-right: 20px
 }
-.span6 H2 [data-i18n="General options"]::before {
+.span12 H2 [data-i18n="General"]::before {
  content: url(../images/tabs/other.png);
- margin-right: 20px
-}
-.span6 H2 [data-i18n="Dashboard options"]::before {
- content: url(../images/tabs/dashboard.png);
  margin-right: 20px
 }
 .span12 H2 [data-i18n="Image instead of icons"]::before {
