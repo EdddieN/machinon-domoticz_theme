@@ -1,48 +1,61 @@
+/**** ./iconsupload.css ***/
 /* Icon Page */
-#iconsmain h3{
+#iconsmain h3 {
     font-family: main-font !important;
     font-size: 150% !important;
 }
-#iconsmain .iconlist .iconlistitem p{
+
+#iconsmain .iconlist .iconlistitem p {
     font-family: main-font !important;
     color: var(--secondary-text-color) !important;
 }
-#iconsmain > div > div > div > h3{
+
+#iconsmain > div > div > div > h3 {
     color: var(--main-text-color) !important;
 }
-#iconsmain > div > img{
+
+#iconsmain > div > img {
     position: relative;
     left: 8%;
 }
-#iconsmain > div{
+
+#iconsmain > div {
     margin-top: 2% !important;
 }
-#iconsmain > div > div{
+
+#iconsmain > div > div {
     background-color: var(--main-bg-color) !important;
     color: var(--main-text-color) !important;
     border: none;
 }
-#iconsmain > div > table{
-    display:none;
+
+#iconsmain > div > table {
+    display: none;
 }
+
 #iconsmain > div > table tr:last-child td:last-child {
     padding-top: 20px;
 }
-#iconsmain > table > tbody{
+
+#iconsmain > table > tbody {
     position: absolute;
     top: 140px;
     right: 40px;
 }
-#iconsmain input[type=file]{
+
+#iconsmain input[type=file] {
     display: none;
 }
+
 #iconsmain input + button {
     display: none;
 }
+
 #iconsmain button:disabled {
     display: none;
 }
-@media screen and (max-width: 992px){
+
+@media screen and (max-width: 992px) {
     #iconsmain > table > tbody {
         top: 1%;
         right: 10px;
@@ -50,14 +63,16 @@
 }
 
 #iconsmain .iconlist .iconlistitem:hover,
-#iconsmain .iconlist .iconlistitemselected{
+#iconsmain .iconlist .iconlistitemselected {
     border-radius: 2px;
     background-color: var(--main-bg-color) !important;
     box-shadow: 0px 0px 0px 2px rgb(11, 150, 205);
 }
-#iconsmain .iconcell{
+
+#iconsmain .iconcell {
     margin: 20px 0;
 }
+
 #iconsmain .iconlist .iconlistitem {
     padding: 0px;
     width: 180px;

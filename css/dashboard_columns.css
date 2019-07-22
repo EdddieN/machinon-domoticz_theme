@@ -1,21 +1,22 @@
-@media (min-width: 1200px){
-        #dashcontent {
-            padding:0;
-        }
+/**** ./dashboard_columns.css ***/
+@media (min-width: 1200px) {
+    #dashcontent {
+        padding: 0;
+    }
 
-        #dashcontent > section > h2 {
-            text-align: center;
-            height: 50px;
-        }
+    #dashcontent > section > h2 {
+        text-align: center;
+        height: 50px;
+    }
 
-        #dashcontent > section {
-            width: calc(100% / 6 - 20px);
-            float: left;
-            margin-left: 10px;
-            margin-right: 10px;
-        }
+    #dashcontent > section {
+        width: calc(100% / 6 - 20px);
+        float: left;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 
-        #dashcontent > section:not(.compact) > div.row.divider {
-           grid-template-columns: none !important;
-        }
+    #dashcontent > section:not(.compact) > div.row.divider {
+        grid-template-columns: none !important;
+    }
 }

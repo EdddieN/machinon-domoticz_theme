@@ -1,18 +1,20 @@
+/**** ./dashboard_show_last_update.css ***/
 /* Shows last Seen on dashboard */
 #holder #dashcontent .row .item table[id^="item"] > tbody > tr {
-  grid-template-rows: 40px minmax(58px,1fr) 20px !important;
+    grid-template-rows: 40px minmax(58px,1fr) 20px !important;
 }
+
 #holder #dashcontent .row .span3 .item table[id^="item"] > tbody > tr {
-  grid-template-rows: 20px 58px 20px !important;
+    grid-template-rows: 20px 58px 20px !important;
 }
 
 #dashcontent .lastupdate,
 #dashcontent #lastupdate,
-#dashcontent #timeago{
-  display: block;
+#dashcontent #timeago {
+    display: block;
 }
 
 #dashcontent #lastupdate {
-  right:20px;
-  bottom: 15px;
+    right: 20px;
+    bottom: 15px;
 }
