@@ -65,6 +65,10 @@
  content: url(../images/tabs/other.png);
  margin-right: 20px
 }
+.span6 H2 [data-i18n="General"]::before {
+ content: url(../images/tabs/other.png);
+ margin-right: 20px
+}
 .span12 H2 [data-i18n="Image instead of icons"]::before {
  content: url(../images/tabs/icons8-color-palette-16.png);
  margin-right: 20px
@@ -147,10 +151,6 @@
 }
 .span12 H2 [data-i18n="P1 Smart Meter Type"]::before {
  content: url(../images/tabs/icons8-meter-16.png);
- margin-right: 20px
-}
-.span12 H2 [data-i18n="General"]::before {
- content: url(../images/tabs/other.png);
  margin-right: 20px
 }
 .span12 H2 [data-i18n="Display Values"]::before {
