@@ -44,8 +44,6 @@ scrollbar-color: #fff var(--main-blue-color);
   max-width: 100%;
 }
 
-
-
 .menu-toggle {
 display: block !important;
 cursor: pointer;
@@ -173,4 +171,8 @@ position: static !important;
 }
 .events-editor{
   margin-top: -40px;
+}
+
+#holder > .container-fluid {
+    padding-top: 0;
 }
