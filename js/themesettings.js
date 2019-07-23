@@ -1,6 +1,6 @@
 function showThemeSettings() {
     if (!$("#tabsystem").length) {
-        setTimeout(showThemeSettings, 1e3);
+        setTimeout(showThemeSettings, 1000);
         return;
     }
     $("#emailsetup").prepend("<br/>");
@@ -231,7 +231,7 @@ function loadSettings() {
                         localStorage.setObject(themeFolder + ".themeSettings", theme);
                         setTimeout(function() {
                             location.reload();
-                        }, 3e3);
+                        }, 3000);
                     }
                     console.log(themeName + " - local theme settingsfile loaded and saved to localStorage");
                 }

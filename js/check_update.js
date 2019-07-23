@@ -1,6 +1,6 @@
 var branch = "beta";
 
-setTimeout(update, 5e3);
+setTimeout(update, 5000);
 
 function update() {
     $.ajax({

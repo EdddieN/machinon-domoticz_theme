@@ -26,20 +26,20 @@ $("body").bind("touchend click", function(e) {
 
 if (parseFloat(standby_after) > 0) {
     setInterval(function() {
-        standbyTime += 5e3;
+        standbyTime += 5000;
         if (standbyActive != true) {
-            if (standbyTime >= standby_after * 1e3 * 60) {
+            if (standbyTime >= standby_after * 1000 * 60) {
                 $("body").addClass("standby");
                 buildStandby();
             }
         }
-    }, 5e3);
+    }, 5000);
 }
 
 function showTime() {
     $("#MyClockDisplay").text(moment().format("LTS"));
     $("#MyDateDisplay").text(moment().format("L"));
-    setTimeout(showTime, 1e3);
+    setTimeout(showTime, 1000);
 }
 
 function buildStandby() {
