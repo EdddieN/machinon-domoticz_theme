@@ -1,12 +1,15 @@
+/**** ./dashboard_camera.css ***/
 #holder .row .item table[id^="item"] > tbody > tr.with-cam-preview {
     background-size: cover;
     background-position: center;
 }
+
 #holder .row .item table[id^="item"] > tbody > tr.with-cam-preview > #name {
     background: rgba(255,255, 255, 0.2);
     border-bottom-right-radius: 5px;
     width: 100%;
 }
+
 #holder .row .item table[id^="item"] > tbody > tr.with-cam-preview td:not(#name) {
     display: none;
 }
