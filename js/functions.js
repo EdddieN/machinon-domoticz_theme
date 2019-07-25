@@ -141,7 +141,7 @@ function applySwitchersAndSubmenus() {
                 if (!switchOnScenesDash) {
                     if (onImage.hasClass("lcursor")) {
                         let switcher = $(this).find(".switch");
-                        if ($(this).find(".dimslider")) {
+                        if ($(this).find(".dimslider").length > 0) {
                             status = (status == switchState.off ? switchState.off : switchState.on);
                         }
                         if (status == switchState.off || status == switchState.on) {
