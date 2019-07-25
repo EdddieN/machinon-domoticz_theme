@@ -512,7 +512,7 @@ div.bannercontent .row.divider {
 
 .item #status::-webkit-scrollbar,
 .item .status::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
     border-radius: 5px;
 }
 
