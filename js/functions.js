@@ -141,6 +141,9 @@ function applySwitchersAndSubmenus() {
                 if (!switchOnScenesDash) {
                     if (onImage.hasClass("lcursor")) {
                         let switcher = $(this).find(".switch");
+                        if ($(this).find(".dimslider")) {
+                            status = (status == switchState.off ? switchState.off : switchState.on);
+                        }
                         if (status == switchState.off || status == switchState.on) {
                             let title = status == switchState.off ? $.t("Turn On") : $.t("Turn Off");
                             let checked = status == switchState.on ? "checked" : "";
