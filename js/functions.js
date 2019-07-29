@@ -395,7 +395,6 @@ function clearNotify() {
 function checkDomoticzUpdate(showdialog) {
     $.ajax({
         url: "json.htm?type=command&param=checkforupdate&forced=" + showdialog,
-        async: false,
         dataType: "json",
         success: function(data) {
             if (data.HaveUpdate == true) {
