@@ -93,7 +93,7 @@ $(document).ready(function() {
     checkUserVariableThemeSettings();
     loadSettings();
     enableThemeFeatures();
-    if (checkUpdate != 0) CheckDomoticzUpdate(true);
+    if (checkUpdate != 0) checkDomoticzUpdate(true);
     let containerLogo = '<header class="logo"><div class="container-logo">';
     if (theme.logo.length == 0) {
         containerLogo += '<img class="header__icon" src="acttheme/images/logo.png">';

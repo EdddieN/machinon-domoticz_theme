@@ -1,7 +1,6 @@
 var branch = "beta";
 
 setTimeout(update, 5000);
-
 function update() {
     $.ajax({
         url: "https://raw.githubusercontent.com/EdddieN/machinon-domoticz_theme/" + branch + "/theme.json",
