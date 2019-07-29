@@ -230,7 +230,7 @@ function cameraPreview(section) {
                         html += "</div></section>";
                         $("#dashcontent section:first").before(html);
                         $("tr.with-cam-preview").on("click", function(e) {
-                            ShowCameraLiveStream("Camera", $(this).attr("data-cam"));
+                            ShowCameraLiveStream($(this).children("td#name").text(), $(this).attr("data-cam"));
                         });
                     }
                 }
@@ -242,7 +242,7 @@ function cameraPreview(section) {
             if ($(this).parents("tr.with-cam-preview").length == 0) {
                 $(this).parents("tr").attr("data-cam", camId).append('<td><img class="preview-cam" data-cam ="' + camId + '"></td>');
                 $(this).parents("tr").attr("data-cam", camId).addClass("with-cam-preview").on("click", function(e) {
-                    ShowCameraLiveStream("Camera", $(this).attr("data-cam"));
+                    ShowCameraLiveStream($(this).children("td#name").text(), $(this).attr("data-cam"), $(this).attr("data-cam"));
                 });
             }
         });
