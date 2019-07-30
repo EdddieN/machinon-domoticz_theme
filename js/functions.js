@@ -230,7 +230,7 @@ function cameraPreview(section) {
                         html += "</div></section>";
                         $("#dashcontent section:first").before(html);
                         $("tr.with-cam-preview").on("click", function(e) {
-                            ShowCameraLiveStream("Camera", $(this).attr("data-cam"));
+                            ShowCameraLiveStream($(this).children("td#name").text(), $(this).attr("data-cam"));
                         });
                     }
                 }
@@ -242,7 +242,7 @@ function cameraPreview(section) {
             if ($(this).parents("tr.with-cam-preview").length == 0) {
                 $(this).parents("tr").attr("data-cam", camId).append('<td><img class="preview-cam" data-cam ="' + camId + '"></td>');
                 $(this).parents("tr").attr("data-cam", camId).addClass("with-cam-preview").on("click", function(e) {
-                    ShowCameraLiveStream("Camera", $(this).attr("data-cam"));
+                    ShowCameraLiveStream($(this).children("td#name").text(), $(this).attr("data-cam"), $(this).attr("data-cam"));
                 });
             }
         });
@@ -392,10 +392,9 @@ function clearNotify() {
     }
 }
 
-function CheckDomoticzUpdate(showdialog) {
+function checkDomoticzUpdate(showdialog) {
     $.ajax({
         url: "json.htm?type=command&param=checkforupdate&forced=" + showdialog,
-        async: false,
         dataType: "json",
         success: function(data) {
             if (data.HaveUpdate == true) {
@@ -409,7 +408,6 @@ function CheckDomoticzUpdate(showdialog) {
 }
 
 var timeOut = [];
-
 function timedOut(idx, value, device) {
     let textmsg = "Sensor " + device.Name + " " + language.is + " " + language.timedout;
     if (typeof timeOut[idx] !== "undefined" && value !== timeOut[idx]) {
@@ -421,12 +419,11 @@ function timedOut(idx, value, device) {
 }
 
 var oldstates = [];
-
 function triggerChange(idx, value, device) {
     let textmsg = device.Name + " " + language.is + " " + $.t(device.Data);
     let textLowBattery = device.Name + " " + $.t("Battery Level") + " " + $.t("Low") + " " + device.BatteryLevel + "%";
     if (typeof oldstates[idx] !== "undefined" && value !== oldstates[idx]) {
-        getnotifications(idx, device.Data);
+        getNotifications(idx, device.Data);
         if (device.BatteryLevel < 11) {
             notify(textLowBattery, 2);
         }
@@ -434,7 +431,7 @@ function triggerChange(idx, value, device) {
     oldstates[idx] = value;
 }
 
-function getnotifications(idx, state) {
+function getNotifications(idx, state) {
     var msg;
     $.ajax({
         url: "json.htm?type=notifications&idx=" + idx + "",
@@ -464,26 +461,6 @@ function getnotifications(idx, state) {
             }
         }
     });
-}
-
-function getStatus(dialog) {
-    setInterval(function() {
-        $.ajax({
-            url: "json.htm?type=devices&filter=all&used=" + dialog + "&order=Name",
-            cache: false,
-            async: false,
-            dataType: "json",
-            success: function(data) {
-                for (r in data.result) {
-                    var device = data.result[r];
-                    var idx = device.idx;
-                    if (device.Type === "Group" || device.Type === "Scene") idx = "0." + device.idx;
-                    triggerChange(idx, device.LastUpdate, device);
-                    timedOut(idx, device.HaveTimeout, device);
-                }
-            }
-        });
-    }, 5e3);
 }
 
 function isAdmin() {

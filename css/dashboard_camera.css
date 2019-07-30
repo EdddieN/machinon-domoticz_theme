@@ -2,6 +2,7 @@
 #holder .row .item table[id^="item"] > tbody > tr.with-cam-preview {
     background-size: cover;
     background-position: center;
+    cursor: zoom-in;
 }
 
 #holder .row .item table[id^="item"] > tbody > tr.with-cam-preview > #name {

@@ -37,7 +37,10 @@ $.ajax({
 $.ajax({
     url: "acttheme/js/moment.js",
     async: false,
-    dataType: "script"
+    dataType: "script",
+    success: function() {
+        moment.locale(lang);
+    }
 });
 
 0 <= "en fr de sv nl pl".split(" ").indexOf(lang) ? $.ajax({
@@ -49,8 +52,6 @@ $.ajax({
     async: false,
     dataType: "script"
 });
-
-moment.locale(lang);
 
 if (!isMobile) {
     MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
@@ -93,7 +94,7 @@ $(document).ready(function() {
     checkUserVariableThemeSettings();
     loadSettings();
     enableThemeFeatures();
-    if (checkUpdate != 0) CheckDomoticzUpdate(true);
+    if (checkUpdate != 0) checkDomoticzUpdate(true);
     let containerLogo = '<header class="logo"><div class="container-logo">';
     if (theme.logo.length == 0) {
         containerLogo += '<img class="header__icon" src="acttheme/images/logo.png">';
