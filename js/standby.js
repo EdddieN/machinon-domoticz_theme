@@ -47,11 +47,8 @@ function buildStandby() {
     if ($(".screenstandby").length == 0) {
         var screenhtml = '<div class="screen screenstandby" style="height:' + $(window).height() + 'px"><div class="row"></div>';
         $("#main-view").hide();
-        if (md.matches) {
-            $(".container-logo").hide();
-        } else {
-            $(".navbar-inner").hide();
-        }
+        $(".container-logo").hide();
+        $(".navbar-inner").hide();
         $(".logo").hide();
         $("#copyright").hide();
         $("#main-view").before(screenhtml);
@@ -68,13 +65,8 @@ function disableStandby() {
     $(".screenstandby").remove();
     $("body").removeClass("standby");
     $("#main-view").show();
-    if (theme.features.sidemenu.enabled === false) {
-        if (md.matches) {
-            $(".container-logo").show();
-        } else {
-            $(".navbar-inner").show();
-        }
-    }
+    $(".container-logo").show();
+    $(".navbar-inner").show();
     $(".logo").show();
     $("#copyright").show();
     standbyActive = false;
