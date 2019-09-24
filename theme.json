@@ -3,7 +3,7 @@
     "name": "Machinon",
     "description": "Machinon custom theme, simple and light",
     "license": "GNU General Public License v3.0",
-    "version":"1.9.8",
+    "version":"1.10.1",
     "author": "EdddieN",
     "homepage": "https://www.machinon.com",
     "wiki": "https://www.domoticz.com/wiki/Machinon_Theme",
@@ -24,97 +24,97 @@
             "enabled":false,
             "files": ["dark_theme.css"]
         },
-	"footer_text_disabled": {
+        "footer_text_disabled": {
             "id":11,
             "enabled":true,
-			"files": []
+            "files": []
         },
-	"custom_settings_menu": {
+        "custom_settings_menu": {
             "id":12,
             "enabled":true,
-			"files": []
+            "files": []
         },
-	"standby": {
+        "standby": {
             "id":13,
             "enabled":false,
-			"files": ["standby.js"]
+            "files": ["standby.js"]
         },
-	"check_update": {
+        "check_update": {
             "id":15,
             "enabled":true,
-			"files": ["check_update.js"]
+            "files": ["check_update.js"]
         },
-	"time_ago": {
+        "time_ago": {
             "id":16,
             "enabled":true,
-			"files": []
+            "files": []
         },
-   	"custom_page_menu": {
+        "custom_page_menu": {
             "id":17,
             "enabled":true,
-			"files": []
+            "files": []
         },
-	"fade_offItems": {
+        "fade_offItems": {
             "id":18,
             "enabled":false,
-			"files": []
+            "files": []
         },
-	"switch_instead_of_bigtext": {
+        "switch_instead_of_bigtext": {
             "id":20,
             "enabled":true,
-			"files": ["switch.css"]
+            "files": ["switch.css"]
         },
-	"dashboard_show_last_update": {
+        "dashboard_show_last_update": {
             "id":21,
             "enabled":false,
             "files": ["dashboard_show_last_update.css"]
         },
-	"switch_instead_of_bigtext_scenes": {
+        "switch_instead_of_bigtext_scenes": {
             "id":22,
             "enabled":true,
-			"files": []
+            "files": []
         },
-	"navbar_icons": {
+        "navbar_icons": {
             "id":25,
             "enabled":false,
-			"files": ["navbar_icons.css"]
+            "files": ["navbar_icons.css"]
         },
-	"navbar_icons_text": {
+        "navbar_icons_text": {
             "id":27,
             "enabled":false,
-			"files": []
+            "files": []
         },
-    "sidemenu": {
+        "sidemenu": {
             "id":28,
             "enabled":false,
             "files": ["sidemenu.css"]
         },
-    "notification": {
+        "notification": {
             "id":29,
             "enabled":true,
             "files": []
         },
-    "dashboard_columns": {
+        "dashboard_columns": {
             "id":30,
             "enabled":false,
             "files": ["dashboard_columns.css"]
         },
-    "dashboard_camera": {
+        "dashboard_camera": {
             "id":31,
             "enabled":true,
             "files": ["dashboard_camera.css"]
         },
-    "icon_image": {
+        "icon_image": {
             "id":32,
             "enabled":false,
             "files": []
         },
-    "center_popups": {
+        "center_popups": {
             "id":33,
             "enabled":false,
             "files": ["center_popups.css"]
         },
-    "dashboard_camera_section": {
+        "dashboard_camera_section": {
             "id":36,
             "enabled":true,
             "files": []
