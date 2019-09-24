@@ -5,7 +5,7 @@
 	/*use with var(--main-blue-color)*/
     --main-bg-color: #333639;
     --main-blue-color: #0b96cd;
-    --main-navbar-bg-color: black;
+    --main-navbar-bg-color: #232324;
     --main-item-bg-color: #515558;
     --main-text-color: white;
     --main-border-color: black;
@@ -45,8 +45,11 @@ header.logo {
 .ui-corner-all,
 .display .ui-widget-content,
 .ui-widget-content {
-    background: var(--main-bg-color) !important;
     color: var(--main-text-color)
+}
+
+select.ui-corner-all, .ui-widget-content.selectorlevels-menu {
+    background: var(--main-navbar-bg-color) !important;
 }
 
 .ui-dialog .ui-dialog-buttonpane {
