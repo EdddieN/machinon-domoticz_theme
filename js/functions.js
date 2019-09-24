@@ -194,9 +194,11 @@ function applySwitchersAndSubmenus() {
                 }
             }
         }
-    });
-    if (location.hash == "#/Dashboard" && theme.features.dashboard_camera.enabled === true) {
-        cameraPreview(theme.features.dashboard_camera_section.enabled);
+	});
+    
+    /* Feature - Display camera preview on dashboard */
+    if ((location.hash == "#/Dashboard") && (theme.features.dashboard_camera.enabled === true)) {
+        theme.features.dashboard_camera_section && cameraPreview(theme.features.dashboard_camera_section.enabled);
     }
 }
 
@@ -214,7 +216,7 @@ function cameraPreview(section) {
                     }
                     var html = "<section class='dashCategory" + (compact ? " compact" : "") + "' id='dashCameras'><h2 data-i18n='Cameras'>" + $.t("Cameras") + ":</h2><div class='row divider'>";
                     var activeCam = false;
-                    data.result.forEach(function(cam) {
+                    data.result && data.result.forEach(function(cam){
                         if (cam.Enabled === "true") {
                             activeCam = true;
                             var camId = cam.idx;
