@@ -196,7 +196,7 @@ $(document).ready(function() {
 $(document).ajaxSuccess(function(event, xhr, settings) {
     
     var pagedetect = window.location.href.split("/#/")[1];
-    document.title = 'Domoticz - ' + pagedetect;
+    document.title = 'Domoticz - ' + $.t(pagedetect);
     
     if (theme.features.notification.enabled === true && $("#msg").length == 0) {
         var msg = localStorage.getItem(themeFolder + ".notify");
