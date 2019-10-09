@@ -1,4 +1,9 @@
+# Git ignore
+# Release files
 machinon-*.zip
 machinon-*.tar.gz
+# Shell files except the one for making releases
 *.sh
 !makerelease.sh
+# JPEG images
+images/*.[jJ][pP][gG]

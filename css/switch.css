@@ -1,58 +1,65 @@
+/**** ./switch.css ***/
 .switch-cell {
-  grid-area: bigtext;
-  justify-self: right;
-  background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1) 15px);
-  line-height: 20px;
-  padding: 10px 0 0 30px;
+    grid-area: bigtext;
+    justify-self: right;
+    background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1) 15px);
+    line-height: 20px;
+    padding: 10px 0 0 30px;
 }
+
 .switch {
-  position: relative;
-  display: inline-block;
-  margin-right: 10px;
-  width: 40px;
-  height: 15px;
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+    width: 40px;
+    height: 15px;
 }
+
 .switch input {
-  display: none;
+    display: none;
 }
 
 /* The slider */
 .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  transition: 0.4s;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
 }
+
 .slider:before {
-  position: absolute;
-  content: "";
-  height: 20px;
-  width: 20px;
-  left: -10px;
-  bottom: -2px;
-  transition: 0.4s;
-  background-color: #fafafa;
-  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.7);
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: -10px;
+    bottom: -2px;
+    transition: 0.4s;
+    background-color: #fafafa;
+    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.7);
 }
+
 .slider.round {
-  border-radius: 34px;
+    border-radius: 34px;
 }
+
 .slider.round:before {
-  border-radius: 50%;
+    border-radius: 50%;
 }
 
 input:checked + .slider {
-  background-color: rgba(11, 151, 205, 0.5);
+    background-color: rgba(11, 151, 205, 0.5);
 }
+
 input:checked + .slider:before {
-  transform: translateX(34px);
-  background-color: var(--main-blue-color);
+    transform: translateX(34px);
+    background-color: var(--main-blue-color);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px rgba(11, 151, 205, 0.5);
+    box-shadow: 0 0 1px rgba(11, 151, 205, 0.5);
 }

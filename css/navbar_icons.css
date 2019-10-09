@@ -1,3 +1,4 @@
+/**** ./navbar_icons.css ***/
 .navbar .nav li a img {
     display: inline;
     width: 24px;
@@ -7,34 +8,41 @@
 .navbar .nav li a span {
     display: block;
 }
-.navbar.notext .nav li a span{
+
+.navbar.notext .nav li a span {
     display: none !important;
 }
 
-@media screen and (max-width: 992px){
+@media screen and (max-width: 992px) {
     .navbar .nav li a img {
         width: 24px;
         height: 24px;
     }
+
     .navbar.notext .navbar-inner {
         width: 60px;
     }
+
     .navbar.notext .nav li a img {
         width: 32px;
         height: 32px;
     }
+
     .navbar.notext .nav > li {
         width: 60px;
     }
+
     .navbar.notext .hidden-tablet,
-    .navbar.notext .hidden-phone{
+    .navbar.notext .hidden-phone {
         display: none !important;
     }
 }
+
 @media screen and (min-width: 992px) {
     .events-editor {
         margin-top: 90px;
     }
+
     #timesun {
         margin-top: 10px;
     }

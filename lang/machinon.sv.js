@@ -12,5 +12,9 @@ language = {
   timedout: "tidsgränsen uppnådd",
   mainmenu: "Huvud meny",
   you_have: "Du har",
-  messages: "meddelande(n)"
+  messages: "meddelande(n)",
+  warning: "Varning",
+  storage_removed: "Localstorage borttagen",
+  clear_localstorage: "Rensa webbläsare",
+  resetTheme_message: "Vill du återställa temat till standardinställningar eller bara radera webbläsarlagring"
 };

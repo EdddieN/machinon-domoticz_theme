@@ -1,14 +1,16 @@
+/**** ./settings.css ***/
 /* Setup */
 input#AcceptNewHardware:checked ~ button {
-    display:none
+    display: none
 }
+
 .allow5min,
 .allow5min:hover {
-  background: none;
-  background-color: var(--main-blue-color);
-  color: #fff;
-  border-radius: 2px;
-  border: none;
+    background: none;
+    background-color: var(--main-blue-color);
+    color: #fff;
+    border-radius: 2px;
+    border: none;
 }
 
 /* =Setup */
@@ -17,68 +19,80 @@ input#AcceptNewHardware:checked ~ button {
 /* Popups */
 
 /* Theme tab in Settings */
-input.parentrequiredchild{
-    margin-left:16px;
+input.parentrequiredchild {
+    margin-left: 16px;
 }
-input.parentunrequiredchild{
-    margin-left:16px;
+
+input.parentunrequiredchild {
+    margin-left: 16px;
 }
 /* if a sub-setting needs the parent settings to be checked. */
 #settingscontent input.parentrequired:not(:checked) ~ input.parentrequiredchild,
 #settingscontent input.parentrequired:not(:checked) ~ textarea.parentrequiredchild,
-#settingscontent input.parentrequired:not(:checked) ~ input.parentrequiredchild + label{
-	color: var(--main-disabled-color);
+#settingscontent input.parentrequired:not(:checked) ~ input.parentrequiredchild + label {
+    color: var(--main-disabled-color);
 }
+
 #settingscontent input.parentrequired:checked ~ input.parentrequiredchild,
-#settingscontent input.parentrequired:checked ~ input.parentrequiredchild + label{
-    display:inline-block;
+#settingscontent input.parentrequired:checked ~ input.parentrequiredchild + label {
+    display: inline-block;
+    margin-right: 5px;
 }
-#settingscontent input.parentrequired:not(:checked) ~ .parentrequiredchild{display:inline-block;}
+
+#settingscontent input.parentrequired:not(:checked) ~ .parentrequiredchild {
+    display: inline-block;
+}
 
 /* if a sub-setting needs the parent settings to be UNchecked. */
 #settingscontent input.parentunrequired:checked ~ input.parentunrequiredchild,
-#settingscontent input.parentunrequired:checked ~ input.parentunrequiredchild + label{
-    display:inline-block;
+#settingscontent input.parentunrequired:checked ~ input.parentunrequiredchild + label {
+    display: inline-block;
 }
+
 #settingscontent input.parentunrequired:not(:checked) ~ input.parentunrequiredchild,
-#settingscontent input.parentunrequired:not(:checked) ~ input.parentunrequiredchild + label{
-    display:inline-block;
+#settingscontent input.parentunrequired:not(:checked) ~ input.parentunrequiredchild + label {
+    display: inline-block;
 }
 
 /*System page*/
 #settings .row-fluid {
-  height: auto;
-  border-radius: 6px;
-  
-  display:flex;
-  justify-content: center;
+    height: auto;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
 }
+
 #settings .row-fluid > div {
-  background: var(--main-item-bg-color);
-  border: 1px solid var(--main-item-bg-color);
+    background: var(--main-item-bg-color);
+    border: 1px solid var(--main-item-bg-color);
 }
+
 #settings .row-fluid > div:hover {
-  border-color: var(--main-blue-color);
+    border-color: var(--main-blue-color);
 }
+
 #settings .row-fluid > .span4, #settings .row-fluid > .span6, #settings .row-fluid > .span12 {
-  height:auto;
-  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
-  border-radius: 6px;
-  margin:20px;
-  padding:20px;
-  flex-basis: 500px;
-  width: auto;
-  flex-grow:1;
+    height: auto;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    margin: 20px;
+    padding: 20px;
+    flex-basis: 500px;
+    width: auto;
+    flex-grow: 1;
 }
+
 #settings input, #settings select, #settings textarea {
     width: auto !important;
 }
+
 #settings textarea {
     width: 100% !important;
 }
+
 #textareaIcons {
     resize: none;
-    width:100%;
+    width: 100%;
 }
 
 .blocklyText {
@@ -94,90 +108,104 @@ input.parentunrequiredchild{
 #machinoSettings {
     padding: 0 20px;
 }
-.mHeaderBtn {
-  margin-left: calc(100% - 660px);
-  margin-top: -1.8%;
-  margin-bottom: 20px;
-  display:flex;
-  justify-content:space-around;
-}
-.mHeaderBtn li {
-  padding: 5px 20px;
-  margin: 0 0 3px 0;
-  height: 30px;
-  border-radius: 2px;
-  background-color: var(--main-border-color);
-  cursor: pointer;
-  display: flex;
-  justify-content: flex-start;
-  align-items:center;
-}
-.mHeaderBtn li:hover {
-    background-color:rgba(169,169,169,0.5);
-}
-.mHeaderBtn li i {
-  font-size: 22px;
-}
-.mHeaderBtn li div {
-  font-size: 14px;
-  letter-spacing: -0.5px;
-  margin-left:10px;;
-}
-.rectangle-8, .rectangle-8-dropdown {
-	border: 1.5px solid;
-	border-color: transparent;
-	border-radius: 6px;
-	background-color: #ffffff;
-	cursor: pointer;
-	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
-	list-style-type: none;
-	height: 75px;
-	margin-left:20px;
-	margin-bottom:20px;
-	flex: 1 0 15%;
-	display: flex;
-	padding:20px;
-	justify-content: flex-start;
-	align-items:center;
 
+.mHeaderBtn {
+    margin-left: calc(100% - 660px);
+    margin-top: -1.8%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
 }
+
+.mHeaderBtn li {
+    padding: 5px 20px;
+    margin: 0 0 3px 0;
+    height: 30px;
+    border-radius: 2px;
+    background-color: var(--main-border-color);
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.mHeaderBtn li:hover {
+    background-color: rgba(169,169,169,0.5);
+}
+
+.mHeaderBtn li i {
+    font-size: 22px;
+}
+
+.mHeaderBtn li div {
+    font-size: 14px;
+    letter-spacing: -0.5px;
+    margin-left: 10px;
+    ;
+}
+
+.rectangle-8, .rectangle-8-dropdown {
+    border: 1.5px solid;
+    border-color: transparent;
+    border-radius: 6px;
+    background-color: #ffffff;
+    cursor: pointer;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+    list-style-type: none;
+    height: 75px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    flex: 1 0 15%;
+    display: flex;
+    padding: 20px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 .machinoText {
-  font-size: 16px;
-  font-weight: 300;
-  letter-spacing: -0.5px;
-  color: var(--main-text-color);
-  margin-left:20px;
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+    color: var(--main-text-color);
+    margin-left: 20px;
 }
+
 .mDropdown-Text {
-  font-size: 14px;
-  font-weight: 300;
-  letter-spacing: -0.5px;
-  text-align: left;
-  vertical-align: middle;
-  color: var(--secondary-text-color);
-  text-decoration: none;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+    text-align: left;
+    vertical-align: middle;
+    color: var(--secondary-text-color);
+    text-decoration: none;
 }
+
 .mDropdown-Text:hover {
-	color: rgba(0,0,0,0.5);
-	cursor: pointer;
+    color: rgba(0,0,0,0.5);
+    cursor: pointer;
 }
+
 .machinon_ul {
-  display: flex;
-  flex-direction:row;
-  flex-wrap:wrap;
-  justify-content:space-between;
-  margin: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0;
 }
+
 .machinon_ul img {
 	/*proprieté flex*/
 }
+
 ul.machinon_ul li {
-	padding: 5px 40px;
-	margin: 0 20px 23px 0;
+    padding: 5px 40px;
+    margin: 0 20px 23px 0;
 }
-.machinon_ul li:hover { 
+
+.machinon_ul li:hover {
     border-color: var(--main-blue-color);
 }
+
 .dropdown-content {
     display: none;
     background-color: #fff;
@@ -186,7 +214,11 @@ ul.machinon_ul li {
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 12px 16px;
     z-index: 1;
-    position:absolute;
+    position: absolute;
+}
+
+.dropdown-content a {
+    color: inherit;
 }
 
 .rectangle-8-dropdown:hover .dropdown-content {
@@ -197,30 +229,50 @@ ul.machinon_ul li {
     margin: -21px -21px 0 0;
 }
 
-#themesettings h1 { display: inline }
-#themesettings p { margin: 2px 0; }
-#themesettings h3 { margin-top: 20px; }
-#themesettings h4 { margin-top: 10px; }
+#themesettings h1 {
+    display: inline
+}
 
-@media all and (max-width: 767px){
+#themesettings p {
+    margin: 2px 0;
+}
+
+#themesettings h3 {
+    margin-top: 20px;
+}
+
+#themesettings h4 {
+    margin-top: 10px;
+}
+
+#themesettings a {
+    color: inherit
+}
+
+@media all and (max-width: 767px) {
     #machinoSettings {
         padding: 0;
     }
-	ul.mHeaderBtn {
-		display: flex;
-		margin-left: 0;
-		margin-top: 10px;
-	}
-	ul.mHeaderBtn li div {
-		display: none;
-	}
-	ul.machinon_ul {
-	    margin: 0 0 10px 5px;
-	}
+
+    ul.mHeaderBtn {
+        display: flex;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    ul.mHeaderBtn li div {
+        display: none;
+    }
+
+    ul.machinon_ul {
+        margin: 0 0 10px 5px;
+    }
+
     ul.machinon_ul li {
         padding: 5px 40px;
         margin: 0 10px 23px 0;
     }
+
     code {
         white-space: normal;
     }
@@ -228,29 +280,32 @@ ul.machinon_ul li {
     #settings section:last-child {
         margin-bottom: 50px;
     }
+
     #settings li.pull-right {
         position: fixed;
         left: 0;
         bottom: 5px;
         width: 100%;
     }
+
     #settings li.pull-right a {
         margin: 0 20px;
         box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
     }
 }
 
-@media screen and (max-width: 992px){
+@media screen and (max-width: 992px) {
     #settings .row-fluid {
         flex-wrap: wrap;
         font-size: 0.9em;
     }
+
     #settings .row-fluid > .span4, #settings .row-fluid > .span6, #settings .row-fluid > .span12 {
         min-height: unset;
         margin: 10px;
     }
+
     #settings section > br {
         display: none;
     }
-	
 }
