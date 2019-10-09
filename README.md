@@ -1,6 +1,6 @@
 # Machinon theme
 
-[![Join the chat at https://gitter.im/machinon-domoticz_theme/community](https://badges.gitter.im/machinon-domoticz_theme/community.svg)](https://gitter.im/machinon-domoticz_theme/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) ![alt tag](https://img.shields.io/badge/dynamic/json.svg?label=Version&url=https%3A%2F%2Fraw.githubusercontent.com%2FEdddieN%2Fmachinon-domoticz_theme%2Fmaster%2Ftheme.json&query=version&colorB=blue) [![DeepScan grade](https://deepscan.io/api/teams/5627/projects/7466/branches/76214/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=5627&pid=7466&bid=76214)
+[![Join the chat at https://gitter.im/machinon-domoticz_theme/community](https://badges.gitter.im/machinon-domoticz_theme/community.svg)](https://gitter.im/machinon-domoticz_theme/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) ![alt tag](https://img.shields.io/badge/dynamic/json.svg?label=Version&url=https%3A%2F%2Fraw.githubusercontent.com%2FEdddieN%2Fmachinon-domoticz_theme%2Fbeta%2Ftheme.json&query=version&colorB=blue) [![DeepScan grade](https://deepscan.io/api/teams/5627/projects/7466/branches/76214/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=5627&pid=7466&bid=76214)
 
 # WORK IN PROGRESS
 
