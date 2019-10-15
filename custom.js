@@ -200,7 +200,7 @@ $(document).ajaxSuccess(function(event, xhr, settings) {
         var myObj = msg;
         msgCount = 0;
         $("#notify").append('<div id="msg" class="msg"><ul></ul><center><a class="btn btn-info" onclick="clearNotify();">' + (typeof $.t === "undefined" ? "Clear" : $.t("Clear")) + "</a></center></div>");
-        for (x in myObj) {
+        for (let x in myObj) {
             $("#msg ul").append("<li>" + x + "<span> -- " + moment(myObj[x]).fromNow() + "</span></li>");
             msgCount++;
             $("#notyIcon").prop("title", language.you_have + " " + msgCount + " " + language.messages);

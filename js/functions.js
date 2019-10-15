@@ -176,12 +176,14 @@ function applySwitchersAndSubmenus() {
         if (theme.features.icon_image.enabled === true) {
             var icons = theme.icons;
             for (var i = 0; i < icons.length; i++) {
+                var deviceItem;
+                var IDX;
                 if ($("#dashcontent").length == 0) {
-                    var deviceItem = $(this).closest("#" + icons[i].idx);
-                    var IDX = icons[i].idx;
+                    deviceItem = $(this).closest("#" + icons[i].idx);
+                    IDX = icons[i].idx;
                 } else {
-                    var deviceItem = $(this).closest("#light_" + icons[i].idx);
-                    var IDX = "light_" + icons[i].idx;
+                    deviceItem = $(this).closest("#light_" + icons[i].idx);
+                    IDX = "light_" + icons[i].idx;
                 }
                 if (deviceItem.attr("id") === IDX) {
                     if (status == switchState.on) {
@@ -442,10 +444,10 @@ function getNotifications(idx, state) {
         dataType: "json",
         success: function(data) {
             var message = data.result;
-            for (r in data.result) {
-                system = message[r].ActiveSystems;
-                if (system.includes("browser")) {
-                    if (typeof message !== "undefined") {
+            for (let r in data.result) {
+                if (typeof message !== "undefined") {
+                    system = message[r].ActiveSystems;
+                    if (system.includes("browser")) {
                         if (state == "On" || state == "Open" || state == "Locked") {
                             if (message[r].Params == "S") {
                                 msg = message[r].CustomMessage;
