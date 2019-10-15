@@ -322,7 +322,7 @@ function storeUserVariableThemeSettings(action) {
         custom.push(theme.icons);
         custom.push(theme.background_img);
         custom.push(theme.background_type);
-        var variableURL = "json.htm?type=command&param=" + action + "uservariable&vname=theme-" + themeFolder + "-custom&vtype=2&vvalue=" + JSON.stringify(custom);
+        variableURL = "json.htm?type=command&param=" + action + "uservariable&vname=theme-" + themeFolder + "-custom&vtype=2&vvalue=" + JSON.stringify(custom);
         $.ajax({
             url: variableURL,
             async: false,

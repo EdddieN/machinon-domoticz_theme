@@ -144,7 +144,8 @@ $(document).ready(function() {
         dataType: "script"
     });
     isMobile && adminRights && 992 >= window.innerWidth && $("#appnavbar").append('<li id="mLogout"><a id="cLogout" href="#Logout"><img src="acttheme/images/logout.png"><span class="hidden-phone hidden-tablet" data-i18n="Logout">Logout</span></a></li>');
-    var navBar = $(".navbar").append('<div class="menu-toggle"><div></div></div>'), navBarInner = $(".navbar-inner"), navBarToggle = $(".menu-toggle");
+    $(".navbar").append('<div class="menu-toggle"><div></div></div>')
+    var navBarInner = $(".navbar-inner"), navBarToggle = $(".menu-toggle");
     $(".menu-toggle").prop("title", language.mainmenu);
     navBarToggle.click(function() {
         navBarInner.toggleClass("slide");

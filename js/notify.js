@@ -127,7 +127,7 @@
         def.fields = fields;
     };
     var insertCSS = function(cssText) {
-        var e, elem, error;
+        var elem;
         elem = createElem("style");
         elem.attr("type", "text/css");
         $("head").append(elem);
@@ -201,7 +201,7 @@
         return element;
     };
     var incr = function(obj, pos, val) {
-        var opp, temp;
+        var opp;
         if (typeof val === "string") {
             val = parseInt(val, 10);
         } else if (typeof val !== "number") {
@@ -211,7 +211,6 @@
             return;
         }
         opp = positions[opposites[pos.charAt(0)]];
-        temp = pos;
         if (obj[opp] !== undefined) {
             pos = positions[opp.charAt(0)];
             val = -val;
