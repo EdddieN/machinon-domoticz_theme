@@ -507,7 +507,7 @@
             if (prev) {
                 prev.destroy();
             }
-            var curr = new Notification($(this), data, options);
+            new Notification($(this), data, options);
         });
         return this;
     };

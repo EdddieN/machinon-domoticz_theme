@@ -424,7 +424,6 @@ function timedOut(idx, value, device) {
 
 var oldstates = [];
 function triggerChange(idx, value, device) {
-    let textmsg = device.Name + " " + language.is + " " + $.t(device.Data);
     let textLowBattery = device.Name + " " + $.t("Battery Level") + " " + $.t("Low") + " " + device.BatteryLevel + "%";
     if (typeof oldstates[idx] !== "undefined" && value !== oldstates[idx]) {
         getNotifications(idx, device.Data);
@@ -446,7 +445,7 @@ function getNotifications(idx, state) {
             var message = data.result;
             for (let r in data.result) {
                 if (typeof message !== "undefined") {
-                    system = message[r].ActiveSystems;
+                    var system = message[r].ActiveSystems;
                     if (system.includes("browser")) {
                         if (state == "On" || state == "Open" || state == "Locked") {
                             if (message[r].Params == "S") {
