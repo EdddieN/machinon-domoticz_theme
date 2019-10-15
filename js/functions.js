@@ -107,7 +107,7 @@ function applySwitchersAndSubmenus() {
             $(this).find(".timers_log").append($(this).find('.options .btnsmall[data-i18n="Timers"]').html("<i class='ion-ios-timer disabledText' title='" + $.t("Timers") + "'></i>"));
             $(this).find(".timers_log").append($(this).find('.options .btnsmall-sel[data-i18n="Timers"]').html("<i class='ion-ios-timer' title='" + $.t("Timers") + "'></i>"));
             let item = $(this).closest(".item");
-            var itemID = item.attr("id");
+            let itemID = item.attr("id");
             if (typeof itemID === "undefined") {
                 itemID = item[0].offsetParent.id;
             }
@@ -120,7 +120,7 @@ function applySwitchersAndSubmenus() {
         }
         if ($("#dashcontent").length == 0) {
             let item = $(this).closest(".item");
-            var itemID = item.attr("id");
+            let itemID = item.attr("id");
             if (typeof itemID === "undefined") {
                 itemID = item[0].offsetParent.id;
             }
