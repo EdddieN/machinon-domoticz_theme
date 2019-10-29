@@ -56,13 +56,13 @@ git checkout beta
 
 ### Finally preview:
 
-![Idea of theme machinon](/idea_domoticz_machinon.jpg)
+![Idea of theme machinon](/images/readme/idea_domoticz_machinon.jpg)
 
 Dark Theme
-![Dark Theme](/dark%20theme.png)
+![Dark Theme](/images/readme/dark_theme.png)
 
 Compact Dashboard with camera
-![Compact Dashboatd camera](/Compact%20dash.png)
+![Compact Dashboatd camera](/images/readme/compact_dash.png)
 
 New setup layout
 ![Suggested new Setup layout - not implemented yet](/images/unorganised/screen_references/setup.png)
