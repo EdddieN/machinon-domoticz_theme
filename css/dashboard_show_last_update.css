@@ -12,6 +12,7 @@
 #dashcontent #lastupdate,
 #dashcontent #timeago {
     display: block;
+    white-space: nowrap;
 }
 
 #dashcontent #lastupdate {

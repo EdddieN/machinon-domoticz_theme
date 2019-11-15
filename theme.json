@@ -3,11 +3,12 @@
     "name": "Machinon",
     "description": "Machinon custom theme, simple and light",
     "license": "GNU General Public License v3.0",
-    "version":"1.10.2",
+    "version":"1.11",
     "author": "EdddieN",
     "homepage": "https://www.machinon.com",
     "wiki": "https://www.domoticz.com/wiki/Machinon_Theme",
     "standby_after": 10,
+    "dashboard_camera_refresh": 10,
     "logo": "",
     "custom_url": "https://www.domoticz.com",
     "button_name": "Domoticz",
@@ -27,12 +28,12 @@
         "footer_text_disabled": {
             "id":11,
             "enabled":true,
-            "files": []
+            "files": ["footer.css"]
         },
         "custom_settings_menu": {
             "id":12,
             "enabled":true,
-            "files": []
+            "files": ["settings_page.js"]
         },
         "standby": {
             "id":13,
@@ -52,7 +53,7 @@
         "custom_page_menu": {
             "id":17,
             "enabled":true,
-            "files": []
+            "files": ["custom_page.js"]
         },
         "fade_offItems": {
             "id":18,
@@ -62,7 +63,7 @@
         "switch_instead_of_bigtext": {
             "id":20,
             "enabled":true,
-            "files": ["switch.css"]
+            "files": ["switch.js", "switch.css"]
         },
         "dashboard_show_last_update": {
             "id":21,
@@ -102,7 +103,7 @@
         "dashboard_camera": {
             "id":31,
             "enabled":true,
-            "files": ["dashboard_camera.css"]
+            "files": ["dashboard_camera.js", "dashboard_camera.css"]
         },
         "icon_image": {
             "id":32,

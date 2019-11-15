@@ -483,7 +483,9 @@ div.bannercontent .row.divider {
     color: var(--secondary-text-color);
     grid-area: lastupdate;
     justify-self: right;
+    align-self: center;
     padding-right: 20px;
+    font-size: 80%;
 }
 /* type */
 .item #type {
@@ -649,6 +651,7 @@ body table#itemtable tr > .options {
 
 .ui-selectmenu-button.ui-button {
     width: auto !important;
+    border-radius: 0;
 }
 
 .item td.input {
@@ -687,6 +690,7 @@ body table#itemtable tr > .options {
 .item #timeago {
     color: var(--secondary-text-color);
     font-family: main-font;
+    font-size: 80%;
     grid-area: lastupdate;
     justify-self: right;
 }
@@ -705,7 +709,6 @@ body table#itemtable tr > .options {
     border-radius: 3px;
     box-shadow: none;
     height: 5px;
-    bottom: 50px;
     right: 20px;
     width: 70% !important;
 }
@@ -1943,6 +1946,7 @@ section.compact .row.divider {
     width: calc(100% - 10px);
     max-width: 100px;
     align-self: center;
+    text-align: right;
 }
 
 .span3 td.input .dimslider, .span3 .statusNormal .dimslider, .span3 .statusProtected .dimslider {
@@ -2011,6 +2015,7 @@ section.compact .row.divider {
 }
 
 #dashScenes .span3 #bigtext,
+#dashSwitches .span3 #bigtext,
 #dashWeather .span3 #bigtext,
 #dashTemperature .span3 #bigtext,
 #dashUtility .span3 #bigtext {

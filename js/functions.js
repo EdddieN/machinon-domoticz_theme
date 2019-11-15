@@ -13,81 +13,32 @@ function removeRowDivider() {
     }
 }
 
-function applySwitchersAndSubmenus() {
-    isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+function setAllDevicesFeatures() {
     switchState = {
         on: $.t("On"),
         off: $.t("Off"),
         open: $.t("Open"),
         closed: $.t("Closed")
     };
+
+    /* Browse all items to apply themes features and styles */
     $("#main-view .item").each(function() {
+        /* Set idx on tr, for easy retrieval */
+        let idx = $(this).parent().attr('id');
+        if (typeof idx === "undefined") {
+            idx = $(this).attr('id');
+        } else {
+            idx = idx.replace( /^\D+/g, '');
+        }
+        $(this).find("tr").attr('data-idx', idx);
+
         let bigText = $(this).find("#bigtext");
         let status = bigText.text();
-        let onImage = bigText.siblings("#img").find("img");
-        if (onImage.length == 0) {
-            onImage = bigText.siblings("#img1").find("img");
-        }
-        if (theme.features.fade_offItems.enabled === true) {
-            if (status == switchState.off) {
-                $(this).addClass("fadeOff");
-            } else {
-                $(this).removeClass("fadeOff");
-            }
-        }
         if (status.length == 0) {
             status = bigText.attr("data-status");
-        } else {
-            $(this).off("click", ".switch");
-            let isScenesTab = $(this).parents("#scenecontent").length > 0;
-            if (isScenesTab) {
-                $(this).on("click", ".switch", function(e) {
-                    e.preventDefault();
-                    let offImage = $(this).siblings("#img2").find("img");
-                    let subStatus = bigText.siblings("#status").find("span").text();
-                    if ($.trim(subStatus).length) {
-                        status = subStatus;
-                    }
-                    if (status == switchState.on && offImage.length) {
-                        offImage.click();
-                    } else {
-                        if (onImage.hasClass("lcursor")) {
-                            onImage.click();
-                        }
-                    }
-                });
-            } else {
-                $(this).one("click", ".switch", function(e) {
-                    e.preventDefault();
-                    let offImage = $(this).siblings("#img3").find("img");
-                    if (offImage.length == 0) {
-                        offImage = $(this).siblings("#img2").find("img");
-                    }
-                    if ((status == switchState.open || status == switchState.on) && offImage.length) {
-                        offImage.click();
-                    } else {
-                        if (onImage.hasClass("lcursor")) {
-                            onImage.click();
-                        }
-                    }
-                });
-            }
         }
-        if (theme.features.time_ago.enabled === true) {
-            let lastupdated = $(this).find("#timeago");
-            let xyz = $(this).find("#lastupdate");
-            if (lastupdated.length == 0) {
-                $(this).find("table tbody tr").append('<td id="timeago" class="timeago" title="' + $.t("Last Seen") + '"><i class="ion-ios-pulse"></i> <span id="timeago_duration"></span></td>');
-                $(this).find("#lastupdate").hide();
-            }
-            $(this).find("#timeago_duration").text(moment(xyz.text()).fromNow());
-        } else {
-            $(this).find("#lastupdate").attr("title", $.t("Last Seen"));
-            $(this).find("#lastupdate").text(moment($(this).find("#lastupdate").text(), [ "YYYY-MM-DD HH:mm:ss", "L LT" ]).format("L LT"));
-            if ($(this).find("#lastSeen").length == 0) {
-                $(this).find("#lastupdate").prepend("<i id='lastSeen' class='ion-ios-pulse'></i> ");
-            }
-        }
+
+        /* Create options menu */
         let subnav = $(this).find(".options");
         let subnavButton = $(this).find(".options-cell");
         if (subnav.length && subnavButton.length == 0) {
@@ -101,166 +52,66 @@ function applySwitchersAndSubmenus() {
                     $(this).unbind("mouseleave");
                 });
             });
+            if ($(this).find("#idno").length == 0) {
+                $(this).find(".options").append('<a class="btnsmall" id="idno"><i>Idx: ' + idx + "</i></a>");
+            }
             $(this).find("table tr").append('<td class="timers_log"></td>');
             $(this).find(".timers_log").append($(this).find('.options .btnsmall[data-i18n="Log"]').html("<i class='ion-ios-stats' title='" + $.t("Log") + "'></i>"));
             $(this).find(".timers_log").append($(this).find('.options .btnsmall[href*="Log"]:not(.btnsmall[data-i18n="Log"])').html("<i class='ion-ios-stats' title='" + $.t("Log") + "'></i>"));
             $(this).find(".timers_log").append($(this).find('.options .btnsmall[data-i18n="Timers"]').html("<i class='ion-ios-timer disabledText' title='" + $.t("Timers") + "'></i>"));
             $(this).find(".timers_log").append($(this).find('.options .btnsmall-sel[data-i18n="Timers"]').html("<i class='ion-ios-timer' title='" + $.t("Timers") + "'></i>"));
-            let item = $(this).closest(".item");
-            let itemID = item.attr("id");
-            if (typeof itemID === "undefined") {
-                itemID = item[0].offsetParent.id;
-            }
             if ($(this).find('table tr .options > img[src*="nofavorite"]:not(".ng-hide")').length === 0) {
-                icon = '<i class="ion-ios-star lcursor" title="' + $.t("Remove from Dashboard") + '" onclick="MakeFavorite(' + itemID + ',0);"></i></td>';
+                icon = '<i class="ion-ios-star lcursor" title="' + $.t("Remove from Dashboard") + '" onclick="MakeFavorite(' + idx + ',0);"></i></td>';
             } else {
-                icon = '<i class="ion-ios-star-outline lcursor" title="' + $.t("Add to Dashboard") + '" onclick="MakeFavorite(' + itemID + ',1);"></i></td>';
+                icon = '<i class="ion-ios-star-outline lcursor" title="' + $.t("Add to Dashboard") + '" onclick="MakeFavorite(' + idx + ',1);"></i></td>';
             }
             $(this).find("table tr").append('<td class="favorite">' + icon + "</td>");
         }
-        if ($("#dashcontent").length == 0) {
-            let item = $(this).closest(".item");
-            let itemID = item.attr("id");
-            if (typeof itemID === "undefined") {
-                itemID = item[0].offsetParent.id;
-            }
-            let type = $(this).find("#idno");
-            if (type.length == 0) {
-                $(this).find(".options").append('<a class="btnsmall" id="idno"><i>Idx: ' + itemID + "</i></a>");
-            }
-            removeEmptySectionDashboard();
-        }
-        let switchOnScenes = false;
-        let switchOnScenesDash = false;
-        if (theme.features.switch_instead_of_bigtext_scenes.enabled === false) {
-            switchOnScenes = $(this).parents("#scenecontent").length > 0;
-            switchOnScenesDash = $(this).find("#itemtablesmalldoubleicon").length > 0;
-        }
-        if (theme.features.switch_instead_of_bigtext.enabled === true) {
-            if (!switchOnScenes) {
-                if (!switchOnScenesDash) {
-                    if (onImage.hasClass("lcursor")) {
-                        let switcher = $(this).find(".switch");
-                        if ($(this).find(".dimslider").length > 0) {
-                            status = (status == switchState.off ? switchState.off : switchState.on);
-                        }
-                        if (status == switchState.off || status == switchState.on) {
-                            let title = status == switchState.off ? $.t("Turn On") : $.t("Turn Off");
-                            let checked = status == switchState.on ? "checked" : "";
-                            if (switcher.length == 0) {
-                                let string = '<td class="switch-cell"><label class="switch" title="' + title + '"><input type="checkbox"' + checked + '><span class="slider round"></span></label></td>';
-                                bigText.after(string);
-                                bigText.hide();
-                            }
-                            switcher.attr("title", title);
-                            switcher.find("input").attr("checked", checked.length > 0);
-                        } else if (status == switchState.open || status == switchState.closed) {
-                            let title = status == switchState.closed ? $.t("Open Blinds") : $.t("Close Blinds");
-                            let checked = status == switchState.open ? "checked" : "";
-                            if (switcher.length == 0) {
-                                let string = '<td class="switch-cell"><label class="switch" title="' + title + '"><input type="checkbox"' + checked + '><span class="slider round"></span></label></td>';
-                                bigText.after(string);
-                                bigText.hide();
-                            }
-                            switcher.attr("title", title);
-                            switcher.find("input").attr("checked", checked.length > 0);
-                        } else {
-                            bigText.children("span").show();
-                            switcher.remove();
-                        }
-                        bigText.attr("data-status", status);
-                    }
-                }
+
+        /* Feature - Fade off items */
+        if (theme.features.fade_offItems.enabled === true) {
+            if (status == switchState.off) {
+                $(this).addClass("fadeOff");
+            } else {
+                $(this).removeClass("fadeOff");
             }
         }
+
+        /* Feature - Show timeago for last update */
+        var lastupd;
+        if (theme.features.time_ago.enabled === true) {
+            lastupd = $(this).find("#lastupdate").text();
+        } else {
+            lastupd = moment($(this).find("#lastupdate").text(), [ "YYYY-MM-DD HH:mm:ss", "L LT" ]).format();
+        }
+        setDeviceLastUpdate(idx , lastupd);
+
+        /* Feature - Switch instead of text */
+        if (((location.hash === "#/Dashboard") && $(this).parent().attr("id").startsWith("light")) || (location.hash === "#/LightSwitches")) {
+            if (bigText.siblings("#img").find("img").hasClass("lcursor") && ($(this).find(".dimslider").length == 0) && ($(this).find(".input").length == 0))
+                if (theme.features.switch_instead_of_bigtext.enabled && $(this).find("#img2").length == 0)
+                    setDeviceSwitch(idx, status);
+                else
+                    bigText.show();
+        }
+
+        /* Feature - Switch instead of text for scenes */
+        if (theme.features.switch_instead_of_bigtext_scenes.enabled === true) {
+            if (($(this).parents("#scenecontent").length > 0) || ($(this).find("#itemtablesmalldoubleicon").length > 0)) {
+                setDeviceSwitch(idx, status);
+                bigText.hide();
+            }
+            
+        }
+
+        /* Feature - Set custom icons */
         if (theme.features.icon_image.enabled === true) {
-            var icons = theme.icons;
-            for (var i = 0; i < icons.length; i++) {
-                var deviceItem;
-                var IDX;
-                if ($("#dashcontent").length == 0) {
-                    deviceItem = $(this).closest("#" + icons[i].idx);
-                    IDX = icons[i].idx;
-                } else {
-                    deviceItem = $(this).closest("#light_" + icons[i].idx);
-                    IDX = "light_" + icons[i].idx;
-                }
-                if (deviceItem.attr("id") === IDX) {
-                    if (status == switchState.on) {
-                        $(this).find("table tr #img img").attr("src", $(this).find("table tr #img img").attr("src").replace("images/Light48_On.png", "images/" + icons[i].img));
-                        $(this).find("table tr #img img").addClass("userOn");
-                    } else {
-                        $(this).find("table tr #img img").attr("src", $(this).find("table tr #img img").attr("src").replace("images/Light48_Off.png", "images/" + icons[i].img));
-                        $(this).find("table tr #img img").addClass("user");
-                    }
-                }
-            }
+            setDeviceCustomIcon(idx, status);
         }
 	});
-    
-    /* Feature - Display camera preview on dashboard */
-    if ((location.hash == "#/Dashboard") && (theme.features.dashboard_camera.enabled === true)) {
-        theme.features.dashboard_camera_section && cameraPreview(theme.features.dashboard_camera_section.enabled);
-    }
 }
 
-function cameraPreview(section) {
-    if (section === true) {
-        if ($("#dashCameras").length == 0) {
-            $.ajax({
-                url: "json.htm?type=cameras",
-                async: false,
-                dataType: "json",
-                success: function(data) {
-                    var compact = false;
-                    if ($("section.compact").length > 0) {
-                        compact = true;
-                    }
-                    var html = "<section class='dashCategory" + (compact ? " compact" : "") + "' id='dashCameras'><h2 data-i18n='Cameras'>" + $.t("Cameras") + ":</h2><div class='row divider'>";
-                    var activeCam = false;
-                    data.result && data.result.forEach(function(cam){
-                        if (cam.Enabled === "true") {
-                            activeCam = true;
-                            var camId = cam.idx;
-                            html += "<div class='" + (compact ? "span3" : "span4") + " movable ui-draggable ui-draggable-handle ui-droppable' id='cam_" + camId + "'><div class='item'>";
-                            html += "<table id='itemtablecam' class='itemtablesmall'><tbody><tr class='with-cam-preview' data-cam='" + camId + "'>";
-                            html += "<td id='name' class='name'>" + cam.Name + "</td>";
-                            html += "<td><img class='preview-cam' data-cam='" + camId + "'></td>";
-                            html += "</tr></tbody></table>";
-                            html += "</div></div>";
-                        }
-                    });
-                    if (activeCam) {
-                        html += "</div></section>";
-                        $("#dashcontent section:first").before(html);
-                        $("tr.with-cam-preview").on("click", function(e) {
-                            ShowCameraLiveStream($(this).children("td#name").text(), $(this).attr("data-cam"));
-                        });
-                    }
-                }
-            });
-        }
-    } else {
-        $("#bigtext > span > a").each(function() {
-            camId = $(this).attr("href").split(/\'/)[3];
-            if ($(this).parents("tr.with-cam-preview").length == 0) {
-                $(this).parents("tr").attr("data-cam", camId).append('<td><img class="preview-cam" data-cam ="' + camId + '"></td>');
-                $(this).parents("tr").attr("data-cam", camId).addClass("with-cam-preview").on("click", function(e) {
-                    ShowCameraLiveStream($(this).children("td#name").text(), $(this).attr("data-cam"), $(this).attr("data-cam"));
-                });
-            }
-        });
-    }
-    if (isDocumentVisible()) {
-        $(".preview-cam").attr("src", function() {
-            return "camsnapshot.jpg?idx=" + $(this).attr("data-cam") + "&t=" + Date.now();
-        }).on("load", function() {
-            $(this).parents("tr").css("background-image", "url(" + $(this).attr("src") + ")");
-        });
-    }
-}
-
-function nativeSelectors() {
+function setNativeSelectorsForMobile() {
     isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     if (!isMobile) return;
     $(".selectorlevels span.ui-selectmenu-button").each(function() {
@@ -274,7 +125,7 @@ function nativeSelectors() {
     });
 }
 
-function applyIconsStatus() {
+function setAllDevicesIconsStatus() {
     $("div.item.statusProtected").each(function() {
         if ($(this).find("#name > i.ion-ios-lock").length === 0) {
             $(this).find("#name").prepend("<i class='ion-ios-lock' title='" + $.t("Protected") + "'></i>&nbsp;");
@@ -290,6 +141,49 @@ function applyIconsStatus() {
             $(this).find("#name").prepend("<i class='ion-ios-battery-dead blink warning-text' title='" + $.t("Battery Low Level") + "'></i>&nbsp;");
         }
     });
+}
+
+function setDeviceCustomIcon(idx, status) {
+    switchState = {
+        on: $.t("On"),
+        off: $.t("Off"),
+    };
+
+    var icons = theme.icons;
+    for (var i = 0; i < icons.length; i++) {
+        if (icons[i].idx == idx) {
+            let tr = "tr[data-idx='" + idx + "']";
+            $(tr).find("#img img").attr("src", "images/" + icons[i].img);
+            if (status == switchState.on || status == 'On') {
+                $(tr).find("#img img").addClass("userOn");
+            } else {
+                $(tr).find("#img img").addClass("user");
+            }
+        }
+    }
+}
+
+function setDeviceLastUpdate(idx, lastupdate) {
+    let tr = "tr[data-idx='" + idx + "']";
+
+    /* If browser is a bit late, avoid future date */
+    if (moment(lastupdate).isAfter(moment()))
+        lastupdate = moment();
+
+    if (theme.features.time_ago.enabled === true) {
+        let lastupdated = $(tr).find("#timeago");
+        if (lastupdated.length == 0) {
+            $(tr).append('<td id="timeago" class="timeago" title="' + $.t("Last Seen") + '"><i class="ion-ios-pulse"></i> <span id="timeago_duration"></span></td>');
+            $(tr).find("#lastupdate").hide();
+        }
+        $(tr).find("#timeago_duration").text(moment(lastupdate).fromNow());
+    } else {
+        $(tr).find("#lastupdate").attr("title", $.t("Last Seen"));
+        $(tr).find("#lastupdate").text(moment(lastupdate).format("L LT"));
+        if ($(tr).find("#lastSeen").length == 0) {
+            $(tr).find("#lastupdate").prepend("<i id='lastSeen' class='ion-ios-pulse'></i> ");
+        }
+    }
 }
 
 function enableThemeFeatures() {
@@ -310,7 +204,7 @@ function loadThemeFeatureFiles(featureName) {
     for (var i = 0; i < arrayLength; i++) {
         if (files[i].split(".").pop() == "js") {
             console.log(themeName + " - Loading javascript for " + featureName + " feature");
-            var getviarequire = "../acttheme/js/" + featureName;
+            var getviarequire = "../acttheme/js/" +  files[i] + "?" + themeName;
             requirejs([ getviarequire ], function(util) {
                 console.log(themeName + " - Javascript loaded by RequireJS");
             });
@@ -352,14 +246,22 @@ function searchFunction() {
 }
 
 function locationHashChanged() {
+    setPageTitle();
+    $(".current_page_item:not(:first)").removeClass("current_page_item");
     $("#searchInput").val("");
+
     isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     if (location.hash == "#/Dashboard" && !isMobile || location.hash == "#/LightSwitches" || location.hash == "#/Scenes" || location.hash == "#/Temperature" || location.hash == "#/Weather" || location.hash == "#/Utility") {
         $("#search").removeClass("readonly");
     } else {
         $("#search").addClass("readonly");
     }
-    $(".current_page_item:not(:first)").removeClass("current_page_item");
+    if ((location.hash == "#/Dashboard") && theme.features.dashboard_camera.enabled) {
+        theme.features.dashboard_camera_section && cameraPreview(theme.features.dashboard_camera_section.enabled);
+    }
+    if (location.hash == "#/CustomIcons") {
+        setCustomIconsPage();
+    }
 }
 
 function notify(key, type) {
@@ -466,6 +368,27 @@ function getNotifications(idx, state) {
     });
 }
 
+function displayNotifications() {
+    var msg = localStorage.getItem(themeFolder + ".notify");
+    msg = JSON.parse(msg);
+    var myObj = msg;
+    msgCount = 0;
+    $("#notify").append('<div id="msg" class="msg"><ul></ul><center><a class="btn btn-info" onclick="clearNotify();">' + (typeof $.t === "undefined" ? "Clear" : $.t("Clear")) + "</a></center></div>");
+    for (let x in myObj) {
+        $("#msg ul").append("<li>" + x + "<span> -- " + moment(myObj[x]).fromNow() + "</span></li>");
+        msgCount++;
+        $("#notyIcon").prop("title", language.you_have + " " + msgCount + " " + language.messages);
+        $("#notyIcon").attr("data-msg", msgCount);
+    }
+    $("#msg").hide();
+}
+
+function setPageTitle() {
+    var pagedetect = window.location.href.split("#/")[1];
+    var title = (typeof $.t !== "undefined" ? $.t(pagedetect) : pagedetect );
+    document.title = 'Domoticz - ' + title;
+}
+
 function isAdmin() {
     if (typeof angular !== "undefined") {
         var injector = angular.element($("html")).injector();
@@ -483,10 +406,21 @@ function removeEmptySectionDashboard() {
     });
 }
 
-function isDocumentVisible() {
-    if (document.visibilityState == "hidden") {
-        return false;
-    } else {
-        return true;
-    }
+function setCustomIconsPage() {
+     checkIconsmain = setInterval(function() {
+        if ($("#iconsmain #fileupload").length && $("#iconsmain label.fileupload").length === 0) {
+            clearInterval(checkIconsmain);
+   
+            $("#iconsmain #fileupload").parent().prepend('<label for="fileupload" class="fileupload btn btn-info">' + $.t("Upload") + "</label>");
+            $("#iconsmain > div table:first").find("td:last").append($("#iconsmain > table td:last").children());
+            $("#iconsmain .iconlist .iconlistitem").click(function() {
+                $("#iconsmain > div > table").show();
+                $("#iconsmain > div > tbody > tr > td:nth-child(2)").show();
+            });
+            $("#iconsmain #fileupload").on("change", function() {
+                $(this).next().click();
+                $(this).val("");
+            });
+        }
+    }, 100);
 }

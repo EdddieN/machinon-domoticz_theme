@@ -53,26 +53,78 @@ $.ajax({
     dataType: "script"
 });
 
+/* Set $scope variable when angular is available */
+var $scope = null;
+checkAngular = setInterval(function() {
+    if (($scope === null) && (typeof angular !== "undefined") && (typeof angular.element(document.body).injector() !== "undefined")) {
+        clearInterval(checkAngular);
+        $scope = angular.element(document.body).injector().get('$rootScope');
+
+        /* Check Domoticz version */
+        var dom_ws_version = 11330;
+        var current_version = parseInt($scope.config.appversion.split(".")[1]);
+        if (current_version < dom_ws_version) {
+            console.error("To be fully working, this theme requires to run Domoticz version " + dom_ws_version + " minimum -- Your version is " + current_version);
+        }
+
+        $scope.$on('jsonupdate', function (event, data) {
+            if (theme.features.notification.enabled === true && $("#msg").length == 0) {
+                displayNotifications();
+            }
+            if (data.title === "Devices") {
+                if (data.item.Type === "Light/Switch") {
+
+                    if (theme.features.fade_offItems.enabled === true) {
+                        if (data.item.Status == 'Off') {
+                            $("tr[data-idx='" + data.item.idx + "']").parents(".item").addClass("fadeOff");
+                        } else {
+                            $("tr[data-idx='" + data.item.idx + "']").parents(".item").removeClass("fadeOff");
+                        }
+                    }
+                    if (theme.features.icon_image.enabled === true) {
+                        /* We have to delay it a few otherwise it's get overwritten by standard icon */
+                        setTimeout(setDeviceCustomIcon, 10, data.item.idx, data.item.Status);
+                    }
+                    if (theme.features.switch_instead_of_bigtext.enabled === true && data.item.SwitchType === "On/Off") {
+                        setDeviceSwitch(data.item.idx, data.item.Status);
+                    }
+                }
+                let lastupd = moment(data.item.LastUpdate, ["YYYY-MM-DD HH:mm:ss", "L LT"]).format();
+                setDeviceLastUpdate(data.item.idx, lastupd);
+                setAllDevicesIconsStatus();
+            } else {
+                // Other ? Notification ?
+                console.debug("Other event --> " + data);
+            }
+        }, function errorCallback(response) {
+            console.error("Cannot connect to websocket");
+        });
+
+        $scope.$on('scene_update', function (event, data) {
+            if (theme.features.switch_instead_of_bigtext_scenes.enabled === true) {
+                setDeviceSwitch(data.item.idx, data.item.Status);
+            }
+            let lastupd = moment(data.item.LastUpdate, ["YYYY-MM-DD HH:mm:ss", "L LT"]).format();
+            setDeviceLastUpdate(data.item.idx, lastupd);
+            if (theme.features.fade_offItems.enabled === true) {
+                if (data.item.Status == 'Off') {
+                    $("tr[data-idx='" + data.item.idx + "']").parents(".item").addClass("fadeOff");
+                } else {
+                    $("tr[data-idx='" + data.item.idx + "']").parents(".item").removeClass("fadeOff");
+                }
+            }
+        }, function errorCallback(response) {
+            console.error("Cannot connect to websocket");
+        });
+    }
+}, 100);
+
 if (!isMobile) {
     MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
     var observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
             $("#main-view").children("div.container").removeClass("container").addClass("container-fluid");
             removeRowDivider();
-            if ($("#iconsmain").length) {
-                if ($("#iconsmain #fileupload").length && $("#iconsmain label.fileupload").length === 0) {
-                    $("#iconsmain #fileupload").parent().prepend('<label for="fileupload" class="fileupload btn btn-info">' + $.t("Upload") + "</label>");
-                    $("#iconsmain > div table:first").find("td:last").append($("#iconsmain > table td:last").children());
-                }
-                $("#iconsmain .iconlist .iconlistitem").click(function() {
-                    $("#iconsmain > div > table").show();
-                    $("#iconsmain > div > tbody > tr > td:nth-child(2)").show();
-                });
-                $("#iconsmain #fileupload").on("change", function() {
-                    $(this).next().click();
-                    $(this).val("");
-                });
-            }
         });
     });
 }
@@ -129,19 +181,10 @@ $(document).ready(function() {
         }
     });
     var adminRights = isAdmin();
-    true === theme.features.custom_settings_menu.enabled ? $.ajax({
-        url: "acttheme/js/settings_page.js",
-        async: false,
-        dataType: "script"
-    }) : $("#cSetup").click(function() {
+    $("#cSetup").click(function() {
         showThemeSettings();
         loadSettings();
         enableThemeFeatures();
-    });
-    true === theme.features.custom_page_menu.enabled && $.ajax({
-        url: "acttheme/js/custom_page.js",
-        async: false,
-        dataType: "script"
     });
     isMobile && adminRights && 992 >= window.innerWidth && $("#appnavbar").append('<li id="mLogout"><a id="cLogout" href="#Logout"><img src="acttheme/images/logout.png"><span class="hidden-phone hidden-tablet" data-i18n="Logout">Logout</span></a></li>');
     $(".navbar").append('<div class="menu-toggle"><div></div></div>')
@@ -175,9 +218,6 @@ $(document).ready(function() {
             state = !state;
         });
     }
-    if (theme.features.footer_text_disabled.enabled === true) {
-        $("#copyright").remove();
-    }
     if (theme.features.sidemenu.enabled === true && !isMobile || theme.features.sidemenu.enabled === true && !isMobile && 992 >= window.innerWidth) {
         if (adminRights === true) {
             $("#appnavbar").append('<li id="mLogout"><a id="cLogout" href="#Logout"><img src="acttheme/images/logout.png"><span class="hidden-phone hidden-tablet" data-i18n="Logout">Logout</span></a></li>');
@@ -195,30 +235,16 @@ $(document).ready(function() {
 });
 
 $(document).ajaxSuccess(function(event, xhr, settings) {
-    
-    var pagedetect = window.location.href.split("/#/")[1];
-    document.title = 'Domoticz - ' + $.t(pagedetect);
-    
+    setPageTitle();
     if (theme.features.notification.enabled === true && $("#msg").length == 0) {
-        var msg = localStorage.getItem(themeFolder + ".notify");
-        msg = JSON.parse(msg);
-        var myObj = msg;
-        msgCount = 0;
-        $("#notify").append('<div id="msg" class="msg"><ul></ul><center><a class="btn btn-info" onclick="clearNotify();">' + (typeof $.t === "undefined" ? "Clear" : $.t("Clear")) + "</a></center></div>");
-        for (let x in myObj) {
-            $("#msg ul").append("<li>" + x + "<span> -- " + moment(myObj[x]).fromNow() + "</span></li>");
-            msgCount++;
-            $("#notyIcon").prop("title", language.you_have + " " + msgCount + " " + language.messages);
-            $("#notyIcon").attr("data-msg", msgCount);
-        }
-        $("#msg").hide();
+        displayNotifications();
     }
     if (settings.url.startsWith("json.htm?type=devices") || settings.url.startsWith("json.htm?type=scenes")) {
         let counter = 0;
         let intervalId = setInterval(function() {
             if ($("#main-view").find(".item").length > 0) {
-                applySwitchersAndSubmenus();
-                applyIconsStatus();
+                setAllDevicesFeatures();
+                setAllDevicesIconsStatus();
                 clearInterval(intervalId);
             } else {
                 counter++;
@@ -226,7 +252,7 @@ $(document).ajaxSuccess(function(event, xhr, settings) {
                     clearInterval(intervalId);
                 }
             }
-            nativeSelectors();
+            setNativeSelectorsForMobile();
         }, 100);
     } else if (settings.url.startsWith("json.htm?type=command&param=switchscene")) {
         let id = settings.url.split("&")[2];
