@@ -1285,6 +1285,10 @@ div#hardwarecontent,div#cameracontent,div#devicecontent,div#logcontent {
     background-color: #b94a48;
 }
 
+.ui-dialog {
+    z-index: 9999 !important;
+}
+
 .ui-dialog-buttonset button {
     font-family: main-font-bold;
     background: var(--main-blue-color) !important;
