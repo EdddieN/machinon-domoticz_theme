@@ -45,7 +45,8 @@ header.logo {
 .ui-corner-all,
 .display .ui-widget-content,
 .ui-widget-content {
-    color: var(--main-text-color)
+    color: var(--main-text-color);
+    background-color: var(--main-bg-color) !important;
 }
 
 select.ui-corner-all, .ui-widget-content.selectorlevels-menu {
