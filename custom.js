@@ -220,6 +220,9 @@ $(document).ready(function() {
     if (theme.features.navbar_icons_text.enabled !== false) {
         $(".navbar").addClass("notext");
     }
+    // Xmas Edition 2019
+    $.ajax({url: 'acttheme/xmas/xmas.js', async: false, dataType: 'script'});
+    xmas();
 });
 
 $(document).ajaxSuccess(function(event, xhr, settings) {
