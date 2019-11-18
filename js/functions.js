@@ -83,15 +83,17 @@ function setAllDevicesFeatures() {
         /* Feature - Switch instead of text */
         if (((location.hash === "#/Dashboard") && $(this).parent().attr("id").startsWith("light")) || (location.hash === "#/LightSwitches")) {
             if (bigText.siblings("#img").find("img").hasClass("lcursor") && ($(this).find(".dimslider").length == 0) && ($(this).find(".input").length == 0))
-                if (theme.features.switch_instead_of_bigtext.enabled && $(this).find("#img2").length == 0)
+                if (theme.features.switch_instead_of_bigtext.enabled && $(this).find("#img2").length == 0) {
                     setDeviceSwitch(idx, status);
-                else
+                } else {
                     bigText.show();
+                }
         }
 
         /* Feature - Switch instead of text for scenes */
         if (theme.features.switch_instead_of_bigtext_scenes.enabled === true) {
-            if (($(this).parents("#scenecontent").length > 0) || ($(this).find("#itemtablesmalldoubleicon").length > 0)) {
+            if (($(this).parents("#scenecontent").length > 0) || ($(this).parents("#dashScenes").length > 0 && $(this).find("#itemtablesmalldoubleicon").length > 0)) {
+                console.log($(this));
                 setDeviceSwitch(idx, status);
                 bigText.hide();
             }
