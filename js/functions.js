@@ -69,13 +69,7 @@ function setAllDevicesFeatures() {
         }
 
         /* Feature - Fade off items */
-        if (theme.features.fade_offItems.enabled === true) {
-            if (status == switchState.off) {
-                $(this).addClass("fadeOff");
-            } else {
-                $(this).removeClass("fadeOff");
-            }
-        }
+        setDeviceOpacity(idx, status);
 
         /* Feature - Show timeago for last update */
         var lastupd;
@@ -182,6 +176,24 @@ function setDeviceLastUpdate(idx, lastupdate) {
         $(tr).find("#lastupdate").text(moment(lastupdate).format("L LT"));
         if ($(tr).find("#lastSeen").length == 0) {
             $(tr).find("#lastupdate").prepend("<i id='lastSeen' class='ion-ios-pulse'></i> ");
+        }
+    }
+}
+
+function setDeviceOpacity(idx, status) {
+    switchState = {
+        on: $.t("On"),
+        off: $.t("Off"),
+        open: $.t("Open"),
+        closed: $.t("Closed")
+    };
+
+    if (theme.features.fade_offItems.enabled === true) {
+        let tr = "tr[data-idx='" + idx + "']";
+        if (status === switchState.off  || status === 'Off' || status === switchState.closed || status === 'Closed') {
+            $(tr).parents(".item").addClass("fadeOff");
+        } else {
+            $(tr).parents(".item").removeClass("fadeOff");
         }
     }
 }

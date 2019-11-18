@@ -74,13 +74,7 @@ checkAngular = setInterval(function() {
             if (data.title === "Devices") {
                 if (data.item.Type === "Light/Switch") {
 
-                    if (theme.features.fade_offItems.enabled === true) {
-                        if (data.item.Status == 'Off') {
-                            $("tr[data-idx='" + data.item.idx + "']").parents(".item").addClass("fadeOff");
-                        } else {
-                            $("tr[data-idx='" + data.item.idx + "']").parents(".item").removeClass("fadeOff");
-                        }
-                    }
+                    setDeviceOpacity(data.item.idx, data.item.Status);
                     if (theme.features.icon_image.enabled === true) {
                         /* We have to delay it a few otherwise it's get overwritten by standard icon */
                         setTimeout(setDeviceCustomIcon, 10, data.item.idx, data.item.Status);
@@ -106,13 +100,7 @@ checkAngular = setInterval(function() {
             }
             let lastupd = moment(data.item.LastUpdate, ["YYYY-MM-DD HH:mm:ss", "L LT"]).format();
             setDeviceLastUpdate(data.item.idx, lastupd);
-            if (theme.features.fade_offItems.enabled === true) {
-                if (data.item.Status == 'Off') {
-                    $("tr[data-idx='" + data.item.idx + "']").parents(".item").addClass("fadeOff");
-                } else {
-                    $("tr[data-idx='" + data.item.idx + "']").parents(".item").removeClass("fadeOff");
-                }
-            }
+            setDeviceOpacity(data.item.idx, data.item.Status);
         }, function errorCallback(response) {
             console.error("Cannot connect to websocket");
         });
