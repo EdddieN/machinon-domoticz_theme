@@ -17,9 +17,9 @@ function xmas(){
         });
 
     $('head').append('<link rel="stylesheet" href="/acttheme/xmas/xmas.css" type="text/css" />');
-    $('body').append('<div class="santa"><img src="https://img1.picmix.com/output/stamp/normal/6/3/7/9/1409736_fc995.gif" alt="" height="102" width="183"></div>');
+    $('body').append('<div class="santa"><img src="/acttheme/xmas/xmas_sledge.gif" alt="" height="102" width="183"></div>');
    $(document).snowfall({flakeCount : 150, maxSpeed : 1, maxSize : 10, round: true});
     if (window.innerWidth > 767){
-        $('body').append('<div class="xmas-tree"><img src="http://pngimg.com/uploads/christmas/christmas_PNG17241.png" alt="" height="202" width="283"></div>');         
+        $('body').append('<div class="xmas-tree"><img src="/acttheme/xmas/christmas_PNG17241.png" alt="" height="202" width="283"></div>');         
     }
 }
