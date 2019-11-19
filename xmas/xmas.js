@@ -7,7 +7,7 @@ function xmas(){
         santa.right = santa_right_pos;            
         function movesanta(){
         santa.animate({right : windowWidth +  santa.width()},20000, function(){
-        santa.css("right","-500px");
+        santa.css("right","-800px");
         setTimeout(function(){
         movesanta();
         },60000);
