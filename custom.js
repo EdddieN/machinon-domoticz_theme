@@ -224,6 +224,9 @@ $(document).ready(function() {
     if (theme.features.xMas.enabled !== false) {
         $.ajax({url: 'acttheme/xmas/xmas.js', async: false, dataType: 'script'});
         xmas();
+        if (theme.features.snowfall.enabled !== false){
+            $("body").snowfall({flakeCount : 150, maxSpeed : 1, maxSize : 10, round: true});
+         }
     }
 });
 
