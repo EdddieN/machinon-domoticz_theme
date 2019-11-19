@@ -41,3 +41,10 @@ header.logo {
 .item:hover {
     box-shadow: 0px 0px 0px 2px rgb(218, 59, 44);
 }
+.standbyClock {
+    color: #da3b2c;
+}
+
+.standbyDate {
+    color: #da3b2c;
+}
