@@ -57,6 +57,7 @@ function buildStandby() {
                 $("#main-view").before(screenhtml);
                 $("div.screenstandby .row").append('<div id="MyDateDisplay" class="standbyDate"></div>');
                 $("div.screenstandby .row").append('<div id="MyClockDisplay" class="standbyClock"></div>');
+                showTime();
             }, 60000);
         }else{
             $("#main-view").hide();
@@ -67,9 +68,8 @@ function buildStandby() {
             $("#main-view").before(screenhtml);
             $("div.screenstandby .row").append('<div id="MyDateDisplay" class="standbyDate"></div>');
             $("div.screenstandby .row").append('<div id="MyClockDisplay" class="standbyClock"></div>');
+            showTime();
         }
-            
-        showTime();
     }
 }
 
