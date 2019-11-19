@@ -221,8 +221,10 @@ $(document).ready(function() {
         $(".navbar").addClass("notext");
     }
     // Xmas Edition 2019
-    $.ajax({url: 'acttheme/xmas/xmas.js', async: false, dataType: 'script'});
-    xmas();
+    if (theme.features.xMas.enabled !== false) {
+        $.ajax({url: 'acttheme/xmas/xmas.js', async: false, dataType: 'script'});
+        xmas();
+    }
 });
 
 $(document).ajaxSuccess(function(event, xhr, settings) {
