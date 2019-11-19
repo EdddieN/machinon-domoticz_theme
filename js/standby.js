@@ -47,7 +47,7 @@ function buildStandby() {
     if ($(".screenstandby").length == 0) {
         var screenhtml = '<div class="screen screenstandby" style="height:' + $(window).height() + 'px"><div class="row"></div>';
         if (theme.features.xMas.enabled !== false && theme.features.snowfall.enabled !== true) {
-            $(document).snowfall({flakeCount : 150, maxSpeed : 1, maxSize : 10, round: true});
+            $("body").snowfall({flakeCount : 150, maxSpeed : 1, maxSize : 10, round: true});
             setTimeout(function(){
                 $("#main-view").hide();
                 $(".container-logo").fadeOut(3000);
@@ -78,7 +78,7 @@ function disableStandby() {
         standbyTime = 0;
     }
     if (theme.features.xMas.enabled !== false && theme.features.snowfall.enabled !== true) {
-            $(document).snowfall('clear');
+            $("body").snowfall('clear');
         }
     $(".screenstandby").remove();
     $("body").removeClass("standby");
