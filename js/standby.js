@@ -46,14 +46,30 @@ function buildStandby() {
     standbyActive = true;
     if ($(".screenstandby").length == 0) {
         var screenhtml = '<div class="screen screenstandby" style="height:' + $(window).height() + 'px"><div class="row"></div>';
-        $("#main-view").hide();
-        $(".container-logo").hide();
-        $(".navbar-inner").hide();
-        $(".logo").hide();
-        $("#copyright").hide();
-        $("#main-view").before(screenhtml);
-        $("div.screenstandby .row").append('<div id="MyDateDisplay" class="standbyDate"></div>');
-        $("div.screenstandby .row").append('<div id="MyClockDisplay" class="standbyClock"></div>');
+        if (theme.features.xMas.enabled !== false && theme.features.snowfall.enabled !== true) {
+            $(document).snowfall({flakeCount : 150, maxSpeed : 1, maxSize : 10, round: true});
+            setTimeout(function(){
+                $("#main-view").hide();
+                $(".container-logo").hide();
+                $(".navbar-inner").hide();
+                $(".logo").hide();
+                $("#copyright").hide();
+                $("#main-view").before(screenhtml);
+                $("div.screenstandby .row").append('<div id="MyDateDisplay" class="standbyDate"></div>');
+                $("div.screenstandby .row").append('<div id="MyClockDisplay" class="standbyClock"></div>');
+                $('div.xmas-tree').fadeOut(3000);
+            }, 60000);
+        }else{
+            $("#main-view").hide();
+            $(".container-logo").hide();
+            $(".navbar-inner").hide();
+            $(".logo").hide();
+            $("#copyright").hide();
+            $("#main-view").before(screenhtml);
+            $("div.screenstandby .row").append('<div id="MyDateDisplay" class="standbyDate"></div>');
+            $("div.screenstandby .row").append('<div id="MyClockDisplay" class="standbyClock"></div>');
+        }
+            
         showTime();
     }
 }
@@ -62,6 +78,9 @@ function disableStandby() {
     if (standbyActive == true) {
         standbyTime = 0;
     }
+    if (theme.features.xMas.enabled !== false && theme.features.snowfall.enabled !== true) {
+            $(document).snowfall('clear');
+        }
     $(".screenstandby").remove();
     $("body").removeClass("standby");
     $("#main-view").show();
@@ -69,5 +88,6 @@ function disableStandby() {
     $(".navbar-inner").show();
     $(".logo").show();
     $("#copyright").show();
+    $('div.xmas-tree').fadeIn(3000);
     standbyActive = false;
 }
