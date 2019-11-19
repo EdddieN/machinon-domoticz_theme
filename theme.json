@@ -119,6 +119,11 @@
             "id":36,
             "enabled":true,
             "files": []
+        },
+        "xMas": {
+            "id":37,
+            "enabled":false,
+            "files": []
         }
     }
 }
