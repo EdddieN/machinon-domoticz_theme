@@ -50,14 +50,13 @@ function buildStandby() {
             $(document).snowfall({flakeCount : 150, maxSpeed : 1, maxSize : 10, round: true});
             setTimeout(function(){
                 $("#main-view").hide();
-                $(".container-logo").hide();
+                $(".container-logo").fadeOut(3000);
                 $(".navbar-inner").hide();
                 $(".logo").hide();
                 $("#copyright").hide();
                 $("#main-view").before(screenhtml);
                 $("div.screenstandby .row").append('<div id="MyDateDisplay" class="standbyDate"></div>');
                 $("div.screenstandby .row").append('<div id="MyClockDisplay" class="standbyClock"></div>');
-                $('div.xmas-tree').fadeOut(3000);
             }, 60000);
         }else{
             $("#main-view").hide();
@@ -88,6 +87,5 @@ function disableStandby() {
     $(".navbar-inner").show();
     $(".logo").show();
     $("#copyright").show();
-    $('div.xmas-tree').fadeIn(3000);
     standbyActive = false;
 }
