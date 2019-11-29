@@ -93,7 +93,6 @@ function setAllDevicesFeatures() {
         /* Feature - Switch instead of text for scenes */
         if (theme.features.switch_instead_of_bigtext_scenes.enabled === true) {
             if (($(this).parents("#scenecontent").length > 0) || ($(this).parents("#dashScenes").length > 0 && $(this).find("#itemtablesmalldoubleicon").length > 0)) {
-                console.log($(this));
                 setDeviceSwitch(idx, status);
                 bigText.hide();
             }
@@ -166,20 +165,22 @@ function setDeviceLastUpdate(idx, lastupdate) {
     if (moment(lastupdate).isAfter(moment()))
         lastupdate = moment();
 
-    if (theme.features.time_ago.enabled === true) {
-        let lastupdated = $(tr).find("#timeago");
-        if (lastupdated.length == 0) {
-            $(tr).append('<td id="timeago" class="timeago" title="' + $.t("Last Seen") + '"><i class="ion-ios-pulse"></i> <span id="timeago_duration"></span></td>');
-            $(tr).find("#lastupdate").hide();
+    $(tr).each(function() {
+        if (theme.features.time_ago.enabled === true) {
+            let lastupdated = $(this).find("#timeago");
+            if (lastupdated.length == 0) {
+                $(this).append('<td id="timeago" class="timeago" title="' + $.t("Last Seen") + '"><i class="ion-ios-pulse"></i> <span id="timeago_duration"></span></td>');
+                $(this).find("#lastupdate").hide();
+            }
+            $(this).find("#timeago_duration").text(moment(lastupdate).fromNow());
+        } else {
+            $(this).find("#lastupdate").attr("title", $.t("Last Seen"));
+            $(this).find("#lastupdate").text(moment(lastupdate).format("L LT"));
+            if ($(this).find("#lastSeen").length == 0) {
+                $(this).find("#lastupdate").prepend("<i id='lastSeen' class='ion-ios-pulse'></i> ");
+            }
         }
-        $(tr).find("#timeago_duration").text(moment(lastupdate).fromNow());
-    } else {
-        $(tr).find("#lastupdate").attr("title", $.t("Last Seen"));
-        $(tr).find("#lastupdate").text(moment(lastupdate).format("L LT"));
-        if ($(tr).find("#lastSeen").length == 0) {
-            $(tr).find("#lastupdate").prepend("<i id='lastSeen' class='ion-ios-pulse'></i> ");
-        }
-    }
+    });
 }
 
 function setDeviceOpacity(idx, status) {
