@@ -13,6 +13,7 @@ $("a.settings").click(function() {
     $("#appnavbar li").removeClass("current_page_item");
     $("#mSettings").addClass("current_page_item");
     $("#search").addClass("readonly");
+    $(".navbar-inner").removeClass("slide");
     $("body").css("overflow", "auto");
     if ($("#holder #main-view #machinoSettings").length === 0) {
         $("#holder #main-view").empty();
