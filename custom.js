@@ -83,6 +83,11 @@ checkAngular = setInterval(function() {
                         setDeviceSwitch(data.item.idx, data.item.Status);
                     }
                 }
+                if (data.item.Type === "Wind") {
+                    if (theme.features.wind_direction.enabled === true) {
+                        setDeviceWindDirectionIcon(idx);
+                    }
+                }
                 let lastupd = moment(data.item.LastUpdate, ["YYYY-MM-DD HH:mm:ss", "L LT"]).format();
                 setDeviceLastUpdate(data.item.idx, lastupd);
                 setAllDevicesIconsStatus();

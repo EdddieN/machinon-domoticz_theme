@@ -103,6 +103,11 @@ function setAllDevicesFeatures() {
         if (theme.features.icon_image.enabled === true) {
             setDeviceCustomIcon(idx, status);
         }
+
+        /* Feature - Show wind direction */
+        if (theme.features.wind_direction.enabled === true) {
+            setDeviceWindDirectionIcon(idx);
+        }
 	});
 }
 
@@ -156,6 +161,14 @@ function setDeviceCustomIcon(idx, status) {
             }
         }
     }
+}
+
+function setDeviceWindDirectionIcon(idx) {
+    let tr = "tr[data-idx='" + idx + "']";
+    $(tr).find("#img img[src^='images/Wind']").each(function() {
+        let src = $(this).attr("src").split('/');
+        $(this).attr("src", src[0] + '/wind-direction/' + src[1]);
+    }); 
 }
 
 function setDeviceLastUpdate(idx, lastupdate) {
