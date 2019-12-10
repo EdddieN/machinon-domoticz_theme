@@ -85,7 +85,7 @@ checkAngular = setInterval(function() {
                 }
                 if (data.item.Type === "Wind") {
                     if (theme.features.wind_direction.enabled === true) {
-                        setDeviceWindDirectionIcon(idx);
+                        setDeviceWindDirectionIcon(data.item.idx);
                     }
                 }
                 let lastupd = moment(data.item.LastUpdate, ["YYYY-MM-DD HH:mm:ss", "L LT"]).format();
