@@ -29,9 +29,6 @@
     border: none;
 }
 
-#iconsmain > div > table {
-    display: none;
-}
 
 #iconsmain > div > table tr:last-child td:last-child {
     padding-top: 20px;

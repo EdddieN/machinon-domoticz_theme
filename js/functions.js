@@ -446,10 +446,6 @@ function setCustomIconsPage() {
    
             $("#iconsmain #fileupload").parent().prepend('<label for="fileupload" class="fileupload btn btn-info">' + $.t("Upload") + "</label>");
             $("#iconsmain > div table:first").find("td:last").append($("#iconsmain > table td:last").children());
-            $("#iconsmain .iconlist .iconlistitem").click(function() {
-                $("#iconsmain > div > table").show();
-                $("#iconsmain > div > tbody > tr > td:nth-child(2)").show();
-            });
             $("#iconsmain #fileupload").on("change", function() {
                 $(this).next().click();
                 $(this).val("");
