@@ -163,11 +163,16 @@ function setDeviceCustomIcon(idx, status) {
     }
 }
 
-function setDeviceWindDirectionIcon(idx) {
+function setDeviceWindDirectionIcon(idx, direction) {
     let tr = "tr[data-idx='" + idx + "']";
-    $(tr).find("#img img[src^='images/Wind']").each(function() {
-        let src = $(this).attr("src").split('/');
-        $(this).attr("src", src[0] + '/wind-direction/' + src[1]);
+    $(tr).find("#img img[src*='Wind']").each(function() {
+        if (direction === undefined) {
+            let src = $(this).attr("src").split('/Wind');
+            direction = src[1];
+        } else {
+            direction += '.png';
+        }
+        $(this).attr("src", 'images/wind-direction/Wind' + direction);
     }); 
 }
 
