@@ -162,6 +162,12 @@ $(document).ready(function() {
         $("body").css("cssText", "background: transparent !important");
     }
     $('<div id="search"><input type="text" id="searchInput" autocomplete="off" onkeyup="searchFunction()" placeholder="' + language.type_to_search + '" title="' + language.type_to_search + '"><i class="ion-md-search"></i></div>').appendTo(".container-logo");
+    window.addEventListener("keydown",function (e) {
+        if (e.keyCode === 114 || (e.ctrlKey && e.keyCode === 70)) { 
+            $("#searchInput").focus();
+            e.preventDefault();
+        }
+    })
     $("#search").click(function() {
         $("#searchInput").focus();
     });
