@@ -4,6 +4,7 @@ var workers = [];
 
 function cameraPreview(section) {
     if ($("#dashcontent").length == 0) {
+        if($('body.onMobile')) return;
         setTimeout(cameraPreview, 50, section);
         return;
     }
