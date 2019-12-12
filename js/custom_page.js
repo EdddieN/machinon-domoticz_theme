@@ -10,4 +10,5 @@ $("#customPage").click(function() {
     var htmlcontent = "";
     htmlcontent += '<iframe class="cIFrameLarge" id="IMain" src="' + theme.custom_url + '"></iframe>';
     $("#main-view").html(htmlcontent);
+    $(".navbar-inner").removeClass("slide");
 });
