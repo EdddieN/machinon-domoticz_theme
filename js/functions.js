@@ -112,7 +112,6 @@ function setAllDevicesFeatures() {
 }
 
 function setNativeSelectorsForMobile() {
-    isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     if (!isMobile) return;
     $(".selectorlevels span.ui-selectmenu-button").each(function() {
         $(this).hide();
@@ -283,7 +282,6 @@ function locationHashChanged() {
     $(".current_page_item:not(:first)").removeClass("current_page_item");
     $("#searchInput").val("");
 
-    isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     if (location.hash == "#/Dashboard" && !isMobile || location.hash == "#/LightSwitches" || location.hash == "#/Scenes" || location.hash == "#/Temperature" || location.hash == "#/Weather" || location.hash == "#/Utility") {
         $("#search").removeClass("readonly");
     } else {

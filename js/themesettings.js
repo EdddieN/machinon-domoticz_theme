@@ -67,7 +67,7 @@ function loadSettingsHTML() {
     }
     $("#themefolder").text(themeFolder);
     $("#themesettings").i18n();
-    if (isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth) {
+    if (992 >= window.innerWidth) {
         $("#themevar28").prop("disabled", true);
         $('label[for="themevar28"]').addClass("disabledText");
     }
