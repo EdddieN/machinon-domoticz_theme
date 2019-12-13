@@ -180,7 +180,6 @@ $(document).ready(function() {
             $("#searchInput").keyup();
         }
     });
-    var adminRights = isAdmin();
     $("#cSetup").click(function() {
         showThemeSettings();
         loadSettings();
