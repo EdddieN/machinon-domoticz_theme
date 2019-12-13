@@ -186,7 +186,7 @@ $(document).ready(function() {
         loadSettings();
         enableThemeFeatures();
     });
-    isMobile && adminRights && 992 >= window.innerWidth && $("#appnavbar").append('<li id="mLogout"><a id="cLogout" href="#Logout"><img src="acttheme/images/logout.png"><span class="hidden-phone hidden-tablet" data-i18n="Logout">Logout</span></a></li>');
+
     $(".navbar").append('<div class="menu-toggle"><div></div></div>')
     var navBarInner = $(".navbar-inner"), navBarToggle = $(".menu-toggle");
     $(".menu-toggle").prop("title", language.mainmenu);
@@ -196,7 +196,7 @@ $(document).ready(function() {
     navBarInner.find(".container li").not(".dropdown").not(".dropdown-submenu").click(function() {
         navBarInner.removeClass("slide");
     });
-    (isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth) && $("#holder").click(function() {
+    $("#holder").click(function() {
         navBarInner.removeClass("slide");
     });
     $(window).scroll(function() {
@@ -216,17 +216,6 @@ $(document).ready(function() {
                 msgCount = 0;
             }
             state = !state;
-        });
-    }
-    if (theme.features.sidemenu.enabled === true && !isMobile || theme.features.sidemenu.enabled === true && !isMobile && 992 >= window.innerWidth) {
-        if (adminRights === true) {
-            $("#appnavbar").append('<li id="mLogout"><a id="cLogout" href="#Logout"><img src="acttheme/images/logout.png"><span class="hidden-phone hidden-tablet" data-i18n="Logout">Logout</span></a></li>');
-        }
-        $("#holder").click(function() {
-            navBarInner.removeClass("slide");
-        });
-        $(".container li:not(.dropdown)").click(function() {
-            navBarInner.removeClass("slide");
         });
     }
     if (theme.features.navbar_icons_text.enabled !== false) {
