@@ -193,7 +193,7 @@ $(document).ready(function() {
     navBarToggle.click(function() {
         navBarInner.toggleClass("slide");
     });
-    (isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth) && $(".container li").not(".dropdown").not(".dropdown-submenu").click(function() {
+    navBarInner.find(".container li").not(".dropdown").not(".dropdown-submenu").click(function() {
         navBarInner.removeClass("slide");
     });
     (isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth) && $("#holder").click(function() {
