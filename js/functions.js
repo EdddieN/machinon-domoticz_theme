@@ -82,12 +82,13 @@ function setAllDevicesFeatures() {
 
         /* Feature - Switch instead of text */
         if (((location.hash === "#/Dashboard") && $(this).parent().attr("id").startsWith("light")) || (location.hash === "#/LightSwitches")) {
-            if (bigText.siblings("#img").find("img").hasClass("lcursor") && ($(this).find(".dimslider").length == 0) && ($(this).find(".input").length == 0) && ($(this).find(".selectorlevels").length == 0))
+            if (bigText.siblings("#img").find("img").hasClass("lcursor") && ($(this).find(".dimslider").length == 0) && ($(this).find(".selectorlevels").length == 0)) {
                 if (theme.features.switch_instead_of_bigtext.enabled && $(this).find("#img2").length == 0) {
                     setDeviceSwitch(idx, status);
                 } else {
                     bigText.show();
                 }
+            }
         }
 
         /* Feature - Switch instead of text for scenes */
