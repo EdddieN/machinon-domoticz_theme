@@ -49,10 +49,6 @@ header.logo {
     background-color: var(--main-bg-color) !important;
 }
 
-select.ui-corner-all, .ui-widget-content.selectorlevels-menu {
-    background: var(--main-navbar-bg-color) !important;
-}
-
 .ui-dialog .ui-dialog-buttonpane {
     background: var(--main-bg-color);
 }
