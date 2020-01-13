@@ -43,6 +43,12 @@ $.ajax({
     }
 });
 
+$.ajax({
+    url: "acttheme/js/livestamp.js",
+    async: false,
+    dataType: "script",
+});
+
 0 <= "en fr de sv nl pl".split(" ").indexOf(lang) ? $.ajax({
     url: "acttheme/lang/machinon." + lang + ".js",
     async: false,

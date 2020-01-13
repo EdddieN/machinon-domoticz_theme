@@ -195,10 +195,9 @@ function setDeviceLastUpdate(idx, lastupdate) {
         if (theme.features.time_ago.enabled === true) {
             let lastupdated = $(this).find("#timeago");
             if (lastupdated.length == 0) {
-                $(this).append('<td id="timeago" class="timeago" title="' + $.t("Last Seen") + '"><i class="ion-ios-pulse"></i> <span id="timeago_duration"></span></td>');
+                $(this).append('<td id="timeago" class="timeago" title="' + $.t("Last Seen") + '"><i class="ion-ios-pulse"></i> <span data-livestamp="' + moment(lastupdate).format() + '" title="' + moment(lastupdate).format("L LT") + '"></span></td>');
                 $(this).find("#lastupdate").hide();
             }
-            $(this).find("#timeago_duration").text(moment(lastupdate).fromNow());
         } else {
             $(this).find("#lastupdate").attr("title", $.t("Last Seen"));
             $(this).find("#lastupdate").text(moment(lastupdate).format("L LT"));
