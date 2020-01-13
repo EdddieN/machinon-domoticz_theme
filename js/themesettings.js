@@ -67,7 +67,7 @@ function loadSettingsHTML() {
     }
     $("#themefolder").text(themeFolder);
     $("#themesettings").i18n();
-    if (isMobile && 992 >= window.innerWidth || !isMobile && 992 >= window.innerWidth) {
+    if (992 >= window.innerWidth) {
         $("#themevar28").prop("disabled", true);
         $('label[for="themevar28"]').addClass("disabledText");
     }
@@ -315,16 +315,14 @@ function storeUserVariableThemeSettings(action) {
             }
         });
         var custom = [];
-        if (custom !== "undefined") {
-            custom.push(theme.standby_after);
-            custom.push(theme.button_name);
-            custom.push(theme.custom_url);
-            custom.push(theme.logo);
-            custom.push(theme.icons);
-            custom.push(theme.background_img);
-            custom.push(theme.background_type);
-        }
-        var variableURL = "json.htm?type=command&param=" + action + "uservariable&vname=theme-" + themeFolder + "-custom&vtype=2&vvalue=" + JSON.stringify(custom);
+        custom.push(theme.standby_after);
+        custom.push(theme.button_name);
+        custom.push(theme.custom_url);
+        custom.push(theme.logo);
+        custom.push(theme.icons);
+        custom.push(theme.background_img);
+        custom.push(theme.background_type);
+        variableURL = "json.htm?type=command&param=" + action + "uservariable&vname=theme-" + themeFolder + "-custom&vtype=2&vvalue=" + JSON.stringify(custom);
         $.ajax({
             url: variableURL,
             async: false,
