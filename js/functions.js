@@ -38,35 +38,8 @@ function setAllDevicesFeatures() {
             status = bigText.attr("data-status");
         }
 
-        /* Create options menu */
-        let subnav = $(this).find(".options");
-        let subnavButton = $(this).find(".options-cell");
-        if (subnav.length && subnavButton.length == 0) {
-            $(this).find("table > tbody > tr").append('<td class="options-cell" title="' + $.t("More options") + '"><i class="ion-md-more"></i</td>');
-            $(this).on("click", "td.options-cell", function(e) {
-                e.preventDefault();
-                $(this).siblings("td.options").slideToggle(400);
-                $(this).siblings("td.options").unbind("mouseleave");
-                $(this).siblings("td.options").mouseleave(function() {
-                    $(this).slideToggle(400);
-                    $(this).unbind("mouseleave");
-                });
-            });
-            if ($(this).find("#idno").length == 0) {
-                $(this).find(".options").append('<a class="btnsmall" id="idno"><i>Idx: ' + idx + "</i></a>");
-            }
-            $(this).find("table tr").append('<td class="timers_log"></td>');
-            $(this).find(".timers_log").append($(this).find('.options .btnsmall[data-i18n="Log"]').html("<i class='ion-ios-stats' title='" + $.t("Log") + "'></i>"));
-            $(this).find(".timers_log").append($(this).find('.options .btnsmall[href*="Log"]:not(.btnsmall[data-i18n="Log"])').html("<i class='ion-ios-stats' title='" + $.t("Log") + "'></i>"));
-            $(this).find(".timers_log").append($(this).find('.options .btnsmall[data-i18n="Timers"]').html("<i class='ion-ios-timer disabledText' title='" + $.t("Timers") + "'></i>"));
-            $(this).find(".timers_log").append($(this).find('.options .btnsmall-sel[data-i18n="Timers"]').html("<i class='ion-ios-timer' title='" + $.t("Timers") + "'></i>"));
-            if ($(this).find('table tr .options > img[src*="nofavorite"]:not(".ng-hide")').length === 0) {
-                icon = '<i class="ion-ios-star lcursor" title="' + $.t("Remove from Dashboard") + '" onclick="MakeFavorite(' + idx + ',0);"></i></td>';
-            } else {
-                icon = '<i class="ion-ios-star-outline lcursor" title="' + $.t("Add to Dashboard") + '" onclick="MakeFavorite(' + idx + ',1);"></i></td>';
-            }
-            $(this).find("table tr").append('<td class="favorite">' + icon + "</td>");
-        }
+        /* Apply style and redefine options */
+        setDeviceOptions(idx);
 
         /* Feature - Fade off items */
         setDeviceOpacity(idx, status);
@@ -139,6 +112,41 @@ function setAllDevicesIconsStatus() {
     $("div.item.statusLowBattery").each(function() {
         if ($(this).find("#name > i.ion-ios-battery-dead").length === 0) {
             $(this).find("#name").prepend("<i class='ion-ios-battery-dead blink warning-text' title='" + $.t("Battery Low Level") + "'></i>&nbsp;");
+        }
+    });
+}
+
+function setDeviceOptions(idx) {
+    let tr = "tr[data-idx='" + idx + "']";
+    $(tr).each(function() {
+        /* Create options menu */
+        let subnav = $(this).find(".options");
+        let subnavButton = $(this).find(".options-cell");
+        if (subnav.length && subnavButton.length == 0) {
+            /* Display idx in the options */
+            $(subnav).append('<a class="btnsmall" id="idno"><i>Idx: ' + idx + "</i></a>");
+            $(this).append('<td class="options-cell" title="' + $.t("More options") + '"><i class="ion-md-more"></i</td>');
+            $(this).on("click", "td.options-cell", function(e) {
+                e.preventDefault();
+                $(this).siblings("td.options").slideToggle(400);
+                $(this).siblings("td.options").unbind("mouseleave");
+                $(this).siblings("td.options").mouseleave(function() {
+                    $(this).slideToggle(400);
+                    $(this).unbind("mouseleave");
+                });
+            });
+            $(this).append('<td class="timers_log"></td>');
+            timers = $(this).find(".timers_log");
+            $(timers).append($(this).find('.options .btnsmall[data-i18n="Log"]').html("<i class='ion-ios-stats' title='" + $.t("Log") + "'></i>"));
+            $(timers).append($(this).find('.options .btnsmall[href*="Log"]:not(.btnsmall[data-i18n="Log"])').html("<i class='ion-ios-stats' title='" + $.t("Log") + "'></i>"));
+            $(timers).append($(this).find('.options .btnsmall[data-i18n="Timers"]').html("<i class='ion-ios-timer disabledText' title='" + $.t("Timers") + "'></i>"));
+            $(timers).append($(this).find('.options .btnsmall-sel[data-i18n="Timers"]').html("<i class='ion-ios-timer' title='" + $.t("Timers") + "'></i>"));
+            if ($(this).find('.options > img[src*="nofavorite"]:not(".ng-hide")').length === 0) {
+                icon = '<i class="ion-ios-star lcursor" title="' + $.t("Remove from Dashboard") + '" onclick="MakeFavorite(' + idx + ',0);"></i></td>';
+            } else {
+                icon = '<i class="ion-ios-star-outline lcursor" title="' + $.t("Add to Dashboard") + '" onclick="MakeFavorite(' + idx + ',1);"></i></td>';
+            }
+            $(this).append('<td class="favorite">' + icon + "</td>");
         }
     });
 }
