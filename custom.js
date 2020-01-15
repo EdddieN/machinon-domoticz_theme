@@ -95,6 +95,9 @@ checkAngular = setInterval(function() {
                         $("dzweatherwidget[id='" + data.item.idx + "']").find("tbody > tr").each(function() {
                             $(this).attr("data-idx", data.item.idx);
                         });
+                        $("dztemperaturewidget[id='" + data.item.idx + "']").find("tbody > tr").each(function() {
+                            $(this).attr("data-idx", data.item.idx);
+                        });
                         setDeviceOptions(data.item.idx);
                         let lastupd = moment(data.item.LastUpdate, ["YYYY-MM-DD HH:mm:ss", "L LT"]).format();
                         setDeviceLastUpdate(data.item.idx, lastupd);
