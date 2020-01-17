@@ -43,6 +43,12 @@ $.ajax({
     }
 });
 
+$.ajax({
+    url: "acttheme/js/livestamp.js",
+    async: false,
+    dataType: "script",
+});
+
 0 <= "en fr de sv nl pl".split(" ").indexOf(lang) ? $.ajax({
     url: "acttheme/lang/machinon." + lang + ".js",
     async: false,
@@ -82,6 +88,20 @@ checkAngular = setInterval(function() {
                     if (theme.features.switch_instead_of_bigtext.enabled === true && data.item.SwitchType === "On/Off") {
                         setDeviceSwitch(data.item.idx, data.item.Status);
                     }
+                }
+                if (data.item.Type.startsWith("Temp") || (data.item.Type === "Wind")) {
+                    /* Temp/Wind widgets are all refreshed, we need to format them again after a delay */
+                    setTimeout(function() {
+                        $("dzweatherwidget[id='" + data.item.idx + "']").find("tbody > tr").each(function() {
+                            $(this).attr("data-idx", data.item.idx);
+                        });
+                        $("dztemperaturewidget[id='" + data.item.idx + "']").find("tbody > tr").each(function() {
+                            $(this).attr("data-idx", data.item.idx);
+                        });
+                        setDeviceOptions(data.item.idx);
+                        let lastupd = moment(data.item.LastUpdate, ["YYYY-MM-DD HH:mm:ss", "L LT"]).format();
+                        setDeviceLastUpdate(data.item.idx, lastupd);
+                    }, 10);
                 }
                 if (data.item.Type === "Wind") {
                     if (theme.features.wind_direction.enabled === true) {
