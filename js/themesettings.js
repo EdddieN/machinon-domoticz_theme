@@ -252,7 +252,6 @@ function enableThemeFeatures() {
             }
         }
     });
-    console.log(themeName + " - feature files is loaded.");
     loadedThemeCSSandJS = true;
 }
 
@@ -261,11 +260,8 @@ function loadThemeFeatureFiles(featureName) {
     var arrayLength = files.length;
     for (var i = 0; i < arrayLength; i++) {
         if (files[i].split(".").pop() == "js") {
-            console.log(themeName + " - Loading javascript for " + featureName + " feature");
             var getviarequire = "../acttheme/js/" +  files[i] + "?" + themeName;
-            requirejs([ getviarequire ], function(util) {
-                console.log(themeName + " - Javascript loaded by RequireJS");
-            });
+            requirejs([ getviarequire ]);
         }
         if (files[i].split(".").pop() == "css") {
             var CSSfile = "acttheme/css/" + files[i] + "?" + themeName;

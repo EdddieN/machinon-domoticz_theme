@@ -51,7 +51,7 @@ fetch('json.htm?type=settings', {
         init_theme();
     });
 }).catch(error => {
-    console.log(error);
+    console.error(error);
 });
 
 function init_theme() {
