@@ -182,9 +182,10 @@ function setDeviceLastUpdate(idx, lastupdate) {
             if (lastupdated.length == 0) {
                 $(this).append('<td id="timeago" class="timeago" title="' + $.t("Last Seen") + '"><i class="ion-ios-pulse"></i> <span data-livestamp="' + moment(lastupdate).format() + '" title="' + moment(lastupdate).format("L LT") + '"></span></td>');
                 $(this).find("#lastupdate").hide();
+            } else {
+                $(this).find("#timeago > span").attr("title", moment(lastupdate).format("L LT"));
+                $(this).find("#timeago > span").livestamp( moment(lastupdate).format());
             }
-            $(this).find("#timeago > span").attr("title", moment(lastupdate).format("L LT"));
-            $(this).find("#timeago > span").livestamp( moment(lastupdate).format());
         } else {
             $(this).find("#lastupdate").attr("title", $.t("Last Seen"));
             $(this).find("#lastupdate").text(moment(lastupdate).format("L LT"));
