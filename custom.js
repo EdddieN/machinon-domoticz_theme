@@ -159,7 +159,7 @@ function init_theme() {
 
         if (checkUpdate != 0) checkDomoticzUpdate(true);
 
-        if (theme.background_img.length) {
+        if (theme.background_img && theme.background_img.length) {
             if (theme.background_img.startsWith("http")) {
                 bg_url = theme.background_img;
             } else {
