@@ -14,8 +14,9 @@ function removeRowDivider() {
 }
 
 function setLogo() {
+    console.log(theme);
     let containerLogo = '<header class="logo"><div class="container-logo">';
-    if (theme.logo.length == 0) {
+    if (theme.logo != null && theme.logo.length == 0) {
         containerLogo += '<img class="header__icon" src="acttheme/images/logo.png">';
         $("<style>#login:before {content: url(../images/logo.png) !important;}</style>").appendTo("head");
     } else {
