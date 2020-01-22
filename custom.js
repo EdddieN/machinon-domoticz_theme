@@ -162,16 +162,16 @@ $(document).ready(function() {
     enableThemeFeatures();
     if (checkUpdate != 0) checkDomoticzUpdate(true);
     let containerLogo = '<header class="logo"><div class="container-logo">';
-    if (theme.logo.length == 0) {
-        containerLogo += '<img class="header__icon" src="acttheme/images/logo.png">';
-        $("<style>#login:before {content: url(../images/logo.png) !important;}</style>").appendTo("head");
-    } else {
+    if (theme.logo && theme.logo.length) {
         containerLogo += '<img class="header__icon" src="acttheme/images/' + theme.logo + '"';
         $("<style>#login:before {content: url(../images/" + theme.logo + ") !important;}</style>").appendTo("head");
+    } else {
+        containerLogo += '<img class="header__icon" src="acttheme/images/logo.png">';
+        $("<style>#login:before {content: url(../images/logo.png) !important;}</style>").appendTo("head");
     }
     containerLogo += "</div></header>";
     $(containerLogo).insertBefore(".navbar-inner");
-    if (theme.background_img.length) {
+    if (theme.background_img && theme.background_img.length) {
         if (theme.background_img.startsWith("http")) {
             bg_url = theme.background_img;
         } else {
