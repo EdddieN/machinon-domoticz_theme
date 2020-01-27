@@ -155,6 +155,8 @@ function init_theme() {
         setLogo();
         setSearch();
         setDevicesNativeSelectorForMobile();
+        locationHashChanged();
+
         $(document).ajaxSuccess(ajaxSuccessCallback);
 
         if (checkUpdate != 0) checkDomoticzUpdate(true);
