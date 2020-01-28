@@ -718,6 +718,7 @@ body table#itemtable tr > .options {
 .span4 td#img2 ~ .statusNormal .dimslider,
 .span4 td#img2 ~ .statusProtected .dimslider {
     width: 50% !important;
+    margin-top: 0 !important;
 }
 
 #type .dimslider .ui-slider-range,
