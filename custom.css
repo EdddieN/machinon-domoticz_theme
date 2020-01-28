@@ -713,6 +713,14 @@ body table#itemtable tr > .options {
     width: 70% !important;
 }
 
+.span4 td#img2 ~ #type .dimslider,
+.span4 td#img2 ~ .input .dimslider,
+.span4 td#img2 ~ .statusNormal .dimslider,
+.span4 td#img2 ~ .statusProtected .dimslider {
+    width: 50% !important;
+    margin-top: 0 !important;
+}
+
 #type .dimslider .ui-slider-range,
 .input .dimslider .ui-slider-range,
 .statusNormal .dimslider .ui-slider-range,
@@ -733,11 +741,6 @@ body table#itemtable tr > .options {
 
 @media (min-width: 1200px) {
     #type .dimslider, .input .dimslider {
-        width: 55% !important;
-    }
-
-    #itemtabledoubleicon .dimslider,
-#itemtablesmalldoubleicon .dimslider {
         width: 55% !important;
     }
 }
@@ -1951,6 +1954,10 @@ section.compact .row.divider {
     max-width: 100px;
     align-self: center;
     text-align: right;
+}
+
+.span3 td#img2 ~ td.input {
+     width: calc(100% - 60px);
 }
 
 .span3 td.input .dimslider, .span3 .statusNormal .dimslider, .span3 .statusProtected .dimslider {
