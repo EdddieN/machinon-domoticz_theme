@@ -1,4 +1,4 @@
-var branch = "beta";
+var branch = "master";
 
 setTimeout(update, 5000);
 function update() {
