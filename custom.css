@@ -1592,7 +1592,7 @@ input#AcceptNewHardware:checked ~ button {
 .btn-group .btn-default {
     text-shadow: none !important;
     background: var(--main-item-bg-color) !important;
-    color: var(--main-blue-color);
+    color: var(--main-blue-color) !important;
     border-color: var(--main-blue-color) !important;
     border-radius: 1px !important;
 }
@@ -1601,7 +1601,7 @@ input#AcceptNewHardware:checked ~ button {
 .btn-group .btn-selected,
 .btn-default.active,
 .btn-group .btn-default.active {
-    color: #fff;
+    color: #fff !important;
     background: var(--main-blue-color) !important;
     border-color: var(--main-blue-color) !important;
 }
