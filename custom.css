@@ -1994,7 +1994,7 @@ section.compact .row.divider {
     display: block;
     height: 100%;
     border: 0 !important;
-    color: var(--main-blue-color);
+    color: var(--main-blue-color) !important;
     background: var(--main-item-bg-color) !important;
     font-family: main-font;
     font-size: 18px;
