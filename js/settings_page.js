@@ -1,14 +1,12 @@
-$("#appnavbar li:not(.clcustommenu)").remove(".dropdown");
-
-let mainMenu = $("#appnavbar");
-
-let mSettings = mainMenu.find("#mSettings");
-
-if (mainMenu.length && mSettings.length == 0) {
-    mainMenu.append('<li id="mSettings" style="display: none;" has-permission="Admin"><a class="settings lcursor"><img src="images/setup.png"><span class="hidden-phone hidden-tablet" data-i18n="Settings">Settings</span></a></li>');
+let mSettings = $("#appnavbar").find("li[has-permission='Admin']");
+if (mSettings && mSettings.length > 0) {
+    mSettings.removeClass("dropdown"); 
+    mSettings.children("a").removeClass("dropdown-toggle");
+    mSettings.find("a > b").remove();
+    mSettings.children("ul").remove();
 }
 
-$("a.settings").click(function() {
+mSettings.click(function() {
     $("#machinoSettings").remove();
     $("#appnavbar li").removeClass("current_page_item");
     $("#mSettings").addClass("current_page_item");
