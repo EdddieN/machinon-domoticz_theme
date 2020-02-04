@@ -1162,6 +1162,9 @@ button.savebtn:disabled {
 .btnsmall:hover {
     color: var(--secondary-text-color);
 }
+.btnsmall:hover {
+    font-style: italic;
+}
 
 #itemtabledoubleicon td:last-child .btnsmall-sel,
 #itemtablenostatus td:last-child .btnsmall-sel,
