@@ -1162,6 +1162,9 @@ button.savebtn:disabled {
 .btnsmall:hover {
     color: var(--secondary-text-color);
 }
+.btnsmall:hover {
+    font-style: italic;
+}
 
 #itemtabledoubleicon td:last-child .btnsmall-sel,
 #itemtablenostatus td:last-child .btnsmall-sel,
@@ -1592,7 +1595,7 @@ input#AcceptNewHardware:checked ~ button {
 .btn-group .btn-default {
     text-shadow: none !important;
     background: var(--main-item-bg-color) !important;
-    color: var(--main-blue-color);
+    color: var(--main-blue-color) !important;
     border-color: var(--main-blue-color) !important;
     border-radius: 1px !important;
 }
@@ -1601,7 +1604,7 @@ input#AcceptNewHardware:checked ~ button {
 .btn-group .btn-selected,
 .btn-default.active,
 .btn-group .btn-default.active {
-    color: #fff;
+    color: #fff !important;
     background: var(--main-blue-color) !important;
     border-color: var(--main-blue-color) !important;
 }
@@ -1991,7 +1994,7 @@ section.compact .row.divider {
     display: block;
     height: 100%;
     border: 0 !important;
-    color: var(--main-blue-color);
+    color: var(--main-blue-color) !important;
     background: var(--main-item-bg-color) !important;
     font-family: main-font;
     font-size: 18px;
