@@ -208,7 +208,7 @@ function setDeviceOpacity(idx, status) {
         closed: $.t("Closed")
     };
 
-    if (theme.features.fade_offItems.enabled === true) {
+    if (theme.features.fade_off_items.enabled === true) {
         let tr = "tr[data-idx='" + idx + "']";
         if (status === switchState.off  || status === 'Off' || status === switchState.closed || status === 'Closed') {
             $(tr).parents(".item").addClass("fadeOff");

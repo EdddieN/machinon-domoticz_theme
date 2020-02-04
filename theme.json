@@ -55,7 +55,7 @@
             "enabled":true,
             "files": ["custom_page.js"]
         },
-        "fade_offItems": {
+        "fade_off_items": {
             "id":18,
             "enabled":false,
             "files": []
