@@ -71,58 +71,53 @@ function init_theme() {
                 if (theme.features.notification.enabled === true && $("#msg").length == 0) {
                     displayNotifications();
                 }
-                if (data.title === "Devices") {
-                    if (data.item.Type === "Light/Switch") {
+                if (data.ype === "Light/Switch") {
 
-                        setDeviceOpacity(data.item.idx, data.item.Status);
-                        if (theme.features.icon_image.enabled === true) {
-                            /* We have to delay it a few otherwise it's get overwritten by standard icon */
-                            setTimeout(setDeviceCustomIcon, 10, data.item.idx, data.item.Status);
-                        }
-                        if (theme.features.switch_instead_of_bigtext.enabled === true && data.item.SwitchType === "On/Off") {
-                            setDeviceSwitch(data.item.idx, data.item.Status);
-                        }
+                    setDeviceOpacity(data.idx, data.Status);
+                    if (theme.features.icon_image.enabled === true) {
+                        /* We have to delay it a few otherwise it's get overwritten by standard icon */
+                        setTimeout(setDeviceCustomIcon, 10, data.idx, data.Status);
                     }
-                    if (data.item.Type.startsWith("Temp") || (data.item.Type === "Wind")) {
-                        /* Temp/Wind widgets are all refreshed, we need to format them again after a delay */
-                        setTimeout(function() {
-                            $("dzweatherwidget[id='" + data.item.idx + "']").find("tbody > tr").each(function() {
-                                $(this).attr("data-idx", data.item.idx);
-                            });
-                            $("dztemperaturewidget[id='" + data.item.idx + "']").find("tbody > tr").each(function() {
-                                $(this).attr("data-idx", data.item.idx);
-                            });
-                            setDeviceOptions(data.item.idx);
-                            let lastupd = moment(data.item.LastUpdate, ["YYYY-MM-DD HH:mm:ss", "L LT"]).format();
-                            setDeviceLastUpdate(data.item.idx, lastupd);
-                        }, 10);
+                    if (theme.features.switch_instead_of_bigtext.enabled === true && data.SwitchType === "On/Off") {
+                        setDeviceSwitch(data.idx, data.Status);
                     }
-                    if (data.item.Type === "Wind") {
-                        if (theme.features.wind_direction.enabled === true) {
-                            /* We have to delay it a few otherwise it's get overwritten by standard icon */
-                            setTimeout(setDeviceWindDirectionIcon, 10, data.item.idx, data.item.DirectionStr);
-                        }
-                    }
-                    setTimeout(function() {
-                        let lastupd = moment(data.item.LastUpdate, ["YYYY-MM-DD HH:mm:ss", "L LT"]).format();
-                        setDeviceLastUpdate(data.item.idx, lastupd);
-                        setAllDevicesIconsStatus();
-                    }, 10);
-                } else {
-                    // Other ? Notification ?
-                    console.debug("Other event --> " + data);
                 }
+                if (data.Type.startsWith("Temp") || (data.Type === "Wind")) {
+                    /* Temp/Wind widgets are all refreshed, we need to format them again after a delay */
+                    setTimeout(function() {
+                        $("dzweatherwidget[id='" + data.idx + "']").find("tbody > tr").each(function() {
+                            $(this).attr("data-idx", data.idx);
+                        });
+                        $("dztemperaturewidget[id='" + data.idx + "']").find("tbody > tr").each(function() {
+                            $(this).attr("data-idx", data.idx);
+                        });
+                            setDeviceOptions(data.idx);
+                            let lastupd = moment(data.LastUpdate, ["YYYY-MM-DD HH:mm:ss", "L LT"]).format();
+                            setDeviceLastUpdate(data.idx, lastupd);
+                    }, 10);
+                }
+                if (data.Type === "Wind") {
+                    if (theme.features.wind_direction.enabled === true) {
+                        /* We have to delay it a few otherwise it's get overwritten by standard icon */
+                        setTimeout(setDeviceWindDirectionIcon, 10, data.idx, data.DirectionStr);
+                    }
+                }
+                setTimeout(function() {
+                    let lastupd = moment(data.LastUpdate, ["YYYY-MM-DD HH:mm:ss", "L LT"]).format();
+                    setDeviceLastUpdate(data.idx, lastupd);
+                    setAllDevicesIconsStatus();
+                }, 10);
             }, function errorCallback(response) {
                 console.error("Cannot connect to websocket");
             });
 
             $scope.$on('scene_update', function (event, data) {
                 if (theme.features.switch_instead_of_bigtext_scenes.enabled === true) {
-                    setDeviceSwitch(data.item.idx, data.item.Status);
+                    setDeviceSwitch(data.idx, data.Status);
                 }
-                let lastupd = moment(data.item.LastUpdate, ["YYYY-MM-DD HH:mm:ss", "L LT"]).format();
-                setDeviceLastUpdate(data.item.idx, lastupd);
-                setDeviceOpacity(data.item.idx, data.item.Status);
+                let lastupd = moment(data.LastUpdate, ["YYYY-MM-DD HH:mm:ss", "L LT"]).format();
+                setDeviceLastUpdate(data.idx, lastupd);
+                setDeviceOpacity(data.idx, data.Status);
             }, function errorCallback(response) {
                 console.error("Cannot connect to websocket");
             });
