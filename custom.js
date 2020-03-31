@@ -74,7 +74,7 @@ function init_theme() {
                 console.warn("To be fully working, this theme requires to run Domoticz version " + dom_ws_version + " minimum -- Your version is " + current_version);
             }
 
-            $scope.$on('jsonupdate', function (event, data) {
+            $scope.$on('device_update', function (event, data) {
                 if (theme.features.notification.enabled === true && $("#msg").length == 0) {
                     displayNotifications();
                 }
