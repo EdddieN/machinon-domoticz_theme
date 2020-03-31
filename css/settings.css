@@ -186,20 +186,17 @@ input.parentunrequiredchild {
 }
 
 .machinon_ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
     margin: 0;
-}
-
-.machinon_ul img {
-	/*proprieté flex*/
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 250px);
+    grid-auto-flow: row dense;
+    justify-content: space-evenly;
+    column-gap: 20px;
 }
 
 ul.machinon_ul li {
-    padding: 5px 40px;
-    margin: 0 20px 23px 0;
+    padding: 5px 15px;
+    margin: 15px 0;
 }
 
 .machinon_ul li:hover {
@@ -266,11 +263,11 @@ ul.machinon_ul li {
 
     ul.machinon_ul {
         margin: 0 0 10px 5px;
+        display: block;
     }
 
     ul.machinon_ul li {
-        padding: 5px 40px;
-        margin: 0 10px 23px 0;
+        padding-left: 40px;
     }
 
     code {
