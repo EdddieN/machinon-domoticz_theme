@@ -71,8 +71,7 @@ function init_theme() {
                 if (theme.features.notification.enabled === true && $("#msg").length == 0) {
                     displayNotifications();
                 }
-                if (data.ype === "Light/Switch") {
-
+                if (data.Type === "Light/Switch") {
                     setDeviceOpacity(data.idx, data.Status);
                     if (theme.features.icon_image.enabled === true) {
                         /* We have to delay it a few otherwise it's get overwritten by standard icon */
