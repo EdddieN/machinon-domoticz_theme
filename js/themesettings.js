@@ -260,7 +260,7 @@ function loadThemeFeatureFiles(featureName) {
     var arrayLength = files.length;
     for (var i = 0; i < arrayLength; i++) {
         if (files[i].split(".").pop() == "js") {
-            var getviarequire = "../acttheme/js/" +  files[i] + "?" + themeName;
+            var getviarequire = "./acttheme/js/" +  files[i] + "?" + themeName;
             requirejs([ getviarequire ]);
         }
         if (files[i].split(".").pop() == "css") {
